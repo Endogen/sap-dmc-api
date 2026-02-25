@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection')/$value"
+  },
+  "Name": "sapdme_qualityinspection",
+  "ID": "sapdme_qualityinspection",
+  "Title": "Quality Inspection",
+  "ShortText": "Perform quality inspection related activities",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218410)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706459)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Feb 2025\",\"notes\":\"Fixed a documentation issue by updating the inspectionPoint property as required in the request payload of the inspection point synchronization API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 Feb 2025\",\"notes\":\"Updated API for checking if the mandatory characteristics are inspected.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"23 Nov 2024\",\"notes\":\"Updated API for getting the inspection operations.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Aug 2024\",\"notes\":\"Added new API for checking if the mandatory characteristics are inspected.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"Update /lots/{inspectionLot}/operations/{inspectionOperation}/points/createInERP response code from 201 to 204.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 May 2023\",\"notes\":\"Enhanced GET results history API with 'inspectionPointValuationCode' and 'inspectionPointValuationText' properties in response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Feb 2023\",\"notes\":\"Added two new APIs for extending Quality Inspection Integration function\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"17 Dec 2021\",\"notes\":\"Added new API for extending Quality Inspection Integration function\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 Aug 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection')/Versions"
+    }
+  }
+}

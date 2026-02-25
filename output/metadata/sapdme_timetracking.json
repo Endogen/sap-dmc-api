@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking')/$value"
+  },
+  "Name": "sapdme_timetracking",
+  "ID": "sapdme_timetracking",
+  "Title": "Time Tracking",
+  "ShortText": "Manage time tracking records and events for activities on the shop floor.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1684786255130)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706277)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"25 May 2024\",\"notes\":\"Add APIs for recording production time and resource usage.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"Add direct labor APIs for process lot.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"02 Dec 2023\",\"notes\":\"Add resource and workcenter parameters for Attendance and Indirect labor tracking APIs.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2023\",\"notes\":\"Add APIs for recording indirect labor activities and add adjustedLaborTime property to APIs.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 May 2023\",\"notes\":\"APIs to manage time tracking activities on the shop floor.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking')/Versions"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production')/$value"
+  },
+  "Name": "sapdme_production",
+  "ID": "sapdme_production",
+  "Title": "Production Change",
+  "ShortText": "Perform production changes to a shop floor control",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1653309205000)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706836)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "DEPRECATED",
+  "ChangeLog": "[{\"date\":\"25 Aug 2024\",\"notes\":\"This API is deprecated. Please use successor API /changeProduction/v2\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"20 May 2023\",\"notes\":\"Removed recipe related description in Production Change API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"18 Feb 2023\",\"notes\":\"Added 'resource' and 'operatorID' as request parameters in Production Change API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2022\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production')/Versions"
+    }
+  }
+}

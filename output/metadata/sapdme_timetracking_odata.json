@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking_odata')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking_odata')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking_odata')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking_odata')/$value"
+  },
+  "Name": "sapdme_timetracking_odata",
+  "ID": "sapdme_timetracking_odata",
+  "Title": "Time Tracking",
+  "ShortText": "Manage time tracking records and events for activities on the shop floor.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "ODATAV4",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1739555543430)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706379)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"10 Jan 2025\",\"notes\":\"Add API for fetching activities for indirect labor and resource usage for a specific plant.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_timetracking_odata')/Versions"
+    }
+  }
+}

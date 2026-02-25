@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_logistics')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_logistics')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_logistics')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_logistics')/$value"
+  },
+  "Name": "sapdme_logistics",
+  "ID": "sapdme_logistics",
+  "Title": "Logistics",
+  "ShortText": "Perform logistics order relevant activities, such as creating orders and updating order status",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218516)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706822)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"11 Feb 2023\",\"notes\":\"For the POST logistics order API, added a new option 'CARRIER' in the 'referenceType' property, and a new option 'STORAGE_LOCATION' in 'sourceType' and 'destinationType' properties.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"13 Nov 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_logistics')/Versions"
+    }
+  }
+}

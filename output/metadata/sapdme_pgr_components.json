@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_pgr_components')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_pgr_components')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_pgr_components')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_pgr_components')/$value"
+  },
+  "Name": "sapdme_pgr_components",
+  "ID": "sapdme_pgr_components",
+  "Title": "Product Genealogy Report (PGR) Assembly Components",
+  "ShortText": "Create a product genealogy report for an assembly",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1653309204666)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706473)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "DEPRECATED",
+  "ChangeLog": "[{\"date\":\"20 Aug 2023\",\"notes\":\"This API is deprecated. Please use successor API: <a href=https://api.sap.com/api/sapdme_assembly>Assembly<\\/a>\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2022\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_pgr_components')/Versions"
+    }
+  }
+}

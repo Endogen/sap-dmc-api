@@ -1,0 +1,1381 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "A resource is a machine or other piece of equipment used to perform an operation. A resource may be something as simple as a drill, or as complex as an automatic component feeder. This API allows you to retrieve, create, update, or delete a resource, change its status, load or unload a resource bin from an inventory or a material.",
+    "version": "v1",
+    "title": "Resource",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "x-sap-stateInfo": {
+    "state": "Deprecated",
+    "deprecationDate": "2023-12-02",
+    "successorApi": "https://api.sap.com/api/sapdme_plant_resource_v2"
+  },
+  "host": "hostname",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Resource",
+      "description": "Resource Api Controller"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "paths": {
+    "/changestatus": {
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Changes the resource status.",
+        "description": "Changes the status of the provided resource based on the provided parameters. Please use successor API: <a href=https://api.sap.com/api/sapdme_plant_resource_v2>Resource V2</a>.",
+        "operationId": "changeResourceStatusUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangeResourceStatusRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": true
+      }
+    },
+    "/loadbin": {
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Loads a resource bin.",
+        "description": "Requires a material or inventory that is in the assembly data fields (INVENTORY_ID, INVENTORY_ID_SFC, or SFC). If there is an inventory in the assembly data fields its size will be decreased by the loaded bin quantity. If the Bin is already loaded new loading will be added to the queue. Please use successor API: <a href=https://api.sap.com/api/sapdme_plant_resource_v2>Resource V2</a>.",
+        "operationId": "loadResourceBinUsingPOST_2",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoadResourceBinRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ParametersValidationError"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/InvalidTokenException"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/InsufficientScopeException"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": true
+      }
+    },
+    "/resources": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Retrieves a list of resources.",
+        "description": "Retrieves a list of resources by plant or by resource name and plant. Deprecated for tenants that have activated the Enterprise Asset Base Model (EABM) service. Please use successor API: <a href=https://api.sap.com/api/sapdme_plant_resource_v2>Resource V2</a>.",
+        "operationId": "getResourcesUsingGET_1",
+        "parameters": [
+          {
+            "name": "plant",
+            "in": "query",
+            "description": "The plant containing a resource.",
+            "required": true,
+            "type": "string",
+            "maxLength": 6,
+            "minLength": 1
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "description": "The name to retrieve a resource.",
+            "required": false,
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Resource"
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": true
+      },
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Creates a resource.",
+        "description": "Creates a resource by the given request. Deprecated for tenants that have activated the Enterprise Asset Base Model (EABM) service. Please use successor API: <a href=https://api.sap.com/api/sapdme_plant_resource_v2>Resource V2</a>.",
+        "operationId": "createResourceUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResourceCuRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The resource was created.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Resource"
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "The resource type, order, or plant was not found.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "409": {
+            "description": "The resource already exists.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": true
+      },
+      "patch": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Updates the resource.",
+        "description": "Updates the existing resource by the given request. Deprecated for tenants that have activated the Enterprise Asset Base Model (EABM) service. Please use successor API: <a href=https://api.sap.com/api/sapdme_plant_resource_v2>Resource V2</a>.",
+        "operationId": "updateResourceUsingPATCH_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResourceCuRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource was updated.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Resource"
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "The resource, resource type, order, or plant was not found.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "412": {
+            "description": "The resource has already been updated by another user.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": true
+      },
+      "delete": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Deletes the resource.",
+        "description": "Deletes the existing resource by the given request. Please use successor API: <a href=https://api.sap.com/api/sapdme_plant_resource_v2>Resource V2</a>.",
+        "operationId": "deleteResourceUsingDELETE_1",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResourceDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted."
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "The resource or plant was not found.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "412": {
+            "description": "The resource cannot be deleted because it's already in use.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": true
+      }
+    },
+    "/unloadbin": {
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Unloads a resource bin.",
+        "description": "When you unload a resource bin that has been loaded from the inventory, the quantity in the bin is returned to the inventory. Please use successor API: <a href=https://api.sap.com/api/sapdme_plant_resource_v2>Resource V2</a>.",
+        "operationId": "unloadResourceBinUsingPOST_2",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UnloadResourceBinRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ParametersValidationError"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/InvalidTokenException"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/InsufficientScopeException"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": true
+      }
+    }
+  },
+  "securityDefinitions": {
+    "OauthClientCredentials": {
+      "type": "oauth2",
+      "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+      "flow": "application"
+    }
+  },
+  "definitions": {
+    "AssemblyDataField": {
+      "type": "object",
+      "required": [
+        "field"
+      ],
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "The data field name.",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Indicates if this data field is required."
+        },
+        "value": {
+          "type": "string",
+          "description": "The data field assembly value.",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      },
+      "title": "AssemblyDataField",
+      "description": "The object representing a data field."
+    },
+    "ChangeResourceStatusRequest": {
+      "type": "object",
+      "required": [
+        "plant",
+        "resource",
+        "status",
+        "user"
+      ],
+      "properties": {
+        "comments": {
+          "type": "string",
+          "description": "The comment provided for the resource status change.",
+          "maxLength": 2000
+        },
+        "dateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp value for the resource status change."
+        },
+        "immediate": {
+          "type": "boolean",
+          "description": "Indicates whether the status will be changed immediately."
+        },
+        "machineCode": {
+          "type": "string",
+          "description": "The machine code with an assigned resource reason code that will be used for the resource status change.",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "plant": {
+          "type": "string",
+          "description": "The plant containing the resource.",
+          "minLength": 1,
+          "maxLength": 6
+        },
+        "recordType": {
+          "type": "string",
+          "description": "Indicates whether the status was changed manually or automatically.",
+          "enum": [
+            "MANUAL",
+            "AUTOMATIC"
+          ]
+        },
+        "resource": {
+          "type": "string",
+          "description": "The resource whose status needs to be changed.",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "status": {
+          "type": "string",
+          "description": "The new resource status",
+          "enum": [
+            "UNKNOWN",
+            "PRODUCTIVE",
+            "SCHEDULED_DOWN",
+            "UNSCHEDULED_DOWN",
+            "ENABLED",
+            "DISABLED"
+          ]
+        },
+        "user": {
+          "type": "string",
+          "description": "The user who changes the resource status.",
+          "minLength": 1,
+          "maxLength": 80
+        }
+      },
+      "title": "ChangeResourceStatusRequest",
+      "description": "The request to change the resource status."
+    },
+    "CustomValue": {
+      "type": "object",
+      "properties": {
+        "attribute": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "title": "CustomValue"
+    },
+    "InsufficientScopeException": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          },
+          "description": "Error message code"
+        },
+        "errorDescription": {
+          "type": "string",
+          "xml": {
+            "name": "error_description",
+            "attribute": false,
+            "wrapped": false
+          },
+          "description": "Error description"
+        },
+        "scope": {
+          "type": "string",
+          "xml": {
+            "name": "scope",
+            "attribute": false,
+            "wrapped": false
+          },
+          "description": "The list of required scopes"
+        }
+      },
+      "title": "InsufficientScopeException",
+      "description": "Insufficient scope error response"
+    },
+    "InvalidTokenException": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          },
+          "description": "Contains an error message code."
+        },
+        "errorDescription": {
+          "type": "string",
+          "xml": {
+            "name": "error_description",
+            "attribute": false,
+            "wrapped": false
+          },
+          "description": "Contains an error description."
+        }
+      },
+      "title": "InvalidTokenException",
+      "description": "Invalid token error response"
+    },
+    "LoadResourceBinRequest": {
+      "type": "object",
+      "required": [
+        "assemblyDataFields",
+        "bin",
+        "plant",
+        "resource"
+      ],
+      "properties": {
+        "assemblyDataFields": {
+          "type": "array",
+          "description": "Data fields to be populated on the component assembly.",
+          "items": {
+            "$ref": "#/definitions/AssemblyDataField"
+          }
+        },
+        "bin": {
+          "type": "string",
+          "description": "The name of a resource bin to be loaded.",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "loadQuantity": {
+          "type": "number",
+          "description": "The quantity of a material to be loaded into a resource bin. If not specified, the material is considered infinite."
+        },
+        "material": {
+          "type": "string",
+          "description": "The material that will be loaded into a resource bin.",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "plant": {
+          "type": "string",
+          "description": "The plant containing the resource.",
+          "minLength": 1,
+          "maxLength": 6
+        },
+        "resource": {
+          "type": "string",
+          "description": "The resource whose bin needs to be loaded.",
+          "minLength": 1,
+          "maxLength": 36
+        }
+      },
+      "title": "LoadResourceBinRequest",
+      "description": "The request to load a resource bin."
+    },
+    "ParameterValidationError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Contains additional information if any."
+        },
+        "parameter": {
+          "type": "string",
+          "description": "Contains a parameter."
+        }
+      },
+      "title": "ParameterValidationError"
+    },
+    "ParametersValidationError": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "description": "Contains parameter validation errors.",
+          "items": {
+            "$ref": "#/definitions/ParameterValidationError"
+          }
+        }
+      },
+      "title": "ParametersValidationError",
+      "description": "Parameter validation error response."
+    },
+    "Resource": {
+      "type": "object",
+      "properties": {
+        "bins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceBin"
+          }
+        },
+        "createdDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-10-04T08:59:51.679+00:00",
+          "description": "The date time when the resource was created."
+        },
+        "customValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomValue"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "efficiency": {
+          "type": "number"
+        },
+        "sfcLimit": {
+          "description": "The number of shop floor controls that can be processed for the resource. If this field equals zero, there is no limit for the quantity of shop floor controls.",
+          "type": "integer"
+        },
+        "immediateStatusChange": {
+          "description": "Indicates that the resource status changes immediately or when the last shop floor control is completed at this resource.",
+          "type": "boolean"
+        },
+        "equipment": {
+          "description": "The equipment assigned to the resource.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceEquipment"
+          }
+        },
+        "modifiedDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-10-04T08:59:51.679+00:00",
+          "description": "The date time when the resource was updated."
+        },
+        "plant": {
+          "type": "string"
+        },
+        "process": {
+          "type": "boolean"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "setupState": {
+          "type": "string",
+          "enum": [
+            "SETUP",
+            "PROPOSED",
+            "OPEN"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "PRODUCTIVE",
+            "SCHEDULED_DOWN",
+            "UNSCHEDULED_DOWN",
+            "ENABLED",
+            "DISABLED"
+          ]
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceType"
+          }
+        },
+        "inQueueCapacity": {
+          "description": "The resource input queue capacity. 0 means that the resource queue management is disabled. You must always set both input and output queue capacities.",
+          "type": "integer"
+        },
+        "outQueueCapacity": {
+          "description": "The resource output queue capacity. 0 means that the resource queue management is disabled. You must always set both input and output queue capacities.",
+          "type": "integer"
+        },
+        "inQueueManagement": {
+          "description": "The type of the resource input queue management.",
+          "type": "string",
+          "enum": [
+            "FIFO",
+            "LIFO"
+          ]
+        },
+        "outQueueManagement": {
+          "description": "The type of the resource output queue management",
+          "type": "string",
+          "enum": [
+            "FIFO",
+            "LIFO"
+          ]
+        },
+        "setups": {
+          "type": "array",
+          "description": "The list of resource setups with assigned orders.",
+          "items": {
+            "$ref": "#/definitions/ResourceSetup"
+          }
+        }
+      },
+      "title": "Resource"
+    },
+    "ResourceCuRequest": {
+      "title": "ResourceCreateUpdateRequest",
+      "description": "The request for creating or updating the resource.",
+      "type": "object",
+      "required": [
+        "plant",
+        "resource"
+      ],
+      "properties": {
+        "plant": {
+          "description": "The plant where a resource is defined.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 6
+        },
+        "resource": {
+          "description": "The name of the resource.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "description": {
+          "description": "The description of the resource.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "process": {
+          "description": "Indicates that the resource is processed.",
+          "type": "boolean"
+        },
+        "status": {
+          "description": "The status of the resource.",
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "PRODUCTIVE",
+            "SCHEDULED_DOWN",
+            "UNSCHEDULED_DOWN",
+            "ENABLED",
+            "DISABLED"
+          ]
+        },
+        "setupState": {
+          "description": "The setup state of the resource.",
+          "type": "string",
+          "enum": [
+            "SETUP",
+            "PROPOSED",
+            "OPEN"
+          ]
+        },
+        "efficiency": {
+          "description": "The efficiency of the resource.",
+          "type": "number"
+        },
+        "sfcLimit": {
+          "description": "The number of shop floor controls that can be processed for the resource. If this field equals zero, there is no limit for the quantity of shop floor controls.",
+          "type": "integer"
+        },
+        "immediateStatusChange": {
+          "description": "Indicates that the resource status changes immediately or when the last shop floor control is completed at this resource.",
+          "type": "boolean"
+        },
+        "modifiedDateTime": {
+          "description": "The date time when the resource was updated. Required only for the update request. Can be found in the resource response.",
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-10-11T09:06:01.218+00:00"
+        },
+        "types": {
+          "description": "The list of the resource types assigned to the resource.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceTypeCuRequest"
+          }
+        },
+        "bins": {
+          "description": "The list of bins for the resource.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceBinCuRequest"
+          }
+        },
+        "customValues": {
+          "description": "The list of custom values for the resource.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomValue"
+          }
+        },
+        "equipment": {
+          "description": "The list of pieces of equipment assigned to the resource.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceEquipmentCuRequest"
+          }
+        },
+        "inQueueCapacity": {
+          "description": "The resource input queue capacity. 0 means that the resource queue management is disabled. You must always set both input and output queue capacities.",
+          "type": "integer"
+        },
+        "outQueueCapacity": {
+          "description": "The resource output queue capacity. 0 means that the resource queue management is disabled. You must always set both input and output queue capacities.",
+          "type": "integer"
+        },
+        "inQueueManagement": {
+          "description": "The type of the resource input queue management.",
+          "type": "string",
+          "enum": [
+            "FIFO",
+            "LIFO"
+          ]
+        },
+        "outQueueManagement": {
+          "description": "The type of the resource output queue management",
+          "type": "string",
+          "enum": [
+            "FIFO",
+            "LIFO"
+          ]
+        },
+        "setups": {
+          "description": "The list of resource setups with assigned orders.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceSetupCuRequest"
+          }
+        }
+      }
+    },
+    "ResourceDeleteRequest": {
+      "title": "ResourceDeleteRequest",
+      "description": "The request for the resource removal.",
+      "type": "object",
+      "required": [
+        "plant",
+        "resource"
+      ],
+      "properties": {
+        "plant": {
+          "type": "string",
+          "description": "The plant where a resource is defined.",
+          "minLength": 1,
+          "maxLength": 6
+        },
+        "resource": {
+          "description": "The resource name.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 36
+        }
+      }
+    },
+    "ResourceBin": {
+      "type": "object",
+      "properties": {
+        "bin": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "loadedComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceBinComponent"
+          }
+        },
+        "maxQuantity": {
+          "type": "number"
+        }
+      },
+      "title": "ResourceBin"
+    },
+    "ResourceBinCuRequest": {
+      "title": "ResourceBinCreateUpdateRequest",
+      "description": "The resource bin object in the create or update resource request.",
+      "type": "object",
+      "required": [
+        "bin",
+        "sequence"
+      ],
+      "properties": {
+        "bin": {
+          "type": "string",
+          "description": "The name of the bin for the resource.",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the bin.",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "maxQuantity": {
+          "type": "number",
+          "description": "The maximum component quantity that can be loaded to the bin."
+        },
+        "sequence": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The sequence of the bin."
+        },
+        "material": {
+          "type": "object",
+          "description": "The material specified for the bin.",
+          "$ref": "#/definitions/MaterialCuRequest"
+        }
+      }
+    },
+    "MaterialCuRequest": {
+      "title": "MaterialCreateUpdateRequest",
+      "description": "The material object in the create or update resource request.",
+      "type": "object",
+      "required": [
+        "material",
+        "version"
+      ],
+      "properties": {
+        "material": {
+          "description": "The material name",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "version": {
+          "description": "The material version",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20
+        }
+      }
+    },
+    "ResourceBinComponent": {
+      "type": "object",
+      "properties": {
+        "loadedQuantity": {
+          "type": "number"
+        },
+        "material": {
+          "type": "string"
+        }
+      },
+      "title": "ResourceBinComponent"
+    },
+    "ResourceEquipment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "ResourceEquipment"
+    },
+    "ResourceEquipmentCuRequest": {
+      "title": "ResourceEquipmentCreateUpdateRequest",
+      "description": "The equipment object in the create or update resource request.",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the piece of equipment."
+        }
+      }
+    },
+    "ResourceSetupCuRequest": {
+      "title": "ResourceSetupCreateUpdateRequest",
+      "description": "The resource setup object in the create or update resource request.",
+      "type": "object",
+      "required": [
+        "order"
+      ],
+      "properties": {
+        "order": {
+          "type": "object",
+          "description": "The order to be assigned to the resource.",
+          "$ref": "#/definitions/ResourceSetupOrderCuRequest"
+        },
+        "state": {
+          "type": "string",
+          "description": "The resource setup state.",
+          "enum": [
+            "SETUP",
+            "PROPOSED",
+            "OPEN"
+          ]
+        }
+      }
+    },
+    "ResourceType": {
+      "type": "object",
+      "properties": {
+        "createdDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "modifiedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "plant": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "title": "ResourceType"
+    },
+    "ResourceSetup": {
+      "title": "ResourceSetup",
+      "description": "The resource setup object in the resource.",
+      "type": "object",
+      "properties": {
+        "order": {
+          "type": "object",
+          "description": "The order assigned to the resource.",
+          "$ref": "#/definitions/ResourceSetupOrder"
+        },
+        "state": {
+          "type": "string",
+          "description": "The resource setup state.",
+          "enum": [
+            "SETUP",
+            "PROPOSED",
+            "OPEN"
+          ]
+        },
+        "sequence": {
+          "type": "number",
+          "description": "The sequence of the resource setup."
+        },
+        "createdDateTime": {
+          "description": "The date time when the resource setup was created.",
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-10-11T09:06:01.218+00:00"
+        }
+      }
+    },
+    "ResourceSetupOrder": {
+      "title": "ResourceSetupOrder",
+      "description": "The order object assigned to the resource.",
+      "type": "object",
+      "properties": {
+        "order": {
+          "type": "string",
+          "description": "The order name."
+        },
+        "buildQuantity": {
+          "type": "number",
+          "description": "The build quantity for the order."
+        },
+        "releasedQuantity": {
+          "type": "number",
+          "description": "The released quantity for the order."
+        },
+        "status": {
+          "type": "string",
+          "description": "The order status: RELEASABLE, HOLD, DONE, CLOSED, DISCARDED"
+        }
+      }
+    },
+    "ResourceSetupOrderCuRequest": {
+      "title": "ResourceSetupOrderCreateUpdateRequest",
+      "description": "The order object to be assigned to the resource.",
+      "type": "object",
+      "required": [
+        "order"
+      ],
+      "properties": {
+        "order": {
+          "type": "string",
+          "description": "The order name."
+        }
+      }
+    },
+    "ResourceTypeCuRequest": {
+      "title": "ResourceTypeCreateUpdateRequest",
+      "description": "The resource type object in the create or update resource request.",
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "description": "The name of the resource type.",
+          "type": "string"
+        }
+      }
+    },
+    "UnloadResourceBinRequest": {
+      "type": "object",
+      "required": [
+        "bin",
+        "plant",
+        "resource"
+      ],
+      "properties": {
+        "bin": {
+          "type": "string",
+          "description": "The name of a resource bin to be unloaded.",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "plant": {
+          "type": "string",
+          "description": "The plant containing a resource.",
+          "minLength": 1,
+          "maxLength": 6
+        },
+        "resource": {
+          "type": "string",
+          "description": "The name of a resource.",
+          "minLength": 1,
+          "maxLength": 36
+        }
+      },
+      "title": "UnloadResourceBinRequest",
+      "description": "Request to unload material from a resource bin."
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "causeMessage": {
+          "type": "string",
+          "description": "Contains a technical reason for the error."
+        },
+        "code": {
+          "type": "string",
+          "description": "Internal error message"
+        },
+        "correlationId": {
+          "type": "string",
+          "description": "Contains a correlation ID for the error."
+        },
+        "message": {
+          "type": "string",
+          "description": "Contains additional information if any."
+        }
+      },
+      "title": "error",
+      "description": "Error response"
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "schemes": [
+    "https"
+  ],
+  "x-sap-shortText": "Manage resources used to perform an operation in a manufacturing process",
+  "x-servers": [
+    {
+      "url": "https://api.{regionHost}/resource/v1",
+      "description": "Base URL",
+      "templates": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformancecode')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformancecode')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformancecode')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformancecode')/$value"
+  },
+  "Name": "sapdme_nonconformancecode",
+  "ID": "sapdme_nonconformancecode",
+  "Title": "Nonconformance Code",
+  "ShortText": "Manage nonconformance codes",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218460)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706634)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Nov 2025\",\"notes\":\"The nonconformance code API is extended by adding severity to the create, retrieve, and update responses and to the create and update requests.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"23 Nov 2024\",\"notes\":\"The nonconformance code API is extended by adding dataType, canBePrimary, autoCloseIncident, dispositionRoutings, and secondaryCodes to the create, retrieve, and update responses and to the create and update requests.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Aug 2024\",\"notes\":\"Add API to retrieve, create, update, and delete custom field definitions\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"13 Nov 2021\",\"notes\":\"This API can be used to create, change, delete, and search for nonconformance codes.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformancecode')/Versions"
+    }
+  }
+}

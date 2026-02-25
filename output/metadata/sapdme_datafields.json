@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datafields')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datafields')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datafields')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datafields')/$value"
+  },
+  "Name": "sapdme_datafields",
+  "ID": "sapdme_datafields",
+  "Title": "Data Fields API",
+  "ShortText": "Use this API to manage data fields in SAP Digital Manufacturing.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1770994596914)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706642)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Feb 2026\",\"notes\":\"Introduced GET/PATCH/DELETE/POST /dataFields API.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datafields')/Versions"
+    }
+  }
+}

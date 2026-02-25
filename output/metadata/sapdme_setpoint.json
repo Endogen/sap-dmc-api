@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint')/$value"
+  },
+  "Name": "sapdme_setpoint",
+  "ID": "sapdme_setpoint",
+  "Title": "Setpoint Activities",
+  "ShortText": "Perform production Setpoint related activities",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218383)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706422)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "DECOMMISSIONED",
+  "ChangeLog": "[{\"date\":\"17 Aug 2025\",\"notes\":\"This API is decommissioned with 2508 release. Please use successor API /setpoint/v3 API\",\"state\":\"Decommissioned\",\"version\":\"v1\"},{\"date\":\"20 Aug 2023\",\"notes\":\"This API is deprecate. Please use successor API /setpoint/v2 API\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"22 May 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint')/Versions"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_notification')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_notification')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_notification')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_notification')/$value"
+  },
+  "Name": "sapdme_notification",
+  "ID": "sapdme_notification",
+  "Title": "Production Operator Dashboard Notification",
+  "ShortText": "Notification to alert a custom plugin or user about an event that has occurred.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218490)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706741)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"7 Nov 2024\",\"notes\":\"Corrected response type of the POD Notifications API\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Add details to clarify the POD Notifications API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"22 May 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_notification')/Versions"
+    }
+  }
+}

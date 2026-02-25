@@ -1,0 +1,1129 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Visual Inspection",
+    "description": "Use Visual Inspection to embed AI-assisted processes on your shop floor. The service enables you to efficiently manage visual inspection objects.",
+    "version": "v1",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.01",
+  "x-sap-shortText": "Manage visual inspection objects to embed AI-assisted processes on your shop floor.",
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/visualinspection",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Visual Inspections"
+    }
+  ],
+  "paths": {
+    "/v1/findVisualInspections()": {
+      "get": {
+        "summary": "Find visual inspections using the business context",
+        "description": "Find visual inspections using the business context. The business context can be one or more of the business objects that visual inspections can be assigned to.",
+        "operationId": "findVisualInspections",
+        "tags": [
+          "Visual Inspections"
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "in": "query",
+            "name": "plant",
+            "description": "The plant assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "material",
+            "description": "The material assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "materialVersion",
+            "description": "The version of the material assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "routing",
+            "description": "The routing assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "routingType_code",
+            "description": "The type of the routing assigned to the visual inspection",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "PRODUCTION",
+                "NC",
+                "SPECIAL",
+                "DISPOSITION_FUNCTION",
+                "SFC_SPECIFIC",
+                "SHOPORDER_SPECIFIC",
+                "CONFIGURABLE",
+                "PRODUCTION_RECIPE",
+                "SHOPORDER_SPECIFIC_RECIPE"
+              ]
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "routingVersion",
+            "description": "The version of the routing assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "operation",
+            "description": "The operation activity assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "operationVersion",
+            "description": "The version of the operation activity assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "workCenter",
+            "description": "The work center assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "resource",
+            "description": "The resource assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "shopOrder",
+            "description": "The order assigned to the visual inspection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "example": "views($expand=view($expand=model))",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of Visual Inspections",
+                  "properties": {
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/InspectionScenarios"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ConformanceCodeTypes": {
+        "title": "Conformance Code Type",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "The name of the conformance code type"
+          },
+          "descr": {
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "A short description of the conformance code type"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "The technical name of the conformance code type"
+          }
+        }
+      },
+      "ConformanceCodes": {
+        "title": "Conformance Code",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the conformance code"
+          },
+          "view": {
+            "$ref": "#/components/schemas/InspectionViews"
+          },
+          "view_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the visual inspection view"
+          },
+          "category": {
+            "type": "string",
+            "maxLength": 40,
+            "nullable": true,
+            "description": "The name of the machine learning model class assigned to the conformance code"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ConformanceCodeTypes"
+          },
+          "type_code": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "The type of the conformance code",
+            "enum": [
+              "NONCONFORMANCE"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 128,
+            "nullable": true,
+            "description": "The nonconformance code assigned to machine learning model class"
+          },
+          "threshold": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The threshold limit defined in the visual inspection view for the nonconformance code"
+          },
+          "sequence": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The position of the nonconformance code in the sequence of nonconformance codes assigned to the visual inspection view"
+          }
+        }
+      },
+      "ConformanceTypes": {
+        "title": "Conformance Type",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "The name of the conformance type"
+          },
+          "descr": {
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "A short description of the conformance type"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "The technical name of the conformance type"
+          }
+        }
+      },
+      "InspectionModes": {
+        "title": "Visual Inspection Mode",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "The name of the visual inspection mode"
+          },
+          "descr": {
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "A short description of the visual inspection mode"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "The technical name of the visual inspection mode"
+          }
+        }
+      },
+      "InspectionScenarioAssignments": {
+        "title": "Visual Inspection Assignment",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the visual inspection assignment"
+          },
+          "scenario": {
+            "$ref": "#/components/schemas/InspectionScenarios"
+          },
+          "scenario_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the visual inspection linked to the assignment"
+          },
+          "sequence": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The sequence for the visual inspection assignment"
+          },
+          "material": {
+            "type": "string",
+            "maxLength": 128,
+            "nullable": true,
+            "description": "The material assigned to the visual inspection"
+          },
+          "materialVersion": {
+            "type": "string",
+            "maxLength": 20,
+            "nullable": true,
+            "description": "The version of the material assigned to the visual inspection"
+          },
+          "routing": {
+            "type": "string",
+            "maxLength": 128,
+            "nullable": true,
+            "description": "The routing assigned to the visual inspection"
+          },
+          "routingType": {
+            "$ref": "#/components/schemas/RoutingTypes"
+          },
+          "routingType_code": {
+            "type": "string",
+            "maxLength": 50,
+            "nullable": true,
+            "description": "The type of the routing assigned to the visual inspection",
+            "enum": [
+              "PRODUCTION",
+              "NC",
+              "SPECIAL",
+              "DISPOSITION_FUNCTION",
+              "SFC_SPECIFIC",
+              "SHOPORDER_SPECIFIC",
+              "CONFIGURABLE",
+              "PRODUCTION_RECIPE",
+              "SHOPORDER_SPECIFIC_RECIPE"
+            ]
+          },
+          "routingVersion": {
+            "type": "string",
+            "maxLength": 20,
+            "nullable": true,
+            "description": "The version of the routing assigned to the visual inspection"
+          },
+          "operation": {
+            "type": "string",
+            "maxLength": 36,
+            "nullable": true,
+            "description": "The operation activity assigned to the visual inspection"
+          },
+          "operationVersion": {
+            "type": "string",
+            "maxLength": 20,
+            "nullable": true,
+            "description": "The version of the operation activity assigned to the visual inspection"
+          },
+          "workCenter": {
+            "type": "string",
+            "maxLength": 36,
+            "nullable": true,
+            "description": "The work center assigned to the visual inspection"
+          },
+          "resource": {
+            "type": "string",
+            "maxLength": 36,
+            "nullable": true,
+            "description": "The resource assigned to the visual inspection"
+          },
+          "shopOrder": {
+            "type": "string",
+            "maxLength": 36,
+            "nullable": true,
+            "description": "The order assigned to the visual inspection"
+          }
+        }
+      },
+      "InspectionScenarioViews": {
+        "title": "Visual Inspection View Assigned to the Visual Inspection",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the combination of visual inspection and visual inspection view"
+          },
+          "scenario": {
+            "$ref": "#/components/schemas/InspectionScenarios"
+          },
+          "scenario_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "The ID of the visual inspection"
+          },
+          "plant": {
+            "type": "string",
+            "maxLength": 6,
+            "description": "The plant of the visual inspection"
+          },
+          "viewName": {
+            "type": "string",
+            "maxLength": 128,
+            "description": "The name of the visual inspection view"
+          },
+          "viewVersion": {
+            "type": "string",
+            "maxLength": 20,
+            "nullable": true,
+            "description": "The version of the visual inspection view"
+          },
+          "sequence": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The position of the visual inspection view in the sequence of visual inspection views assigned to the visual inspection. The system uses this sequence when you perform a visual inspection supported by a machine learning model."
+          },
+          "view": {
+            "$ref": "#/components/schemas/InspectionViews"
+          }
+        }
+      },
+      "InspectionScenarios": {
+        "title": "Visual Inspection",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the visual inspection"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 128,
+            "pattern": "^[a-zA-Z]+\\w*$",
+            "description": "The name of the visual inspection"
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 20,
+            "pattern": "^\\w+$",
+            "description": "The version of the visual inspection"
+          },
+          "currentVersion": {
+            "type": "boolean",
+            "default": true,
+            "description": "Indicates if this is the current version of the visual inspection"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true,
+            "description": "A short description of the visual inspection"
+          },
+          "plant": {
+            "type": "string",
+            "maxLength": 6,
+            "description": "The plant of the visual inspection"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Statuses"
+          },
+          "status_code": {
+            "type": "string",
+            "maxLength": 16,
+            "description": "The status of the visual inspection",
+            "enum": [
+              "NEW",
+              "RELEASABLE"
+            ]
+          },
+          "assignments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InspectionScenarioAssignments"
+            }
+          },
+          "assignments@count": {
+            "$ref": "#/components/schemas/count"
+          },
+          "views": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InspectionScenarioViews"
+            }
+          },
+          "views@count": {
+            "$ref": "#/components/schemas/count"
+          }
+        }
+      },
+      "InspectionTypes": {
+        "title": "Visual Inspection Type",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "The name of the visual inspection type"
+          },
+          "descr": {
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "A short description of the visual inspection type"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 30,
+            "description": "The technical name of the visual inspection type"
+          }
+        }
+      },
+      "InspectionViews": {
+        "title": "Visual Inspection View",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the visual inspection view"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 128,
+            "pattern": "^[a-zA-Z]+\\w*$",
+            "description": "The name of the visual inspection view"
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 20,
+            "pattern": "^\\w+$",
+            "description": "The version of the visual inspection view"
+          },
+          "currentVersion": {
+            "type": "boolean",
+            "default": true,
+            "description": "Indicates if this is the current version of the visual inspection view"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true,
+            "description": " A short description of the visual inspection view"
+          },
+          "plant": {
+            "type": "string",
+            "maxLength": 6,
+            "description": "The plant of the visual inspection view"
+          },
+          "type": {
+            "$ref": "#/components/schemas/InspectionTypes"
+          },
+          "type_code": {
+            "type": "string",
+            "maxLength": 30,
+            "description": "The type of the visual inspection view",
+            "enum": [
+              "OBJECT_DETECTION",
+              "BINARY_CLASSIFICATION",
+              "MULTI_CLASS_CLASSIFICATION",
+              "MULTI_LABEL_CLASSIFICATION"
+            ]
+          },
+          "mode": {
+            "$ref": "#/components/schemas/InspectionModes"
+          },
+          "mode_code": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "The inspection mode of the visual inspection view",
+            "enum": [
+              "MANUAL",
+              "ASSISTED",
+              "SEMI_AUTOMATED"
+            ]
+          },
+          "referenceImageName": {
+            "type": "string",
+            "maxLength": 100,
+            "nullable": true,
+            "description": "The name of the reference image assigned to the visual inspection view"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Statuses"
+          },
+          "status_code": {
+            "type": "string",
+            "maxLength": 16,
+            "description": "The status of the visual inspection view",
+            "enum": [
+              "NEW",
+              "RELEASABLE"
+            ]
+          },
+          "model_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "The ID of the machine learning model assigned to the visual inspection view"
+          },
+          "model": {
+            "$ref": "#/components/schemas/Models"
+          },
+          "conformanceCodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConformanceCodes"
+            }
+          },
+          "conformanceCodes@count": {
+            "$ref": "#/components/schemas/count"
+          }
+        }
+      },
+      "ModelFiles": {
+        "title": "Machine Learning Model File",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the machine learning model file"
+          },
+          "fileName": {
+            "type": "string",
+            "maxLength": 256,
+            "description": "The name of the machine learning model file"
+          },
+          "fileSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true,
+            "description": "The date and time when the machine learning model file was created"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true,
+            "description": "The date and time when the machine learning model file was last modified"
+          },
+          "model_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the machine learning model"
+          },
+          "model": {
+            "$ref": "#/components/schemas/Models"
+          }
+        }
+      },
+      "ModelInputs": {
+        "title": "Machine Learning Model Input",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the machine learning model input"
+          },
+          "transformationType_code": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "The type of the transformation defined for image preprocessing in the machine learning model",
+            "enum": [
+              "RESIZE",
+              "COLOR_MODE",
+              "SCALE_PIXEL_VALUES"
+            ]
+          },
+          "transformationType": {
+            "$ref": "#/components/schemas/TransformationTypes"
+          },
+          "transformationSequence": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The sequence defined for image preprocessing in the machine learning model"
+          },
+          "parameters": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "The parameters defined for the transformation type"
+          },
+          "model_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the machine learning model"
+          },
+          "model": {
+            "$ref": "#/components/schemas/Models"
+          }
+        }
+      },
+      "ModelOutputs": {
+        "title": "Machine Learning Model Output",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the machine learning model output"
+          },
+          "outputSequence": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The sequence of the output"
+          },
+          "className": {
+            "type": "string",
+            "maxLength": 256,
+            "description": "The name of the class defined in the machine learning model output"
+          },
+          "thresholdLimit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The threshold limit defined for the class"
+          },
+          "conformanceType_code": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "The type of the class",
+            "enum": [
+              "CONFORMANCE",
+              "NONCONFORMANCE"
+            ]
+          },
+          "conformanceType": {
+            "$ref": "#/components/schemas/ConformanceTypes"
+          },
+          "model_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the machine learning model"
+          },
+          "model": {
+            "$ref": "#/components/schemas/Models"
+          }
+        }
+      },
+      "ModelStatuses": {
+        "title": "Machine Learning Model Status",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "The name of the machine learning model status"
+          },
+          "descr": {
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "A short description of the machine learning model status"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 10,
+            "description": "The technical name of the machine learning model status"
+          }
+        }
+      },
+      "ModelTypes": {
+        "title": "Machine Learning Model Type",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "The name of the machine learning model type"
+          },
+          "descr": {
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "A short description of the machine learning model type"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "The technical name of the machine learning model type"
+          }
+        }
+      },
+      "Models": {
+        "title": "Machine Learning Model",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the machine learning model"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the machine learning model"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "description": "A short description of the machine learning model"
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "The version of the machine learning model"
+          },
+          "isCurrentVersion": {
+            "type": "boolean",
+            "nullable": true,
+            "default": false,
+            "description": "Indicates if this is the current version of the machine learning model"
+          },
+          "plant": {
+            "type": "string",
+            "maxLength": 6,
+            "nullable": true,
+            "description": "The plant of the machine learning model"
+          },
+          "type_code": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "The type of the machine learning model",
+            "enum": [
+              "OBJECT_DETECTION",
+              "BINARY_CLASSIFICATION",
+              "MULTI_CLASS_CLASSIFICATION",
+              "MULTI_LABEL_CLASSIFICATION"
+            ]
+          },
+          "type": {
+            "$ref": "#/components/schemas/ModelTypes"
+          },
+          "modelStatus_code": {
+            "type": "string",
+            "maxLength": 10,
+            "description": "The status of the machine learning model",
+            "enum": [
+              "NEW",
+              "RELEASABLE"
+            ]
+          },
+          "modelStatus": {
+            "$ref": "#/components/schemas/ModelStatuses"
+          },
+          "modelFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelFiles"
+            }
+          },
+          "modelFiles@count": {
+            "$ref": "#/components/schemas/count"
+          },
+          "modelInputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelInputs"
+            }
+          },
+          "modelInputs@count": {
+            "$ref": "#/components/schemas/count"
+          },
+          "modelOutputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelOutputs"
+            }
+          },
+          "modelOutputs@count": {
+            "$ref": "#/components/schemas/count"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true,
+            "description": "The date and time when the machine learning model was created"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true,
+            "description": "The date and time when the machine learning model was last modified"
+          }
+        }
+      },
+      "RoutingTypes": {
+        "title": "Routing Type",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "The name of the routing type"
+          },
+          "descr": {
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "A short description of the routing type"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "The technical name of the routing type"
+          }
+        }
+      },
+      "Statuses": {
+        "title": "Status",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "The name of the status"
+          },
+          "descr": {
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "A short description of the status"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 16,
+            "description": "The technical name of the status"
+          }
+        }
+      },
+      "TransformationTypes": {
+        "title": "Transformation Type",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "The name of the transformation type"
+          },
+          "descr": {
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "A short description of the transformation type"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "The technical name of the transformation type"
+          }
+        }
+      },
+      "count": {
+        "title": "Count",
+        "type": "number",
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "title": "Error",
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

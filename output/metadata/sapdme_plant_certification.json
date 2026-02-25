@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_certification')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_certification')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_certification')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_certification')/$value"
+  },
+  "Name": "sapdme_plant_certification",
+  "ID": "sapdme_plant_certification",
+  "Title": "Certification",
+  "ShortText": "Checks certifications for the user.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1716560579883)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706336)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"24 Aug 2024\",\"notes\":\"Add API to retrieve, create, update, and delete custom field definitions\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"This API can be used to create, read, update, delete, and check certifications for the current user. The certification check is based on the operation activity, resource, or material.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_certification')/Versions"
+    }
+  }
+}

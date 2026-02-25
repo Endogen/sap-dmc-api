@@ -1,0 +1,1573 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Visual Inspection Result Service",
+    "description": "The service facilitates logging, reading, and storage of visual inspection results, including images and contextual data. It streamlines quality control processes, enhancing operational efficiency and decision-making in manufacturing.",
+    "version": "v1",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "x-sap-stateInfo": {
+    "state": "Active"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.01",
+  "x-sap-shortText": "Log, read and store images of visual inspection results in Digital Manufacturing",
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/vimodel/v1",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "InspectionResults",
+      "description": "A Visual Inspection Result"
+    }
+  ],
+  "paths": {
+    "/inspectionResults": {
+      "get": {
+        "tags": [
+          "InspectionResults"
+        ],
+        "summary": "Finds all visual inspection results.",
+        "description": "Finds all visual inspection results using various filter parameters",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filters items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Orders items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "createdAt",
+                  "createdAt desc",
+                  "modifiedAt",
+                  "modifiedAt desc",
+                  "plant",
+                  "plant desc",
+                  "sfcId",
+                  "sfcId desc",
+                  "material",
+                  "material desc",
+                  "materialVersion",
+                  "materialVersion desc",
+                  "operationActivityName",
+                  "operationActivityName desc",
+                  "operationActivityVersion",
+                  "operationActivityVersion desc",
+                  "resourceName",
+                  "resourceName desc",
+                  "routingName",
+                  "routingName desc",
+                  "routingVersion",
+                  "routingVersion desc",
+                  "routingType",
+                  "routingType desc",
+                  "routingStepId",
+                  "routingStepId desc",
+                  "source",
+                  "source desc",
+                  "inspectionViewName",
+                  "inspectionViewName desc",
+                  "scenarioVersion",
+                  "scenarioVersion desc",
+                  "scenarioName",
+                  "scenarioName desc",
+                  "workCenterName",
+                  "workCenterName desc",
+                  "orderName",
+                  "orderName desc",
+                  "modelName",
+                  "modelName desc",
+                  "modelVersion",
+                  "modelVersion desc",
+                  "hitRate",
+                  "hitRate desc",
+                  "matchCount",
+                  "matchCount desc",
+                  "mismatchCount",
+                  "mismatchCount desc",
+                  "loggedCount",
+                  "loggedCount desc",
+                  "notLoggedCount",
+                  "notLoggedCount desc",
+                  "ncResultsCount",
+                  "ncResultsCount desc",
+                  "executedAt",
+                  "executedAt desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Selects properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "modifiedAt",
+                  "plant",
+                  "sfcId",
+                  "material",
+                  "materialVersion",
+                  "operationActivityName",
+                  "operationActivityVersion",
+                  "resourceName",
+                  "routingName",
+                  "routingVersion",
+                  "routingType",
+                  "routingStepId",
+                  "source",
+                  "inspectionViewName",
+                  "scenarioViewId",
+                  "scenarioId",
+                  "scenarioVersion",
+                  "scenarioName",
+                  "inspectionViewId",
+                  "workCenterName",
+                  "orderName",
+                  "conformanceStatus_code",
+                  "inspectionStatus_code",
+                  "inspectionType_code",
+                  "inspectionMode_code",
+                  "modelName",
+                  "modelVersion",
+                  "hitRate",
+                  "matchCount",
+                  "mismatchCount",
+                  "loggedCount",
+                  "notLoggedCount",
+                  "ncResultsCount",
+                  "executedAt"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of the $expand query option is a comma-separated list of navigation property names, stream property names, or a value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ncResults"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of Inspection Results",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/VisualInspectionResultsResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a visual inspection result.",
+        "tags": [
+          "InspectionResults"
+        ],
+        "requestBody": {
+          "description": "A Visual Inspection Result",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisualInspectionResultsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Visual Inspection Result Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VisualInspectionResultsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/inspectionResults({id})": {
+      "parameters": [
+        {
+          "description": "The ID of the inspection result",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Finds a single visual inspection result by ID.",
+        "description": "Find a single inspection result by providing its ID",
+        "tags": [
+          "InspectionResults"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Selects properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "modifiedAt",
+                  "plant",
+                  "sfcId",
+                  "material",
+                  "materialVersion",
+                  "operationActivityName",
+                  "operationActivityVersion",
+                  "resourceName",
+                  "routingName",
+                  "routingVersion",
+                  "routingType",
+                  "routingStepId",
+                  "source",
+                  "inspectionViewName",
+                  "scenarioViewId",
+                  "scenarioId",
+                  "scenarioVersion",
+                  "scenarioName",
+                  "inspectionViewId",
+                  "workCenterName",
+                  "orderName",
+                  "conformanceStatus_code",
+                  "inspectionStatus_code",
+                  "inspectionType_code",
+                  "inspectionMode_code",
+                  "modelName",
+                  "modelVersion",
+                  "hitRate",
+                  "matchCount",
+                  "mismatchCount",
+                  "loggedCount",
+                  "notLoggedCount",
+                  "ncResultsCount",
+                  "executedAt"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of the $expand query option is a comma-separated list of navigation property names, stream property names, or a value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ncResults"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved inspection result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VisualInspectionResultsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/inspectionResults({id})/image": {
+      "parameters": [
+        {
+          "description": "The ID of the inspection result",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get the image of a visual inspection result.",
+        "description": "Get the image of a visual inspection result by providing the associated visual inspection result ID.",
+        "tags": [
+          "InspectionResults"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "Content-Disposition": {
+                "description": " A header for specifying the file name",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Stores an image for a visual inspection result.",
+        "description": "Stores an image for a visual inspection result by providing the associated visual inspection result ID.",
+        "requestBody": {
+          "description": "A binary file",
+          "required": true,
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "image/jpeg": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "tags": [
+          "InspectionResults"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. Image was successfully uploaded"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GroundTruthBoundingBoxCreateRequest": {
+        "description": "The request to create the ground truth result of an annotated bounding box",
+        "type": "object",
+        "properties": {
+          "topLeftX": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 1,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The X value of the top left point of the bounding box"
+          },
+          "topLeftY": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 1,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The Y value of the top left point of the bounding box"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 1,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.8,
+            "nullable": false,
+            "description": "The width of the bounding box in percentage"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 1,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.8,
+            "nullable": false,
+            "description": "The height of the bounding box in percentage"
+          },
+          "isPredicted": {
+            "type": "boolean",
+            "description": "The flag that states whether the bounding box is model-predicted"
+          }
+        }
+      },
+      "GroundTruthBoundingBoxCreateResponse": {
+        "description": "The ground truth result response of an annotated bounding box of a nonconformance result",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the ground truth bounding box"
+          },
+          "topLeftX": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 1,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The X value of the top left point of the bounding box"
+          },
+          "topLeftY": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 1,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The Y value of the top left point of the bounding box"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 1,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.4,
+            "nullable": false,
+            "description": "The width of the bounding box in percentage"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 1,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "nullable": false,
+            "example": 0.4,
+            "description": "The height of the bounding box in percentage"
+          },
+          "isPredicted": {
+            "type": "boolean",
+            "description": "The flag that states whether the bounding box is model-predicted"
+          },
+          "ncResult_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the nonconformance result"
+          }
+        }
+      },
+      "PredictedBoundingBoxCreateRequest": {
+        "type": "object",
+        "properties": {
+          "topLeftX": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The X value of the top left point of the bounding box"
+          },
+          "topLeftY": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The Y value of the top left point of the bounding box"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The width of the bounding box"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The height value of the bounding box"
+          }
+        },
+        "description": "The request to create a model-predicted bounding box"
+      },
+      "PredictedBoundingBoxCreateResponse": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "topLeftX": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The X value of the top left point of the bounding box"
+          },
+          "topLeftY": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The Y value of the top left point of the bounding box"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The width of the bounding box"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.2,
+            "nullable": false,
+            "description": "The height value of the bounding box"
+          },
+          "ncResult_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        "description": "The response of a model-predicted bounding box"
+      },
+      "VisualInspectionResultsRequest": {
+        "type": "object",
+        "properties": {
+          "plant": {
+            "type": "string",
+            "nullable": false,
+            "description": "The plant where the visual inspection result is created",
+            "example": "PL001"
+          },
+          "sfcId": {
+            "type": "string",
+            "nullable": false,
+            "description": "The SFC ID of the visual inspection result",
+            "example": "WDF21029"
+          },
+          "material": {
+            "type": "string",
+            "nullable": true,
+            "description": "The material of the visual inspection result",
+            "example": "00000DG_ITEM1"
+          },
+          "materialVersion": {
+            "type": "string",
+            "nullable": true,
+            "description": "The material version of the visual inspection result",
+            "example": "1"
+          },
+          "operationActivityName": {
+            "type": "string",
+            "nullable": false,
+            "description": "The operation activity name of the visual inspection result",
+            "example": "000DG-OP"
+          },
+          "operationActivityVersion": {
+            "type": "string",
+            "nullable": false,
+            "description": "The operation activity version of the visual inspection result",
+            "example": "1"
+          },
+          "resourceName": {
+            "type": "string",
+            "nullable": false,
+            "description": "The resource name of the visual inspection result",
+            "example": "DG_RES1"
+          },
+          "routingName": {
+            "type": "string",
+            "nullable": true,
+            "description": "The routing name of the visual inspection result",
+            "example": "0000DG"
+          },
+          "routingVersion": {
+            "type": "string",
+            "nullable": true,
+            "description": "The routing version of the visual inspection result",
+            "example": "1"
+          },
+          "routingType": {
+            "type": "string",
+            "nullable": true,
+            "description": "The routing type of the visual inspection result",
+            "example": "PRODUCTION"
+          },
+          "routingStepId": {
+            "type": "string",
+            "nullable": true,
+            "description": "The routing step of the visual inspection result",
+            "example": "10"
+          },
+          "source": {
+            "type": "string",
+            "nullable": true,
+            "description": "The source of the visual inspection result",
+            "example": "shopfloorServer"
+          },
+          "inspectionViewName": {
+            "type": "string",
+            "nullable": true,
+            "description": "The inspection view name of the visual inspection result",
+            "example": "Inner case left"
+          },
+          "scenarioViewId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "f47ac10b-58cc-4372-a567-0e02b2c3d478",
+            "nullable": true,
+            "description": "The ID of the scenario and view combination of the visual inspection result"
+          },
+          "scenarioId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "f0a8540b-679e-42cf-8ea7-8e3e90cb1bd9",
+            "nullable": true,
+            "description": "The ID of the scenario of the visual inspection result"
+          },
+          "scenarioName": {
+            "type": "string",
+            "nullable": true,
+            "description": "The scenario name of the visual inspection result",
+            "example": "Car Door Left"
+          },
+          "scenarioVersion": {
+            "type": "string",
+            "nullable": true,
+            "description": "The version of the scenario of the visual inspection result",
+            "example": "1"
+          },
+          "inspectionViewId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "1e3f1b98-9dbd-4b9a-9234-4f37a697b524",
+            "nullable": true,
+            "description": "The ID of the inspection view of the visual inspection result"
+          },
+          "inspectionViewDescription": {
+            "type": "string",
+            "nullable": true,
+            "description": "The inspection view description of the visual inspection result",
+            "example": "A left inner case"
+          },
+          "workCenterName": {
+            "type": "string",
+            "nullable": true,
+            "description": "The work center name of the visual inspection result",
+            "example": "work_center"
+          },
+          "orderName": {
+            "type": "string",
+            "nullable": true,
+            "description": "The order name of the visual inspection result",
+            "example": "order1"
+          },
+          "executedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000Z",
+            "nullable": true,
+            "description": "The time when the visual inspection is executed"
+          },
+          "conformanceStatus_code": {
+            "type": "string",
+            "maxLength": 20,
+            "nullable": true,
+            "enum": [
+              "CONFORMANT",
+              "NONCONFORMANT"
+            ],
+            "example": "NONCONFORMANT"
+          },
+          "inspectionType_code": {
+            "type": "string",
+            "maxLength": 50,
+            "nullable": false,
+            "enum": [
+              "BINARY_CLASSIFICATION",
+              "MULTI_CLASS_CLASSIFICATION",
+              "MULTI_LABEL_CLASSIFICATION",
+              "OBJECT_DETECTION"
+            ],
+            "example": "OBJECT_DETECTION"
+          },
+          "inspectionMode_code": {
+            "type": "string",
+            "maxLength": 50,
+            "nullable": false,
+            "enum": [
+              "MANUAL",
+              "ASSISTED",
+              "SEMI_AUTOMATED"
+            ],
+            "example": "ASSISTED"
+          },
+          "modelName": {
+            "type": "string",
+            "nullable": true,
+            "description": "The model name of the model that ran inference on the visual inspection result",
+            "example": "object detection classification model"
+          },
+          "modelVersion": {
+            "type": "string",
+            "nullable": true,
+            "description": "The model version of the model that ran inference on the visual inspection result",
+            "example": "1.0"
+          },
+          "ncResults": {
+            "$ref": "#/components/schemas/NcResultsCreateRequest"
+          }
+        },
+        "description": "The request to create a visual inspection result with existing context"
+      },
+      "VisualInspectionResultsResponse": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "fedce240-e423-4563-8ea9-c26d2faddd16",
+            "description": "The ID of the visual inspection result"
+          },
+          "plant": {
+            "type": "string",
+            "description": "The plant where the visual inspection result is created",
+            "example": "PL001",
+            "nullable": false
+          },
+          "sfcId": {
+            "type": "string",
+            "description": "The SFC ID of the visual inspection result",
+            "example": "WDF21029",
+            "nullable": false
+          },
+          "material": {
+            "type": "string",
+            "description": "The material of the visual inspection result",
+            "example": "00000DG_ITEM1"
+          },
+          "materialVersion": {
+            "type": "string",
+            "description": "The version of the material of the visual inspection result",
+            "example": "1"
+          },
+          "operationActivityName": {
+            "type": "string",
+            "description": "The operation activity name of the visual inspection result",
+            "example": "000DG-OP",
+            "nullable": false
+          },
+          "operationActivityVersion": {
+            "type": "string",
+            "description": "The operation activity version of the visual inspection result",
+            "example": "1",
+            "nullable": false
+          },
+          "resourceName": {
+            "type": "string",
+            "description": "The resource name of the visual inspection result",
+            "example": "DG_RES1",
+            "nullable": false
+          },
+          "routingName": {
+            "type": "string",
+            "description": "The routing name of the visual inspection result",
+            "example": "0000DG"
+          },
+          "routingVersion": {
+            "type": "string",
+            "description": "The routing version of the visual inspection result",
+            "example": "1"
+          },
+          "routingType": {
+            "type": "string",
+            "description": "The routing type of the visual inspection result",
+            "example": "PRODUCTION"
+          },
+          "routingStepId": {
+            "type": "string",
+            "description": "The routing step of the visual inspection result",
+            "example": "10"
+          },
+          "source": {
+            "type": "string",
+            "description": "The source of the visual inspection result",
+            "example": "shopfloorServer"
+          },
+          "inspectionViewName": {
+            "type": "string",
+            "description": "The inspection view name of the visual inspection result",
+            "example": "Inner case left"
+          },
+          "scenarioViewId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "f47ac10b-58cc-4372-a567-0e02b2c3d478",
+            "description": "The ID of the scenario and view combination of the visual inspection result"
+          },
+          "scenarioId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "f0a8540b-679e-42cf-8ea7-8e3e90cb1bd9",
+            "description": "The ID of the scenario of the visual inspection result"
+          },
+          "scenarioVersion": {
+            "type": "string",
+            "description": "The version of the scenario of the visual inspection result",
+            "example": "1"
+          },
+          "scenarioName": {
+            "type": "string",
+            "description": "The scenario name of the visual inspection result",
+            "example": "Car Door Left"
+          },
+          "inspectionViewId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "1e3f1b98-9dbd-4b9a-9234-4f37a697b524",
+            "description": "The ID of the inspection view of the visual inspection result"
+          },
+          "inspectionViewDescription": {
+            "type": "string",
+            "description": "The inspection view description of the visual inspection result",
+            "example": "A left inner case"
+          },
+          "workCenterName": {
+            "type": "string",
+            "description": "The work center name of the visual inspection result",
+            "example": "work_center"
+          },
+          "orderName": {
+            "type": "string",
+            "description": "The order name of the visual inspection result",
+            "example": "order1"
+          },
+          "conformanceStatus_code": {
+            "type": "string",
+            "description": "The conformance status code of the visual inspection result",
+            "nullable": true,
+            "enum": [
+              "CONFORMANT",
+              "NONCONFORMANT"
+            ],
+            "example": "NONCONFORMANT"
+          },
+          "inspectionStatus_code": {
+            "type": "string",
+            "description": "The inspection status code of the visual inspection result",
+            "nullable": true,
+            "enum": [
+              "NEW",
+              "ACCEPTED",
+              "REJECTED"
+            ],
+            "example": "NEW"
+          },
+          "inspectionType_code": {
+            "type": "string",
+            "description": "The inspection type code of the visual inspection result",
+            "enum": [
+              "BINARY_CLASSIFICATION",
+              "MULTI_CLASS_CLASSIFICATION",
+              "MULTI_LABEL_CLASSIFICATION",
+              "OBJECT_DETECTION"
+            ],
+            "nullable": false,
+            "example": "OBJECT_DETECTION"
+          },
+          "inspectionMode_code": {
+            "type": "string",
+            "description": "The inspection mode code of the visual inspection result",
+            "enum": [
+              "MANUAL",
+              "ASSISTED",
+              "SEMI_AUTOMATED"
+            ],
+            "nullable": false,
+            "example": "ASSISTED"
+          },
+          "modelName": {
+            "type": "string",
+            "description": "The model name of the model that ran inference on the visual inspection result",
+            "example": "object detection classification model"
+          },
+          "modelVersion": {
+            "type": "string",
+            "description": "The model version of the model that ran inference on the visual inspection result",
+            "example": "1.0"
+          },
+          "hitRate": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "nullable": true,
+            "example": 0,
+            "description": "The hit rate is a calculated fraction of how agreeable the model prediction is with the ground truth"
+          },
+          "matchCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "example": 0,
+            "description": "The match count is the number of nonconformance results where the model agrees with the ground truth"
+          },
+          "mismatchCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "example": 1,
+            "description": "The mismatch count is the number of nonconformance results where the model disagrees with the ground truth"
+          },
+          "loggedCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "example": 1,
+            "description": "The logged count is the number of nonconformance results logged"
+          },
+          "notLoggedCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "example": 0,
+            "description": "The not logged count is the number of nonconformance results not logged"
+          },
+          "ncResultsCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "example": 1,
+            "description": "The number of nonconformance results in this visual inspection result"
+          },
+          "executedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000Z",
+            "description": "The execution time of the visual inspection result"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-01-07T12:46:40.844Z",
+            "description": "The date and time when the visual inspection result is created"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-01-07T12:46:40.844Z",
+            "description": "The date and time when the visual inspection result is updated"
+          },
+          "ncResults": {
+            "$ref": "#/components/schemas/NcResultResponse"
+          }
+        },
+        "description": "Visual Inspection Result Response"
+      },
+      "NcResultsCreateRequest": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ncName": {
+              "type": "string",
+              "nullable": true,
+              "description": "The name for the nonconformance result",
+              "example": "Scratch"
+            },
+            "className": {
+              "type": "string",
+              "nullable": true,
+              "description": "The class name of the nonconformance result",
+              "example": "CL_SC"
+            },
+            "description": {
+              "type": "string",
+              "nullable": true,
+              "description": "The description for the nonconformance result",
+              "example": "a small scratch"
+            },
+            "operatorResult_code": {
+              "type": "string",
+              "maxLength": 20,
+              "nullable": true,
+              "enum": [
+                "LOGGED",
+                "NOT_LOGGED"
+              ]
+            },
+            "prediction": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "format": "double",
+                  "maximum": 100,
+                  "minimum": 0
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "example": 90.1,
+              "nullable": false,
+              "description": "The prediction for the nonconformance result"
+            },
+            "threshold": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "format": "double",
+                  "maximum": 100,
+                  "minimum": 0
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "example": 0.4,
+              "nullable": false,
+              "description": "The threshold for the nonconformance result"
+            },
+            "conformanceType_code": {
+              "type": "string",
+              "maxLength": 20,
+              "nullable": true,
+              "enum": [
+                "CONFORMANCE",
+                "NON_CONFORMANCE"
+              ],
+              "example": "NON_CONFORMANCE"
+            },
+            "groundTruthBoundingBox": {
+              "$ref": "#/components/schemas/GroundTruthBoundingBoxCreateRequest"
+            },
+            "predictedBoundingBox": {
+              "$ref": "#/components/schemas/PredictedBoundingBoxCreateRequest"
+            }
+          },
+          "description": "A Nonconformance Result"
+        }
+      },
+      "NcResultResponse": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000Z",
+            "nullable": true
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000Z",
+            "nullable": true
+          },
+          "ncName": {
+            "type": "string",
+            "nullable": true,
+            "description": "The name for the nonconformance result",
+            "example": "Scratch"
+          },
+          "className": {
+            "type": "string",
+            "nullable": true,
+            "description": "The class name of the nonconformance result",
+            "example": "CL_SC"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "description": "The description for the nonconformance result",
+            "example": "a small scratch"
+          },
+          "operatorResult_code": {
+            "type": "string",
+            "maxLength": 20,
+            "nullable": true,
+            "example": "LOGGED"
+          },
+          "prediction": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 100,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 90.1,
+            "nullable": true,
+            "description": "The prediction for the nonconformance result"
+          },
+          "threshold": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double",
+                "maximum": 100,
+                "minimum": 0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0.4,
+            "nullable": true,
+            "description": "The threshold for the nonconformance result"
+          },
+          "conformanceType_code": {
+            "type": "string",
+            "maxLength": 20,
+            "nullable": true,
+            "example": "NON_CONFORMANCE"
+          },
+          "predictionResult_code": {
+            "type": "string",
+            "maxLength": 20,
+            "nullable": true,
+            "example": "NONCONFORMANT"
+          },
+          "hit": {
+            "type": "boolean",
+            "nullable": true,
+            "example": false
+          },
+          "inspectionResult_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true
+          },
+          "groundTruthBoundingBox": {
+            "$ref": "#/components/schemas/GroundTruthBoundingBoxCreateResponse"
+          },
+          "groundTruthBoundingBox_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "The ground truth result of an annotated bounding box of the nonconformance result"
+          },
+          "predictedBoundingBox": {
+            "$ref": "#/components/schemas/PredictedBoundingBoxCreateResponse"
+          },
+          "predictedBoundingBox_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "The model-predicted bounding box of the nonconformance result"
+          }
+        },
+        "description": "A Nonconformance Result"
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Shows only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skips the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Includes the count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Searches items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

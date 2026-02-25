@@ -1,0 +1,1407 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "contact": {
+      "email": "sap-dmoperation@sap.com",
+      "name": "SAP Digital Manufacturing Operations"
+    },
+    "description": "You can use this service to calculate availability, quality, and performance KPIs. You can provide a time element duration by time element type for the associated filter condition. You can also provide raw information about availability losses. Additionally, you can provide a production summary which includes information on yield and scrap.",
+    "title": "Overall Equipment Effectiveness",
+    "version": "v1"
+  },
+  "host": "hostname",
+  "basePath": "/oee/",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/availabilityLosses": {
+      "get": {
+        "tags": [
+          "OEE"
+        ],
+        "parameters": [
+          {
+            "description": "The plant for which the Availability Downtime losses are required.",
+            "in": "query",
+            "name": "plant",
+            "required": true,
+            "type": "string",
+            "maxLength": 6
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "The list of the resources for which the Availability Downtime losses are required.",
+            "in": "query",
+            "items": {
+              "type": "string",
+              "maxLength": 36
+            },
+            "maxItems": 5,
+            "name": "resources",
+            "required": true,
+            "type": "array"
+          },
+          {
+            "description": "The starting date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "startDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The ending date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "endDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The TimeElementType for which the Availability Downtime losses are required.",
+            "enum": [
+              "UNSCHEDULED_DOWN",
+              "SCHEDULED_DOWN"
+            ],
+            "in": "query",
+            "name": "timeElementType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "The list of the timeElement for which the Availability Downtime losses are required.",
+            "in": "query",
+            "items": {
+              "type": "string",
+              "maxLength": 36
+            },
+            "maxItems": 5,
+            "name": "timeElements",
+            "required": false,
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/AvailabilityLossesResponse"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "You can not access the resource .",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "One of the related elements was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "operationId": "getDowntimeLosses",
+        "summary": "Provides all the Availability downtime losses for the associated filter condition",
+        "description": "You can retrieve all the availability downtime losses for the given input parameters.</br> The difference between <i>startDateTime</i> and <i>endDateTime</i> cannot be greater than <b>7 days</b>.<br> The <i>startDateTime</i> and <i>endDateTime</i> cannot be at a later point in time.<br>A maximum of <b>5 Resources</b> can be provided at a time.<br><b>Note: </b>You can provide either parent resource or child resource. If you provide parent resource, data is retrieved based on the parent resource availability calculation described [here](https://help.sap.com/docs/sap-digital-manufacturing/insights/parent-resource-availability-calculation?state=DRAFT).<br><b>All those shifts whose start time lies within the <i>startDateTime</i>  and <i>endDateTime</i> are considered for calculation."
+      }
+    },
+    "/v1/productionSummary": {
+      "get": {
+        "tags": [
+          "OEE"
+        ],
+        "parameters": [
+          {
+            "description": "The plant for which the summary is required.",
+            "in": "query",
+            "name": "plant",
+            "required": true,
+            "type": "string",
+            "maxLength": 6
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "The list of the resources for which the summary is required.",
+            "in": "query",
+            "items": {
+              "type": "string",
+              "maxLength": 36
+            },
+            "maxItems": 5,
+            "name": "resources",
+            "required": true,
+            "type": "array"
+          },
+          {
+            "description": "The starting date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "startDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The ending date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "endDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/ProductionSummaryResponse"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "You can not access the resource .",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "One of the related elements was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "operationId": "getProductionSummary",
+        "summary": "Provides the production summary for the associated filter condition",
+        "description": "You can retrieve production summary for the given input parameters.<br> The difference between <i>startDateTime</i> and <i>endDateTime</i> cannot be greater than <b>7 days</b>.<br> The <i>startDateTime</i> and <i>endDateTime</i> cannot be at a later point in time.<br> A maximum of <b>5 Resources</b> can be provided at a time.<br><b>Note: </b>Only parent resource is supported.<br><b>All those shifts whose start time lies within the <i>startDateTime</i>  and <i>endDateTime</i> are considered for calculation</b>. "
+      }
+    },
+    "/v1/timeElementsByTimeElementType": {
+      "get": {
+        "tags": [
+          "OEE"
+        ],
+        "parameters": [
+          {
+            "description": "The plant for which the time buckets are required.",
+            "in": "query",
+            "name": "plant",
+            "required": true,
+            "type": "string",
+            "maxLength": 6
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "The list of resources for which the time buckets are required.",
+            "in": "query",
+            "items": {
+              "type": "string",
+              "maxLength": 36
+            },
+            "maxItems": 5,
+            "name": "resources",
+            "required": true,
+            "type": "array"
+          },
+          {
+            "description": "The starting date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "startDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The ending date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "endDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The TimeElementType for which the time buckets are required.",
+            "enum": [
+              "UNSCHEDULED_DOWN",
+              "SCHEDULED_DOWN",
+              "SPEED_LOSS",
+              "QUALITY_LOSS"
+            ],
+            "in": "query",
+            "name": "timeElementType",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/TimeElementsByTimeElementTypeResponse"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "You can not access the resource .",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "One of the related elements was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "operationId": "getTimeBuckets",
+        "summary": "Provides the time element duration by time element type for the associated filter condition",
+        "description": "You can retrieve all the time element durations for the given input parameters.<br> The difference between <i>startDateTime</i> and <i>endDateTime</i> cannot be greater than <b>7 days</b>.<br> The <i>startDateTime</i> and <i>endDateTime</i> cannot be at a later point in time.<br> A maximum of <b>5 Resources</b> can be provided at a time.<br><b>Note: </b>Only parent resource is supported.<br><b>All those shifts whose start time lies within the <i>startDateTime</i>  and <i>endDateTime</i> are considered for calculation</b>."
+      }
+    },
+    "/v1/performanceLosses": {
+      "get": {
+        "tags": [
+          "OEE"
+        ],
+        "parameters": [
+          {
+            "description": "The plant for which the Performance Losses are required.",
+            "in": "query",
+            "name": "plant",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "The list of resources for which the Performance Losses are required.",
+            "in": "query",
+            "items": {
+              "type": "string",
+              "maxLength": 36
+            },
+            "maxItems": 5,
+            "name": "resources",
+            "required": true,
+            "type": "array"
+          },
+          {
+            "description": "The starting date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "startDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The ending date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "endDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The TimeElementType for which the Performance Losses are required.",
+            "enum": [
+              "SPEED_LOSS"
+            ],
+            "in": "query",
+            "name": "timeElementType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "The list of the timeElement for which the performance losses are required.",
+            "in": "query",
+            "items": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "maxItems": 5,
+            "name": "timeElements",
+            "required": false,
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/PerformanceLossesResponse"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "You can not access the resource .",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "One of the related elements was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "operationId": "getPerformanceLosses",
+        "summary": "Provides the performance losses for the associated filter condition",
+        "description": "You can retrieve all the performance losses for the given input parameters.<br> The difference between <i>startDateTime</i> and <i>endDateTime</i> cannot be greater than <b>7 days</b>.<br> The <i>startDateTime</i> and <i>endDateTime</i> cannot be at a later point in time.<br> A maximum of <b>5 Resources</b> can be provided at a time.<br><b>Note: </b>Only parent resource is supported.<br><b>All those shifts whose start time lies within the <i>startDateTime</i>  and <i>endDateTime</i> are considered for calculation</b>."
+      }
+    },
+    "/v1/speedLosses": {
+      "get": {
+        "tags": [
+          "OEE"
+        ],
+        "parameters": [
+          {
+            "description": "The plant for which the Speed losses are required.",
+            "in": "query",
+            "name": "plant",
+            "required": true,
+            "type": "string",
+            "maxLength": 6
+          },
+          {
+            "description": "The resource for which the Speed losses are required.",
+            "in": "query",
+            "name": "resource",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The order for which the Speed losses are required.",
+            "in": "query",
+            "name": "order",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The operationActivity for which the Speed losses are required.",
+            "in": "query",
+            "name": "operationActivity",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The starting date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "startDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The ending date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "endDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The type of Speed loss which is required.",
+            "enum": [
+              "tagged",
+              "untagged"
+            ],
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/SpeedLossResponse"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "You can not access the resource .",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "One of the related elements was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "operationId": "getSpeedLosses",
+        "summary": "Provides all the Speed losses for the associated filter condition",
+        "description": "You can retrieve all the speed losses for the given input parameters.</br> The difference between <i>startDateTime</i> and <i>endDateTime</i> cannot be greater than <b>7 days</b>.<br> The <i>startDateTime</i> and <i>endDateTime</i> cannot be at a later point in time.</br><b>All those shifts whose start time lies within the <i>startDateTime</i>  and <i>endDateTime</i> are considered for calculation.</b><br>If no value is provided for the optional <i>type</i> query parameter then both tagged and untagged speed losses are retrieved</b>.<br><b>Note: </b>Only parent resource is supported."
+      }
+    },
+    "/v1/qualityLosses": {
+      "get": {
+        "tags": [
+          "OEE"
+        ],
+        "parameters": [
+          {
+            "description": "The plant for which the quality losses are required.",
+            "in": "query",
+            "name": "plant",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "The list of resources for which the quality losses are required.",
+            "in": "query",
+            "items": {
+              "type": "string",
+              "maxLength": 36
+            },
+            "maxItems": 5,
+            "name": "resources",
+            "required": true,
+            "type": "array"
+          },
+          {
+            "description": "The starting date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "startDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The ending date for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+            "in": "query",
+            "name": "endDateTime",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "description": "The TimeElementType for which the time buckets are required.",
+            "enum": [
+              "QUALITY_LOSS"
+            ],
+            "in": "query",
+            "name": "timeElementType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "The list of the timeElement for which the quality losses are required.",
+            "in": "query",
+            "items": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "maxItems": 5,
+            "name": "timeElements",
+            "required": false,
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/QualityLossesResponse"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "You can not access the resource .",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "One of the related elements was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "operationId": "getQualityLosses",
+        "summary": "Provides the quality losses for the associated filter condition",
+        "description": "You can retrieve all the quality losses for the given input parameters.<br> The difference between <i>startDateTime</i> and <i>endDateTime</i> cannot be greater than <b>7 days</b>.<br> The <i>startDateTime</i> and <i>endDateTime</i> cannot be at a later point in time.</br><b>All those shifts whose start time lies within the <i>startDateTime</i>  and <i>endDateTime</i> are considered for calculation.</b><br> A maximum of <b>5 Resources</b> can be provided at a time.<br><b>Note: </b>Only parent resource is supported.<br> A maximum of <b>5 Time Elements</b> can be provided at a time</b>."
+      }
+    }
+  },
+  "securityDefinitions": {
+    "OauthClientCredentials": {
+      "type": "oauth2",
+      "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+      "flow": "application"
+    }
+  },
+  "definitions": {
+    "AvailabilityLossesDetails": {
+      "properties": {
+        "timeElement": {
+          "$ref": "#/definitions/TimeElement"
+        },
+        "eventStartDateTime": {
+          "$ref": "#/definitions/EventStartDateTime"
+        },
+        "eventEndDateTime": {
+          "$ref": "#/definitions/EventEndDateTime"
+        },
+        "durationInSeconds": {
+          "$ref": "#/definitions/DurationInSeconds"
+        },
+        "reasonCode": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode1": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode2": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode3": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode4": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode5": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode6": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode7": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode8": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode9": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode10": {
+          "$ref": "#/definitions/ReasonCode"
+        }
+      },
+      "type": "object"
+    },
+    "AvailabilityLossesItem": {
+      "properties": {
+        "resource": {
+          "$ref": "#/definitions/Resource"
+        },
+        "shifts": {
+          "items": {
+            "properties": {
+              "shift": {
+                "$ref": "#/definitions/Shift"
+              },
+              "shiftStartDateTime": {
+                "$ref": "#/definitions/ShiftStartDateTime"
+              },
+              "shiftEndDateTime": {
+                "$ref": "#/definitions/ShiftEndDateTime"
+              },
+              "breaks": {
+                "$ref": "#/definitions/Breaks"
+              },
+              "downtimes": {
+                "$ref": "#/definitions/Downtimes"
+              }
+            },
+            "title": "DowntimeLossesEvent",
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "AvailabilityLossesResponse": {
+      "properties": {
+        "plant": {
+          "$ref": "#/definitions/Plant"
+        },
+        "startDateTime": {
+          "$ref": "#/definitions/StartDateTime"
+        },
+        "endDateTime": {
+          "$ref": "#/definitions/EndDateTime"
+        },
+        "timeElementType": {
+          "$ref": "#/definitions/TimeElementType"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/AvailabilityLossesItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "BaseUnitOfMeasure": {
+      "description": "Specifies the base unit of measure for material.",
+      "type": "string"
+    },
+    "BreakEndTime": {
+      "description": "The ending datetime for the shift break in YYYY-MM-DDThh:mm:ssZ format.",
+      "type": "string",
+      "example": "2024-08-18T09:17:07Z",
+      "format": "date-time"
+    },
+    "BreakStartTime": {
+      "description": "The starting datetime for the shift break in YYYY-MM-DDThh:mm:ssZ format.",
+      "type": "string",
+      "example": "2024-08-18T09:07:07Z",
+      "format": "date-time"
+    },
+    "Breaks": {
+      "items": {
+        "$ref": "#/definitions/BreaksDetails"
+      },
+      "type": "array"
+    },
+    "BreaksDetails": {
+      "properties": {
+        "startDateTime": {
+          "$ref": "#/definitions/BreakStartTime"
+        },
+        "endDateTime": {
+          "$ref": "#/definitions/BreakEndTime"
+        }
+      },
+      "type": "object"
+    },
+    "Downtimes": {
+      "items": {
+        "$ref": "#/definitions/AvailabilityLossesDetails"
+      },
+      "type": "array"
+    },
+    "EndDateTime": {
+      "description": "The ending datetime for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+      "type": "string",
+      "example": "2024-08-18T08:07:07Z",
+      "format": "date-time"
+    },
+    "ErrorResponse": {
+      "properties": {
+        "causeMessage": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "correlationId": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ErrorResponse",
+      "type": "object"
+    },
+    "EventEndDateTime": {
+      "description": "The ending datetime for the the availability downtime event in YYYY-MM-DDThh:mm:ssZ format.",
+      "type": "string",
+      "example": "2024-08-18T07:09:07Z",
+      "format": "date-time"
+    },
+    "EventStartDateTime": {
+      "description": "The starting datetime for the the availability downtime event in YYYY-MM-DDThh:mm:ssZ format.",
+      "type": "string",
+      "example": "2024-08-18T07:07:07Z",
+      "format": "date-time"
+    },
+    "EventType": {
+      "description": "The type of event received.",
+      "enum": [
+        "YIELD",
+        "SCRAP"
+      ],
+      "type": "string"
+    },
+    "Material": {
+      "description": "The name of the material.",
+      "type": "string"
+    },
+    "OperationActivity": {
+      "description": "The operation name.",
+      "type": "string"
+    },
+    "Order": {
+      "description": "The order name.",
+      "type": "string"
+    },
+    "Plant": {
+      "description": "The plant value.",
+      "maxLength": 6,
+      "minLength": 1,
+      "type": "string"
+    },
+    "ProductionSummaryItem": {
+      "properties": {
+        "resource": {
+          "$ref": "#/definitions/Resource",
+          "type": "string"
+        },
+        "shifts": {
+          "items": {
+            "properties": {
+              "shift": {
+                "$ref": "#/definitions/Shift"
+              },
+              "shiftStartDateTime": {
+                "$ref": "#/definitions/ShiftStartDateTime"
+              },
+              "shiftEndDateTime": {
+                "$ref": "#/definitions/ShiftEndDateTime"
+              },
+              "productionSummary": {
+                "items": {
+                  "$ref": "#/definitions/ProductionSummaryShiftItem"
+                },
+                "type": "array"
+              }
+            },
+            "title": "ProductionOrderEvent",
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ProductionSummaryResponse": {
+      "properties": {
+        "plant": {
+          "$ref": "#/definitions/Plant"
+        },
+        "startDateTime": {
+          "$ref": "#/definitions/StartDateTime"
+        },
+        "endDateTime": {
+          "$ref": "#/definitions/EndDateTime"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/ProductionSummaryItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ProductionSummaryShiftItem": {
+      "properties": {
+        "baseUnitOfMeasure": {
+          "$ref": "#/definitions/BaseUnitOfMeasure"
+        },
+        "material": {
+          "$ref": "#/definitions/Material"
+        },
+        "operationActivity": {
+          "$ref": "#/definitions/OperationActivity"
+        },
+        "order": {
+          "$ref": "#/definitions/Order"
+        },
+        "productionEventType": {
+          "$ref": "#/definitions/EventType"
+        },
+        "quantity": {
+          "$ref": "#/definitions/Quantity"
+        },
+        "sfc": {
+          "$ref": "#/definitions/SFC"
+        },
+        "standardRateQuantity": {
+          "$ref": "#/definitions/StandardRateQuantity"
+        },
+        "standardRateDurationInSeconds": {
+          "$ref": "#/definitions/StandardRateDurationInSeconds"
+        }
+      },
+      "type": "object"
+    },
+    "Quantity": {
+      "description": "The quantity yielded/scrapped. This may be the full quantity or a partial quantity.",
+      "format": "double",
+      "type": "number"
+    },
+    "ReasonCode": {
+      "description": "The reason code associated with the losses.",
+      "type": "string"
+    },
+    "Resource": {
+      "description": "The resource name.",
+      "type": "string"
+    },
+    "SFC": {
+      "description": "The shop floor control identifier as generated by numbering.",
+      "type": "string"
+    },
+    "Shift": {
+      "description": "The shift value.",
+      "type": "string"
+    },
+    "ShiftEndDateTime": {
+      "description": "The time when the shift ends in YYYY-MM-DDThh:mm:ssZ.",
+      "type": "string",
+      "example": "2024-08-18T15:07:07Z",
+      "format": "date-time"
+    },
+    "ShiftStartDateTime": {
+      "description": "The time when the shift starts in YYYY-MM-DDThh:mm:ssZ.",
+      "type": "string",
+      "example": "2024-08-18T07:07:07Z",
+      "format": "date-time"
+    },
+    "StandardRateQuantity": {
+      "description": "The quantity configured as part of the Standard Rate.",
+      "format": "double",
+      "type": "number"
+    },
+    "StandardRateDurationInSeconds": {
+      "description": "The duration for Standard Rate in seconds.",
+      "format": "double",
+      "type": "number"
+    },
+    "StartDateTime": {
+      "description": "The starting datetime for the time window in YYYY-MM-DDThh:mm:ssZ format.",
+      "type": "string",
+      "example": "2024-08-18T07:07:07Z",
+      "format": "date-time"
+    },
+    "TimeElement": {
+      "description": "The time element value.",
+      "type": "string"
+    },
+    "TimeElementType": {
+      "description": "The time element type.",
+      "type": "string"
+    },
+    "TimeElementsByTimeElementTypeItem": {
+      "properties": {
+        "resource": {
+          "$ref": "#/definitions/Resource",
+          "type": "string"
+        },
+        "shifts": {
+          "items": {
+            "properties": {
+              "shift": {
+                "$ref": "#/definitions/Shift"
+              },
+              "shiftStartDateTime": {
+                "$ref": "#/definitions/ShiftStartDateTime"
+              },
+              "shiftEndDateTime": {
+                "$ref": "#/definitions/ShiftEndDateTime"
+              },
+              "timeElements": {
+                "items": {
+                  "$ref": "#/definitions/TimeElementsByTimeElementTypeShiftItem"
+                },
+                "type": "array"
+              }
+            },
+            "title": "ProductionOrderEvent",
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "TimeElementsByTimeElementTypeResponse": {
+      "properties": {
+        "plant": {
+          "$ref": "#/definitions/Plant"
+        },
+        "startDateTime": {
+          "$ref": "#/definitions/StartDateTime"
+        },
+        "endDateTime": {
+          "$ref": "#/definitions/EndDateTime"
+        },
+        "timeElementType": {
+          "$ref": "#/definitions/TimeElementType"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/TimeElementsByTimeElementTypeItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "TimeElementsByTimeElementTypeShiftItem": {
+      "properties": {
+        "durationInSeconds": {
+          "$ref": "#/definitions/DurationInSeconds"
+        },
+        "timeElement": {
+          "$ref": "#/definitions/TimeElement"
+        }
+      },
+      "type": "object"
+    },
+    "WorkCenter": {
+      "description": "The work center name.",
+      "type": "string"
+    },
+    "DurationInSeconds": {
+      "description": "Specifies the duration of the event/summary in seconds.",
+      "format": "double",
+      "type": "number"
+    },
+    "PerformanceLoss": {
+      "properties": {
+        "timeElement": {
+          "$ref": "#/definitions/TimeElement"
+        },
+        "durationInSeconds": {
+          "$ref": "#/definitions/DurationInSeconds"
+        },
+        "reasonCode": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode1": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode2": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode3": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode4": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode5": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode6": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode7": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode8": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode9": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode10": {
+          "$ref": "#/definitions/ReasonCode"
+        }
+      },
+      "type": "object"
+    },
+    "PerformanceLossesItem": {
+      "properties": {
+        "resource": {
+          "$ref": "#/definitions/Resource"
+        },
+        "shifts": {
+          "items": {
+            "properties": {
+              "shift": {
+                "$ref": "#/definitions/Shift"
+              },
+              "shiftStartDateTime": {
+                "$ref": "#/definitions/ShiftStartDateTime"
+              },
+              "shiftEndDateTime": {
+                "$ref": "#/definitions/ShiftEndDateTime"
+              },
+              "performanceLosses": {
+                "items": {
+                  "$ref": "#/definitions/PerformanceLoss"
+                },
+                "type": "array"
+              }
+            },
+            "title": "PerformanceLossesEvent",
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PerformanceLossesResponse": {
+      "properties": {
+        "plant": {
+          "$ref": "#/definitions/Plant"
+        },
+        "startDateTime": {
+          "$ref": "#/definitions/StartDateTime"
+        },
+        "endDateTime": {
+          "$ref": "#/definitions/EndDateTime"
+        },
+        "timeElementType": {
+          "$ref": "#/definitions/TimeElementType"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/PerformanceLossesItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SpeedLossResponse": {
+      "properties": {
+        "plant": {
+          "$ref": "#/definitions/Plant"
+        },
+        "order": {
+          "$ref": "#/definitions/Order"
+        },
+        "operationActivity": {
+          "$ref": "#/definitions/OperationActivity"
+        },
+        "resource": {
+          "$ref": "#/definitions/Resource"
+        },
+        "startDateTime": {
+          "$ref": "#/definitions/StartDateTime"
+        },
+        "endDateTime": {
+          "$ref": "#/definitions/EndDateTime"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/SpeedLossesItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SpeedLossesItem": {
+      "properties": {
+        "shift": {
+          "$ref": "#/definitions/Shift"
+        },
+        "shiftStartDateTime": {
+          "$ref": "#/definitions/ShiftStartDateTime"
+        },
+        "shiftEndDateTime": {
+          "$ref": "#/definitions/ShiftEndDateTime"
+        },
+        "speedLosses": {
+          "items": {
+            "$ref": "#/definitions/SpeedLosses"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SpeedLosses": {
+      "properties": {
+        "durationInSeconds": {
+          "$ref": "#/definitions/DurationInSeconds"
+        },
+        "reasonCode": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode1": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode2": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode3": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode4": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode5": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode6": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode7": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode8": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode9": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode10": {
+          "$ref": "#/definitions/ReasonCode"
+        }
+      },
+      "type": "object"
+    },
+    "QualityLoss": {
+      "properties": {
+        "timeElement": {
+          "$ref": "#/definitions/TimeElement"
+        },
+        "durationInSeconds": {
+          "$ref": "#/definitions/DurationInSeconds"
+        },
+        "reasonCode": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode1": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode2": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode3": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode4": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode5": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode6": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode7": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode8": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode9": {
+          "$ref": "#/definitions/ReasonCode"
+        },
+        "reasonCode10": {
+          "$ref": "#/definitions/ReasonCode"
+        }
+      },
+      "type": "object"
+    },
+    "QualityLossesItem": {
+      "properties": {
+        "resource": {
+          "$ref": "#/definitions/Resource"
+        },
+        "shifts": {
+          "items": {
+            "properties": {
+              "shift": {
+                "$ref": "#/definitions/Shift"
+              },
+              "shiftStartDateTime": {
+                "$ref": "#/definitions/ShiftStartDateTime"
+              },
+              "shiftEndDateTime": {
+                "$ref": "#/definitions/ShiftEndDateTime"
+              },
+              "qualityLosses": {
+                "items": {
+                  "$ref": "#/definitions/QualityLoss"
+                },
+                "type": "array"
+              }
+            },
+            "title": "QualityLosses Event",
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "QualityLossesResponse": {
+      "properties": {
+        "plant": {
+          "$ref": "#/definitions/Plant"
+        },
+        "startDateTime": {
+          "$ref": "#/definitions/StartDateTime"
+        },
+        "endDateTime": {
+          "$ref": "#/definitions/EndDateTime"
+        },
+        "timeElementType": {
+          "$ref": "#/definitions/TimeElementType"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/QualityLossesItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/SAP_DIGITAL_MANUFACTURING/34f67db3b755405e8145c578221f012c/29d18581dab1438c92a79f28adcc8142.html"
+  },
+  "x-sap-shortText": "Obtain data from SAP Digital Manufacturing for insights",
+  "x-servers": [
+    {
+      "description": "Base URL",
+      "templates": {
+        "regionHost": {
+          "default": "test.eu10.dmc.cloud.sap",
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ]
+        },
+        "tokenHost": {
+          "default": "eu10.hana.ondemand.com",
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ]
+        }
+      },
+      "url": "https://api.{regionHost}/oee"
+    }
+  ]
+}

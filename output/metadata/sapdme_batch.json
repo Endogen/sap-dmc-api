@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_batch')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_batch')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_batch')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_batch')/$value"
+  },
+  "Name": "sapdme_batch",
+  "ID": "sapdme_batch",
+  "Title": "Batch",
+  "ShortText": "Create batches and retrieve batch characteristics, update or sync batch information",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218356)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706255)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Nov 2025\",\"notes\":\"1) Deprecated an endpoint to update batch: /batch. Use new <a href=https://api.sap.com/api/sapdme_batch_v2/resource>/batches<\\/a>. 2) Deprecated an endpoint to get batches: /batches. Use new <a href=https://api.sap.com/api/sapdme_batch_v2/resource>/batches<\\/a>. 3) Deprecated an endpoint to get batch characteristics: /batchCharacteristics. Use new <a href=https://api.sap.com/api/sapdme_batch_v2/resource>/batchCharacteristics<\\/a>. 4) Deprecated an endpoint to update batch characteristics: /batchCharacteristics. Use new <a href=https://api.sap.com/api/sapdme_batch_v2/resource>/batchCharacteristics<\\/a>. 5) Added response code 409 for POST /batch API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"Added the description for response code 409\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2023\",\"notes\":\"Updated get /batches description to indicate it is local batch information\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Batch API changelog: Added APIs to sync batch and update batch information. Enhanced batch creation and batch retrieval APIs with batch basic data.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Added API to get batches\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 Feb 2022\",\"notes\":\"Added API to create or update batch characteristics\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"13 Nov 2021\",\"notes\":\"Added extension field support while Extension is configured in Manage Next Number\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 Aug 2021\",\"notes\":\"Added API to get batch characteristics\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Feb 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_batch')/Versions"
+    }
+  }
+}

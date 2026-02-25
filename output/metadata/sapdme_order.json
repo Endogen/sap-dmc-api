@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_order')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_order')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_order')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_order')/$value"
+  },
+  "Name": "sapdme_order",
+  "ID": "sapdme_order",
+  "Title": "Order",
+  "ShortText": "Perform order related activities, such as getting order details and releasing the order for manufacturing",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218436)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706627)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"10 Mar 2025\",\"notes\":\"Added new APIs for get/create/update/delete order custom field definition.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Nov 2024\",\"notes\":\"Added new field to Order Create API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Nov 2024\",\"notes\":\"Added new field for order customer order item in order details API and order list API response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 Aug 2024\",\"notes\":\"Added additional fields to Order Create API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 June 2024\",\"notes\":\"Added new field ERP routing group and warehouse number to the Order Details API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"New POST API for creating orders.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"Added new field for order category in order details API and order list API response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"Added new field for putaway storage location in order details API and order list API response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"Added new fields for production version in order details API response\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"Enhanced the order details API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"Added new fields for skip bom and routing release status check.\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"02 Dec 2023\",\"notes\":\"Added new API for releasing order function with temporal\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"21 May 2023\",\"notes\":\"Added new fields for routing type and BOM type to align with Routing/BOM APIs, deprecated old type fields, and upgraded documentation to OAS 3.0.1\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Feb 2023\",\"notes\":\"Added new API for releasing order function\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Enhanced the order details API. Enhanced the order list API. Enhanced the order release API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2022\",\"notes\":\"Added new API for extending order function\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"04 Jan. 2022\",\"notes\":\"Enhanced the order list API\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"29 Nov 2021\",\"notes\":\"Retrieve a list of order details and update the list of custom values for the order.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"14 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_order')/Versions"
+    }
+  }
+}

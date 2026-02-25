@@ -1,0 +1,337 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documents are generated, uploaded, and stored as part of a manufacturing process. You can use this service to retrieve documents and print documents. This is now deprecated, please use the successor API: <a href=https://api.sap.com/api/sapfnd_document_v2>Document V2</a>",
+    "version": "v1",
+    "title": "Document",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "x-sap-stateInfo": {
+    "state": "Deprecated",
+    "deprecationDate": "2025-05-18",
+    "successorApi": "https://api.sap.com/api/sapfnd_document_v2/overview"
+  },
+  "host": "hostname",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Document",
+      "description": "Document Api Controller"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "paths": {
+    "/documents": {
+      "get": {
+        "tags": [
+          "Document"
+        ],
+        "summary": "Retrieves document list.",
+        "description": "Retrieves a list of documents by name.",
+        "operationId": "getDocumentsUsingGET_1",
+        "parameters": [
+          {
+            "name": "document",
+            "in": "query",
+            "description": "The name to retrieve a document.",
+            "required": true,
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Document"
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "An internal error occured.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": true
+      }
+    },
+    "/print": {
+      "post": {
+        "tags": [
+          "Document"
+        ],
+        "summary": "Prints a document. This is now deprecated, please use the endpoint /print of the 'Print Document' API",
+        "description": "Prints a given document on a given printer. Data for the document is retrieved from an SFC or order provided in parameters.",
+        "operationId": "printDocumentUsingPOST_1",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DocumentPrintRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "An internal error occured.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "501": {
+            "description": "A plugin assigned to the document is not implemented.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": true
+      }
+    }
+  },
+  "securityDefinitions": {
+    "OauthClientCredentials": {
+      "type": "oauth2",
+      "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+      "flow": "application"
+    }
+  },
+  "definitions": {
+    "Document": {
+      "type": "object",
+      "properties": {
+        "createdDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "currentVersion": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "document": {
+          "type": "string"
+        },
+        "modifiedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "printQuantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ENABLED",
+            "DISABLED"
+          ]
+        },
+        "type": {
+          "$ref": "#/definitions/DocumentType"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "title": "Document"
+    },
+    "DocumentPrintRequest": {
+      "type": "object",
+      "required": [
+        "document",
+        "printer"
+      ],
+      "properties": {
+        "customData": {
+          "type": "object",
+          "example": {
+            "custom_field1": "custom_value1",
+            "custom_field2": "custom_value1"
+          },
+          "description": "Custom data in the JSON format that can be bound to a printed document, such as \"$.custom_data.custom_field1\".\nThe following JSON types are supported: objects, arrays, and primitives.",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "document": {
+          "type": "string",
+          "description": "The document to print.",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "parameters": {
+          "type": "object",
+          "example": {
+            "sfc": "SFC1",
+            "plant": "PLANT1"
+          },
+          "description": "The JSON object that contains \"plant\", \"sfc\", or \"order\" field with a plant, SFC, or order name. Data for the document will be retrieved from this plant, SFC, or order.",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "printer": {
+          "type": "string",
+          "description": "The printer to print a document.",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "title": "DocumentPrintRequest",
+      "description": "The request to print a document."
+    },
+    "DocumentType": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "title": "DocumentType"
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "causeMessage": {
+          "type": "string",
+          "description": "Contains technical reason for the error."
+        },
+        "code": {
+          "type": "string",
+          "description": "Internal error message"
+        },
+        "correlationId": {
+          "type": "string",
+          "description": "Contains correlationId for the error."
+        },
+        "message": {
+          "type": "string",
+          "description": "Contains additional information, if any"
+        }
+      },
+      "title": "error",
+      "description": "Error response."
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "schemes": [
+    "https"
+  ],
+  "x-sap-shortText": "Retrieve and print documents",
+  "x-servers": [
+    {
+      "url": "https://api.{regionHost}/document/v1",
+      "description": "Base URL",
+      "templates": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ]
+}

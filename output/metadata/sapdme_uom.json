@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_uom')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_uom')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_uom')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_uom')/$value"
+  },
+  "Name": "sapdme_uom",
+  "ID": "sapdme_uom",
+  "Title": "Unit of Measure",
+  "ShortText": "Browse and modify custom units of measure",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218423)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706545)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"17 May 2025\",\"notes\":\"Added new Read/Delete APIs to support special characters.\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"17 May 2025\",\"notes\":\"Fixed path parameter for DELETE /uoms/{id}.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"17 May 2025\",\"notes\":\"Deprecated /uoms/{id} GET and DELETE APIs. Use /uom/v2/uoms instead.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Corrected ErrorResponse timestamp type for UTC format.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 Aug 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_uom')/Versions"
+    }
+  }
+}

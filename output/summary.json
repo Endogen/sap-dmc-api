@@ -1,0 +1,5678 @@
+[
+  {
+    "name": "sapdme_activityConfirmation",
+    "display_name": "Activity Confirmation",
+    "description": "Post Activity confirmations",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 4,
+    "schema_count": 10,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/confirm",
+        "summary": "Post activity confirmations.",
+        "operation_id": "",
+        "tags": [
+          "Activity Confirmation"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/autoconfirm",
+        "summary": "Confirms activities automatically.",
+        "operation_id": "",
+        "tags": [
+          "Activity Confirmation"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/postings/summary",
+        "summary": "Retrieves activity confirmation posting.",
+        "operation_id": "",
+        "tags": [
+          "Activity Confirmation"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/postings/details",
+        "summary": "Retrieves activity confirmation posting details.",
+        "operation_id": "",
+        "tags": [
+          "Activity Confirmation"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_alerts",
+    "display_name": "Alert Management",
+    "description": "Create or update alerts in SAP Digital Manufacturing",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 2,
+    "schema_count": 9,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/Alerts",
+        "summary": "Retrieve a list of alerts.",
+        "operation_id": "",
+        "tags": [
+          "Alerts"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/Alerts",
+        "summary": "Create a new alert",
+        "operation_id": "",
+        "tags": [
+          "Alerts"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/Alerts({id})",
+        "summary": "Update an existing alert",
+        "operation_id": "",
+        "tags": [
+          "Alerts"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sappqm_aiml_scenarios",
+    "display_name": "Artificial Intelligence and Machine Learning Scenarios",
+    "description": "Manage Artificial Intelligence and Machine Learning Scenarios for automation of manufacturing processes",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 4,
+    "schema_count": 25,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/active-scenarios",
+        "summary": "Retrieves the active AI/ML scenarios.",
+        "operation_id": "getActiveAiMlScenariosUsingGET",
+        "tags": [
+          "AI/ML Scenario"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/scenario/{id}/version/{version}/file/{fileName}",
+        "summary": "Download a file uploaded for an AI/ML scenario.",
+        "operation_id": "downloadAiMlScenarioFileUsingGET",
+        "tags": [
+          "AI/ML Scenario"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inspectionLog",
+        "summary": "Creates inspection log for a Shop Floor Control (SFC).",
+        "operation_id": "saveInspectionStateUsingPOST",
+        "tags": [
+          "Inspection Log"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inspectionLog",
+        "summary": "Provides all the inspection logs for a SFC.",
+        "operation_id": "getInspectionStateUsingGET",
+        "tags": [
+          "Inspection Log"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/aiml/v1/inspectionLogsForContext",
+        "summary": "Gets all the inspection logs for an AI/ML scenario.",
+        "operation_id": "getInspectionLogsForContextUsingGET",
+        "tags": [
+          "Inspection Log"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_assembly",
+    "display_name": "Assembly",
+    "description": "View components for assembly, assemble and remove components",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 6,
+    "schema_count": 10,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/plannedComponents",
+        "summary": "Retrieves the planned component list.",
+        "operation_id": "",
+        "tags": [
+          "Assembly"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/autoAssemble",
+        "summary": "Auto assembles components.",
+        "operation_id": "autoAssembleComponentsUsingPOST_1",
+        "tags": [
+          "Assembly"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/components/quantity/check",
+        "summary": "Checks the resource bin component quantity.",
+        "operation_id": "",
+        "tags": [
+          "Assembly"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/assembledComponents",
+        "summary": "Adds a component.",
+        "operation_id": "",
+        "tags": [
+          "Assembly"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/assembledComponents",
+        "summary": "Retrieves the components already assembled.",
+        "operation_id": "",
+        "tags": [
+          "Assembly"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/assembledComponents",
+        "summary": "Removes a component.",
+        "operation_id": "",
+        "tags": [
+          "Assembly"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/checkComponents",
+        "summary": "Checks assembled components.",
+        "operation_id": "",
+        "tags": [
+          "Assembly"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/serviceOrder/asBuilt/upload",
+        "summary": "Saves as-built information via file upload.",
+        "operation_id": "ServiceOrderFileUploadUsingPOST",
+        "tags": [
+          "Service Order Component Consumption"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_asset_model",
+    "display_name": "Asset Model",
+    "description": "Retrieves metadata of an asset.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 7,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/assets/{assetId}/metadata",
+        "summary": "Retrieves metadata of an asset",
+        "operation_id": "getAssetsByIdMetadata",
+        "tags": [
+          "Assets"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_batch",
+    "display_name": "Batch",
+    "description": "Create batches and retrieve batch characteristics, update or sync batch information",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 5,
+    "schema_count": 16,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/batch",
+        "summary": "Creates a batch number for a given plant and material.",
+        "operation_id": "createBatchByMaterialUsingPOST_1",
+        "tags": [
+          "Batch"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/batchCharacteristics",
+        "summary": "Gets batch characteristics.",
+        "operation_id": "getBatchCharacteristicsUsingGET_1",
+        "tags": [
+          "Batch Characteristics"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/batchCharacteristics",
+        "summary": "Create or update batch characteristics.",
+        "operation_id": "postBatchCharacteristicsUsingPOST_2",
+        "tags": [
+          "Batch Characteristics"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/batches",
+        "summary": "Retrieves batches and batch characteristics for a given plant and material.",
+        "operation_id": "getBatchesUsingGET_2",
+        "tags": [
+          "Batch"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/batches/{batchNumber}/synchronization",
+        "summary": "Synchronizes batch information from the integrated ERP system to SAP Digital Manufacturing (DMC) for a given plant, material, and batch number.",
+        "operation_id": "syncBatchUsingPOST",
+        "tags": [
+          "Batch"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/batches/{batchNumber}",
+        "summary": "Updates batch information for a given plant, material and batch number.",
+        "operation_id": "patchBatchesUsingPATCH",
+        "tags": [
+          "Batch"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_batch_v2",
+    "display_name": "Batch",
+    "description": "Create batches and retrieve batch characteristics, update or sync batch information.",
+    "version": "v2",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v2",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 12,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/batches",
+        "summary": "Creates a batch number for a given plant and material.",
+        "operation_id": "createBatchByMaterialUsingPOST_V2",
+        "tags": [
+          "Batch"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/batches",
+        "summary": "Retrieves batches and batch characteristics for a given plant and material.",
+        "operation_id": "getBatchesUsingGET_V2",
+        "tags": [
+          "Batch"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/batchCharacteristics",
+        "summary": "Gets batch characteristics.",
+        "operation_id": "getBatchCharacteristicsUsingGET_V2",
+        "tags": [
+          "Batch Characteristics"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/batchCharacteristics",
+        "summary": "Create or update batch characteristics.",
+        "operation_id": "postBatchCharacteristicsUsingPOST_V2",
+        "tags": [
+          "Batch Characteristics"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_bom",
+    "display_name": "Bill of Material",
+    "description": "Manage bill of materials",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 4,
+    "schema_count": 15,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/boms",
+        "summary": "Find BOM.",
+        "operation_id": "findBomByPlantAndNameAndTypeUsingGET",
+        "tags": [
+          "BOM"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/boms",
+        "summary": "Create BOM.",
+        "operation_id": "createUsingPOST",
+        "tags": [
+          "BOM"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/boms",
+        "summary": "Delete BOM.",
+        "operation_id": "deleteUsingDELETE",
+        "tags": [
+          "BOM"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/boms",
+        "summary": "Update BOM.",
+        "operation_id": "updateUsingPATCH",
+        "tags": [
+          "BOM"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/boms/{bom}/{version}/components",
+        "summary": "Create BOM components.",
+        "operation_id": "createBomComponentsUsingPOST",
+        "tags": [
+          "BOM Component"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/boms/{bom}/{version}/components/{sequence}",
+        "summary": "Delete BOM component.",
+        "operation_id": "deleteComponentUsingDELETE",
+        "tags": [
+          "BOM Component"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/boms/{bom}/{version}/components/{sequence}",
+        "summary": "Update BOM component.",
+        "operation_id": "updateComponentUsingPATCH",
+        "tags": [
+          "BOM Component"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/boms/headerDetails",
+        "summary": "Finds BOM header details.",
+        "operation_id": "findBomHeaderDetailsByPlantAndNameAndTypeGET",
+        "tags": [
+          "BOM"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_plant_certification",
+    "display_name": "Certification",
+    "description": "Checks certifications for the user.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 3,
+    "schema_count": 16,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/certifications/check",
+        "summary": "Checks certifications for a user",
+        "operation_id": "",
+        "tags": [
+          "Certification Check"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/certifications",
+        "summary": "Retrieves a list of certifications.",
+        "operation_id": "getCertificationUsingGET_1",
+        "tags": [
+          "Certification"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/certifications",
+        "summary": "Creates a certification.",
+        "operation_id": "createCertificationUsingPOST_1",
+        "tags": [
+          "Certification"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/certifications",
+        "summary": "Updates the certification.",
+        "operation_id": "updateCertificationUsingPATCH_1",
+        "tags": [
+          "Certification"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/certifications",
+        "summary": "Deletes the certification.",
+        "operation_id": "deleteUsingDELETE",
+        "tags": [
+          "Certification"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/customFieldDefinitions",
+        "summary": "Retrieves a list of custom field definitions for the certification.",
+        "operation_id": "getCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/customFieldDefinitions",
+        "summary": "Creates a custom field definition for the certification.",
+        "operation_id": "createCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/customFieldDefinitions",
+        "summary": "Updates a custom field definition for the certification.",
+        "operation_id": "updateCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/customFieldDefinitions",
+        "summary": "Deletes a custom field definition for the certification.",
+        "operation_id": "deleteCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_classification",
+    "display_name": "Classification",
+    "description": "Obtain details on the classes and characteristics of the materials",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 11,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/read",
+        "summary": "Retrieves classes and characteristics by materials, class type and classes.",
+        "operation_id": "",
+        "tags": [
+          "Classification"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_datacollection",
+    "display_name": "Data Collection",
+    "description": "Manage data collections",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 11,
+    "schema_count": 36,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/log",
+        "summary": "Logs values for data collection parameters.",
+        "operation_id": "logDataCollectionUsingPOST",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/standalone/log",
+        "summary": "Standalone / Non-WIP logs values for data collection parameters.",
+        "operation_id": "logStandaloneDataCollectionUsingPOST",
+        "tags": [
+          "Standalone / Non-WIP Data Collection"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/nonwip/uploadFile",
+        "summary": "Upload a file with metadata for non-WIP data collection.",
+        "operation_id": "nonWIPUploadFileUsingPOST",
+        "tags": [
+          "Standalone / Non-WIP Data Collection"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/parameters",
+        "summary": "Endpoint returning collected data for SFCs.",
+        "operation_id": "getLoggedSfcDataUsingGET",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/groups",
+        "summary": "Returns a data collection group.",
+        "operation_id": "getDataCollectionGroupsUsingGET",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/groups",
+        "summary": "Create a new data collection group.",
+        "operation_id": "createDataCollectionGroup",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/groups",
+        "summary": "Update a data collection group.",
+        "operation_id": "updateDataCollectionGroup",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/groups",
+        "summary": "Delete a data collection group.",
+        "operation_id": "deleteDataCollectionGroup",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/sfc/groups",
+        "summary": "Obtains a list of data collection groups.",
+        "operation_id": "findDataCollectionGroupsUsingGET",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/measurements",
+        "summary": "Retrieves records of SFCs.",
+        "operation_id": "getLoggedMeasuresUsingGET",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/nonwip/measurements",
+        "summary": "Retrieves the measured Non-WIP data collection parameters.",
+        "operation_id": "nonWIPGetMeasurementsUsingGET",
+        "tags": [
+          "Standalone / Non-WIP Data Collection"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/uncollectedParameters",
+        "summary": "Fetch the uncollected data collection parameters for the given SFC.",
+        "operation_id": "uncollectedParametersUsingGET",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/nonwip/uncollectedParameters",
+        "summary": "Fetch the uncollected Non-WIP data collection parameters for the given SFC.",
+        "operation_id": "uncollectedParametersUsingGET",
+        "tags": [
+          "Standalone / Non-WIP Data Collection"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/downloadLoggedAttachments",
+        "summary": "Download the file.",
+        "operation_id": "downloadLoggedAttachmentsUsingGET",
+        "tags": [
+          "Data Collection"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_datafields",
+    "display_name": "Data Fields API",
+    "description": "Use this API to manage data fields in SAP Digital Manufacturing.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 9,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/dataFields",
+        "summary": "Gets paginated list of data fields by plant",
+        "operation_id": "getDataFields",
+        "tags": [
+          "Data Field API"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/dataFields",
+        "summary": "Creates a list of data fields",
+        "operation_id": "createDataFields",
+        "tags": [
+          "Data Field API"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/dataFields",
+        "summary": "Updates a list of data fields",
+        "operation_id": "updateDataFields",
+        "tags": [
+          "Data Field API"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/dataFields",
+        "summary": "Deletes a data field by plant and field name",
+        "operation_id": "deleteDataField",
+        "tags": [
+          "Data Field API"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_datatype",
+    "display_name": "Data Type",
+    "description": "Create, update, retrieve, and delete data types.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 12,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/dataTypes",
+        "summary": "Gets paginated list of data types by plant and optional search parameters",
+        "operation_id": "getDataTypes",
+        "tags": [
+          "Data Type"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/dataTypes",
+        "summary": "Creates a list of data types",
+        "operation_id": "createDataTypes",
+        "tags": [
+          "Data Type"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/dataTypes",
+        "summary": "Updates a list of data types",
+        "operation_id": "updateDataTypes",
+        "tags": [
+          "Data Type"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/dataTypes",
+        "summary": "Deletes a data type by plant, data type name, and category",
+        "operation_id": "deleteDataType",
+        "tags": [
+          "Data Type"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapfnd_document_v2",
+    "display_name": "Document",
+    "description": "Manage documents",
+    "version": "v2",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 2,
+    "schema_count": 13,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/documents",
+        "summary": "Retrieves a page of document print templates.",
+        "operation_id": "getDocumentsUsingGET_1",
+        "tags": [
+          "Document"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/documents",
+        "summary": "Creates a document print template.",
+        "operation_id": "createDocumentUsingPOST_1",
+        "tags": [
+          "Document"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/documents",
+        "summary": "Updates a document print template.",
+        "operation_id": "updateDocumentUsingPATCH_1",
+        "tags": [
+          "Document"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/documents",
+        "summary": "Deletes a document print template",
+        "operation_id": "deleteDocumentUsingDELETE_1",
+        "tags": [
+          "Document"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/download",
+        "summary": "Downloads a document print template file.",
+        "operation_id": "downloadDocumentUsingGET_1",
+        "tags": [
+          "Document"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapfnd_document",
+    "display_name": "Document",
+    "description": "Retrieve and print documents",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 4,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/documents",
+        "summary": "Retrieves document list.",
+        "operation_id": "getDocumentsUsingGET_1",
+        "tags": [
+          "Document"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/print",
+        "summary": "Prints a document. This is now deprecated, please use the endpoint /print of the 'Print Document' API",
+        "operation_id": "printDocumentUsingPOST_1",
+        "tags": [
+          "Document"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_oee",
+    "display_name": "Downtime and Speed Loss",
+    "description": "Report speed loss and downtime",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 3,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/v1/speedLoss",
+        "summary": "Creates speed loss",
+        "operation_id": "",
+        "tags": [
+          "Speed Loss"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/downtime",
+        "summary": "Creates downtime",
+        "operation_id": "",
+        "tags": [
+          "Downtime"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_ebr",
+    "display_name": "Electronic Batch Record",
+    "description": "Creates an electronic batch record",
+    "version": "Beta",
+    "status": "",
+    "spec_version": "3.0.3",
+    "api_version": "Beta",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 4,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/ebrs",
+        "summary": "Create Electronic Batch Record",
+        "operation_id": "",
+        "tags": [
+          "Create Electronic Batch Record"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapfnd_signature",
+    "display_name": "Electronic Signature",
+    "description": "Maintain and make available Electronic Signatures in Digital Manufacturing",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 5,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/signatureLogs",
+        "summary": "Retrieve a list of electronic signatures.",
+        "operation_id": "",
+        "tags": [
+          "Signature Logs"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_ewm_integration",
+    "display_name": "Extended Warehouse Management Integration",
+    "description": "Perform logistics related activities in Extended Warehouse Management integration such as material staging and goods receipt",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 10,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/ewmSingleOrderStaging",
+        "summary": "Initiates a single-order staging request to Extended Warehouse Management",
+        "operation_id": "triggerEwmSingleOrderStagingByValidatedRequestUsingPOST_1",
+        "tags": [
+          "Material Staging"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_staging_v2",
+    "display_name": "Extended Warehouse Management Staging",
+    "description": "Perform material staging related activities in Extended Warehouse Management integration.",
+    "version": "v2",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v2",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 9,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/staging/stagingRequests/query",
+        "summary": "Retrieves all staging requests for a given plant.",
+        "operation_id": "findStagingRequestsUsingGET",
+        "tags": [
+          "Material Staging"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/staging/stagingRequests/discard",
+        "summary": "Discards multiple staging requests.",
+        "operation_id": "discardStaging",
+        "tags": [
+          "Discard Staging"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_staging",
+    "display_name": "Extended Warehouse Management Staging",
+    "description": "Perform material staging related activities in Extended Warehouse Management integration.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 4,
+    "schema_count": 21,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/staging/stagingRequest",
+        "summary": "Initiates a staging request to Extended Warehouse Management (EWM)",
+        "operation_id": "sendStaingRequestUsingPOST",
+        "tags": [
+          "Material Staging"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/staging/stagingRequests",
+        "summary": "Retrieves all staging requests for a given plant.",
+        "operation_id": "findStagingRequestsUsingGET",
+        "tags": [
+          "Material Staging"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/staging/stagingRequests/discard",
+        "summary": "Discards multiple staging requests.",
+        "operation_id": "discardStaging",
+        "tags": [
+          "Discard Staging"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/staging/componentMethods",
+        "summary": "Retrieves staging methods of components for a given plant and order.",
+        "operation_id": "findComponentStagingMethodRequest",
+        "tags": [
+          "Material Staging"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_numbering",
+    "display_name": "Identifiers",
+    "description": "Create identifiers for the specified event at a plant.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 7,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/identifiers",
+        "summary": "Create identifiers.",
+        "operation_id": "",
+        "tags": [
+          "Identifiers"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_integrationMessage",
+    "display_name": "Integration Messages",
+    "description": "Interact with integration messages in the Manage Integration Dashboard.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 2,
+    "schema_count": 6,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/integrationMessages",
+        "summary": "Finds integration messages.",
+        "operation_id": "list",
+        "tags": [
+          "Integration Messages"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/integrationMessages/setToInactive",
+        "summary": "Set the indicated integration messages to inactive.",
+        "operation_id": "setToInactive",
+        "tags": [
+          "Integration Messages"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_inventory",
+    "display_name": "Inventory",
+    "description": "Perform inventory relevant activities, such as posting or canceling goods receipts, getting stock information, and updating stock data",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 18,
+    "schema_count": 67,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/inventory/goodsReceipts",
+        "summary": "Gets posted goods receipts.",
+        "operation_id": "getPostedGoodsReceiptsUsingGET_1",
+        "tags": [
+          "Goods Receipts"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inventory/goodsIssues",
+        "summary": "Retrieves posted goods issues.",
+        "operation_id": "getInventoryPostingsForGoodIssue",
+        "tags": [
+          "Goods Issues"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inventories",
+        "summary": "Gets stock information for a given plant.",
+        "operation_id": "getInventoriesUsingGET_2",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories",
+        "summary": "Creates a stock for a given plant and material.",
+        "operation_id": "createInventoryPOST_2",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/advancedQuery",
+        "summary": "Retrieves stock information for a given plant.",
+        "operation_id": "queryInventoriesUsingPost",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/bulkCreate",
+        "summary": "Creates multiple stocks for a given plant.",
+        "operation_id": "createInventoryPOST_3",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventory/erpGoodsReceipts",
+        "summary": "Posts goods receipts for products in the plant that has enabled Inventory Management.",
+        "operation_id": "postErpGoodsReceiptsUsingPOST_2",
+        "tags": [
+          "Goods Receipts"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventory/ewmGoodsReceipts",
+        "summary": "Posts goods receipts for products that have enabled Extended Warehouse Management.",
+        "operation_id": "postEwmGoodsReceiptsUsingPOST_2",
+        "tags": [
+          "Goods Receipts"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inventory/goodsReceipts/summarize",
+        "summary": "Gets goods receipt summary.",
+        "operation_id": "getGoodsReceiptSummaryUsingGET_2",
+        "tags": [
+          "Goods Receipts"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventory/goodsReceipts/cancel",
+        "summary": "Cancels goods receipts.",
+        "operation_id": "cancelPostedGoodsReceiptUsingPOST_2",
+        "tags": [
+          "Goods Receipts"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/storageLocations",
+        "summary": "Gets storage locations for a given plant.",
+        "operation_id": "getStorageLocationsUsingGET_2",
+        "tags": [
+          "Storage Locations"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/inventories/{inventoryId}",
+        "summary": "Updates a single stock for a given plant.",
+        "operation_id": "UpdateInventoriesUsingPATCH_1",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/transfer",
+        "summary": "Transfers the full or the partial quantity of a DMC stock to a different storage location.",
+        "operation_id": "transferInventoryUsingPOST",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/productionSupplyAreas",
+        "summary": "Creates production supply areas.",
+        "operation_id": "createProductionSupplyAreaPOST",
+        "tags": [
+          "Production Supply Areas"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/productionSupplyAreas",
+        "summary": "Retrieves production supply areas.",
+        "operation_id": "getProductionSupplyAreaGET",
+        "tags": [
+          "Production Supply Areas"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/ewmSynchronization",
+        "summary": "Synchronizes Extended Warehouse Management (EWM) stock information.",
+        "operation_id": "ewmStockSyncUsingPOST",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inventory/transactions/{id}",
+        "summary": "Retrieves the status of a given transaction.",
+        "operation_id": "getTransactionStatusUsingGET",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/{inventoryId}/return",
+        "summary": "Returns an ERP origin stock to the central storage location.",
+        "operation_id": "ReturnInventoryUsingPOST_1",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/{inventoryId}/scrap",
+        "summary": "Scraps an ERP origin stock.",
+        "operation_id": "ScrapInventoryUsingPOST_1",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/clear",
+        "summary": "Clear inventories by specific plant and inventory IDs.",
+        "operation_id": "ClearInventoryPOST_1",
+        "tags": [
+          "Stocks"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_inventory_v2",
+    "display_name": "Inventory",
+    "description": "Perform inventory relevant activities, such as retrieving stock information and updating stock data.",
+    "version": "v2",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v2",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 10,
+    "schema_count": 45,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/inventories/query",
+        "summary": "Retrieves stock information for a given plant.",
+        "operation_id": "queryInventoriesUsingPost_V2",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/bulkCreate",
+        "summary": "Creates multiple stocks for a given plant.",
+        "operation_id": "createInventoryPOST_V2",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/inventories/{inventoryId}",
+        "summary": "Updates a single stock for a given plant.",
+        "operation_id": "UpdateInventoriesUsingPATCH_V2",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/transfer",
+        "summary": "Transfers the full or the partial quantity of a DMC stock to a different storage location.",
+        "operation_id": "transferInventoryUsingPOST_V2",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/ewmSynchronization",
+        "summary": "Synchronizes Extended Warehouse Management (EWM) stock information.",
+        "operation_id": "ewmStockSyncUsingPOST_V2",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/{inventoryId}/return",
+        "summary": "Returns an ERP origin stock to the central storage location.",
+        "operation_id": "ReturnInventoryUsingPOST_V2",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventories/{inventoryId}/scrap",
+        "summary": "Scraps an ERP origin stock.",
+        "operation_id": "ScrapInventoryUsingPOST_V2",
+        "tags": [
+          "Stocks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inventory/ewmGoodsReceipts",
+        "summary": "Posts goods receipts for products that have enabled Extended Warehouse Management.",
+        "operation_id": "postEwmGoodsReceiptsUsingPOST_V2",
+        "tags": [
+          "Goods Receipts"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inventory/goodsReceipts",
+        "summary": "Retrieves posted goods receipts.",
+        "operation_id": "getPostedGoodsReceiptsUsingGET_V2",
+        "tags": [
+          "Goods Receipts"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inventory/goodsIssues",
+        "summary": "Retrieves posted goods issues.",
+        "operation_id": "getInventoryPostingsForGoodIssue",
+        "tags": [
+          "Goods Issues"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_issues",
+    "display_name": "Issues",
+    "description": "Allows you to create and read issues in SAP Digital Manufacturing for Issue Resolution.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 2,
+    "schema_count": 4,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/Issues",
+        "summary": "Retrieves a list of issues.",
+        "operation_id": "",
+        "tags": [
+          "Issues"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/Issues",
+        "summary": "Creates an issue.",
+        "operation_id": "",
+        "tags": [
+          "Issues"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/Issues('{issueId}')",
+        "summary": "Retrieves all values of an issue.",
+        "operation_id": "",
+        "tags": [
+          "Issues"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_labor",
+    "display_name": "Labor",
+    "description": "Retrieves the shift assignments including non-availability of assigned labors.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 8,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/laborshiftplans",
+        "summary": "Retrieves labor shift assignments for a plant within a specified date range, with optional filters for shift and supervisor.",
+        "operation_id": "getLaborShiftPlansUsingPOST",
+        "tags": [
+          "Labor"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/labors/shift-assignment",
+        "summary": "Assigns shifts and work centers to selected workforce.",
+        "operation_id": "postLaborShiftAssignments",
+        "tags": [
+          "Labor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_labors",
+    "display_name": "Labor Management",
+    "description": "Manage labor information in SAP Digital Manufacturing",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 5,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/LaborSkills",
+        "summary": "Retrieves the list of labor skills.",
+        "operation_id": "getLaborSkillsUsingGET",
+        "tags": [
+          "Labor Skills"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_lastindicator",
+    "display_name": "Last Indicator Value",
+    "description": "Last value for an Indicator",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.3",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 3,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/value",
+        "summary": "Saves the indicator's last value.",
+        "operation_id": "",
+        "tags": [
+          "Last Indicator Value"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_logistics",
+    "display_name": "Logistics",
+    "description": "Perform logistics order relevant activities, such as creating orders and updating order status",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 10,
+    "schema_count": 13,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/execution/acceptLogisticsOrder",
+        "summary": "Updates logistics order status to Accepted status or or Ready for Pick status",
+        "operation_id": "acceptLogisticsOrderUsingPOST_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/execution/confirmLogisticsOrder",
+        "summary": "Updates logistics order status to Confirmed.",
+        "operation_id": "confirmLogisticsOrderUsingPOST_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/execution/pickLogisticsOrder",
+        "summary": "Updates logistics order status to Picked.",
+        "operation_id": "pickLogisticsOrderUsingPOST_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/createLogisticsOrder",
+        "summary": "Creates a logistics order.",
+        "operation_id": "createLogisticsOrderUsingPOST_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/readLogisticsOrder",
+        "summary": "Retrieves logistics orders.",
+        "operation_id": "readLogisticsOrderUsingPOST_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/holdLogisticsOrder",
+        "summary": "Updates logistics order status to Hold.",
+        "operation_id": "holdLogisticsOrderUsingPOST_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/cancelLogisticsOrder",
+        "summary": "Updates logistics order status to Canceled.",
+        "operation_id": "cancelLogisticsOrderUsingPOST_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/execution/rejectLogisticsOrder",
+        "summary": "Updates logistics order status to Rejected.",
+        "operation_id": "rejectLogisticsOrderUsingPOST_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcComplete/sendLogisticsOrderEvent",
+        "summary": "Updates logistics order status when an operation is completed",
+        "operation_id": "SfcCompletePOST_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/execution/updateLogisticsOrder",
+        "summary": "Updates a logistics order.",
+        "operation_id": "updateLogisticsOrderUsingPATCH_1",
+        "tags": [
+          "Logistics Order"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_numbering_identifier_config",
+    "display_name": "Manage Identifiers Configuration",
+    "description": "Create and maintain Identifiers configuration",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 10,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/config",
+        "summary": "Create identifiers configuration.",
+        "operation_id": "",
+        "tags": [
+          "Manage Identifiers Configuration"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/config",
+        "summary": "Update identifiers configuration.",
+        "operation_id": "",
+        "tags": [
+          "Manage Identifiers Configuration"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/config",
+        "summary": "Read identifiers configuration.",
+        "operation_id": "",
+        "tags": [
+          "Manage Identifiers Configuration"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/config",
+        "summary": "Delete identifiers configuration.",
+        "operation_id": "",
+        "tags": [
+          "Manage Identifiers Configuration"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/materialIdentifierConfigurations",
+        "summary": "Read all identifiers configurations.",
+        "operation_id": "",
+        "tags": [
+          "Read All Identifiers Configuration"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_operation",
+    "display_name": "Master Operation",
+    "description": "Search and view information about master operations",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 6,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/masterOperation",
+        "summary": "Finds a master operation activity by activityId, plant and order name or SFC name",
+        "operation_id": "findMasterOperationUsingGET_1",
+        "tags": [
+          "Operation"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_material",
+    "display_name": "Material",
+    "description": "Browse and modify materials",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 7,
+    "schema_count": 23,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/materials",
+        "summary": "Find material.",
+        "operation_id": "findMaterialByPlantAndNameUsingGET_1",
+        "tags": [
+          "Material"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/materials",
+        "summary": "Create material.",
+        "operation_id": "createUsingPOST_4",
+        "tags": [
+          "Material"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/materials",
+        "summary": "Delete material.",
+        "operation_id": "deleteUsingDELETE_4",
+        "tags": [
+          "Material"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/materials",
+        "summary": "Update material.",
+        "operation_id": "updateUsingPATCH_4",
+        "tags": [
+          "Material"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/materials/fileAttachments",
+        "summary": "Finds material file attachments.",
+        "operation_id": "findMaterialFileAttachmentByPlantAndNameUsingGET_1",
+        "tags": [
+          "Material"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v2/materials",
+        "summary": "Finds materials by plant; or by plant and material; or by plant, material, and version.",
+        "operation_id": "findMaterialsByPlantUsingGET_2",
+        "tags": [
+          "Material"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/materials/headerDetails",
+        "summary": "Finds material header details by plant, name, and version.",
+        "operation_id": "findMaterialHeaderDetailsUsingGET_1",
+        "tags": [
+          "Material"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/file/upload",
+        "summary": "Upload a file.",
+        "operation_id": "uploadFileUsingPOST_1",
+        "tags": [
+          "File Attachment"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/file/download",
+        "summary": "Download a file.",
+        "operation_id": "downloadFileGET_1",
+        "tags": [
+          "File Attachment"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/file/preview",
+        "summary": "View contents of a file.",
+        "operation_id": "previewFileGET_1",
+        "tags": [
+          "File Attachment"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_materialgroup",
+    "display_name": "Material Group",
+    "description": "Browse and modify material groups",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 3,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/materialGroups",
+        "summary": "Find material group.",
+        "operation_id": "findMaterialGroupsByPlantAndNameUsingGET_1",
+        "tags": [
+          "Material Group"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/materialGroups",
+        "summary": "Create material group.",
+        "operation_id": "createMaterialGroupUsingPOST_1",
+        "tags": [
+          "Material Group"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/materialGroups",
+        "summary": "Update material group.",
+        "operation_id": "updateMaterialGroupUsingPATCH_1",
+        "tags": [
+          "Material Group"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/materialGroups",
+        "summary": "Delete material group",
+        "operation_id": "deleteMaterialGroupUsingDELETE_1",
+        "tags": [
+          "Material Group"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_nonconformance",
+    "display_name": "Nonconformance",
+    "description": "Manage nonconformances as part of quality checks",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 9,
+    "schema_count": 36,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/v1/log",
+        "summary": "Logs a nonconformance.",
+        "operation_id": "logNonConformanceUsingPOST_1",
+        "tags": [
+          "Nonconformance"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/checkForOpen",
+        "summary": "Check for open nonconformances",
+        "operation_id": "checkForOpenNonConformancesUsingPOST",
+        "tags": [
+          "Nonconformance"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/close",
+        "summary": "Closes a nonconformance.",
+        "operation_id": "closeNonConformanceUsingPOST",
+        "tags": [
+          "Nonconformance"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/open",
+        "summary": "Opens a nonconformance.",
+        "operation_id": "openNonconformanceUsingPOST",
+        "tags": [
+          "Nonconformance"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/nonconformances",
+        "summary": "Retrieves a non-conformance list.",
+        "operation_id": "getNonConformancesUsingGET_1",
+        "tags": [
+          "Nonconformance"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/hierarchies",
+        "summary": "Retrieves a list of nonconformance hierarchies.",
+        "operation_id": "getNonConformanceHierarchies",
+        "tags": [
+          "Nonconformance"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/sfcs/disposition",
+        "summary": "Route nonconformant SFCs based on disposition settings.",
+        "operation_id": "dispositionUsingPOST",
+        "tags": [
+          "SFCs disposition"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/file/download",
+        "summary": "Downloads a nonconformance file.",
+        "operation_id": "downloadFileUsingGET_1",
+        "tags": [
+          "Nonconformance"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v2/nonconformances",
+        "summary": "Retrieves a list of nonconformances.",
+        "operation_id": "getNonConformancesUsingGET_2",
+        "tags": [
+          "Nonconformance"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_nonconformancecode",
+    "display_name": "Nonconformance Code",
+    "description": "Manage nonconformance codes",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 14,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/nonconformancecodes",
+        "summary": "Read nonconformance code",
+        "operation_id": "readNonConformanceCodesUsingGET",
+        "tags": [
+          "Nonconformance Code"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/nonconformancecodes",
+        "summary": "Create nonconformance code.",
+        "operation_id": "createUsingPOST",
+        "tags": [
+          "Nonconformance Code"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/nonconformancecodes",
+        "summary": "Delete nonconformance code.",
+        "operation_id": "deleteUsingDELETE",
+        "tags": [
+          "Nonconformance Code"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/nonconformancecodes",
+        "summary": "Update nonconformance code.",
+        "operation_id": "updateUsingPATCH",
+        "tags": [
+          "Nonconformance Code"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/customFieldDefinitions",
+        "summary": "Retrieves a list of custom data definitions for nonconformance codes.",
+        "operation_id": "getCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/customFieldDefinitions",
+        "summary": "Creates a custom data definition for the nonconformance code.",
+        "operation_id": "createCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/customFieldDefinitions",
+        "summary": "Updates a custom data definition for the nonconformance code.",
+        "operation_id": "updateCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/customFieldDefinitions",
+        "summary": "Deletes a custom data definition for the nonconformance code.",
+        "operation_id": "deleteCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_nonconformancegroup",
+    "display_name": "Nonconformance Group",
+    "description": "Browse and modify nonconformance groups",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 5,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/nonconformancegroups",
+        "summary": "Read nonconformance group",
+        "operation_id": "readUsingGET",
+        "tags": [
+          "Nonconformance Group"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/nonconformancegroups",
+        "summary": "Create nonconformance group.",
+        "operation_id": "createUsingPOST_1",
+        "tags": [
+          "Nonconformance Group"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/nonconformancegroups",
+        "summary": "Delete nonconformance group.",
+        "operation_id": "deleteUsingDELETE_1",
+        "tags": [
+          "Nonconformance Group"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/nonconformancegroups",
+        "summary": "Update nonconformance group.",
+        "operation_id": "updateUsingPATCH_1",
+        "tags": [
+          "Nonconformance Group"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_operationactivity",
+    "display_name": "Operation Activity",
+    "description": "Operation activities associated with a routing.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 13,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/operationActivities",
+        "summary": "Finds list of operation activities.",
+        "operation_id": "read",
+        "tags": [
+          "Operation Activity"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/operationActivities",
+        "summary": "Creates a list of operation activities.",
+        "operation_id": "create",
+        "tags": [
+          "Operation Activity"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/operationActivities",
+        "summary": "Updates a list of operation activities.",
+        "operation_id": "updateProperties",
+        "tags": [
+          "Operation Activity"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/operationActivities",
+        "summary": "Deletes an operation activity.",
+        "operation_id": "delete",
+        "tags": [
+          "Operation Activity"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_order_v2",
+    "display_name": "Order",
+    "description": "Perform order related activities, such as getting order details and releasing the order for manufacturing",
+    "version": "v2",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 2,
+    "schema_count": 12,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v2/plants/{plant}/orders",
+        "summary": "Finds a list of orders.",
+        "operation_id": "",
+        "tags": [
+          "Order List"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v2/orders/release",
+        "summary": "Releases the order.",
+        "operation_id": "",
+        "tags": [
+          "Order Processing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_order",
+    "display_name": "Order",
+    "description": "Perform order related activities, such as getting order details and releasing the order for manufacturing",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 8,
+    "schema_count": 49,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/orders",
+        "summary": "Finds order data by plant and order.",
+        "operation_id": "",
+        "tags": [
+          "Order"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/orders",
+        "summary": "Creates an order with provided data",
+        "operation_id": "createOrder",
+        "tags": [
+          "Order"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/orders/list",
+        "summary": "Finds list of orders.",
+        "operation_id": "",
+        "tags": [
+          "Order List"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/orders/release",
+        "summary": "Releases the given order.",
+        "operation_id": "",
+        "tags": [
+          "Order Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/orders/releaseInBackground",
+        "summary": "Releases order in background for the given order.",
+        "operation_id": "",
+        "tags": [
+          "Order Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/orders/complete",
+        "summary": "Complete order",
+        "operation_id": "completeUsingPOST_2",
+        "tags": [
+          "Order Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/orders/discard",
+        "summary": "Discard order",
+        "operation_id": "discardUsingPOST_2",
+        "tags": [
+          "Order Processing"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/orders/customValues",
+        "summary": "Updates custom values",
+        "operation_id": "",
+        "tags": [
+          "Custom Values Update"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/orders/customFieldDefinitions",
+        "summary": "Retrieves a list of custom data definitions for the order.",
+        "operation_id": "getCustomFieldDefinitions",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/orders/customFieldDefinitions",
+        "summary": "Creates custom data definitions for the order.",
+        "operation_id": "createCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/orders/customFieldDefinitions",
+        "summary": "Deletes custom data definitions for the order.",
+        "operation_id": "deleteCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/orders/customFieldDefinitions",
+        "summary": "Updates custom data definitions for the order.",
+        "operation_id": "updateCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_reo",
+    "display_name": "Order Schedules",
+    "description": "Retrieve and schedule the order schedules of a plant for a specific date range",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 3,
+    "schema_count": 6,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/shoporderschedules",
+        "summary": "Provides the shop order schedules of a plant for a given date range.",
+        "operation_id": "getShopOrderScheduleUsingPOST",
+        "tags": [
+          "Order Schedules"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/scheduleOrders",
+        "summary": "Schedule an order to a specific resource and work center within a given range.",
+        "operation_id": "saveOrderSchedulesUsingPOST",
+        "tags": [
+          "Order Schedules"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/rescheduleOrder",
+        "summary": "Reschedule an order to a specific resource for a given date.",
+        "operation_id": "updateOrderSchedulesUsingPOST",
+        "tags": [
+          "Order Schedules"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdmi_vishleshki",
+    "display_name": "Overall Equipment Effectiveness",
+    "description": "Obtain data from SAP Digital Manufacturing for insights",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/oee/",
+    "host": "hostname",
+    "endpoint_count": 6,
+    "schema_count": 47,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/availabilityLosses",
+        "summary": "Provides all the Availability downtime losses for the associated filter condition",
+        "operation_id": "getDowntimeLosses",
+        "tags": [
+          "OEE"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/productionSummary",
+        "summary": "Provides the production summary for the associated filter condition",
+        "operation_id": "getProductionSummary",
+        "tags": [
+          "OEE"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/timeElementsByTimeElementType",
+        "summary": "Provides the time element duration by time element type for the associated filter condition",
+        "operation_id": "getTimeBuckets",
+        "tags": [
+          "OEE"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/performanceLosses",
+        "summary": "Provides the performance losses for the associated filter condition",
+        "operation_id": "getPerformanceLosses",
+        "tags": [
+          "OEE"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/speedLosses",
+        "summary": "Provides all the Speed losses for the associated filter condition",
+        "operation_id": "getSpeedLosses",
+        "tags": [
+          "OEE"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/qualityLosses",
+        "summary": "Provides the quality losses for the associated filter condition",
+        "operation_id": "getQualityLosses",
+        "tags": [
+          "OEE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_packingunit",
+    "display_name": "Packing Unit",
+    "description": "Manage activities for packing units",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 7,
+    "schema_count": 17,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/packingUnits",
+        "summary": "Finds a packing unit by plant and number.",
+        "operation_id": "findPackingUnitByPlantAndNumberUsingGET",
+        "tags": [
+          "Packing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/packingUnits",
+        "summary": "Creates a packing unit.",
+        "operation_id": "createPackingUnitUsingPOST",
+        "tags": [
+          "Packing"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/packingUnits",
+        "summary": "Updates a packing unit.",
+        "operation_id": "updatePackingUnitUsingPUT",
+        "tags": [
+          "Packing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/packingUnits/pack",
+        "summary": "Closes an Open Packing Unit.",
+        "operation_id": "packPackingUnitUsingPOST",
+        "tags": [
+          "Packing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/packingUnits/unpack",
+        "summary": "Re-opens a Closed Packing Unit.",
+        "operation_id": "unpackPackingUnitUsingPOST",
+        "tags": [
+          "Packing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/packingUnits/content",
+        "summary": "Adds content to a Packing Unit.",
+        "operation_id": "addContentUsingPOST",
+        "tags": [
+          "Packing"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/packingUnits/content",
+        "summary": "Removes content from a Packing Unit.",
+        "operation_id": "removeContentUsingDELETE",
+        "tags": [
+          "Packing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/changeCarrier",
+        "summary": "Updates the carrier of a packing unit.",
+        "operation_id": "updateCarrierUsingPOST",
+        "tags": [
+          "Packing"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/unloadPackingUnit",
+        "summary": "Unloads a packing unit.",
+        "operation_id": "unloadPackingUnitUsingPUT",
+        "tags": [
+          "Packing"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/carrier/packingUnit",
+        "summary": "Gets packing units for a given plant and carrier number.",
+        "operation_id": "carrierPackingUnitUsingGET",
+        "tags": [
+          "Packing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_plant",
+    "display_name": "Plant",
+    "description": "Get a list of plants.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 2,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/plants",
+        "summary": "Searches for plants.",
+        "operation_id": "getPlantUsingGET",
+        "tags": [
+          "Plant"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapfnd_print",
+    "display_name": "Print",
+    "description": "Document Print Template printing",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 3,
+    "schema_count": 11,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/v1/print",
+        "summary": "Prints a document print template on a given printer.",
+        "operation_id": "printDocumentUsingPOST_2",
+        "tags": [
+          "Print"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v2/print",
+        "summary": "Prints a document print template on a given printer. Simplified version.",
+        "operation_id": "printDocumentUsingPOST_3",
+        "tags": [
+          "Print"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/cpscallback",
+        "summary": "The service for CPS printing feedbacks.",
+        "operation_id": "cpsCallback",
+        "tags": [
+          "Print Service Feedback"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapfnd_printer",
+    "display_name": "Printer",
+    "description": "Manage printers",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 7,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/printers",
+        "summary": "Retrieves a page of printers.",
+        "operation_id": "findPrintersUsingGET_1",
+        "tags": [
+          "Printer"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/printers",
+        "summary": "Creates a printer.",
+        "operation_id": "createPrintersUsingPOST_1",
+        "tags": [
+          "Printer"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/printers",
+        "summary": "Updates a printer.",
+        "operation_id": "updatePrintersUsingPATCH_1",
+        "tags": [
+          "Printer"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/printers",
+        "summary": "Deletes a printer",
+        "operation_id": "deletePrintersUsingDELETE_1",
+        "tags": [
+          "Printer"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_psp",
+    "display_name": "Problem-Solving Process",
+    "description": "Allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 10,
+    "schema_count": 24,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/ProblemSolvingProcess",
+        "summary": "Retrieves a list of problem-solving processes.",
+        "operation_id": "",
+        "tags": [
+          "Problem-Solving Process"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/ProblemSolvingProcess",
+        "summary": "Creates a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Problem-Solving Process"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/ProblemSolvingProcess('{processId}')",
+        "summary": "Retrieves all values of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Problem-Solving Process"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/ProblemSolvingProcess('{processId}')",
+        "summary": "Updates a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Problem-Solving Process"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/ProblemSolvingProcess('{processId}')",
+        "summary": "Deletes a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Problem-Solving Process"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/RootCause",
+        "summary": "Retrieves all values of each root cause from all the problem-solving processes.",
+        "operation_id": "",
+        "tags": [
+          "Root Cause"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/RootCause",
+        "summary": "Creates a root cause for a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Root Cause"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/RootCause(rootCauseUUID={rootCauseUUID},stepUUID={stepUUID})",
+        "summary": "Retrieves all values of a root cause of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Root Cause"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/RootCause(rootCauseUUID={rootCauseUUID},stepUUID={stepUUID})",
+        "summary": "Updates a root cause of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Root Cause"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+        "summary": "Retrieves all values of a problem-solving process step.",
+        "operation_id": "",
+        "tags": [
+          "Step"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+        "summary": "Updates a step of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Step"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/StepComments",
+        "summary": "Creates a comment for a problem-solving process step.",
+        "operation_id": "",
+        "tags": [
+          "Step Comments"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/Tasks",
+        "summary": "Retrieves all tasks from each step in all problem-solving processes.",
+        "operation_id": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/Tasks",
+        "summary": "Creates a task in a problem-solving process step.",
+        "operation_id": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+        "summary": "Retrieves all values of a task within a step of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+        "summary": "Updates a task within a step of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/TeamMembers",
+        "summary": "Retrieves all the team members from all the problem-solving processes.",
+        "operation_id": "",
+        "tags": [
+          "Team Members"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/TeamMembers",
+        "summary": "Adds team members to the D1 step of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Team Members"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+        "summary": "Retrieves all values of a team member of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Team Members"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+        "summary": "Updates team members of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Team Members"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_processlot_v2",
+    "display_name": "Process Lot",
+    "description": "Perform update and start activities on Process Lot",
+    "version": "v2",
+    "status": "",
+    "spec_version": "3.0.3",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 2,
+    "schema_count": 8,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/processLot/members",
+        "summary": "Updates a Process Lot by adding members.",
+        "operation_id": "addMembersToProcessLotUsingPOST",
+        "tags": [
+          "Process Lot"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/processLot/start",
+        "summary": "Start a Process Lot.",
+        "operation_id": "startProcessLotUsingPOST",
+        "tags": [
+          "Process Lot Processing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_processlot",
+    "display_name": "Process Lot",
+    "description": "Perform create, read, update and delete activities on Process Lot",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 5,
+    "schema_count": 11,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/processLot",
+        "summary": "Creates a Process Lot.",
+        "operation_id": "createProcessLotUsingPOST",
+        "tags": [
+          "Process Lot"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/processLot",
+        "summary": "Finds a Process Lot by Plant and Process Lot Number.",
+        "operation_id": "findProcessLotByPlantAndNumberUsingGET",
+        "tags": [
+          "Process Lot"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/processLot",
+        "summary": "Deletes a Process Lot by Plant and Process Lot Number.",
+        "operation_id": "deleteProcessLotUsingDELETE",
+        "tags": [
+          "Process Lot"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/processLot/members",
+        "summary": "Updates a Process Lot by adding Members.",
+        "operation_id": "addMembersUsingPOST",
+        "tags": [
+          "Process Lot"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/processLot/members",
+        "summary": "Removes all Members.",
+        "operation_id": "deleteAllMembersByPlantAndNumberUsingDELETE",
+        "tags": [
+          "Process Lot"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/processLot/removeMembers",
+        "summary": "Removes Members by Plant and Process Lot Number.",
+        "operation_id": "deleteMembersByPlantAndNumberUsingPOST",
+        "tags": [
+          "Process Lot"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/processLot/start",
+        "summary": "Start a Process Lot.",
+        "operation_id": "startProcessLotUsingPOST",
+        "tags": [
+          "Process Lot Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/processLot/complete",
+        "summary": "Complete a Process Lot.",
+        "operation_id": "completeProcessLotUsingPOST",
+        "tags": [
+          "Process Lot Processing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_process_manufacturing",
+    "display_name": "Process Manufacturing Execution",
+    "description": "Perform production activities for a production order or process order, such as start an operation activity, complete an operation activity",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 5,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/operationActivity/start",
+        "summary": "Starts an Operation activity.",
+        "operation_id": "",
+        "tags": [
+          "Operation Activity Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/operationActivity/complete",
+        "summary": "Completes an Operation activity.",
+        "operation_id": "",
+        "tags": [
+          "Operation Activity Processing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_processorder",
+    "display_name": "Process Order Execution",
+    "description": "Perform production activities for a process order",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 9,
+    "schema_count": 28,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/v1/phase/start",
+        "summary": "Starts a phase.",
+        "operation_id": "",
+        "tags": [
+          "Phase Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/phase/complete",
+        "summary": "Completes a phase.",
+        "operation_id": "",
+        "tags": [
+          "Phase Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/goodsissue",
+        "summary": "Performs goods issue.",
+        "operation_id": "",
+        "tags": [
+          "Goods Issue"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/goodsissue/cancellations",
+        "summary": "Cancels a goods issue.",
+        "operation_id": "cancelGoodsIssue",
+        "tags": [
+          "Goods Issue"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/goodsIssue/summary",
+        "summary": "Goods Issue Summary",
+        "operation_id": "goodsSummary",
+        "tags": [
+          "Goods Issue Summary"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v2/goodsIssue/summary",
+        "summary": "Goods Issue Summary",
+        "operation_id": "goodsSummaryV2",
+        "tags": [
+          "Goods Issue Summary"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/activity/confirm",
+        "summary": "Confirms activities.",
+        "operation_id": "",
+        "tags": [
+          "Activity Confirmation"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/phase/updateStartTime",
+        "summary": "Update start time of a phase.",
+        "operation_id": "",
+        "tags": [
+          "Phase Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/phase/updateCompleteTime",
+        "summary": "Update complete time of a phase.",
+        "operation_id": "",
+        "tags": [
+          "Phase Processing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_processorder_v2",
+    "display_name": "Process Order Execution",
+    "description": "Update start time for a phase",
+    "version": "v2",
+    "status": "",
+    "spec_version": "3.0.3",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 3,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/v2/phase/updateStartTime",
+        "summary": "Update start time of a phase.",
+        "operation_id": "UpdatePhaseStartTimeV2",
+        "tags": [
+          "Phase Processing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_pgr_components",
+    "display_name": "Product Genealogy Report (PGR) Assembly Components",
+    "description": "Create a product genealogy report for an assembly",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 4,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/components",
+        "summary": "Obtains assembly components by SFC and plant. It's deprecated. Please use https://api.sap.com/api/sapdme_assembly",
+        "operation_id": "getComponentsUsingGET",
+        "tags": [
+          "Assembly Components"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_production_v2",
+    "display_name": "Production Change",
+    "description": "Perform production changes to a shop floor control",
+    "version": "v2",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 5,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/changeProduction",
+        "summary": "Assigns a new routing or BOM to SFCs",
+        "operation_id": "",
+        "tags": [
+          "Production Change"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_production",
+    "display_name": "Production Change",
+    "description": "Perform production changes to a shop floor control",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 5,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/changeProduction",
+        "summary": "Assigns a new routing or a new Bill of Materials (BOM) to given Shop Floor Controls (SFCs)",
+        "operation_id": "",
+        "tags": [
+          "Production Change"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_pod",
+    "display_name": "Production Operator Dashboard",
+    "description": "Create, import, and export a Production Operator Dashboard",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 3,
+    "schema_count": 4,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/configurations",
+        "summary": "API to create a new POD given a POD configuration.",
+        "operation_id": "createPodConfigurationUsingPOST",
+        "tags": [
+          "Production Operator Dashboard"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/export",
+        "summary": "API to export a POD configuration.",
+        "operation_id": "exportPodUsingGET",
+        "tags": [
+          "Production Operator Dashboard"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/import",
+        "summary": "API to import a POD configuration from a local file system and creating a new POD.",
+        "operation_id": "importPodUsingPOST",
+        "tags": [
+          "Production Operator Dashboard"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_notification",
+    "display_name": "Production Operator Dashboard Notification",
+    "description": "Notification to alert a custom plugin or user about an event that has occurred.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 4,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/send",
+        "summary": "Send a custom notification for consumption by subscribing custom POD plugins.",
+        "operation_id": "",
+        "tags": [
+          "Notification"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_qualityinspection_v2",
+    "display_name": "Quality Inspection",
+    "description": "Perform quality inspection related activities",
+    "version": "v2",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v2",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 4,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/mandatoryCharacteristics/checkResultsRecorded",
+        "summary": "Check if the mandatory inspection characteristics are recorded for the given SFCs at the given steps.",
+        "operation_id": "checkMandatoryCharacteristicsResultsRecordedV2",
+        "tags": [
+          "Check The Mandatory Characteristics Inspected"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_qualityinspection",
+    "display_name": "Quality Inspection",
+    "description": "Perform quality inspection related activities",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 10,
+    "schema_count": 28,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
+        "summary": "Record single results for an inspection characteristics.",
+        "operation_id": "updateSingleResultsUsingPOST_1",
+        "tags": [
+          "Single Results Recording"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
+        "summary": "Retrieves single results for an inspection characteristic",
+        "operation_id": "getSingleResultsUsingGET_1",
+        "tags": [
+          "Get Inspection Single Results"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/lots/{inspectionLot}",
+        "summary": "Get inspection lot details.",
+        "operation_id": "getInspectionLotUsingGET_1",
+        "tags": [
+          "Get Inspection Lot"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}",
+        "summary": "Get inspection operation information.",
+        "operation_id": "getInspectionOperationUsingGET_1",
+        "tags": [
+          "Get Inspection Operation"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/characteristics",
+        "summary": "Get all the inspection characteristics",
+        "operation_id": "getInspectionCharacteristicsUsingGET_1",
+        "tags": [
+          "Get Inspection Characteristics"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/results",
+        "summary": "Get inspection operation single results for inspection lot (multiple SFCs).",
+        "operation_id": "getSingleResultsHistoryGET_1",
+        "tags": [
+          "Get Inspection Single Results"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inspectionPointCombinations/{combinationId}/userFields",
+        "summary": "Get inspection point field combination information.",
+        "operation_id": "getInspectionFieldCombinationByCombinationIdUsingGET_1",
+        "tags": [
+          "Get Inspection Point Field Combination"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/points",
+        "summary": "Create an inspection point.",
+        "operation_id": "createInspectionPointUsingPOST_1",
+        "tags": [
+          "Create Inspection Point"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/points/createInERP",
+        "summary": "Synchronizes the inspection point created in SAP Digital Manufacturing to the integrated ERP system. If the sync call succeeds, the inspection point is created in ERP.",
+        "operation_id": "syncInspectionPoint2ERPUsingPOST_1",
+        "tags": [
+          "Synchronize Inspection Point"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/results/recordInERP",
+        "summary": "Synchronizes inspection single results to ERP",
+        "operation_id": "syncSingleResults2ERPUsingPOST_1",
+        "tags": [
+          "Synchronize Inspection Single Results"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/mandatoryCharacteristics/checkResultsRecorded",
+        "summary": "Check if the mandatory inspection characteristics are recorded for the given SFCs at the given steps",
+        "operation_id": "",
+        "tags": [
+          "Check The Mandatory Characteristics Inspected"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_quantityConfirmation",
+    "display_name": "Quantity Confirmation",
+    "description": "Perform quantity confirmations for an order",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 4,
+    "schema_count": 12,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/quantityConfirmation/v1/confirm",
+        "summary": "Post quantity confirmation for a given order.",
+        "operation_id": "",
+        "tags": [
+          "Post Quantity Confirmation"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/quantityConfirmation/v1/reportOperationActivityFinalConfirmation",
+        "summary": "Post final quantity confirmation without updating the quantity for a given SFC of an order.",
+        "operation_id": "",
+        "tags": [
+          "Final Quantity Confirmation"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/quantityConfirmation/v1/postings",
+        "summary": "Get quantity confirmation postings",
+        "operation_id": "",
+        "tags": [
+          "Quantity Confirmation Postings"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/quantityConfirmation/v1/postingHistory",
+        "summary": "Get quantity confirmation posting history",
+        "operation_id": "",
+        "tags": [
+          "Quantity Confirmation Posting History"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_recipe",
+    "display_name": "Recipe",
+    "description": "Perform read, create, update and delete Recipes",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 3,
+    "schema_count": 24,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/recipes",
+        "summary": "Finds a recipe by plant, recipe name, recipe type, and recipe version",
+        "operation_id": "findRecipeByPlantAndNameUsingGET_1",
+        "tags": [
+          "Recipe"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/recipes",
+        "summary": "Creates a list of recipes.",
+        "operation_id": "createRecipePOST_1",
+        "tags": [
+          "Recipe"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/recipes",
+        "summary": "Updates a list of recipes.",
+        "operation_id": "updateRecipesPUT_1",
+        "tags": [
+          "Recipe"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/recipes",
+        "summary": "Deletes a recipe by plant, recipe name, recipe version, and recipe type.",
+        "operation_id": "deleteRecipeDELETE_1",
+        "tags": [
+          "Recipe"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/recipes/headerDetails",
+        "summary": "Finds recipe header details by plant, recipe name, recipe type, and recipe version",
+        "operation_id": "findRecipeHeaderDetialsByPlantAndNameUsingGET_1",
+        "tags": [
+          "Recipe"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/recipes/headerDetails",
+        "summary": "Updates the recipe header details.Every unspecified field will remain unchanged.",
+        "operation_id": "updateRecipeHeaderDetailsPATCH_1",
+        "tags": [
+          "Recipe"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/recipes/{recipe}/{version}/{recipeType}/recipeDetailsAndPhases",
+        "summary": "Update the recipe header details and phases details.",
+        "operation_id": "updateRecipeDetailsAndPhasesPATCH_1",
+        "tags": [
+          "Recipe and Phases"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_plant_resource_v2",
+    "display_name": "Resource",
+    "description": "Manage resources used to perform an operation in a manufacturing process",
+    "version": "v2",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v2",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 7,
+    "schema_count": 38,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v2/resources",
+        "summary": "Retrieves a list of resources.",
+        "operation_id": "getResourcesUsingGET_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v2/resources",
+        "summary": "Creates a resource.",
+        "operation_id": "createResourceUsingPOST_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v2/resources",
+        "summary": "Updates the resource.",
+        "operation_id": "updateResourceUsingPATCH_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v2/resources",
+        "summary": "Deletes the resource.",
+        "operation_id": "deleteResourceUsingDELETE_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v3/resource",
+        "summary": "Retrieves a single resource.",
+        "operation_id": "getResourceUsingGET_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v3/resources",
+        "summary": "Retrieves a page of resources.",
+        "operation_id": "getResourcesUsingGET_2",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v3/resources",
+        "summary": "Creates a resource.",
+        "operation_id": "createResourceUsingPOST_2",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v3/resources",
+        "summary": "Updates the resource.",
+        "operation_id": "updateResourceUsingPATCH_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v2/changestatus",
+        "summary": "Changes the resource status.",
+        "operation_id": "changeResourceStatusUsingPOST_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v2/loadbin",
+        "summary": "Loads a resource bin.",
+        "operation_id": "loadResourceBinUsingPOST_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v2/unloadbin",
+        "summary": "Unloads a resource bin.",
+        "operation_id": "unloadResourceBinUsingPOST_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v2/customFieldDefinitions",
+        "summary": "Retrieves a list of custom field definitions for the resource.",
+        "operation_id": "getCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v2/customFieldDefinitions",
+        "summary": "Creates a custom field definition for the resource.",
+        "operation_id": "createCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v2/customFieldDefinitions",
+        "summary": "Updates a custom field definition for the resource.",
+        "operation_id": "updateCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v2/customFieldDefinitions",
+        "summary": "Deletes a custom field definition for the resource.",
+        "operation_id": "deleteCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_plant_resource",
+    "display_name": "Resource",
+    "description": "Manage resources used to perform an operation in a manufacturing process",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 4,
+    "schema_count": 25,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/changestatus",
+        "summary": "Changes the resource status.",
+        "operation_id": "changeResourceStatusUsingPOST_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/loadbin",
+        "summary": "Loads a resource bin.",
+        "operation_id": "loadResourceBinUsingPOST_2",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/resources",
+        "summary": "Retrieves a list of resources.",
+        "operation_id": "getResourcesUsingGET_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/resources",
+        "summary": "Creates a resource.",
+        "operation_id": "createResourceUsingPOST_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/resources",
+        "summary": "Updates the resource.",
+        "operation_id": "updateResourceUsingPATCH_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/resources",
+        "summary": "Deletes the resource.",
+        "operation_id": "deleteResourceUsingDELETE_1",
+        "tags": [
+          "Resource"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/unloadbin",
+        "summary": "Unloads a resource bin.",
+        "operation_id": "unloadResourceBinUsingPOST_2",
+        "tags": [
+          "Resource"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_oee_resourcereasoncode",
+    "display_name": "Resource Reason Code",
+    "description": "Retrieve resource reason code using machine code and resource.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 4,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/resourceReasonCodes",
+        "summary": "Retrieve resource reason code",
+        "operation_id": "",
+        "tags": [
+          "Resource Reason Code"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_resourcetype",
+    "display_name": "Resource Type",
+    "description": "Maintain resource types for a given plant.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 4,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/resourcetypes",
+        "summary": "Searches for resource types by name.",
+        "operation_id": "readUsingGET",
+        "tags": [
+          "ResourceType"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/resourcetypes",
+        "summary": "Creates a resource type.",
+        "operation_id": "createUsingPOST",
+        "tags": [
+          "ResourceType"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/resourcetypes",
+        "summary": "Removes the given resource type.",
+        "operation_id": "deleteUsingDELETE",
+        "tags": [
+          "ResourceType"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/resourcetypes",
+        "summary": "Updates a resource type.",
+        "operation_id": "updateUsingPATCH",
+        "tags": [
+          "ResourceType"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_routing",
+    "display_name": "Routing",
+    "description": "Perform read, create, update and delete Routings",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 4,
+    "schema_count": 34,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/routings",
+        "summary": "Finds a routing by plant, routing name, routing type, and routing version",
+        "operation_id": "findRoutingByPlantAndNameAndTypeUsingGET_1",
+        "tags": [
+          "Routing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/routings",
+        "summary": "Creates a list of routings.",
+        "operation_id": "createRoutingsPOST_1",
+        "tags": [
+          "Routing"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/routings",
+        "summary": "Updates a list of routings.",
+        "operation_id": "updateRoutingsPUT_1",
+        "tags": [
+          "Routing"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/routings",
+        "summary": "Deletes a routing by plant, routing name, routing version, and routing type.",
+        "operation_id": "deleteRoutingDELETE_1",
+        "tags": [
+          "Routing"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/routings/routingOperations",
+        "summary": "Finds a routing operation by plant, routing name, routing type, and routing version",
+        "operation_id": "findRoutingOperationsByPlantAndNameAndTypeUsingGET_1",
+        "tags": [
+          "Routing"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/routings/routingSteps",
+        "summary": "Finds a routing's steps by plant, routing name, routing type, and routing version",
+        "operation_id": "findRoutingBasicStepsByPlantAndNameAndTypeUsingGET_1",
+        "tags": [
+          "Routing"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/routings/headerDetails",
+        "summary": "Finds routing header details by plant, routing name, routing type, and routing version",
+        "operation_id": "findHeaderDetailsByPlantAndNameAndTypeUsingGET_1",
+        "tags": [
+          "Routing"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/routings/headerDetails",
+        "summary": "Update routing header details. Every unspecified field will remain unchanged",
+        "operation_id": "updateHeaderDetailsByPlantAndNameAndTypeUsingPATCH_1",
+        "tags": [
+          "Routing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_setpoint_v3",
+    "display_name": "Setpoint Activities",
+    "description": "Perform production-related tasks involving Setpoints",
+    "version": "v3",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v3",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 3,
+    "schema_count": 14,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/find",
+        "summary": "Retrieves setpoint parameters or indicators based on a set of context criteria.",
+        "operation_id": "findSetPointsUsingGET",
+        "tags": [
+          "Setpoint Runtime API Endpoints"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/write",
+        "summary": "Writes the values of Setpoint parameters/indicators that are found based on a set of context criteria to machine indicators.",
+        "operation_id": "",
+        "tags": [
+          "Setpoint Runtime API Endpoints"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/groups",
+        "summary": "Retrieves the definitions of one or multiple Setpoint Groups.",
+        "operation_id": "geSetPointGroupsUsingGET",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/groups",
+        "summary": "Creates a Setpoint Group.",
+        "operation_id": "createSetPointGroupUsingPOST",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/groups",
+        "summary": "Deletes a Setpoint Group and all its children objects.",
+        "operation_id": "deleteSetPointGroupUsingDELETE",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/groups",
+        "summary": "Edits a Setpoint Group and its children collections, such as parameters/indicators.",
+        "operation_id": "modifySetPointGroupUsingPATCH",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_setpoint_v2",
+    "display_name": "Setpoint Activities",
+    "description": "Perform production-related tasks involving Setpoints",
+    "version": "v2",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v2",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 3,
+    "schema_count": 14,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/find",
+        "summary": "Retrieves applicable Setpoint parameters/indicators based on a set of context criteria.",
+        "operation_id": "findSetPointsUsingGET",
+        "tags": [
+          "Setpoint Runtime API Endpoints"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/write",
+        "summary": "Writes the values of Setpoint parameters/indicators that are found based on a set of context criteria to machine indicators.",
+        "operation_id": "",
+        "tags": [
+          "Setpoint Runtime API Endpoints"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/groups",
+        "summary": "Retrieves the definitions of one or multiple Setpoint Groups.",
+        "operation_id": "geSetPointGroupsUsingGET",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/groups",
+        "summary": "Creates a Setpoint Group.",
+        "operation_id": "createSetPointGroupUsingPOST",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/groups",
+        "summary": "Deletes a Setpoint Group and all its children objects.",
+        "operation_id": "deleteSetPointGroupUsingDELETE",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/groups",
+        "summary": "Edits a Setpoint Group and its children collections, such as parameters/indicators.",
+        "operation_id": "modifySetPointGroupUsingPATCH",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_setpoint",
+    "display_name": "Setpoint Activities",
+    "description": "Perform production Setpoint related activities",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 3,
+    "schema_count": 14,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/find",
+        "summary": "Obtains applicable Setpoint parameters/indicators given a set of context criteria.",
+        "operation_id": "findSetPointsUsingGET",
+        "tags": [
+          "Setpoint Runtime API Endpoints"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/write",
+        "summary": "Writes Setpoint parameters/indicators found by attached set of context criteria to machine indicators",
+        "operation_id": "",
+        "tags": [
+          "Setpoint Runtime API Endpoints"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/groups",
+        "summary": "Retrieves defintions for one or multiple Setpoint Groups. ",
+        "operation_id": "geSetPointGroupsUsingGET",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/groups",
+        "summary": "Creates a Setpoint Group.",
+        "operation_id": "createSetPointGroupUsingPOST",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/groups",
+        "summary": "Deletes a Setpoint Group and all its children objects",
+        "operation_id": "deleteSetPointGroupUsingDELETE",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/groups",
+        "summary": "Edits a Setpoint Group and children collections (e.g. parameters/indicators).",
+        "operation_id": "modifySetPointGroupUsingPATCH",
+        "tags": [
+          "Setpoint Group Maintenance API Endpoints"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_shift",
+    "display_name": "Shift",
+    "description": "Maintain shifts for a given plant",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 14,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/shifts",
+        "summary": "Searches for shifts by plant and shift values.",
+        "operation_id": "readUsingGET",
+        "tags": [
+          "Shift"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/shifts",
+        "summary": "Creates a shift.",
+        "operation_id": "createUsingPOST",
+        "tags": [
+          "Shift"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/shifts",
+        "summary": "Removes the given shift.",
+        "operation_id": "deleteUsingDELETE",
+        "tags": [
+          "Shift"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/shifts",
+        "summary": "Updates the given shift.",
+        "operation_id": "updateUsingPATCH",
+        "tags": [
+          "Shift"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/customFieldDefinitions",
+        "summary": "Retrieves a list of custom field definitions for the shift.",
+        "operation_id": "getCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/customFieldDefinitions",
+        "summary": "Creates a custom field definition for the shift.",
+        "operation_id": "createCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/customFieldDefinitions",
+        "summary": "Updates a custom field definition for the shift.",
+        "operation_id": "updateCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/customFieldDefinitions",
+        "summary": "Deletes a custom field definition for the shift.",
+        "operation_id": "deleteCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_sfc",
+    "display_name": "Shop Floor Control Production Activities",
+    "description": "Perform production activities on a Shop Floor Control, such as start, complete, serialize, relabel, split, merge, scrap and set quantity",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 23,
+    "schema_count": 54,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/sfcs/start",
+        "summary": "Starts one or more SFCs at an operation activity and resource.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/serialize",
+        "summary": "Serialize an SFC.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/merge",
+        "summary": "Merge SFCs.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/split",
+        "summary": "Split an SFC.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/scrap",
+        "summary": "Scraps one or more SFCs at an operation activity and resource.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/relabel",
+        "summary": "Relabel an SFC.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/setQuantity",
+        "summary": "Sets SFC quantities.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/complete",
+        "summary": "Completes one or more SFCs at an operation activity and resource.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcselect",
+        "summary": "Trigger an SFC Selection event.",
+        "operation_id": "",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/sfcdetail",
+        "summary": "Retrieves SFC details for an SFC.",
+        "operation_id": "",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/sfcData",
+        "summary": "Retrieves SFC data based on either the SFC ID or the serial number.",
+        "operation_id": "",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/sfcs/invalidate",
+        "summary": "Invalidate an SFC in a specific plant.",
+        "operation_id": "",
+        "tags": [
+          "SFC Invalidate"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/sfcsInWork",
+        "summary": "Get SFCs at Resource.",
+        "operation_id": "",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/signoff",
+        "summary": "Signoff one or more SFCs at an operation activity and resource.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/batch",
+        "summary": "Update SFC default batch ID.",
+        "operation_id": "createPodConfigurationUsingPOST",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/worklist/sfcs/$count",
+        "summary": "Retrieves the number of SFCs in the work list.",
+        "operation_id": "getSfcWorkListCountUsingGET",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/worklist/sfcs",
+        "summary": "Retrieves an SFC-centric work list including the routing steps.",
+        "operation_id": "getSfcWorkListUsingGET",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/worklist/orders/$count",
+        "summary": "Retrieves an Order-centric work list count.",
+        "operation_id": "getOrderWorkListCountUsingGET",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/worklist/orders",
+        "summary": "Retrieves an Order-centric work list including SFCs.",
+        "operation_id": "getOrderWorkListUsingGET",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/alternateResource",
+        "summary": "Update Alternate Resource Mapping for an SFC/Charge and Operation Activity.",
+        "operation_id": "updateAlternateResourceUsingPUT",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/stepActivity",
+        "summary": "Get SFC step activity details.",
+        "operation_id": "getSfcStepActivities",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/hold",
+        "summary": "Place a hold on one or more SFCs.",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/sfcs/release",
+        "summary": "Release the hold from one or more SFCs .",
+        "operation_id": "",
+        "tags": [
+          "SFC Processing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_sfc_v2",
+    "display_name": "Shop Floor Control Production Activities",
+    "description": "Fetch data about shop floor control (SFC) production activities",
+    "version": "v2",
+    "status": "",
+    "spec_version": "3.0.3",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 3,
+    "schema_count": 14,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/sfcdetail",
+        "summary": "Retrieves SFC details for an SFC.",
+        "operation_id": "getSfcDetailUsingGET",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/worklist/sfcs",
+        "summary": "Retrieves an SFC-centric work list.",
+        "operation_id": "getSfcWorkListV2UsingGET",
+        "tags": [
+          "Production Details"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/worklist/orders",
+        "summary": "Retrieves an Order-centric work list including SFCs.",
+        "operation_id": "getOrderWorkListV2UsingGET",
+        "tags": [
+          "Production Details"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_standardrate",
+    "display_name": "Standard Rates",
+    "description": "Get a list of standard rates by resource or workcenter.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 10,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/standardRatesByResourceOrWorkCenter",
+        "summary": "Standard Rates by Resource or Workcenter.",
+        "operation_id": "",
+        "tags": [
+          "Standard rates"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/standardRates",
+        "summary": "Creates standard rates.",
+        "operation_id": "",
+        "tags": [
+          "Standard rates"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/standardRates",
+        "summary": "Updates standard rate.",
+        "operation_id": "",
+        "tags": [
+          "Standard rates"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/standardRates",
+        "summary": "Deletes standard rates.",
+        "operation_id": "",
+        "tags": [
+          "Standard rates"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_standardvalue",
+    "display_name": "Standard Values",
+    "description": "Retrieves standard values",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 6,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/details",
+        "summary": "Retrieves Standard Values",
+        "operation_id": "",
+        "tags": [
+          "Standard Values"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_timetracking",
+    "display_name": "Time Tracking",
+    "description": "Manage time tracking records and events for activities on the shop floor.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 28,
+    "schema_count": 23,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/v1/attendance",
+        "summary": "Create a time record for attendance.",
+        "operation_id": "attendanceCreate",
+        "tags": [
+          "Attendance"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/attendance/start",
+        "summary": "Create a start event for attendance.",
+        "operation_id": "attendanceStart",
+        "tags": [
+          "Attendance"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/attendance/stop",
+        "summary": "Create a stop event for attendance.",
+        "operation_id": "attendanceStop",
+        "tags": [
+          "Attendance"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/attendance/{id}",
+        "summary": "Update a time record for attendance.",
+        "operation_id": "attendanceEdit",
+        "tags": [
+          "Attendance"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/direct-labor",
+        "summary": "Create a time record for direct labor.",
+        "operation_id": "directLaborCreate",
+        "tags": [
+          "Direct Labor"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/direct-labor/processlot/start",
+        "summary": "Create a start event for direct labor for a process lot.",
+        "operation_id": "directLaborStartProcessLot",
+        "tags": [
+          "Direct Labor"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/direct-labor/processlot/stop",
+        "summary": "Create a stop event for direct labor for a process lot.",
+        "operation_id": "directLaborStopProcessLot",
+        "tags": [
+          "Direct Labor"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/direct-labor/start",
+        "summary": "Create a start event for direct labor for an SFC.",
+        "operation_id": "directLaborStart",
+        "tags": [
+          "Direct Labor"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/direct-labor/stop",
+        "summary": "Create a stop event for direct labor for an SFC.",
+        "operation_id": "directLaborStop",
+        "tags": [
+          "Direct Labor"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/direct-labor/{id}",
+        "summary": "Update a time record for direct labor.",
+        "operation_id": "directLaborEdit",
+        "tags": [
+          "Direct Labor"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/indirect-labor",
+        "summary": "Create a time record for indirect labor.",
+        "operation_id": "indirectLaborCreate",
+        "tags": [
+          "Indirect Labor"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/indirect-labor/start",
+        "summary": "Create a start event for indirect labor.",
+        "operation_id": "indirectLaborStart",
+        "tags": [
+          "Indirect Labor"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/indirect-labor/stop",
+        "summary": "Create a stop event for indirect labor.",
+        "operation_id": "indirectLaborStop",
+        "tags": [
+          "Indirect Labor"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/indirect-labor/{id}",
+        "summary": "Update a time record for indirect labor.",
+        "operation_id": "indirectLaborEdit",
+        "tags": [
+          "Indirect Labor"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/production-time",
+        "summary": "Create a time record for production time.",
+        "operation_id": "productionTimeCreate",
+        "tags": [
+          "Production Time"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/production-time/processlot/start",
+        "summary": "Create a start event for the production time of a process lot.",
+        "operation_id": "productionTimeStartProcessLot",
+        "tags": [
+          "Production Time"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/production-time/processlot/stop",
+        "summary": "Create a stop event for the production time of a process lot.",
+        "operation_id": "productionTimeStopProcessLot",
+        "tags": [
+          "Production Time"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/production-time/start",
+        "summary": "Create a start event for production time.",
+        "operation_id": "productionTimeStart",
+        "tags": [
+          "Production Time"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/production-time/stop",
+        "summary": "Create a stop event for production time.",
+        "operation_id": "productionTimeStop",
+        "tags": [
+          "Production Time"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/production-time/{id}",
+        "summary": "Edit a time record for production time.",
+        "operation_id": "productionTimeEdit",
+        "tags": [
+          "Production Time"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/resource-usage",
+        "summary": "Create a time record for resource usage.",
+        "operation_id": "resourceUsageCreate",
+        "tags": [
+          "Resource Usage"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/resource-usage/start",
+        "summary": "Create a start event for resource usage.",
+        "operation_id": "resourceUsageStart",
+        "tags": [
+          "Resource Usage"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/resource-usage/stop",
+        "summary": "Create a stop event for resource usage.",
+        "operation_id": "resourceUsageStop",
+        "tags": [
+          "Resource Usage"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v1/resource-usage/{id}",
+        "summary": "Update a time record for resource usage.",
+        "operation_id": "resourceUsageEdit",
+        "tags": [
+          "Resource Usage"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/time-records",
+        "summary": "Find all time records",
+        "operation_id": "findAllTimeRecords",
+        "tags": [
+          "Time Records"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/time-records/approve",
+        "summary": "Approve time records.",
+        "operation_id": "approve",
+        "tags": [
+          "Time Records"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/time-records/approve/{id}",
+        "summary": "Approve a time record.",
+        "operation_id": "approveById",
+        "tags": [
+          "Time Records"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/time-records/{id}",
+        "summary": "Delete a time record.",
+        "operation_id": "timeRecordDelete",
+        "tags": [
+          "Time Records"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/time-records/{id}",
+        "summary": "Find a time record",
+        "operation_id": "findById",
+        "tags": [
+          "Time Records"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_timetracking_odata",
+    "display_name": "Time Tracking",
+    "description": "Manage time tracking records and events for activities on the shop floor.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 2,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/Activities",
+        "summary": "Fetch activities of a specific plant.",
+        "operation_id": "Activities",
+        "tags": [
+          "Activities"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_tool",
+    "display_name": "Tool",
+    "description": "Perform production tool related operations such as tool usage logging, tool validation, tool loading and unloading",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 11,
+    "schema_count": 32,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/toolUsageLogs",
+        "summary": "Sets automatic logging of tool usage for SFCs",
+        "operation_id": "saveToolUsageLogsUsingPOST_2",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/prtLoadValidation",
+        "summary": "Get tool validation result for loaded tools",
+        "operation_id": "prtLoadValidationPOST",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/loadedTools",
+        "summary": "Gets loaded tools.",
+        "operation_id": "loadedToolsGET",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/loadTool",
+        "summary": "Loads a tool.",
+        "operation_id": "loadToolPost",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/unloadTool",
+        "summary": "Unloads a tool.",
+        "operation_id": "unloadToolPost",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/tools",
+        "summary": "Retrieves tool information.",
+        "operation_id": "getToolQuery_1",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/tools",
+        "summary": "Updates a tool.",
+        "operation_id": "updateToolUsingPUT",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/tools",
+        "summary": "Creates a tool.",
+        "operation_id": "createToolUsingPOST",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/tools/status",
+        "summary": "Updates tool status.",
+        "operation_id": "updateToolsPort",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/tools/calibration",
+        "summary": "Resets a tool.",
+        "operation_id": "resetTool",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/tools/manualToolUsageLog",
+        "summary": "Creates a tool usage logging record.",
+        "operation_id": "createToolUsageLog",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/tools/prtAssignment",
+        "summary": "Retrieves production resources/tools (PRT) assignments for an order.",
+        "operation_id": "findPrtAssignment",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/tools/{prt}/routings",
+        "summary": "Retrieves routings and routing steps.",
+        "operation_id": "findPrtRouting",
+        "tags": [
+          "Tool"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_tool_v2",
+    "display_name": "Tool",
+    "description": "Perform production tool related operations such as tool usage logging, tool validation, tool loading and unloading",
+    "version": "v2",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 5,
+    "schema_count": 17,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/tools",
+        "summary": "Retrieves tool information.",
+        "operation_id": "getToolQuery_2",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/toolUsageLogs",
+        "summary": "Retrieves records of usage logs",
+        "operation_id": "",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/prtLoadValidation",
+        "summary": "Get tool validation result for loaded tools",
+        "operation_id": "prtLoadValidationPOST",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/tools/{prt}/routings",
+        "summary": "Retrieves routings and routing steps.",
+        "operation_id": "findPrtRouting",
+        "tags": [
+          "Tool"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/tools/status",
+        "summary": "Updates tool status.",
+        "operation_id": "updateToolsPort",
+        "tags": [
+          "Tool"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_uom",
+    "display_name": "Unit of Measure",
+    "description": "Browse and modify custom units of measure",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 5,
+    "schema_count": 8,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/dimensions",
+        "summary": "Get all dimensions.",
+        "operation_id": "getAllDimensionsUsingGET_1",
+        "tags": [
+          "uom"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/dimensions/{id}",
+        "summary": "Get dimension by name.",
+        "operation_id": "getDimensionUsingGET_1",
+        "tags": [
+          "uom"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/uoms",
+        "summary": "Get all units of measure.",
+        "operation_id": "getAllUomsUsingGET_1",
+        "tags": [
+          "uom"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/uoms",
+        "summary": "Create custom units of measure.",
+        "operation_id": "createUomsUsingPOST_1",
+        "tags": [
+          "uom"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/uoms/{id}",
+        "summary": "Get unit of measure by id.",
+        "operation_id": "getUomUsingGET_1",
+        "tags": [
+          "uom"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/uoms/{id}",
+        "summary": "Delete a unit of measure by unit code.",
+        "operation_id": "deleteUomUsingDELETE_1",
+        "tags": [
+          "uom"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v2/uoms",
+        "summary": "Get a unit of measure using unitCode.",
+        "operation_id": "getUomUsingGET_2",
+        "tags": [
+          "uom"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v2/uoms",
+        "summary": "Delete a unit of measure using unitCode.",
+        "operation_id": "deleteUomUsingDELETE_2",
+        "tags": [
+          "uom"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_user",
+    "display_name": "User",
+    "description": "Manages users to perform operations in a manufacturing process.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 3,
+    "schema_count": 14,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/users",
+        "summary": "Retrieves a user information.",
+        "operation_id": "getUserUsingGET_1",
+        "tags": [
+          "User"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/users",
+        "summary": "Creates a user.",
+        "operation_id": "createUserUsingPOST_1",
+        "tags": [
+          "User"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/users",
+        "summary": "Updates the user.",
+        "operation_id": "updateUserUsingPATCH_1",
+        "tags": [
+          "User"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/users",
+        "summary": "Removes the given user.",
+        "operation_id": "deleteUserUsingDELETE",
+        "tags": [
+          "User"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/supervisors",
+        "summary": "Retrieves a user supervisors.",
+        "operation_id": "getSupervisorsUsingGET_1",
+        "tags": [
+          "User"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/customFieldDefinitions",
+        "summary": "Retrieves a list of custom field definitions for the user.",
+        "operation_id": "getCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/customFieldDefinitions",
+        "summary": "Creates a custom field definition for the user.",
+        "operation_id": "createCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/customFieldDefinitions",
+        "summary": "Updates a custom field definition for the user.",
+        "operation_id": "updateCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/customFieldDefinitions",
+        "summary": "Deletes a custom field definition for the user.",
+        "operation_id": "deleteCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_visualinspection",
+    "display_name": "Visual Inspection",
+    "description": "Manage visual inspection objects to embed AI-assisted processes on your shop floor.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 1,
+    "schema_count": 20,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/findVisualInspections()",
+        "summary": "Find visual inspections using the business context",
+        "operation_id": "findVisualInspections",
+        "tags": [
+          "Visual Inspections"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_vimodel",
+    "display_name": "Visual Inspection Result Service",
+    "description": "Log, read and store images of visual inspection results in Digital Manufacturing",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 3,
+    "schema_count": 9,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/inspectionResults",
+        "summary": "Finds all visual inspection results.",
+        "operation_id": "",
+        "tags": [
+          "InspectionResults"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/inspectionResults",
+        "summary": "Create a visual inspection result.",
+        "operation_id": "",
+        "tags": [
+          "InspectionResults"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inspectionResults({id})",
+        "summary": "Finds a single visual inspection result by ID.",
+        "operation_id": "",
+        "tags": [
+          "InspectionResults"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/inspectionResults({id})/image",
+        "summary": "Get the image of a visual inspection result.",
+        "operation_id": "",
+        "tags": [
+          "InspectionResults"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/inspectionResults({id})/image",
+        "summary": "Stores an image for a visual inspection result.",
+        "operation_id": "",
+        "tags": [
+          "InspectionResults"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_plant_workcenter",
+    "display_name": "Work Center",
+    "description": "Get a list of work centers for a given plant.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 11,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/workcenters",
+        "summary": "Retrieves work centers.",
+        "operation_id": "getWorkCentersUsingGET_1",
+        "tags": [
+          "Work Center"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_plant_workcenter_v3",
+    "display_name": "Work Center",
+    "description": "Retrieves work centers for a given plant.",
+    "version": "v3",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v3",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 2,
+    "schema_count": 13,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/workcenter",
+        "summary": "Searches for a single work center by plant and work center values.",
+        "operation_id": "readWorkCenterUsingGETV3",
+        "tags": [
+          "Work Center"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/workcenters",
+        "summary": "Searches for work centers by plant and work center values.",
+        "operation_id": "readWorkCentersUsingGETV3",
+        "tags": [
+          "Work Center"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_plant_workcenter_v2",
+    "display_name": "Work Center",
+    "description": "Maintain work centers for a given plant.",
+    "version": "v2",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v2",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 2,
+    "schema_count": 14,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/workcenters",
+        "summary": "Searches for work centers by plant and work center values.",
+        "operation_id": "readUsingGET",
+        "tags": [
+          "Work Center"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/workcenters",
+        "summary": "Creates a work center.",
+        "operation_id": "createUsingPOST",
+        "tags": [
+          "Work Center"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/workcenters",
+        "summary": "Removes the given work center.",
+        "operation_id": "deleteUsingDELETE",
+        "tags": [
+          "Work Center"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/workcenters",
+        "summary": "Updates the given work center.",
+        "operation_id": "updateUsingPATCH",
+        "tags": [
+          "Work Center"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/customFieldDefinitions",
+        "summary": "Retrieves a list of custom field definitions for the work center.",
+        "operation_id": "getCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/customFieldDefinitions",
+        "summary": "Creates a custom field definition for the work center.",
+        "operation_id": "createCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/customFieldDefinitions",
+        "summary": "Updates a custom field definition for the work center.",
+        "operation_id": "updateCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/customFieldDefinitions",
+        "summary": "Deletes a custom field definition for the work center.",
+        "operation_id": "deleteCustomFieldDefinition",
+        "tags": [
+          "Custom Field Definition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_workinstruction",
+    "display_name": "Work Instruction",
+    "description": "Get a list of work instructions or one single work instruction",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 4,
+    "schema_count": 20,
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/attachedworkinstructions",
+        "summary": "Get list of work instructions according to the parameters.",
+        "operation_id": "",
+        "tags": [
+          "Work Instructions"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/v1/workinstructions",
+        "summary": "Finds a work instruction by plant, name, and work instruction version",
+        "operation_id": "",
+        "tags": [
+          "Work Instructions"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/workinstructions",
+        "summary": "Creates a work instruction by plant and name",
+        "operation_id": "",
+        "tags": [
+          "Work Instructions"
+        ]
+      },
+      {
+        "method": "PUT",
+        "path": "/v1/workinstructions",
+        "summary": "Updates a list of work instructions for the given plant.",
+        "operation_id": "",
+        "tags": [
+          "Work Instructions"
+        ]
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/workinstructions",
+        "summary": "Deletes a work instruction by reference",
+        "operation_id": "",
+        "tags": [
+          "Work Instructions"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v2/workinstructions",
+        "summary": "Creates a list of work instructions for the given plant.",
+        "operation_id": "",
+        "tags": [
+          "Work Instructions"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/workinstructions/attachedPoints",
+        "summary": "Adds work instruction attached points.",
+        "operation_id": "",
+        "tags": [
+          "Work Instructions"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_workinstruction_file",
+    "display_name": "Work Instruction Attached File",
+    "description": "Upload File for Work Instruction Attachment",
+    "version": "v1",
+    "status": "",
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoint_count": 1,
+    "schema_count": 2,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/file",
+        "summary": "Uploads a file for further use during the creation of the Work Instruction Attachment.",
+        "operation_id": "uploadFileUsingPOST_1",
+        "tags": [
+          "Attached File"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/file",
+        "summary": "Download a file content by provided external file URL.",
+        "operation_id": "downloadFileGET_1",
+        "tags": [
+          "Attached File"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sapdme_wip",
+    "display_name": "Work in Process (WIP) Activities",
+    "description": "Perform production activities for work-in-process (WIP) products, such as storing, staging and consuming them by posting WIP requests to Extended Warehouse Management",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 4,
+    "schema_count": 13,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/storageRequest",
+        "summary": "Posts a work-in-process (WIP) storage request to EWM.",
+        "operation_id": "storageRequestPOST",
+        "tags": [
+          "WIP Handling"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/stagingRequest",
+        "summary": "Posts a work-in-process (WIP) staging request to EWM.",
+        "operation_id": "stagingRequestPOST",
+        "tags": [
+          "WIP Handling"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/goodsIssueRequest",
+        "summary": "Posts a WIP goods issue request to EWM.",
+        "operation_id": "goodsIssueRequestPOST",
+        "tags": [
+          "WIP Handling"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/storageRequest/discard",
+        "summary": "Discards a work-in-process (WIP) storage request.",
+        "operation_id": "discardWipStorage",
+        "tags": [
+          "WIP Handling"
+        ]
+      }
+    ]
+  }
+]

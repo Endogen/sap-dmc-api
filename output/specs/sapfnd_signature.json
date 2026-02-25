@@ -1,0 +1,450 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Electronic Signature",
+    "description": "A set of API end points for electronic signatures. These signature records become a permanent part of the product history and must be made available. Electronic signatures always have at least one context, a reason, and a signatory to decribe them.",
+    "version": "v1",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.0",
+  "x-sap-shortText": "Maintain and make available Electronic Signatures in Digital Manufacturing",
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/electronicsignature/v1",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Signature Logs",
+      "description": "Previously logged electronic signatures."
+    }
+  ],
+  "paths": {
+    "/signatureLogs": {
+      "get": {
+        "summary": "Retrieve a list of electronic signatures.",
+        "description": "Electronic signatures should be retrievable based on their context, context values, signatory, or any other property of a signature record. See [Samples](https://help.sap.com/docs/sap-digital-manufacturing/apis/electronic-signature-queries)",
+        "tags": [
+          "Signature Logs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values. For more information, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values. For more information, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "plant",
+                  "plant desc",
+                  "signatory",
+                  "signatory desc",
+                  "comment",
+                  "comment desc",
+                  "reason",
+                  "reason desc",
+                  "pass",
+                  "pass desc",
+                  "failureCause",
+                  "failureCause desc",
+                  "createdAt",
+                  "createdAt desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned. For more information, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "plant",
+                  "signatory",
+                  "comment",
+                  "reason",
+                  "pass",
+                  "failureCause",
+                  "createdAt"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline. For more information, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "contexts"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved signature records.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "A list of signature records.",
+                  "properties": {
+                    "@count": {
+                      "description": "The count of retrieved signatures if $count parameter is true.",
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SignatureService.signatureLogs"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SignatureService.SignatureContextValues": {
+        "title": "values",
+        "type": "object",
+        "required": [
+          "name",
+          "value"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The signature context value id.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 128,
+            "description": "The signature context value name."
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 128,
+            "description": "The signature context value."
+          }
+        },
+        "description": "The context values defined as a set of name and value pairs. These pairs uniquely describe or define the given context for this signature record."
+      },
+      "SignatureService.SignatureContexts": {
+        "title": "contexts",
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The signature context id.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "type": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "The type of this context object."
+          },
+          "objectId": {
+            "type": "string",
+            "maxLength": 412,
+            "nullable": true,
+            "description": "Optional unique identifier for this context object"
+          },
+          "values@count": {
+            "description": "The context values count if the $count parameter for context values is true.",
+            "$ref": "#/components/schemas/count"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignatureService.SignatureContextValues"
+            },
+            "description": "A list of context values defining a set of name value pairs. These pairs uniquely describe or define the given context for this signature record."
+          }
+        },
+        "description": "Provides a context for the signature record. A context is decribed by one or more values and a type."
+      },
+      "SignatureService.signatureLogs": {
+        "title": "Signature Logs",
+        "type": "object",
+        "required": [
+          "plant",
+          "signatory",
+          "reason"
+        ],
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The signature log id.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "plant": {
+            "type": "string",
+            "maxLength": 6,
+            "description": "The plant in which the signature is created."
+          },
+          "signatory": {
+            "type": "string",
+            "maxLength": 120,
+            "description": "The person or entity associated with this signature."
+          },
+          "comment": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true,
+            "description": "An optional comment for this signature."
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 100,
+            "description": "The reason for this signature."
+          },
+          "pass": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "A flag indicating if the signatory authentication and authorization succeeds or fails."
+          },
+          "failureCause": {
+            "type": "string",
+            "maxLength": 20,
+            "nullable": true,
+            "description": "The cause of failure, if the signatory authentication or authorization fails."
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "description": "Creation time stamp of the signature."
+          },
+          "contexts@count": {
+            "description": "The count if $count parameter for Contexts is true.",
+            "$ref": "#/components/schemas/count"
+          },
+          "contexts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignatureService.SignatureContexts"
+            },
+            "description": "The list of contexts for a signature."
+          }
+        },
+        "description": "The entity defining and describing an electronic signature."
+      },
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items. For more information, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items. For more information, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of item. For more information, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Search items by search phrases. For more information, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

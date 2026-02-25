@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint_v3')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint_v3')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint_v3')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint_v3')/$value"
+  },
+  "Name": "sapdme_setpoint_v3",
+  "ID": "sapdme_setpoint_v3",
+  "Title": "Setpoint Activities",
+  "ShortText": "Perform production-related tasks involving Setpoints",
+  "Description": null,
+  "Direction": null,
+  "Version": "v3",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1701446403670)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706269)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"17 Aug 2025\",\"notes\":\"Introduced header Parameter, enableStrictFilter\",\"state\":\"Active\",\"version\":\"v3\"},{\"date\":\"25 Aug 2024\",\"notes\":\"Replaced $top, $skip with page, size for REST calls\",\"state\":\"Active\",\"version\":\"v3\"},{\"date\":\"02 Dec 2023\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v3\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_setpoint_v3')/Versions"
+    }
+  }
+}

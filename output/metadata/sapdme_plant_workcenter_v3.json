@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v3')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v3')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v3')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v3')/$value"
+  },
+  "Name": "sapdme_plant_workcenter_v3",
+  "ID": "sapdme_plant_workcenter_v3",
+  "Title": "Work Center",
+  "ShortText": "Retrieves work centers for a given plant.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v3",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1763144302716)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706146)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Nov 2025\",\"notes\":\"The new version of retrieve work center API is provided.\",\"state\":\"Active\",\"version\":\"v3\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v3')/Versions"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processlot')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processlot')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processlot')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processlot')/$value"
+  },
+  "Name": "sapdme_processlot",
+  "ID": "sapdme_processlot",
+  "Title": "Process Lot",
+  "ShortText": "Perform create, read, update and delete activities on Process Lot",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1661155734683)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706318)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"31 Aug 2025\",\"notes\":\"The v1 process lot APIs for adding members to the process lot and starting a process lot are deprecated. Please use the v2 versions instead.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Mar 2025\",\"notes\":\"Start and Complete response correction.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 Feb 2023\",\"notes\":\"Minor documentation corrections/ updates.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processlot')/Versions"
+    }
+  }
+}

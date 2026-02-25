@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource_v2')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource_v2')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource_v2')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource_v2')/$value"
+  },
+  "Name": "sapdme_plant_resource_v2",
+  "ID": "sapdme_plant_resource_v2",
+  "Title": "Resource",
+  "ShortText": "Manage resources used to perform an operation in a manufacturing process",
+  "Description": null,
+  "Direction": null,
+  "Version": "v2",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1701446404283)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706602)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Nov 2025\",\"notes\":\"The mistake in the documentation has been fixed - the response code has been updated to reflect the correct behavior.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"17 August 2025\",\"notes\":\"The new version of retrieve, create, update resource API is provided.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 Feb 2025\",\"notes\":\"The POST and PATCH Resources API is extended by adding resource shifts to the request. The Get Resources API is extended by adding inventory IDs, batch numbers, and units of measure to the response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Aug 2024\",\"notes\":\"Add API to retrieve, create, update, and delete custom field definitions\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"Add following APIs: Resource delete, change the resource status, load a resource bin, unload a resource bin.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"The Get Resources API is extended by adding resource shifts and resource technical objects to the response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"02 Dec 2023\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource_v2')/Versions"
+    }
+  }
+}

@@ -1,0 +1,531 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "You can use this API service for integration scenarios with SAP Extended Warehouse Management such as material staging and goods receipt posting.",
+    "version": "v1",
+    "title": "Extended Warehouse Management Integration",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "x-sap-stateInfo": {
+    "state": "Decommissioned",
+    "decommissionedDate": "2024-11-23",
+    "successorApi": "https://api.sap.com/api/sapdme_staging/overview"
+  },
+  "host": "hostname",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Material Staging"
+    },
+    {
+      "name": "Goods Receipts"
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/ewmSingleOrderStaging": {
+      "post": {
+        "tags": [
+          "Material Staging"
+        ],
+        "summary": "Initiates a single-order staging request to Extended Warehouse Management",
+        "description": "Initiates a material staging request to Extended Warehouse Management for a single order in a given plant. This is now deprecated and will be decommissioned and retired from production in 2411 release, please use the successor API <a href=https://api.sap.com/api/sapdme_staging/resource/staging/stagingRequests</a>",
+        "operationId": "triggerEwmSingleOrderStagingByValidatedRequestUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EwmSingleOrderStagingRequestDto"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Staging request sent successfully.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    }
+  },
+  "securityDefinitions": {
+    "OauthClientCredentials": {
+      "type": "oauth2",
+      "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+      "flow": "application"
+    }
+  },
+  "definitions": {
+    "AdditionalParameter": {
+      "type": "object",
+      "properties": {
+        "parameterName": {
+          "type": "string",
+          "description": "Name of the custom parameter"
+        },
+        "parameterValue": {
+          "type": "string",
+          "description": "Value of the custom parameter"
+        }
+      },
+      "title": "AdditionalParameter"
+    },
+    "EwmSingleOrderStagingRequestDto": {
+      "type": "object",
+      "required": [
+        "plant",
+        "orderNumber"
+      ],
+      "properties": {
+        "plant": {
+          "type": "string",
+          "description": "Plant name",
+          "minLength": 1,
+          "maxLength": 6
+        },
+        "orderNumber": {
+          "type": "string",
+          "description": "The number of the shop order for which the staging is requested",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "fullRequest": {
+          "type": "boolean",
+          "description": "Choose if you want a full request to stage all components for the order, or you want to stage some of the components. To stage all components for the order, set it to 'true'. If set to 'false', you need to specify the components you want to stage."
+        },
+        "items": {
+          "type": "array",
+          "description": "Extended Warehouse Management single-order staging request item list",
+          "items": {
+            "$ref": "#/definitions/EwmSingleOrderStagingRequestItemDto"
+          }
+        }
+      },
+      "title": "EwmSingleOrderStagingRequestDto"
+    },
+    "EwmSingleOrderStagingRequestItemDto": {
+      "type": "object",
+      "required": [
+        "warehouseNumber",
+        "reservationItem",
+        "quantity",
+        "uom"
+      ],
+      "properties": {
+        "warehouseNumber": {
+          "type": "string",
+          "description": "The warehouse number of the requested component",
+          "minLength": 1,
+          "maxLength": 3
+        },
+        "reservationItem": {
+          "type": "string",
+          "description": "The reservation item number of the requested component. It is numeric only.",
+          "minLength": 1,
+          "maxLength": 4
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The quantity to request for the component. It can have a maximum of 3 decimal places."
+        },
+        "uom": {
+          "type": "string",
+          "description": "The base unit of measure of the requested component"
+        }
+      },
+      "title": "EwmSingleOrderStagingRequestItemDto"
+    },
+    "SfcStagingRequest": {
+      "type": "object",
+      "required": [
+        "sfc"
+      ],
+      "properties": {
+        "sfc": {
+          "type": "string",
+          "description": "Shop Floor Control number"
+        },
+        "sfcQuantity": {
+          "type": "number",
+          "description": "Specify the quantity of finished goods for which you want to stage materials. If not set, use the Shop Floor Control quantity."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "The internal unit of measure of the finished goods. Only base unit of measure is allowed. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "isoUnitOfMeasure": {
+          "type": "string",
+          "description": "The ISO unit of measure of the finished goods. Only base unit of measure is allowed. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "commercialUnitOfMeasure": {
+          "type": "string",
+          "description": "The commercial unit of measure of the finished goods. Only base unit of measure is allowed. The commercial unit is the one displayed in the user interface. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "operation": {
+          "type": "string",
+          "description": "Shop Floor Control related operation for the staged materials. Sequence of priority: forSpecificOperationActivities > forRemainingOperationActivities > operation"
+        },
+        "forSpecificOperationActivities": {
+          "type": "array",
+          "description": "Specify the operation activity for staged materials. Sequence of priority: forSpecificOperationActivities > forRemainingOperationActivities > operation",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forRemainingOperationActivities": {
+          "description": "Specify how to stage materials for the remaining operation activities based on startOperationActivity. Sequence of priority: forSpecificOperationActivities > forRemainingOperationActivities > operation",
+          "$ref": "#/definitions/StagingForRemainingStepConfiguration"
+        }
+      },
+      "title": "SfcStagingRequest"
+    },
+    "StagingForRemainingStepConfiguration": {
+      "type": "object",
+      "required": [
+        "startOperationActivity",
+        "startOperationActivityIncluded"
+      ],
+      "properties": {
+        "startOperationActivity": {
+          "type": "string",
+          "description": "Specify the operation activity to start material staging with."
+        },
+        "startOperationActivityIncluded": {
+          "type": "boolean",
+          "description": "If set to \"false\", staging starts with the operation activity after startOperationActivity. By default it is \"true\".",
+          "default": true
+        }
+      },
+      "title": "StagingForRemainingStepConfiguration"
+    },
+    "OrderStagingRequest": {
+      "type": "object",
+      "required": [
+        "orderNumber"
+      ],
+      "properties": {
+        "orderNumber": {
+          "type": "string",
+          "description": "Order number",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Specify the quantity of finished goods for which you want to stage materials. If not set, use the order quantity."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "The internal unit of measure of the finished goods. Only base unit of measure is allowed. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "isoUnitOfMeasure": {
+          "type": "string",
+          "description": "The ISO unit of measure of the finished goods. Only base unit of measure is allowed. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "commercialUnitOfMeasure": {
+          "type": "string",
+          "description": "The commercial unit of measure of the finished goods. Only base unit of measure is allowed. The commercial unit is the one displayed in the user interface. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "operation": {
+          "type": "string",
+          "description": "Specify the operation for staged materials."
+        },
+        "operationActivity": {
+          "type": "string",
+          "description": "Specify the operation activity for staged materials, has higher priority than operation parameter."
+        },
+        "components": {
+          "type": "array",
+          "description": "Specify the materials you want to stage.",
+          "items": {
+            "$ref": "#/definitions/EwmStagingRequestComponentItem"
+          }
+        }
+      },
+      "title": "OrderStagingRequest"
+    },
+    "EwmStagingRequestComponentItem": {
+      "type": "object",
+      "required": [
+        "material",
+        "quantity",
+        "plannedDeliverDatetime"
+      ],
+      "properties": {
+        "material": {
+          "type": "string",
+          "description": "Material name"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Quantity to stage"
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "The internal unit of measure of the component you want to request. Only base unit of measure is allowed. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "isoUnitOfMeasure": {
+          "type": "string",
+          "description": "The ISO unit of measure of the component you want to request. Only base unit of measure is allowed. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "commercialUnitOfMeasure": {
+          "type": "string",
+          "description": "The commercial unit of measure of the component you want to request. Only base unit of measure is allowed. The commercial unit is the one displayed in the user interface. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "plannedDeliverDatetime": {
+          "type": "string",
+          "example": "2017-02-14T20:54:21+00:00",
+          "description": "Planned delivery date time of the staged material in UTC only. Format(ISO-8601): yyyy-MM-dd'T'HH:mm\u00b100:00"
+        }
+      },
+      "title": "EwmStagingRequestComponentItem"
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Contains a technical code for the error."
+        },
+        "correlationId": {
+          "type": "string",
+          "description": "The correlation ID used for debugging and tracing corresponding request."
+        },
+        "errorMessageKey": {
+          "type": "string",
+          "description": "Internal error message key, if any"
+        },
+        "message": {
+          "type": "string",
+          "description": "Error message detail"
+        },
+        "technicalMessage": {
+          "type": "string",
+          "description": "Contains technical reason for the error."
+        },
+        "timestamp": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp"
+        }
+      },
+      "title": "ErrorResponse",
+      "description": "Error response. "
+    },
+    "EwmGoodsReceiptDto": {
+      "type": "object",
+      "required": [
+        "orderNumber",
+        "items",
+        "plant"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "description": "The finished goods, co-products and by-products for which the goods receipt is performed",
+          "items": {
+            "$ref": "#/definitions/EwmGoodsReceiptItemDto"
+          }
+        },
+        "orderNumber": {
+          "type": "string",
+          "description": "The order number for which the goods receipt is performed",
+          "maxLength": 12
+        },
+        "plant": {
+          "type": "string",
+          "description": "The plant name of the order",
+          "maxLength": 4
+        },
+        "warehouseNumber": {
+          "type": "string",
+          "description": "The warehouse number to which the inventory is added",
+          "maxLength": 3
+        },
+        "additionalParameters": {
+          "type": "array",
+          "description": "The additional custom parameters to be added to the goods receipt posting",
+          "items": {
+            "$ref": "#/definitions/AdditionalParameter"
+          },
+          "maxItems": 100
+        }
+      },
+      "title": "EwmGoodsReceiptRequest"
+    },
+    "EwmGoodsReceiptItemDto": {
+      "type": "object",
+      "required": [
+        "material",
+        "packingMaterial",
+        "quantity"
+      ],
+      "properties": {
+        "sfc": {
+          "type": "string",
+          "description": "The shop floor control number of the product for which goods receipt is posted. It's a unique number that is used to track a product in its whole lifecycle. \nWhen provided, inventory is created in SAP Digital Manufacturing and the goods receipt request is posted to Extended Warehouse Management. Otherwise, only the goods receipt request is posted to Extended Warehouse Management. \nIf inventory is created in SAP Digital Manufacturing, the current version of the material is used by default.",
+          "maxLength": 128
+        },
+        "batchNumber": {
+          "type": "string",
+          "description": "The batch number of the product",
+          "maxLength": 10
+        },
+        "handlingUnitNumber": {
+          "type": "string",
+          "description": "The handling unit number of the product",
+          "maxLength": 20
+        },
+        "isoUnitOfMeasure": {
+          "type": "string",
+          "description": "The ISO unit of measure of the product. The product can be finished goods, co-products or by-products. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty.",
+          "maxLength": 3
+        },
+        "commercialUnitOfMeasure": {
+          "type": "string",
+          "description": "The commercial unit of measure of the product. The product can be finished goods, co-products or by-products. The commercial unit is the one displayed in the user interface. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty."
+        },
+        "manufacturingDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-09-23 01:23:59",
+          "description": "The production date time of the order in UTC. Format: yyyy-MM-dd HH:mm:ss"
+        },
+        "material": {
+          "type": "string",
+          "description": "The material name of the product",
+          "maxLength": 40
+        },
+        "orderItemNumber": {
+          "type": "number",
+          "description": "The order item number of the product",
+          "maxLength": 4
+        },
+        "packingMaterial": {
+          "type": "string",
+          "description": "The packaging material name of the product",
+          "maxLength": 40
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The number of products for which the goods receipt is performed. The quantity value can only be 1 when serial number is filled.",
+          "maximum": 9999999999999
+        },
+        "serialNumber": {
+          "type": "array",
+          "description": "The serial number of the product. You can only specify one serial number for each goods receipt.",
+          "items": {
+            "type": "string",
+            "maxLength": 18
+          }
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "The internal unit of measure of the product. The product can be finished goods, co-products or by-products. When value is provided for any one of the three fields 'isoUnitOfMeasure', 'unitOfMeasure' and 'commercialUnitOfMeasure', the other two fields must be kept empty.",
+          "maxLength": 3
+        },
+        "additionalParameters": {
+          "type": "array",
+          "description": "The additional custom parameters to be added to the goods receipt posting.",
+          "items": {
+            "$ref": "#/definitions/AdditionalParameter"
+          },
+          "maxItems": 100
+        }
+      },
+      "title": "EwmGoodsReceiptRequestItem"
+    }
+  },
+  "x-sap-shortText": "Perform logistics related activities in Extended Warehouse Management integration such as material staging and goods receipt",
+  "x-servers": [
+    {
+      "url": "https://api.{regionHost}/inventory/v1",
+      "description": "Base URL",
+      "templates": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication token server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ewm_integration')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ewm_integration')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ewm_integration')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ewm_integration')/$value"
+  },
+  "Name": "sapdme_ewm_integration",
+  "ID": "sapdme_ewm_integration",
+  "Title": "Extended Warehouse Management Integration",
+  "ShortText": "Perform logistics related activities in Extended Warehouse Management integration such as material staging and goods receipt",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218506)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706794)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "DECOMMISSIONED",
+  "ChangeLog": "[{\"date\":\"23 Nov 2024\",\"notes\":\"Decommissioned the endpoint to post EWM single order staging: /ewmSingleOrderStaging with 2411 release.\",\"state\":\"Decommissioned\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"1) Deleted the endpoint POST /ewmStaging that has been decommissioned. 2) Deleted the endpoint POST /ewmGoodsReceipt that has been decommissioned.\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"2 Dec 2023\",\"notes\":\"Decommissioned the endpoint to post EWM goods receipt: /ewmGoodsReceipt with 2311 release. It will be removed from the Business Accelerator Hub on December 31, 2023. Suggest to use the successor API endpoint <a href=https://api.sap.com/api/sapdme_inventory/resource>/inventory/ewmGoodsReceipts<\\/a>.\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"11 Feb 2023\",\"notes\":\"Deprecated the endpoints to post /ewmSingleOrderStaging and /ewmStaging. Use new <a href=https://api.sap.com/api/sapdme_staging/resource>/staging/stagingRequest<\\/a>.\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Deprecated an endpoint to post EWM goods receipt: /ewmGoodsReceipt. Use new <a href=https://api.sap.com/api/sapdme_inventory/resource>/inventory/ewmGoodsReceipts<\\/a>.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 Aug 2021\",\"notes\":\"Add new API for Extended Warehouse Management staging request\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"22 May 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ewm_integration')/Versions"
+    }
+  }
+}

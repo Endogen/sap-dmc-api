@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_sfc')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_sfc')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_sfc')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_sfc')/$value"
+  },
+  "Name": "sapdme_sfc",
+  "ID": "sapdme_sfc",
+  "Title": "Shop Floor Control Production Activities",
+  "ShortText": "Perform production activities on a Shop Floor Control, such as start, complete, serialize, relabel, split, merge, scrap and set quantity",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218493)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706750)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"23 Oct 2025\",\"notes\":\"Deprecated the v1 APIs related to /sfcdetail, worklist/orders and worklist/sfcs in favor of the new v2 APIs.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 Aug 2025\",\"notes\":\"Added new boolean query parameter includeSfcDetails to /worklist/orders API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 Aug 2025\",\"notes\":\"Added new query parameter sfcStatuses to /worklist/orders,/worklist/orders/$count,/worklist/sfcs,/worklist/sfcs/$count APIs.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Apr 2025\",\"notes\":\"Added query parameter allRouterVersions for /sfcDetail API to the public api hub.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"09 Aug 2024\",\"notes\":\"Added /sfcData and  /invalidate endpoints to the public api hub.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"28 Mar 2024\",\"notes\":\"Removed documented return of HTTP 204 for worklist/sfcs endpoint. The code never returned 204 and the documentation was incorrect.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Dec 2023\",\"notes\":\"Clarified wording in Work List API descriptions.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 Jun 2023\",\"notes\":\"Added new parameter plant to alternateResource endpoint\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"23 May 2023\",\"notes\":\"Added parameter routingStepId to request to merge the SFC on relaxed routing; Added API for placing and releasing hold on one or more SFCs; Added: new parameter to /sfc/worklist/xxxx end points to handle process industry Orders/SFCs.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Added: new parameter to process SFC requests asynchronously.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Added: endpoints SFC routing step activity, get in work SFCs at a resource, http conflict error code to existing endpoints; Adjusted: moved operation scheduled start date, operation scheduled completion date to be part of step/operation data.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Jun 2022\",\"notes\":\"Added API for SFC to update alternate Resource. Added operation scheduled start date and operation scheduled completion date to the responses of sfcdetail and worklistresponse\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2022\",\"notes\":\"Adding sfcStep.done to the response of GET sfcdetail\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"06 Apr 2022\",\"notes\":\"Added API for SFC Signoff\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"13 Nov 2021\",\"notes\":\"Added split quantity source parameter to split and a routing step parameter to split, serialize, and relabel an SFC.  Added Endpoint for SFC batch update.  Added defaultSfcBatchId to worklist and SFC detail related endpoints.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 Aug 2021\",\"notes\":\"Added new parameters to split SFC API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"22 May 2021\",\"notes\":\"Added API for setting SFC quantity\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"13 Feb 2021\",\"notes\":\"Added API for triggering an SFC selection event.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"6 Nov 2020\",\"notes\":\"Added API for split and merge of an SFC.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"15 Aug 2020\",\"notes\":\"Added API for serialize and relabel of an SFC.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_sfc')/Versions"
+    }
+  }
+}

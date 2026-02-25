@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdmi_vishleshki')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdmi_vishleshki')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdmi_vishleshki')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdmi_vishleshki')/$value"
+  },
+  "Name": "sapdmi_vishleshki",
+  "ID": "sapdmi_vishleshki",
+  "Title": "Overall Equipment Effectiveness",
+  "ShortText": "Obtain data from SAP Digital Manufacturing for insights",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/oee/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1645288178576)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706618)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"2 Dec 2023\",\"notes\":\"Updated Information in API Docs\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Date-time handling for public api \",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Added Quality Losses API \",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2022\",\"notes\":\"Added additional optional parameter information\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 February 2022\",\"notes\":\"First Version\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 May 2023\",\"notes\":\"Updated Information in API Docs\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdmi_vishleshki')/Versions"
+    }
+  }
+}

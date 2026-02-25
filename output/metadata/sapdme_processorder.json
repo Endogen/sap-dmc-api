@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder')/$value"
+  },
+  "Name": "sapdme_processorder",
+  "ID": "sapdme_processorder",
+  "Title": "Process Order Execution",
+  "ShortText": "Perform production activities for a process order",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218363)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706301)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 Feb 2026\",\"notes\":\"We've deprecated the v1 version of the API for updating phase start time. We recommend using the V2 version of the API instead.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 May 2025\",\"notes\":\"Added UOM limitation description in the API response description.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"Added an API to cancel goods issues, updated Goods Issue API to include dataFields in the payload.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2023\",\"notes\":\"Deprecating the goods issue summary v1 API and enlisting goods issue summary v2 in place of that.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 May 2023\",\"notes\":\"Update 408 and 409 error response code for goods issue endpoint\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 Feb 2023\",\"notes\":\"Deprecated Start/Complete phase and introduced goods issue summary endpoint\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Deprecated endpoint to post activity confirmation(/activity/confirm). Use new API Activity Confirmation <a href=https://api.sap.com/api/sapdme_activityConfirmation/resource>/v1/confirm<\\/a>\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 May 2022\",\"notes\":\"Added final confirmation flag for reporting final activity confirmation and completing a phase\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 Feb 2022\",\"notes\":\"Added final confirmation flag to send confirmation when completing a phase\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 Aug 2021\",\"notes\":\"Added API to update start and complete phase time\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Feb 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder')/Versions"
+    }
+  }
+}

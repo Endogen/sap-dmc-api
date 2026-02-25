@@ -1,0 +1,267 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Labor Management",
+    "description": "View and evaluate workforce skill profiles under a supervisor for a plant to support efficient labor planning and skill-based task assignment with optional filtering for targeted queries.",
+    "version": "v1",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "x-sap-stateInfo": {
+    "state": "Active"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.01",
+  "x-sap-shortText": "Manage labor information in SAP Digital Manufacturing",
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/labor/v1",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization.",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization.",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Labor Skills"
+    }
+  ],
+  "paths": {
+    "/LaborSkills": {
+      "get": {
+        "tags": [
+          "Labor Skills"
+        ],
+        "summary": "Retrieves the list of labor skills.",
+        "description": "Retrieves the list of labor skills available in the system.",
+        "operationId": "getLaborSkillsUsingGET",
+        "parameters": [
+          {
+            "name": "plant",
+            "description": "Plant for which the request is executed",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "supervisorId",
+            "description": "Supervisor for which the request is executed",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values. For more information, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Labor skills retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "A list of labor skill records.",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/LaborSkillResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Internal error message"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Contains a correlation ID for the error."
+          },
+          "message": {
+            "type": "string",
+            "description": "Contains additional information if any."
+          }
+        },
+        "title": "ErrorResponse",
+        "description": "Error response"
+      },
+      "LaborSkillResponse": {
+        "type": "object",
+        "properties": {
+          "odata.context": {
+            "description": "Odata Identifier for the entity",
+            "type": "string"
+          },
+          "value": {
+            "type": "array",
+            "description": "List of Labor Skills.",
+            "items": {
+              "$ref": "#/components/schemas/LaborSkill"
+            }
+          }
+        }
+      },
+      "LaborSkill": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "givenName": {
+            "type": "string"
+          },
+          "familyName": {
+            "type": "string"
+          },
+          "badgeNumber": {
+            "type": "string"
+          },
+          "qualifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "certifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Skill"
+            }
+          },
+          "customFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomField"
+            }
+          }
+        }
+      },
+      "Skill": {
+        "type": "object",
+        "properties": {
+          "skillName": {
+            "type": "string"
+          },
+          "groupName": {
+            "type": "string"
+          },
+          "actualRating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "expectedRating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isPrimary": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CustomField": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

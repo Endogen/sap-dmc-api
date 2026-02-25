@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datacollection')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datacollection')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datacollection')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datacollection')/$value"
+  },
+  "Name": "sapdme_datacollection",
+  "ID": "sapdme_datacollection",
+  "Title": "Data Collection",
+  "ShortText": "Manage data collections",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218500)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706777)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"17 Aug 2025\",\"notes\":\"Added defaultValueName and listTypeDataField in DataCollectionParameter and removed FORMULA enum from dcParameterType.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"17 Aug 2025\",\"notes\":\"Added POST: /v1/nonwip/uploadFile Public API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"17 Aug 2025\",\"notes\":\"Updated response schemas for POST: /standalone/log and GET: /v1/nonwip/measurements.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"18 May 2025\",\"notes\":\"Added GET: /v1/nonwip/measurements Public API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"18 May 2025\",\"notes\":\"Added GET: /nonwip/uncollectedParameters Public API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"18 May 2025\",\"notes\":\"Updated the format of currentDateTime and modifiedDateTime for GET /groups response, POST /groups response, PUT /groups request and response, GET /measurements response to keep in sync with the API response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 Feb 2025\",\"notes\":\"Added /standalone/log api for standalone / non-WIP data collection, Added 'isStandalone' property in GET /groups API response, Added 'isStandalone' property in POST /groups API request and response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Nov 2024\",\"notes\":\"Added /downloadLoggedAttachments api for downloading the file, added 'attachment' property in GET /measurements API response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"Added a 'postingDateTime' property in the POST log request payload, exposed 'uncollectedParameters' API, deprecated GET /parameters api, added few validations in GET /measurements.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2022\",\"notes\":\"Added DC measurements read end point\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"15 Aug 2020\",\"notes\":\"First Version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_datacollection')/Versions"
+    }
+  }
+}

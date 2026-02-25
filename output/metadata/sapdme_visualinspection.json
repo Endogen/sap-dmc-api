@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_visualinspection')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_visualinspection')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_visualinspection')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_visualinspection')/$value"
+  },
+  "Name": "sapdme_visualinspection",
+  "ID": "sapdme_visualinspection",
+  "Title": "Visual Inspection",
+  "ShortText": "Manage visual inspection objects to embed AI-assisted processes on your shop floor.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "ODATAV4",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1716560580576)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706610)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"25 May 2024\",\"notes\":\"Add API to search for Visual Inspections using the business context\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_visualinspection')/Versions"
+    }
+  }
+}

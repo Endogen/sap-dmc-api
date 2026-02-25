@@ -1,0 +1,3069 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Problem-Solving Process",
+    "description": "A problem-solving process is created in reference to a specific defect. You define containment actions, identify root causes, and specify corrective and preventive measures for a problem-solving process, using either the standard 8D methodology or a custom methodology.",
+    "version": "v1",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.0",
+  "x-sap-shortText": "Allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution",
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/odata/v4/ProblemSolvingProcessService",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing Cloud is provisioned for your organization",
+          "enum": [
+            "test.eu20.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap"
+          ],
+          "default": "test.eu20.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu20.hana.ondemand.com"
+          ],
+          "default": "eu20.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Problem-Solving Process"
+    },
+    {
+      "name": "Root Cause"
+    },
+    {
+      "name": "Step"
+    },
+    {
+      "name": "Step Comments"
+    },
+    {
+      "name": "Tasks"
+    },
+    {
+      "name": "Team Members"
+    }
+  ],
+  "paths": {
+    "/ProblemSolvingProcess": {
+      "get": {
+        "summary": "Retrieves a list of problem-solving processes.",
+        "description": "Retrieves a list of problem-solving processes",
+        "tags": [
+          "Problem-Solving Process"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "processUUID",
+                  "processId",
+                  "processDescription",
+                  "methodologyId",
+                  "scenarioId",
+                  "processStatusId",
+                  "confirmationStatusId"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_Step",
+                  "to_SourceReference",
+                  "to_Comments",
+                  "to_StepComments",
+                  "to_ProcessingStatuses",
+                  "to_ConfirmationStatus"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "processQNRefUUID",
+                  "processRefUUID"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved a list of problem-solving processes successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "ProblemSolvingProcess",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GetProblemSolvingProcess"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a problem-solving process.",
+        "description": "Creates a problem-solving process",
+        "tags": [
+          "Problem-Solving Process"
+        ],
+        "requestBody": {
+          "description": "Creates a problem-solving process in reference to a defect created in an external system.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProblemSolvingProcess"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "A problem-solving process has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetProblemSolvingProcess"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ProblemSolvingProcess('{processId}')": {
+      "parameters": [
+        {
+          "description": "Unique identifier of a problem-solving process",
+          "in": "path",
+          "name": "processId",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "maxLength": 12
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves all values of a problem-solving process.",
+        "description": "Retrieves all values of a problem-solving process",
+        "tags": [
+          "Problem-Solving Process"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "processUUID",
+                  "processId",
+                  "processDescription",
+                  "methodologyId",
+                  "scenarioId",
+                  "processStatusId",
+                  "confirmationStatusId"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_Step",
+                  "to_SourceReference",
+                  "to_Comments",
+                  "to_StepComments",
+                  "to_ProcessingStatuses",
+                  "to_ConfirmationStatus"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved all values of a problem-solving process successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetProblemSolvingProcess"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates a problem-solving process.",
+        "description": "Updates a problem-solving process",
+        "tags": [
+          "Problem-Solving Process"
+        ],
+        "requestBody": {
+          "description": "Updates values of a problem-solving process header.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProblemSolvingProcess"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Problem-solving process has been successfully updated."
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a problem-solving process.",
+        "description": "Deletes a problem-solving process",
+        "tags": [
+          "Problem-Solving Process"
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted a problem-solving process successfully."
+          },
+          "400": {
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/RootCause": {
+      "get": {
+        "summary": "Retrieves all values of each root cause from all the problem-solving processes.",
+        "description": "Retrieves all values of each root cause from all the problem-solving processes",
+        "tags": [
+          "Root Cause"
+        ],
+        "parameters": [
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "rootCauseUUID",
+                  "stepUUID",
+                  "processUUID",
+                  "rootCauseId",
+                  "rootCauseDescription",
+                  "rootCauseDetailDescription",
+                  "rootCauseType",
+                  "rootCauseCode",
+                  "rootCauseCategory",
+                  "rootCauseCodeGroup",
+                  "codeGroupCatalogId",
+                  "sdmFolderId",
+                  "analysisMethodId",
+                  "headerUUID",
+                  "stepTypeId",
+                  "processId"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "rootCauseUUID",
+                  "stepUUID",
+                  "processUUID",
+                  "rootCauseId",
+                  "rootCauseDescription",
+                  "rootCauseDetailDescription",
+                  "rootCauseType",
+                  "rootCauseCode",
+                  "rootCauseCategory",
+                  "rootCauseCodeGroup",
+                  "codeGroupCatalogId",
+                  "sdmFolderId",
+                  "analysisMethodId",
+                  "headerUUID",
+                  "stepTypeId",
+                  "processId"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_Step",
+                  "to_CodeGroupCodeRelations",
+                  "to_CodeGroup"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved all values of each root cause from all the problem-solving processes successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GetRootCause"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a root cause for a problem-solving process.",
+        "description": "Creates a root cause for a problem-solving process",
+        "tags": [
+          "Root Cause"
+        ],
+        "requestBody": {
+          "description": "Creates a root cause in the D4 step of the problem-solving process.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRootCause"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "A root cause for the problem-solving process has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetRootCause"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RootCause(rootCauseUUID={rootCauseUUID},stepUUID={stepUUID})": {
+      "parameters": [
+        {
+          "description": "Universal unique identifier of root cause",
+          "in": "path",
+          "name": "rootCauseUUID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "Universal unique identifier for step",
+          "in": "path",
+          "name": "stepUUID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves all values of a root cause of a problem-solving process.",
+        "description": "Retrieves all values of a root cause of a problem-solving proces.",
+        "tags": [
+          "Root Cause"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "rootCauseUUID",
+                  "stepUUID",
+                  "processUUID",
+                  "rootCauseId",
+                  "rootCauseDescription",
+                  "rootCauseDetailDescription",
+                  "rootCauseType",
+                  "rootCauseCode",
+                  "rootCauseCategory",
+                  "rootCauseCodeGroup",
+                  "codeGroupCatalogId",
+                  "sdmFolderId",
+                  "analysisMethodId",
+                  "headerUUID",
+                  "stepTypeId",
+                  "processId"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_Step",
+                  "to_CodeGroupCodeRelations",
+                  "to_CodeGroup"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved all values of the root cause of the problem-solving process successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetRootCause"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates a root cause of a problem-solving process.",
+        "description": "Updates a root cause of a problem-solving process",
+        "tags": [
+          "Root Cause"
+        ],
+        "requestBody": {
+          "description": "Updates specific details of the root cause in the D4 step of the problem-solving process, such as, description, type, code, category, catalog.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRootCause"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Root cause of the problem-solving process has been successfully updated."
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Step(stepTypeId='{stepTypeId}',processId='{processId}')": {
+      "parameters": [
+        {
+          "description": "Unique identifier for step type",
+          "in": "path",
+          "name": "stepTypeId",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "maxLength": 8
+          }
+        },
+        {
+          "description": "Unique identifier for a problem-solving process",
+          "in": "path",
+          "name": "processId",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "maxLength": 12
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves all values of a problem-solving process step.",
+        "description": "Retrieves all values of a problem-solving process step",
+        "tags": [
+          "Step"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "stepUUID",
+                  "stepTypeId",
+                  "methodologyUUID",
+                  "processId",
+                  "processUUID",
+                  "stepStatusId",
+                  "stepReviewStatusId",
+                  "stepTypeDescription",
+                  "hideRelatedProcessesFacet",
+                  "actualStepTypeId",
+                  "sourceStepTypeId",
+                  "requestedStartDate",
+                  "requestedEndDate",
+                  "actualStartDate",
+                  "actualEndDate",
+                  "sdmFolderId",
+                  "to_ProblemSolvingProcess_processUUID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_ProblemSolvingProcess",
+                  "to_StepType",
+                  "to_ProblemSolvingStepTemplate",
+                  "to_StepProcessingStatus",
+                  "to_Comments",
+                  "to_Tasks",
+                  "to_CreatedBy",
+                  "to_ModifiedBy",
+                  "to_TeamMembers",
+                  "to_RootCauses"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved all values of the problem-solving process step successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetStep"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates a step of a problem-solving process.",
+        "description": "Updates a step of a problem-solving process",
+        "tags": [
+          "Step"
+        ],
+        "requestBody": {
+          "description": "Updates a task within the step, statuses of the step, requested start date, requested end date, and other relevant details of the step of the problem-solving process.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStep"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Problem-solving process step has been successfully updated."
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/StepComments": {
+      "post": {
+        "summary": "Creates a comment for a problem-solving process step.",
+        "description": "Creates a comment for a problem-solving process step",
+        "tags": [
+          "Step Comments"
+        ],
+        "requestBody": {
+          "description": "Creates a comment for a step of the problem-solving process.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStepComments"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "A comment for the problem-solving process has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetStepComments"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Tasks": {
+      "get": {
+        "summary": "Retrieves all tasks from each step in all problem-solving processes.",
+        "description": "Retrieves all tasks from each step in all problem-solving processes",
+        "tags": [
+          "Tasks"
+        ],
+        "parameters": [
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "sourceId",
+                  "taskTypeId",
+                  "taskOriginId",
+                  "originTypeId",
+                  "sourceUUID",
+                  "rootCauseUUID",
+                  "processor",
+                  "plannedStartDate",
+                  "plannedEndDate",
+                  "descriptionShort",
+                  "descriptionLong",
+                  "codeId",
+                  "codeGroupId",
+                  "codeGroupCatalogId",
+                  "parentTaskNumber",
+                  "effectiveness",
+                  "actualStartDate",
+                  "actualEndDate",
+                  "taskProcessingStatusId",
+                  "taskPlanningStatusId",
+                  "isMarkedForDeletion",
+                  "sdmFolderId",
+                  "isLongTerm",
+                  "visibleTo",
+                  "relationId",
+                  "isBlocked",
+                  "maxDeletionDate",
+                  "isInCreateMode",
+                  "isVisibleToAvailable",
+                  "noOfSubTasks",
+                  "parentTask_ID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "processId",
+                  "stepTypeId",
+                  "taskNumber",
+                  "sourceId",
+                  "taskTypeId",
+                  "taskOriginId",
+                  "originTypeId",
+                  "sourceUUID",
+                  "rootCauseUUID",
+                  "processor",
+                  "plannedStartDate",
+                  "plannedEndDate",
+                  "descriptionShort",
+                  "descriptionLong",
+                  "codeId",
+                  "codeGroupId",
+                  "codeGroupCatalogId",
+                  "parentTaskNumber",
+                  "effectiveness",
+                  "actualStartDate",
+                  "actualEndDate",
+                  "taskProcessingStatusId",
+                  "taskPlanningStatusId",
+                  "isMarkedForDeletion",
+                  "sdmFolderId",
+                  "isLongTerm",
+                  "visibleTo",
+                  "relationId",
+                  "isBlocked",
+                  "maxDeletionDate",
+                  "isInCreateMode",
+                  "isVisibleToAvailable",
+                  "noOfSubTasks",
+                  "parentTask_ID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_Step",
+                  "to_ProblemSolvingProcess",
+                  "to_StepType",
+                  "to_RootCause",
+                  "to_RootCauseVH",
+                  "to_CreatedBy",
+                  "to_ModifiedBy",
+                  "to_Processor",
+                  "to_TeamMember",
+                  "to_CodeGroupCodeRelations",
+                  "to_CodeGroup"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved all tasks from each step in all problem-solving processes successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GetTasks"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a task in a problem-solving process step.",
+        "description": "Creates a task in a problem-solving process step",
+        "tags": [
+          "Tasks"
+        ],
+        "requestBody": {
+          "description": "Creates a task in a problem-solving process step. The task can be a containment, corrective, or preventive action, depending on the specific step for which tasks are being created.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTasks"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "A task within the problem-solving process has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTasks"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')": {
+      "parameters": [
+        {
+          "description": "Unique identifier of a problem-solving process",
+          "in": "path",
+          "name": "processId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "description": "Unique identifier for a step type within a problem-solving process",
+          "in": "path",
+          "name": "stepTypeId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "description": "Unique identifier of a task",
+          "in": "path",
+          "name": "taskNumber",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves all values of a task within a step of a problem-solving process.",
+        "description": "Retrieves all values of a task within a step of a problem-solving proces.",
+        "tags": [
+          "Tasks"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved all values of the task from the problem-solving process step successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTasks"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates a task within a step of a problem-solving process.",
+        "description": "Updates a task within a step of a problem-solving process",
+        "tags": [
+          "Tasks"
+        ],
+        "requestBody": {
+          "description": "Updates specific details of the task, such as, the task statuses, task descriptions, and so on.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTasks"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Task of the problem-solving process has been successfully updated."
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TeamMembers": {
+      "get": {
+        "summary": "Retrieves all the team members from all the problem-solving processes.",
+        "description": "Retrieves all the team members from all the problem-solving processes",
+        "tags": [
+          "Team Members"
+        ],
+        "parameters": [
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "teamMemberUUID",
+                  "stepUUID",
+                  "stepTypeId",
+                  "processId",
+                  "processUUID",
+                  "teamMemberRoleUUID",
+                  "teamMemberRoleId",
+                  "teamMemberTypeId",
+                  "teamMemberId",
+                  "teamMemberEmail",
+                  "isContactPerson",
+                  "sendEmail",
+                  "isDeleted",
+                  "userUUID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "teamMemberUUID",
+                  "stepUUID",
+                  "stepTypeId",
+                  "processId",
+                  "processUUID",
+                  "teamMemberRoleUUID",
+                  "teamMemberRoleId",
+                  "teamMemberTypeId",
+                  "teamMemberId",
+                  "teamMemberEmail",
+                  "isContactPerson",
+                  "sendEmail",
+                  "isDeleted",
+                  "userUUID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_Step",
+                  "to_ProblemSolvingProcess",
+                  "to_BusinessUser"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved all the team members from all the problem-solving processes successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GetTeamMembers"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Adds team members to the D1 step of a problem-solving process.",
+        "description": "Adds team members to the D1 step of a problem-solving process",
+        "tags": [
+          "Team Members"
+        ],
+        "requestBody": {
+          "description": "Adds customer and supplier team members to the D1 step of the problem-solving process.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTeamMembers"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Team members have been successfully added to the D1 step of the problem-solving process.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTeamMembers"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')": {
+      "parameters": [
+        {
+          "description": "Unique identifier for a step type within a problem-solving process",
+          "in": "path",
+          "name": "stepTypeId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "description": "Unique identifier of a problem-solving process",
+          "in": "path",
+          "name": "processId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "description": "Unique identifier for a team member. This refers to the user ID of the user created in the Identity Authentication.",
+          "in": "path",
+          "name": "teamMemberId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves all values of a team member of a problem-solving process.",
+        "description": "Retrieves all values of a team member of a problem-solving process",
+        "tags": [
+          "Team Members"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "teamMemberUUID",
+                  "stepUUID",
+                  "stepTypeId",
+                  "processId",
+                  "processUUID",
+                  "teamMemberRoleUUID",
+                  "teamMemberRoleId",
+                  "teamMemberTypeId",
+                  "teamMemberId",
+                  "teamMemberEmail",
+                  "isContactPerson",
+                  "sendEmail",
+                  "isDeleted",
+                  "userUUID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_Step",
+                  "to_ProblemSolvingProcess",
+                  "to_BusinessUser"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved all values of the team member of the problem-solving process .",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTeamMembers"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates team members of a problem-solving process.",
+        "description": "Updates team members of a problem-solving process",
+        "tags": [
+          "Team Members"
+        ],
+        "requestBody": {
+          "description": "Updates specific details of a team member of the problem-solving process, such as, their role, type, whether they are a designated contact person, and their ability to receive emails, and so on.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTeamMembers"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Team members of the problem-solving process have been successfully updated."
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetProblemSolvingProcess": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Unique universal identifier of a problem-solving process",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving process"
+          },
+          "processDescription": {
+            "type": "string",
+            "description": "Description of a problem-solving process"
+          },
+          "processLongDescription": {
+            "type": "string",
+            "description": "Detailed description of a problem-solving process"
+          },
+          "methodologyId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving methodology. You obtain the methodologyId when you define the methodology using the Define Problem-Solving Methodologies app."
+          },
+          "methodologyUUID": {
+            "type": "string",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "scenarioId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving scenario. The scenarioID can be one of the following:\n01 - Supplier Problem-Solving\n02 - Customer Problem-Solving\n03 - Internal Problem-Solving"
+          },
+          "processStatusId": {
+            "type": "string",
+            "description": "Unique identifier of processing status of a problem-solving process.\nThe processStatusId can be one of the following:\n01 - New\n02 - In Process\n03 - Completed"
+          },
+          "confirmationStatusId": {
+            "type": "string",
+            "description": "Unique identifier of confirmation status of a problem-solving process. The confirmationStatusId can be one of the following based on the scenario you choose:\nFor Supplier Problem-Solving Scenario:\n01 - Not Sent to Supplier\n02 - Supplier\u2019s Initial Investigation Ongoing\n03 - Supplier Response Pending\n04 - Problem Accepted by Supplier\n05 - Problem Rejected by Supplier\n06 - Solution Review Requested\n07 - Solution Accepted\n08 - Solution Rejected\nFor Customer Problem-Solving Scenario:\n01 - Waiting for Initial Response\n02 - Initial Investigation Ongoing\n03 - Problem Rejected\n04 - Problem Accepted\n05 - Customer Solution Review Pending\n06 - Solution Rejected by Customer\n07 - Solution Accepted by Customer\nFor Internal Problem-Solving Scenario:\n99"
+          },
+          "supplierProblemDescription": {
+            "type": "string",
+            "description": "Problem description given by the supplier"
+          },
+          "supplierProblemLongDescription": {
+            "type": "string",
+            "description": "Problem detailed description given by the supplier"
+          },
+          "customerProblemDescription": {
+            "type": "string",
+            "description": "Problem description given by the customer"
+          },
+          "customerProblemLongDescription": {
+            "type": "string",
+            "description": "Problem detailed description given by the customer"
+          },
+          "supplierClosingNote": {
+            "type": "string",
+            "description": "Supplier's closing note"
+          },
+          "customerClosingNote": {
+            "type": "string",
+            "description": "Customer's closing note"
+          },
+          "ownerOrgName": {
+            "type": "string",
+            "description": "Organization name of the scenario host"
+          },
+          "creationMode": {
+            "type": "string",
+            "description": "Flag identifier to determine whether a problem-solving process is a manual problem-solving process."
+          },
+          "similarityScore": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "double"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "similarityScoreCriticality": {
+            "type": "integer"
+          },
+          "requestedStartDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Requested start date of a problem-solving process by scenario host",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "requestedEndDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Requested end date of a problem-solving process by scenario host",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "actualStartDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Actual start date of a problem-solving process",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "actualEndDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Actual end date of a problem-solving process",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "isBlocked": {
+            "type": "boolean",
+            "default": false
+          },
+          "maxDeletionDate": {
+            "type": "string"
+          },
+          "to_Step": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetStep"
+            }
+          },
+          "to_SourceReference": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SourceReference"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "CreateProblemSolvingProcess": {
+        "type": "object",
+        "required": [
+          "scenarioId",
+          "methodologyId",
+          "processDescription",
+          "customerProblemDescription",
+          "to_Step",
+          "to_SourceReference",
+          "sourceSystemId",
+          "notificationId",
+          "notificationItem",
+          "product",
+          "plant",
+          "partnerOrgId",
+          "subjectCodeGroup",
+          "subjectCode",
+          "defectCodeGroup",
+          "defectCode"
+        ],
+        "properties": {
+          "processDescription": {
+            "type": "string",
+            "description": "Description of a problem-solving process"
+          },
+          "processLongDescription": {
+            "type": "string",
+            "description": "Detailed description of a problem-solving process"
+          },
+          "methodologyId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving methodology. You obtain the methodologyId when you define the methodology using the Define Problem-Solving Methodologies app."
+          },
+          "scenarioId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving scenario. The scenarioID can be one of the following:\n01 - Supplier Problem-Solving\n02 - Customer Problem-Solving\n03 - Internal Problem-Solving"
+          },
+          "to_Step": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreatePSPStep"
+              }
+            ],
+            "nullable": true
+          },
+          "to_SourceReference": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreatePSPSourceReference"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "UpdateProblemSolvingProcess": {
+        "type": "object",
+        "properties": {
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving process"
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Unique universal identifier of a problem-solving process",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "processDescription": {
+            "type": "string",
+            "description": "Description of a problem-solving process"
+          },
+          "processStatusId": {
+            "type": "string",
+            "description": "Unique identifier of processing status of a problem-solving process.\nThe processStatusId can be one of the following:\n01 - New\n02 - In Process\n03 - Completed"
+          },
+          "confirmationStatusId": {
+            "type": "string",
+            "description": "Unique identifier of confirmation status of a problem-solving process. The confirmationStatusId can be one of the following based on the scenario you choose:\nFor Supplier Problem-Solving Scenario:\n01 - Not Sent to Supplier\n02 - Supplier\u2019s Initial Investigation Ongoing\n03 - Supplier Response Pending\n04 - Problem Accepted by Supplier\n05 - Problem Rejected by Supplier\n06 - Solution Review Requested\n07 - Solution Accepted\n08 - Solution Rejected\nFor Customer Problem-Solving Scenario:\n01 - Waiting for Initial Response\n02 - Initial Investigation Ongoing\n03 - Problem Rejected\n04 - Problem Accepted\n05 - Customer Solution Review Pending\n06 - Solution Rejected by Customer\n07 - Solution Accepted by Customer\nFor Internal Problem-Solving Scenario:\n99"
+          }
+        }
+      },
+      "QltyNotifReference": {
+        "title": "QltyNotifReference",
+        "type": "object",
+        "required": [
+          "notificationId",
+          "notificationItem",
+          "product",
+          "plant",
+          "partnerOrgId",
+          "subjectCodeGroup",
+          "subjectCode",
+          "defectCodeGroup",
+          "defectCode"
+        ],
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "processQNRefUUID": {
+            "type": "string",
+            "description": "Universal unique identifier that represents the combination of quality notififcation reference and problem-solving process for SAP Quality Isssue and Resolution",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "processRefUUID": {
+            "type": "string",
+            "description": "Universal unique identifier that represents the combination of source system and problem-solving process for SAP Quality Isssue and Resolution",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Unique universal identifier of a problem-solving process",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "notificationId": {
+            "type": "string",
+            "description": "Unique identifier for the quality notififcation reference of a problem-solving process"
+          },
+          "notificationItem": {
+            "type": "string",
+            "description": "Internal identifier for a defect in a quality notification"
+          },
+          "defectCodeGroup": {
+            "type": "string",
+            "description": "Code groups for catalog type 9 (Defects)."
+          },
+          "defectCode": {
+            "type": "string",
+            "description": "Codes for catalog type 9 (Defects)."
+          },
+          "subjectCodeGroup": {
+            "type": "string",
+            "description": "Code groups for catalog type D (Coding)"
+          },
+          "subjectCode": {
+            "type": "string",
+            "description": "Codes for catalog type D (Coding)"
+          },
+          "salesOrder": {
+            "type": "string",
+            "description": "Used to specify the sales order"
+          },
+          "priorityId": {
+            "type": "string",
+            "description": "Unique identifier for the priority"
+          },
+          "salesOrderItem": {
+            "type": "string",
+            "description": "Sales order item"
+          },
+          "purchaseOrder": {
+            "type": "string",
+            "description": "Purchase order"
+          },
+          "purchaseOrderItem": {
+            "type": "string",
+            "description": "Purchase order item"
+          },
+          "delivery": {
+            "type": "string",
+            "description": "Delivery"
+          },
+          "deliveryItem": {
+            "type": "string",
+            "description": "Delivery item"
+          },
+          "productionOrder": {
+            "type": "string",
+            "description": "Production order"
+          },
+          "productionOrderOperation": {
+            "type": "string",
+            "description": "Operation number in Production order"
+          },
+          "productionOrderSequence": {
+            "type": "string",
+            "description": "Sequence in Routing in Process Order/Production order"
+          },
+          "product": {
+            "type": "string",
+            "description": "Product/Material on which the quality notififcation has been triggered"
+          },
+          "productExternalId": {
+            "type": "string",
+            "description": "External unique identifier for the product on which the quality notififcation has been triggered"
+          },
+          "plant": {
+            "type": "string",
+            "description": "Identifier for the Plant in which the qn was triggered"
+          },
+          "partnerOrgId": {
+            "type": "string",
+            "description": "Partner Organization ID (Supplier/ Customer)"
+          },
+          "batch": {
+            "type": "string",
+            "description": "Batch"
+          },
+          "partnerOrgName": {
+            "type": "string"
+          },
+          "plantName": {
+            "type": "string"
+          },
+          "productDescription": {
+            "type": "string"
+          },
+          "priorityDescription": {
+            "type": "string"
+          },
+          "notificationDescription": {
+            "type": "string"
+          },
+          "isPartnerOrgNameHidden": {
+            "type": "boolean",
+            "default": false
+          },
+          "isPlantNameHidden": {
+            "type": "boolean"
+          },
+          "isMaterialNameHidden": {
+            "type": "boolean"
+          },
+          "supplierOrgId": {
+            "type": "string"
+          },
+          "customerOrgId": {
+            "type": "string"
+          },
+          "supplierOrgName": {
+            "type": "string"
+          },
+          "customerOrgName": {
+            "type": "string"
+          },
+          "supplierRoleId": {
+            "type": "string"
+          },
+          "customerRoleId": {
+            "type": "string"
+          },
+          "qirMaterial": {
+            "type": "string"
+          },
+          "qirPlant": {
+            "type": "string"
+          }
+        }
+      },
+      "CreatePSPQltyNotifReference": {
+        "title": "PSPQltyNotifReference",
+        "type": "object",
+        "required": [
+          "notificationId",
+          "notificationItem",
+          "product",
+          "plant",
+          "partnerOrgId",
+          "subjectCodeGroup",
+          "subjectCode",
+          "defectCodeGroup",
+          "defectCode"
+        ],
+        "properties": {
+          "notificationId": {
+            "type": "string",
+            "description": "Unique identifier for the quality notififcation reference of a problem-solving process"
+          },
+          "notificationItem": {
+            "type": "string",
+            "description": "Internal identifier for a defect in a quality notification"
+          },
+          "defectCodeGroup": {
+            "type": "string",
+            "description": "Code groups for catalog type 9 (Defects)."
+          },
+          "defectCode": {
+            "type": "string",
+            "description": "Codes for catalog type 9 (Defects)."
+          },
+          "subjectCodeGroup": {
+            "type": "string",
+            "description": "Code groups for catalog type D (Coding)"
+          },
+          "subjectCode": {
+            "type": "string",
+            "description": "Codes for catalog type D (Coding)"
+          },
+          "salesOrder": {
+            "type": "string",
+            "description": "Used to specify the sales order"
+          },
+          "priorityId": {
+            "type": "string",
+            "description": "Unique identifier for the priority"
+          },
+          "salesOrderItem": {
+            "type": "string",
+            "description": "Sales order item"
+          },
+          "purchaseOrder": {
+            "type": "string",
+            "description": "Purchase order"
+          },
+          "purchaseOrderItem": {
+            "type": "string",
+            "description": "Purchase order item"
+          },
+          "product": {
+            "type": "string",
+            "description": "Product/Material on which the quality notififcation has been triggered"
+          },
+          "plant": {
+            "type": "string",
+            "description": "Identifier for the Plant in which the qn was triggered"
+          },
+          "partnerOrgId": {
+            "type": "string",
+            "description": "Partner Organization ID (Supplier/ Customer)"
+          },
+          "partnerOrgName": {
+            "type": "string"
+          },
+          "plantName": {
+            "type": "string"
+          }
+        }
+      },
+      "GetRootCause": {
+        "title": "RootCause",
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "rootCauseUUID": {
+            "type": "string",
+            "description": "Universal unique identifier of root cause",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "stepUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for step",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for problem-solving process",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "rootCauseId": {
+            "type": "string",
+            "description": "Unique identifier of rootcause"
+          },
+          "rootCauseDescription": {
+            "type": "string",
+            "description": "Short description of rootcause"
+          },
+          "rootCauseDetailDescription": {
+            "type": "string",
+            "description": "Detailed description of rootcause"
+          },
+          "rootCauseType": {
+            "type": "string",
+            "description": "Unique identifier of a root cause type such as systemic, technical.\n01 for Technical\n02 for Systemic"
+          },
+          "rootCauseCode": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code"
+          },
+          "rootCauseCategory": {
+            "type": "string",
+            "description": "Unique identifier of a root cause category such as occurrence or non-detection, and more.\n\nThe rootCauseCategory can be one of the following:\n01 - Occurrence\n02 - Non-Detection\n03 - 1M\n04 - 2M\n05 - 3M\n06 - 4M\n07 - 5M\n08 - 6M\n09 - 7M\n10 - 8M"
+          },
+          "rootCauseCodeGroup": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group such as MAIN, SURF"
+          },
+          "codeGroupCatalogId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group catalog. For example,\n01 - Defects and Causes\n02 - Tasks"
+          },
+          "sdmFolderId": {
+            "type": "string"
+          },
+          "analysisMethodId": {
+            "type": "integer"
+          },
+          "headerUUID": {
+            "type": "string",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for step type"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for problem-solving process"
+          }
+        }
+      },
+      "CreateRootCause": {
+        "type": "object",
+        "required": [
+          "processId",
+          "stepTypeId",
+          "rootCauseDescription"
+        ],
+        "properties": {
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for step type"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for problem-solving process"
+          },
+          "rootCauseDescription": {
+            "type": "string",
+            "description": "Short description of rootcause"
+          },
+          "rootCauseDetailDescription": {
+            "type": "string",
+            "description": "Detailed description of rootcause"
+          },
+          "rootCauseType": {
+            "type": "string",
+            "description": "Unique identifier of a root cause type such as systemic, technical.\n01 for Technical\n02 for Systemic"
+          },
+          "rootCauseCode": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code"
+          },
+          "rootCauseCategory": {
+            "type": "string",
+            "description": "Unique identifier of a root cause category such as occurrence or non-detection, and more.\n\nThe rootCauseCategory can be one of the following:\n01 - Occurrence\n02 - Non-Detection\n03 - 1M\n04 - 2M\n05 - 3M\n06 - 4M\n07 - 5M\n08 - 6M\n09 - 7M\n10 - 8M"
+          },
+          "rootCauseCodeGroup": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group such as MAIN, SURF"
+          },
+          "codeGroupCatalogId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group catalog. For example,\n01 - Defects and Causes\n02 - Tasks"
+          }
+        }
+      },
+      "UpdateRootCause": {
+        "type": "object",
+        "properties": {
+          "processUUID": {
+            "type": "string",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "rootCauseId": {
+            "type": "string",
+            "description": "Unique identifier of rootcause"
+          },
+          "rootCauseDescription": {
+            "type": "string",
+            "description": "Short description of rootcause"
+          },
+          "rootCauseDetailDescription": {
+            "type": "string",
+            "description": "Detailed description of rootcause"
+          },
+          "rootCauseType": {
+            "type": "string",
+            "description": "Unique identifier of a root cause type such as systemic, technical.\n01 for Technical\n02 for Systemic"
+          },
+          "rootCauseCode": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code"
+          },
+          "rootCauseCodeGroup": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group such as MAIN, SURF"
+          },
+          "codeGroupCatalogId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group catalog. For example,\n01 - Defects and Causes\n02 - Tasks"
+          },
+          "headerUUID": {
+            "type": "string",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for step type"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for problem-solving process"
+          }
+        }
+      },
+      "SourceReference": {
+        "title": "SourceReference",
+        "type": "object",
+        "required": [
+          "sourceSystemId"
+        ],
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "processRefUUID": {
+            "type": "string",
+            "description": "Universal unique identifier that represents the combination of source system and problem-solving process for SAP Quality Issue and Resolution",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "sourceSystemId": {
+            "type": "string",
+            "description": "Unique identifier that represents the source system from which the problem-solving process is triggered"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving process"
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Universal unique identifier of a problem-solving process.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "to_QltyNotifReference": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/QltyNotifReference"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "CreatePSPSourceReference": {
+        "title": "PSPSourceReference",
+        "type": "object",
+        "required": [
+          "sourceSystemId"
+        ],
+        "properties": {
+          "sourceSystemId": {
+            "type": "string",
+            "description": "Unique identifier that represents the source system from which the problem-solving process is triggered"
+          },
+          "to_QltyNotifReference": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreatePSPQltyNotifReference"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "GetStep": {
+        "title": "GetStep",
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "stepUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a step type within a problem-solving process. For example, a unique identifier for steps such as D1, D2 and so on.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a step type within a problem-solving process. For example, a unique identifier for steps D1, D2 and so on."
+          },
+          "methodologyUUID": {
+            "type": "string",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for a problem-solving process. Format is of 12 -digit numeric value."
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a problem-solving process.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "stepStatusId": {
+            "type": "string",
+            "description": "Unique identifier for processing status for a step.\n\nThe stepSatusId can be one of the following:\n01 - Not Started\n02 - In Process\n03 - Completed"
+          },
+          "stepReviewStatusId": {
+            "type": "string",
+            "description": "Unique identifier for review status for a step.\n\nThe stepReviewStatusId can be one of the following:\n01 - Not Started\n02 - Review Requested\n03 - Accepted\n04 - Rejected"
+          },
+          "stepTypeDescription": {
+            "type": "string"
+          },
+          "hideRelatedProcessesFacet": {
+            "type": "boolean"
+          },
+          "actualStepTypeId": {
+            "type": "string",
+            "description": "Value assigned here is stored in the stepTypeId column."
+          },
+          "sourceStepTypeId": {
+            "type": "string",
+            "description": "Value assigned here is a reference to the step type ID. Based on the sourceStepTypeId, actual value is determined and stored in the stepTypeId column."
+          },
+          "requestedStartDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Requested start date of a problem-solving process by scenario host",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "requestedEndDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Requested end date of a problem-solving process by scenario host",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "actualStartDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Actual start date of a problem-solving process",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "actualEndDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Actual end date of a problem-solving process",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "sdmFolderId": {
+            "type": "string"
+          },
+          "to_ProblemSolvingProcess_processUUID": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateStep": {
+        "type": "object",
+        "properties": {
+          "stepUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a step type within a problem-solving process. For example, a unique identifier for steps such as D1, D2 and so on.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for a problem-solving process. Format is of 12 -digit numeric value."
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a problem-solving process.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a step type within a problem-solving process. For example, a unique identifier for steps D1, D2 and so on."
+          },
+          "stepStatusId": {
+            "type": "string",
+            "description": "Unique identifier for processing status for a step.\n\nThe stepSatusId can be one of the following:\n01 - Not Started\n02 - In Process\n03 - Completed"
+          },
+          "stepReviewStatusId": {
+            "type": "string",
+            "description": "Unique identifier for review status for a step.\n\nThe stepReviewStatusId can be one of the following:\n01 - Not Started\n02 - Review Requested\n03 - Accepted\n04 - Rejected"
+          }
+        }
+      },
+      "CreatePSPStep": {
+        "title": "Step",
+        "type": "object",
+        "required": [
+          "stepTypeId"
+        ],
+        "properties": {
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a step type within a problem-solving process. For example, a unique identifier for steps D1, D2 and so on."
+          },
+          "to_TeamMember": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreatePSPTeamMembers"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "GetStepComments": {
+        "title": "StepComments",
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "stepCommentUUID": {
+            "type": "string",
+            "description": "Unique universal identifier of a comment",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "stepUUID": {
+            "type": "string",
+            "description": "Unique universal identifier of a step"
+          },
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for step type"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for a problem-solving process"
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Unique universal identifier of a problem-solving process",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Description of comment"
+          },
+          "commentCategory": {
+            "type": "string",
+            "description": "Type of comments:\n0: General Comments\n\n1: Completed Comments\n\n2: Rejected Comments"
+          }
+        }
+      },
+      "CreateStepComments": {
+        "type": "object",
+        "required": [
+          "processId",
+          "processUUID",
+          "comment",
+          "commentCategory"
+        ],
+        "properties": {
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for step type"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for a problem-solving process"
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Unique universal identifier of a problem-solving process",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Description of comment"
+          },
+          "commentCategory": {
+            "type": "string",
+            "description": "Type of comments:\n0: General Comments\n\n1: Completed Comments\n\n2: Rejected Comments"
+          }
+        }
+      },
+      "GetTasks": {
+        "title": "Tasks",
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving process"
+          },
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a step type within a problem-solving process. For example, a unique identifier for steps D1, D2 and so on."
+          },
+          "taskNumber": {
+            "type": "string",
+            "description": "Unique identifier of a task"
+          },
+          "taskTypeId": {
+            "type": "string",
+            "description": "Unique identifier of a task type.\nThe taskTypeId can be one of the following.\n01 - Containment Action\n02 - Corrective Action\n03 - Preventive Action\n04 - Generic Action"
+          },
+          "taskOriginId": {
+            "type": "string",
+            "description": "Unique identifier of a task origin"
+          },
+          "originTypeId": {
+            "type": "string",
+            "description": "Unique identifier of a task origin type.\nThe originTypeId can be one of the following:\n01 - Defect\n02 - Problem-Solving Process"
+          },
+          "sourceUUID": {
+            "type": "string",
+            "description": "GUID of ProcessUUID",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "rootCauseUUID": {
+            "type": "string",
+            "description": "Universal unique identifier of root cause",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "processor": {
+            "type": "string",
+            "description": "Task Processor"
+          },
+          "plannedStartDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Planned start date of a task",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "plannedEndDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Planned end date of a task",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "descriptionShort": {
+            "type": "string",
+            "description": "Short Description of a task"
+          },
+          "descriptionLong": {
+            "type": "string",
+            "description": "Long Description of a task"
+          },
+          "codeId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code"
+          },
+          "codeGroupId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group"
+          },
+          "codeGroupCatalogId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group catalog"
+          },
+          "parentTaskNumber": {
+            "type": "string"
+          },
+          "effectiveness": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 999.99,
+                "minimum": -999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "description": "Effectiveness value of task"
+          },
+          "actualStartDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Actual start date of a task",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "actualEndDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Actual end date of a task",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "taskProcessingStatusId": {
+            "type": "string",
+            "description": "Processing status of task.\nThe taskProcessingStatusId can be one of the following.\n01 - New\n02 - In Process\n03 - Completed\n04 - Obsolete"
+          },
+          "taskPlanningStatusId": {
+            "type": "string",
+            "description": "Planning status of task.\nThe taskPlanningStatusId can be one of the following.\n01 - In Planning\n02 - Planned\n03 - Dismissed\n04 - Unplanned"
+          },
+          "isMarkedForDeletion": {
+            "type": "boolean"
+          },
+          "sdmFolderId": {
+            "type": "string"
+          },
+          "isLongTerm": {
+            "type": "boolean",
+            "description": "Identifier flag for a Long term task"
+          }
+        }
+      },
+      "CreateTasks": {
+        "type": "object",
+        "required": [
+          "processId",
+          "stepTypeId",
+          "descriptionShort"
+        ],
+        "properties": {
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving process"
+          },
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a step type within a problem-solving process. For example, a unique identifier for steps D1, D2 and so on."
+          },
+          "descriptionShort": {
+            "type": "string",
+            "description": "Short Description of a task"
+          },
+          "descriptionLong": {
+            "type": "string",
+            "description": "Long Description of a task"
+          },
+          "codeId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code"
+          },
+          "codeGroupId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group"
+          },
+          "codeGroupCatalogId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group catalog"
+          },
+          "rootCauseUUID": {
+            "type": "string",
+            "description": "Universal unique identifier of root cause (Mandatory for Create of tasks in steps D5 and D6)",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "isLongTerm": {
+            "type": "boolean",
+            "description": "Identifier flag for a Long term task"
+          },
+          "plannedStartDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Planned start date of a task",
+            "example": "2024-11-04T10:45:21Z"
+          },
+          "processor": {
+            "type": "string",
+            "description": "Task Processor"
+          }
+        }
+      },
+      "UpdateTasks": {
+        "title": "Tasks (for update)",
+        "type": "object",
+        "properties": {
+          "taskNumber": {
+            "type": "string",
+            "description": "Unique identifier of a task"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier of a problem-solving process"
+          },
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a step type within a problem-solving process. For example, a unique identifier for steps D1, D2 and so on."
+          },
+          "processor": {
+            "type": "string",
+            "description": "Task Processor"
+          },
+          "descriptionShort": {
+            "type": "string",
+            "description": "Short Description of a task"
+          },
+          "descriptionLong": {
+            "type": "string",
+            "description": "Long Description of a task"
+          },
+          "codeId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code"
+          },
+          "codeGroupId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group"
+          },
+          "codeGroupCatalogId": {
+            "type": "string",
+            "description": "Unique identifier of a root cause code group catalog"
+          },
+          "isLongTerm": {
+            "type": "boolean",
+            "description": "Identifier flag for a Long term task"
+          }
+        }
+      },
+      "GetTeamMembers": {
+        "title": "TeamMembers",
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "teamMemberUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a team member for all problem-solving processes.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "stepUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a step for all problem-solving processes",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a step type within a problem-solving process. For example, the unique identifier for step type such as D1, D2"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for a problem-solving process."
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a problem-solving process",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "teamMemberRoleUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a role to which any team member belongs to.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "teamMemberRoleId": {
+            "type": "string",
+            "description": "Unique identifier for a role to which any team member can belong to. For example, Team lead, Team member, and so on.\nYou can define team member roles using the Define Problem-Solving Roles app."
+          },
+          "teamMemberTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a team type to which any team member can belong to. For example, Supplier's team, Customer's team.\n\n\"01\" for Customer's team and\n\n\"02\" for Supplier's team"
+          },
+          "teamMemberId": {
+            "type": "string",
+            "description": "Unique identifier for a team member. This refers to the user ID of the user created in the Identity Authentication."
+          },
+          "teamMemberEmail": {
+            "type": "string"
+          },
+          "isContactPerson": {
+            "type": "boolean",
+            "description": "Flag identifier to check if the team member is the point of contact for a problem-solving process"
+          },
+          "sendEmail": {
+            "type": "boolean",
+            "description": "Flag identifier to check if the team member has email notifications enabled for a problem-solving process"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          },
+          "userUUID": {
+            "type": "string",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      },
+      "CreateTeamMembers": {
+        "type": "object",
+        "required": [
+          "stepTypeId",
+          "processId",
+          "teamMemberRoleId",
+          "teamMemberTypeId",
+          "teamMemberId"
+        ],
+        "properties": {
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a step type within a problem-solving process. For example, the unique identifier for step type such as D1, D2"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for a problem-solving process."
+          },
+          "teamMemberRoleId": {
+            "type": "string",
+            "description": "Unique identifier for a role to which any team member can belong to. For example, Team lead, Team member, and so on.\nYou can define team member roles using the Define Problem-Solving Roles app."
+          },
+          "teamMemberTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a team type to which any team member can belong to. For example, Supplier's team, Customer's team.\n\n\"01\" for Customer's team and\n\n\"02\" for Supplier's team"
+          },
+          "teamMemberId": {
+            "type": "string",
+            "description": "Unique identifier for a team member. This refers to the user ID of the user created in the Identity Authentication."
+          },
+          "isContactPerson": {
+            "type": "boolean",
+            "description": "Flag identifier to check if the team member is the point of contact for a problem-solving process"
+          },
+          "sendEmail": {
+            "type": "boolean",
+            "description": "Flag identifier to check if the team member has email notifications enabled for a problem-solving process"
+          }
+        }
+      },
+      "CreatePSPTeamMembers": {
+        "type": "object",
+        "required": [
+          "teamMemberEmail"
+        ],
+        "properties": {
+          "teamMemberEmail": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateTeamMembers": {
+        "type": "object",
+        "properties": {
+          "stepTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a step type within a problem-solving process. For example, the unique identifier for step type such as D1, D2"
+          },
+          "processId": {
+            "type": "string",
+            "description": "Unique identifier for a problem-solving process."
+          },
+          "teamMemberRoleUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a role to which any team member belongs to.",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "teamMemberRoleId": {
+            "type": "string",
+            "description": "Unique identifier for a role to which any team member can belong to. For example, Team lead, Team member, and so on.\nYou can define team member roles using the Define Problem-Solving Roles app."
+          },
+          "teamMemberTypeId": {
+            "type": "string",
+            "description": "Unique identifier for a team type to which any team member can belong to. For example, Supplier's team, Customer's team.\n\n\"01\" for Customer's team and\n\n\"02\" for Supplier's team"
+          },
+          "isContactPerson": {
+            "type": "boolean",
+            "description": "Flag identifier to check if the team member is the point of contact for a problem-solving process"
+          },
+          "sendEmail": {
+            "type": "boolean",
+            "description": "Flag identifier to check if the team member has email notifications enabled for a problem-solving process"
+          }
+        }
+      },
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message",
+          "correlationId"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Contains a correlation ID for the error."
+          },
+          "message": {
+            "type": "string",
+            "description": "Internal error message"
+          },
+          "details": {
+            "type": "string",
+            "description": "Contains additional information, if any"
+          },
+          "causeMessage": {
+            "type": "string",
+            "description": "Contains technical reason for the error."
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "You are not authorized to call this resource",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder_v2')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder_v2')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder_v2')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder_v2')/$value"
+  },
+  "Name": "sapdme_processorder_v2",
+  "ID": "sapdme_processorder_v2",
+  "Title": "Process Order Execution",
+  "ShortText": "Update start time for a phase",
+  "Description": null,
+  "Direction": null,
+  "Version": "v2",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1770994596821)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706586)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 Feb 2026\",\"notes\":\"The v2 version of the API to update the phase start time\",\"state\":\"Active\",\"version\":\"v2\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_processorder_v2')/Versions"
+    }
+  }
+}

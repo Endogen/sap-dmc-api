@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_document')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_document')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_document')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_document')/$value"
+  },
+  "Name": "sapfnd_document",
+  "ID": "sapfnd_document",
+  "Title": "Document",
+  "ShortText": "Retrieve and print documents",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218483)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706731)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "DEPRECATED",
+  "ChangeLog": "[{\"date\":\"18 May 2025\",\"notes\":\"Get documents API endpoint is deprecated. Please use the successor API: <a href=https://api.sap.com/api/sapfnd_document_v2>Document V2<\\/a>\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 Feb 2022\",\"notes\":\"The endpoint /print is deprecated. Use the endpoint /print of the 'Print Document' API\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"14 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_document')/Versions"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection_v2')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection_v2')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection_v2')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection_v2')/$value"
+  },
+  "Name": "sapdme_qualityinspection_v2",
+  "ID": "sapdme_qualityinspection_v2",
+  "Title": "Quality Inspection",
+  "ShortText": "Perform quality inspection related activities",
+  "Description": null,
+  "Direction": null,
+  "Version": "v2",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1763144304173)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706326)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Nov 2025\",\"notes\":\"Added new API for checking if the mandatory characteristics are inspected.\",\"state\":\"Active\",\"version\":\"v2\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_qualityinspection_v2')/Versions"
+    }
+  }
+}

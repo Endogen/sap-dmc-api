@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production_v2')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production_v2')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production_v2')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production_v2')/$value"
+  },
+  "Name": "sapdme_production_v2",
+  "ID": "sapdme_production_v2",
+  "Title": "Production Change",
+  "ShortText": "Perform production changes to a shop floor control",
+  "Description": null,
+  "Direction": null,
+  "Version": "v2",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1724428411823)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706181)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"17 Feb 2025\",\"notes\":\"Adding optional boolean activityConfirmationCopy to Change Production APIs Request.\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"24 Oct 2024\",\"notes\":\"Adding optional boolean quantityCopy and dataCollectionCopy to Change Production APIs Request\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"31 Jul 2024\",\"notes\":\"Second version of the Change Production APIs\",\"state\":\"Active\",\"version\":\"v2\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_production_v2')/Versions"
+    }
+  }
+}

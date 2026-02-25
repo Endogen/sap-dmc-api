@@ -1,0 +1,315 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Product Genealogy Report (PGR) Assembly Components",
+    "description": "You can use this service to obtain a list of components used for a shop floor control assembly. Assembly records are presented separately or grouped by serial number, batch number or storage location with summarized consumption quantity.",
+    "version": "v1"
+  },
+  "x-sap-stateInfo": {
+    "state": "Deprecated",
+    "deprecationDate": "2023-08-20",
+    "successorApi": "https://api.sap.com/api/sapdme_assembly"
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "host": "hostname",
+  "basePath": "/",
+  "x-sap-shortText": "Create a product genealogy report for an assembly",
+  "x-servers": [
+    {
+      "url": "https://api.{regionHost}/asbuiltReport/v1",
+      "description": "Base URL",
+      "templates": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "OAuthSecurity": {
+      "type": "oauth2",
+      "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+      "flow": "application"
+    }
+  },
+  "security": [
+    {
+      "OAuthSecurity": []
+    }
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "Assembly Components"
+    }
+  ],
+  "paths": {
+    "/components": {
+      "get": {
+        "tags": [
+          "Assembly Components"
+        ],
+        "summary": "Obtains assembly components by SFC and plant. It's deprecated. Please use https://api.sap.com/api/sapdme_assembly",
+        "description": "This endpoint can be called to get an asbuilt-report components list of a specified organization. If there is no specified organization, the endpoint returns self-organization data.",
+        "operationId": "getComponentsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "condensed",
+            "in": "query",
+            "description": "Flag to get components grouped or to get all single records separately.",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "Page index (starts from 0), default is 0.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Page size, default is 100.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "plant",
+            "in": "query",
+            "description": "Plant for which the request is executed.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "plantOwnerOrgId",
+            "in": "query",
+            "description": "ID of the organization which the plant belongs to. By default, the plant belongs to the current user\u2019s organization.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sfc",
+            "in": "query",
+            "description": "The SFC number for which components need to be found.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Message successfully processed.",
+            "schema": {
+              "$ref": "#/definitions/ComponentPageDTO"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    }
+  },
+  "definitions": {
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "causeMessage": {
+          "type": "string",
+          "description": "Contains a technical reason for the error."
+        },
+        "code": {
+          "type": "string",
+          "description": "Internal error message"
+        },
+        "correlationId": {
+          "type": "string",
+          "description": "Contains correlationId for the error."
+        },
+        "message": {
+          "type": "string",
+          "description": "Contains additional information, if any"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "HTTP status code"
+        }
+      },
+      "title": "ErrorResponse",
+      "description": "Error response. "
+    },
+    "ComponentPageDTO": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "description": "content",
+          "items": {
+            "$ref": "#/definitions/ComponentGetResponse"
+          }
+        },
+        "totalElements": {
+          "type": "integer",
+          "format": "int64",
+          "description": "amount of total elements"
+        },
+        "number": {
+          "type": "integer",
+          "format": "int32",
+          "description": "number of current page. (starts at 0)"
+        }
+      },
+      "title": "ComponentPageDTO",
+      "description": "The page DTO of components"
+    },
+    "ComponentGetResponse": {
+      "type": "object",
+      "required": [
+        "component"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "id"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description"
+        },
+        "component": {
+          "type": "string",
+          "description": "The component name in the BOM referenced by the product genealogy."
+        },
+        "sequence": {
+          "type": "string",
+          "example": 10,
+          "description": "Sequence could indicate in which order the steps (operations) are performed, regarding the sequential steps defined in a routing."
+        },
+        "operation": {
+          "type": "string",
+          "description": "The operation name in the routing referenced by the product genealogy."
+        },
+        "assembled": {
+          "type": "number",
+          "format": "double",
+          "example": 2,
+          "description": "Amount of assembled"
+        },
+        "required": {
+          "type": "number",
+          "format": "double",
+          "example": 3,
+          "description": "Amount of required"
+        },
+        "tracingMark": {
+          "description": "Tracing mark of the current data. It is present only when the data is shared from other tenants or applications.",
+          "$ref": "#/definitions/TracingMarkDTO"
+        },
+        "organizationId": {
+          "type": "string",
+          "description": "Organization Id"
+        },
+        "plant": {
+          "type": "string",
+          "description": "plant"
+        },
+        "sfc": {
+          "type": "string",
+          "description": "sfc"
+        },
+        "material": {
+          "type": "string",
+          "description": "Material"
+        }
+      },
+      "title": "ComponentGetResponse",
+      "description": "The Component DTO"
+    },
+    "TracingMarkDTO": {
+      "type": "object",
+      "properties": {
+        "sharedFromOrgId": {
+          "type": "string",
+          "description": "bp id of shared-from organization"
+        },
+        "sharedToOrgId": {
+          "type": "string",
+          "description": "bp id of shared-to organization"
+        },
+        "externalId": {
+          "type": "string",
+          "description": "external id"
+        }
+      },
+      "title": "TracingMarkDTO",
+      "description": "Tracing mark DTO"
+    }
+  }
+}

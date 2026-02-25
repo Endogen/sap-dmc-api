@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v2')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v2')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v2')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v2')/$value"
+  },
+  "Name": "sapdme_plant_workcenter_v2",
+  "ID": "sapdme_plant_workcenter_v2",
+  "Title": "Work Center",
+  "ShortText": "Maintain work centers for a given plant.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v2",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1645288178323)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706309)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Nov 2025\",\"notes\":\"The retrieve work center API is deprecated.\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"24 Aug 2024\",\"notes\":\"Add API to retrieve, create, update, and delete custom field definitions\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Feb 2023\",\"notes\":\"Added new optional parameter resource members to request for get /workcenters API\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"04 Dec 2022\",\"notes\":\"Returning assigned users to a work center\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"19 Feb 2022\",\"notes\":\"This API can be used to create, change, delete, and search for work centers.\",\"state\":\"Active\",\"version\":\"v2\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v2')/Versions"
+    }
+  }
+}

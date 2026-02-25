@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sappqm_aiml_scenarios')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sappqm_aiml_scenarios')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sappqm_aiml_scenarios')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sappqm_aiml_scenarios')/$value"
+  },
+  "Name": "sappqm_aiml_scenarios",
+  "ID": "sappqm_aiml_scenarios",
+  "Title": "Artificial Intelligence and Machine Learning Scenarios",
+  "ShortText": "Manage Artificial Intelligence and Machine Learning Scenarios for automation of manufacturing processes",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218513)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706813)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "DECOMMISSIONED",
+  "ChangeLog": "[{\"date\":\"25 May 2024\",\"notes\":\"Decommissioned APIs for Artificial Intelligence and Machine Learning Scenarios\",\"state\":\"Decommissioned\",\"version\":\"v1\"},{\"date\":\"2 Dec 2023\",\"notes\":\"Deprecate APIs for Artificial Intelligence and Machine Learning Scenarios\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"21 May 2023\",\"notes\":\"Updated texts, terms as part of new validations, re-branding\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"9 March 2023\",\"notes\":\"Removed the reserved character from the title\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 Aug 2021\",\"notes\":\"Added API to create and get inspection log for a Shop Floor Control (SFC).\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"14 Nov 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sappqm_aiml_scenarios')/Versions"
+    }
+  }
+}

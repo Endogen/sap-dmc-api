@@ -1,0 +1,1540 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Artificial Intelligence/Machine Learning (or AI/ML) Scenarios Management enables scenarios that are based on machine learning models to assist and automate manufacturing processes. You can create new scenarios that can be activated and managed at a central place based on simple configuration steps by business user allowing lifecycle management. This solution simplifies the integration of ML pipeline for predictive quality use cases, such as Defect Detection and Visual Inspection. Note: Please be informed that these APIs are deprecated and their further use is not encouraged. These APIs will be replaced by the new APIs from the redesigned Visual Inspection applications.",
+    "version": "v1",
+    "title": "Artificial Intelligence and Machine Learning Scenarios",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "x-sap-stateInfo": {
+    "state": "Decommissioned",
+    "decommissionedDate": "2023-12-02",
+    "successorApi": "none"
+  },
+  "host": "hostname",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "AI/ML Scenario"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/active-scenarios": {
+      "get": {
+        "tags": [
+          "AI/ML Scenario"
+        ],
+        "summary": "Retrieves the active AI/ML scenarios.",
+        "description": "Retrieves the active AI/ML scenarios for provided input.",
+        "operationId": "getActiveAiMlScenariosUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentType",
+            "in": "query",
+            "description": "The consuming application where AI/ML models need to be deployed.",
+            "required": false,
+            "type": "string",
+            "default": "visualinsppod"
+          },
+          {
+            "name": "material",
+            "in": "query",
+            "description": "Material for retrieving AI/ML scenarios.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "operation",
+            "in": "query",
+            "description": "Operation for retrieving AI/ML scenarios.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "plant",
+            "in": "query",
+            "description": "Plant for retrieving AI/ML scenarios.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "description": "Resource for retrieving AI/ML scenarios.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "routing",
+            "in": "query",
+            "description": "Routing for retrieving AI/ML scenarios.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sfc",
+            "in": "query",
+            "description": "SFC for retrieving AI/ML scenarios.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AiMlScenarioMetadata"
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "404": {
+            "description": "No active scenarios found for the specified parameters.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred. Please contact the administrator to resolve the issue.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/scenario/{id}/version/{version}/file/{fileName}": {
+      "get": {
+        "tags": [
+          "AI/ML Scenario"
+        ],
+        "summary": "Download a file uploaded for an AI/ML scenario.",
+        "description": "Download a file uploaded for an AI/ML scenario for a given scenario id and version.",
+        "operationId": "downloadAiMlScenarioFileUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File Name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Scenario ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "description": "Scenario Version",
+            "required": true,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InputStreamResource"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "404": {
+            "description": "File with the specified name could not be found.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred. Please contact the administrator to resolve the issue.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/inspectionLog": {
+      "post": {
+        "tags": [
+          "Inspection Log"
+        ],
+        "summary": "Creates inspection log for a Shop Floor Control (SFC).",
+        "description": "Logs the image of the SFC, predictions by the AI/ML model and operations( Log NCS and mark as conformant/ nonconformant ) performed by the operator.",
+        "operationId": "saveInspectionStateUsingPOST",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "Plant and SFC are mandatory fields in the request body.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InspectionState"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SaveInspectionStateResponse"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred. Please contact the administrator to resolve the issue.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": false
+      },
+      "get": {
+        "tags": [
+          "Inspection Log"
+        ],
+        "summary": "Provides all the inspection logs for a SFC.",
+        "description": "Provides all the inspection logs (images, predictions, and operator actions) for a SFC.",
+        "operationId": "getInspectionStateUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "fileID",
+            "in": "query",
+            "description": "File ID.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "From date time.",
+            "type": "string",
+            "format": "yyyy-MM-dd HH:mm:ss",
+            "required": false
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "To date time.",
+            "type": "string",
+            "format": "yyyy-MM-dd HH:mm:ss",
+            "required": false
+          },
+          {
+            "name": "inspectionViewName",
+            "in": "query",
+            "description": "Inspection View identifier.",
+            "required": false,
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1
+          },
+          {
+            "name": "loggedNCCode",
+            "in": "query",
+            "description": "Logged NC Code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material",
+            "in": "query",
+            "description": "Material name.",
+            "required": false,
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          },
+          {
+            "name": "operation",
+            "in": "query",
+            "description": "Operation Activity name.",
+            "required": false,
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 1
+          },
+          {
+            "name": "plant",
+            "in": "query",
+            "description": "Plant name.",
+            "required": true,
+            "type": "string",
+            "maxLength": 6,
+            "minLength": 1
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "description": "Resource name.",
+            "required": false,
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 1
+          },
+          {
+            "name": "routing",
+            "in": "query",
+            "description": "Routing name.",
+            "required": false,
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          },
+          {
+            "name": "scenarioID",
+            "in": "query",
+            "description": "AI/ML Scenario ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scenarioVersion",
+            "in": "query",
+            "description": "AI/ML Scenario version",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sfc",
+            "in": "query",
+            "description": "Shop Floor Control identifier.",
+            "required": false,
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "description": "Source of production data.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "DME",
+              "ME"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InspectionState"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred. Please contact the administrator to resolve the issue.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/aiml/v1/inspectionLogsForContext": {
+      "get": {
+        "tags": [
+          "Inspection Log"
+        ],
+        "summary": "Gets all the inspection logs for an AI/ML scenario.",
+        "description": "Provides all the inspection logs (images, predictions, and operator actions) for a SFC.",
+        "operationId": "getInspectionLogsForContextUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "fileID",
+            "in": "query",
+            "description": "File ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "From date.",
+            "type": "string",
+            "format": "yyyy-MM-dd HH:mm:ss",
+            "required": false
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "To date.",
+            "type": "string",
+            "format": "yyyy-MM-dd HH:mm:ss",
+            "required": false
+          },
+          {
+            "name": "inspectionViewName",
+            "in": "query",
+            "description": "Inspection View identifier.",
+            "required": false,
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1
+          },
+          {
+            "name": "loggedNCCode",
+            "in": "query",
+            "description": "Logged NC Code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material",
+            "in": "query",
+            "description": "Material name.",
+            "required": false,
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          },
+          {
+            "name": "operation",
+            "in": "query",
+            "description": "Operation Activity name.",
+            "required": false,
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 1
+          },
+          {
+            "name": "plant",
+            "in": "query",
+            "description": "Plant name.",
+            "required": true,
+            "type": "string",
+            "maxLength": 6,
+            "minLength": 1
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "description": "Resource name.",
+            "required": false,
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 1
+          },
+          {
+            "name": "routing",
+            "in": "query",
+            "description": "Routing name.",
+            "required": false,
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          },
+          {
+            "name": "scenarioID",
+            "in": "query",
+            "description": "AI/ML Scenario ID.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scenarioVersion",
+            "in": "query",
+            "description": "AI/ML Scenario version.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sfc",
+            "in": "query",
+            "description": "Shop Floor Control identifier.",
+            "required": false,
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "skip.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "description": "Source of production data.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "DME",
+              "ME"
+            ]
+          },
+          {
+            "name": "top",
+            "in": "query",
+            "description": "top",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InspectionLogView"
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred. Please contact the administrator to resolve the issue.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": false
+      }
+    }
+  },
+  "securityDefinitions": {
+    "OauthClientCredentials": {
+      "type": "oauth2",
+      "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+      "flow": "application"
+    }
+  },
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "definitions": {
+    "AiMlInspectionPoint": {
+      "type": "object",
+      "properties": {
+        "inspectionPoint": {
+          "type": "string",
+          "description": "Inspection point"
+        },
+        "models": {
+          "type": "array",
+          "description": "List of AI/ML models available for an inspection point",
+          "items": {
+            "$ref": "#/definitions/AiMlModel"
+          }
+        }
+      },
+      "title": "AiMlInspectionPoint",
+      "description": "Inspection point defined for a scenario"
+    },
+    "AiMlModel": {
+      "type": "object",
+      "properties": {
+        "modelDetails": {
+          "description": "Model framework and file details",
+          "$ref": "#/definitions/AiMlModelFiles"
+        },
+        "modelFilesAvailable": {
+          "type": "boolean",
+          "description": "Have the files been uploaded for a model?"
+        },
+        "modelId": {
+          "type": "string",
+          "description": "Model ID"
+        },
+        "modelInput": {
+          "type": "array",
+          "description": "Model input definition",
+          "items": {
+            "$ref": "#/definitions/AiMlModelInput"
+          }
+        },
+        "modelOutput": {
+          "description": "Model output definition",
+          "$ref": "#/definitions/AiMlModelOutput"
+        },
+        "modelType": {
+          "type": "string",
+          "example": "BinaryClassification",
+          "description": "Model type"
+        }
+      },
+      "title": "AiMlModel",
+      "description": "AI/ML model"
+    },
+    "AiMlModelFiles": {
+      "type": "object",
+      "properties": {
+        "modelFiles": {
+          "type": "array",
+          "description": "List of files uploaded for the model",
+          "items": {
+            "type": "string"
+          }
+        },
+        "modelFramework": {
+          "type": "string",
+          "description": "Framework in which the model is trained"
+        },
+        "modelFrameworkVersion": {
+          "type": "string",
+          "description": "Framework version in which the model is trained"
+        }
+      },
+      "title": "AiMlModelFiles",
+      "description": "Model framework and files"
+    },
+    "AiMlModelInput": {
+      "type": "object",
+      "properties": {
+        "refFile": {
+          "type": "string",
+          "description": "Reference file for model input"
+        },
+        "source": {
+          "type": "object",
+          "description": "Source details of model input"
+        },
+        "transformations": {
+          "type": "array",
+          "description": "List of transformations to be performed on model input",
+          "items": {
+            "$ref": "#/definitions/AiMlModelInputTransformation"
+          }
+        },
+        "type": {
+          "type": "string",
+          "example": "image",
+          "description": "Type of model input"
+        }
+      },
+      "title": "AiMlModelInput",
+      "description": "Model input"
+    },
+    "AiMlModelInputTransformation": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "description": "Transformation method"
+        },
+        "methodParameters": {
+          "type": "object",
+          "description": "Parameters required for transformation method"
+        },
+        "sequenceId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Sequence of transformation"
+        }
+      },
+      "title": "AiMlModelInputTransformation",
+      "description": "Transformation to be performed on model input"
+    },
+    "AiMlModelOutput": {
+      "type": "object",
+      "properties": {
+        "outputClasses": {
+          "type": "array",
+          "description": "List of output classes defined for model",
+          "items": {
+            "$ref": "#/definitions/AiMlModelOutputClass"
+          }
+        },
+        "predictionResult": {
+          "type": "object",
+          "description": "Details where model output will be stored"
+        }
+      },
+      "title": "AiMlModelOutput",
+      "description": "Model output"
+    },
+    "AiMlModelOutputClass": {
+      "type": "object",
+      "properties": {
+        "classDisplayName": {
+          "type": "string",
+          "description": "Class name"
+        },
+        "classIndex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Class index"
+        },
+        "nc": {
+          "type": "boolean",
+          "description": "Is it a nonconformance class?"
+        },
+        "ncCodeId": {
+          "type": "string",
+          "description": "Nonconformance code ID mapped to the class"
+        },
+        "ncCodeName": {
+          "type": "string",
+          "description": "Nonconformance code name mapped to the class"
+        },
+        "threshold": {
+          "type": "string",
+          "description": "Threshold"
+        }
+      },
+      "title": "AiMlModelOutputClass",
+      "description": "Output class for model"
+    },
+    "AiMlScenarioCombination": {
+      "type": "object",
+      "properties": {
+        "material": {
+          "type": "string",
+          "description": "Material defined for a scenario"
+        },
+        "operation": {
+          "type": "string",
+          "description": "Operation defined for a scenario"
+        },
+        "plant": {
+          "type": "string",
+          "description": "Plant defined for a scenario"
+        },
+        "resource": {
+          "type": "string",
+          "description": "Resource defined for a scenario"
+        },
+        "routing": {
+          "type": "string",
+          "description": "Routing defined for a scenario"
+        }
+      },
+      "title": "AiMlScenarioCombination",
+      "description": "Scenario combination"
+    },
+    "AiMlScenarioDeployment": {
+      "type": "object",
+      "properties": {
+        "deploymentOptions": {
+          "type": "object",
+          "description": "Additional deployment options available for a scenario"
+        },
+        "deploymentType": {
+          "type": "string",
+          "example": "visualinsppod",
+          "description": "The consuming application where AI/ML models need to be deployed."
+        },
+        "inspectionPoints": {
+          "type": "array",
+          "description": "List of inspection points defined for a scenario",
+          "items": {
+            "$ref": "#/definitions/AiMlInspectionPoint"
+          }
+        }
+      },
+      "title": "AiMlScenarioDeployment",
+      "description": "Deployment details of scenario"
+    },
+    "SaveInspectionStateResponse": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "description": "Production context associated with the current inspection.",
+          "$ref": "#/definitions/ProductionContext"
+        },
+        "fileId": {
+          "description": "Inspection file identifier.",
+          "type": "string"
+        }
+      },
+      "title": "SaveInspectionStateResponse",
+      "description": "Log inspection response"
+    },
+    "ProductionContext": {
+      "type": "object",
+      "properties": {
+        "plant": {
+          "description": "Plant name",
+          "type": "string"
+        },
+        "sfc": {
+          "description": "Shop Floor Control identifier.",
+          "type": "string"
+        },
+        "material": {
+          "description": "Material name",
+          "type": "string"
+        },
+        "operation": {
+          "description": "Operation Activity name",
+          "type": "string"
+        },
+        "resource": {
+          "description": "Resource name",
+          "type": "string"
+        },
+        "routing": {
+          "description": "Routing name",
+          "type": "string"
+        },
+        "source": {
+          "description": "Source of production data (DME/ME).",
+          "type": "string"
+        },
+        "inspectionViewName": {
+          "description": "Inspection View identifier.",
+          "type": "string"
+        }
+      }
+    },
+    "AiMlScenarioMetadata": {
+      "type": "object",
+      "properties": {
+        "deployment": {
+          "description": "Scenario deployment details",
+          "$ref": "#/definitions/AiMlScenarioDeployment"
+        },
+        "scenarioChangedAt": {
+          "description": "Scenario changed on",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "scenarioCombinations": {
+          "type": "array",
+          "description": "List of scenario combinations",
+          "items": {
+            "$ref": "#/definitions/AiMlScenarioCombination"
+          }
+        },
+        "scenarioCreatedAt": {
+          "description": "Scenario created on",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "scenarioDescription": {
+          "type": "string",
+          "description": "Scenario description"
+        },
+        "scenarioId": {
+          "type": "string",
+          "description": "Scenario ID"
+        },
+        "scenarioName": {
+          "type": "string",
+          "description": "Scenario name"
+        },
+        "scenarioObjective": {
+          "type": "string",
+          "description": "Scenario objective",
+          "enum": [
+            "Visual Inspection",
+            "Defect Detection"
+          ]
+        },
+        "scenarioStatus": {
+          "type": "string",
+          "description": "Current scenario status"
+        },
+        "scenarioVersion": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Scenario version"
+        }
+      },
+      "title": "AiMlScenarioMetadata",
+      "description": "Metadata of AI/ML scenario"
+    },
+    "Timestamp": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hours": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minutes": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nanos": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "seconds": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "time": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "timezoneOffset": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Timestamp"
+    },
+    "InspectionLogView": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string"
+        },
+        "inspectionLogTime": {
+          "$ref": "#/definitions/Timestamp"
+        },
+        "inspectionType": {
+          "type": "string"
+        },
+        "inspectionViewName": {
+          "type": "string"
+        },
+        "loggedAnnotation": {
+          "type": "string"
+        },
+        "loggedNCCode": {
+          "type": "string"
+        },
+        "material": {
+          "type": "string"
+        },
+        "operation": {
+          "type": "string"
+        },
+        "plant": {
+          "type": "string"
+        },
+        "predictedAnnotation": {
+          "type": "string"
+        },
+        "predictedClass": {
+          "type": "string"
+        },
+        "predictedNCCode": {
+          "type": "string"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "routing": {
+          "type": "string"
+        },
+        "sfcId": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "title": "InspectionLogView"
+    },
+    "File": {
+      "type": "object",
+      "properties": {
+        "absolute": {
+          "type": "boolean"
+        },
+        "absoluteFile": {
+          "$ref": "#/definitions/File"
+        },
+        "absolutePath": {
+          "type": "string"
+        },
+        "canonicalFile": {
+          "$ref": "#/definitions/File"
+        },
+        "canonicalPath": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/InputStream"
+        },
+        "contentLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "createdTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "directory": {
+          "type": "boolean"
+        },
+        "file": {
+          "type": "boolean"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "folderPath": {
+          "type": "string"
+        },
+        "freeSpace": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastScanned": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parent": {
+          "type": "string"
+        },
+        "parentFile": {
+          "$ref": "#/definitions/File"
+        },
+        "path": {
+          "type": "string"
+        },
+        "scanningReport": {
+          "$ref": "#/definitions/ScanningReport"
+        },
+        "tenantId": {
+          "type": "string"
+        },
+        "totalSpace": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "usableSpace": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userMetadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "File"
+    },
+    "InputStream": {
+      "type": "object",
+      "title": "InputStream"
+    },
+    "InputStreamResource": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "file": {
+          "$ref": "#/definitions/File"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "inputStream": {
+          "$ref": "#/definitions/InputStream"
+        },
+        "open": {
+          "type": "boolean"
+        },
+        "readable": {
+          "type": "boolean"
+        },
+        "uri": {
+          "$ref": "#/definitions/URI"
+        },
+        "url": {
+          "$ref": "#/definitions/URL"
+        }
+      },
+      "title": "InputStreamResource"
+    },
+    "ScanningReport": {
+      "type": "object",
+      "properties": {
+        "encryptedContentDetected": {
+          "type": "boolean"
+        },
+        "malwareDetected": {
+          "type": "boolean"
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "scanSize": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "ScanningReport"
+    },
+    "URI": {
+      "type": "object",
+      "properties": {
+        "absolute": {
+          "type": "boolean"
+        },
+        "authority": {
+          "type": "string"
+        },
+        "fragment": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "opaque": {
+          "type": "boolean"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "query": {
+          "type": "string"
+        },
+        "rawAuthority": {
+          "type": "string"
+        },
+        "rawFragment": {
+          "type": "string"
+        },
+        "rawPath": {
+          "type": "string"
+        },
+        "rawQuery": {
+          "type": "string"
+        },
+        "rawSchemeSpecificPart": {
+          "type": "string"
+        },
+        "rawUserInfo": {
+          "type": "string"
+        },
+        "scheme": {
+          "type": "string"
+        },
+        "schemeSpecificPart": {
+          "type": "string"
+        },
+        "userInfo": {
+          "type": "string"
+        }
+      },
+      "title": "URI"
+    },
+    "URL": {
+      "type": "object",
+      "properties": {
+        "authority": {
+          "type": "string"
+        },
+        "content": {
+          "type": "object"
+        },
+        "defaultPort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "file": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "query": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "userInfo": {
+          "type": "string"
+        }
+      },
+      "title": "URL"
+    },
+    "ApiError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Internal error message"
+        },
+        "message": {
+          "type": "string",
+          "description": "Contains additional information, if any"
+        },
+        "correlationId": {
+          "type": "string",
+          "description": "Contains correlationId for the error."
+        },
+        "traces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiErrorTrace"
+          }
+        }
+      },
+      "title": "ApiError",
+      "description": "Api error."
+    },
+    "ApiErrorTrace": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "technicalMessage": {
+          "type": "string"
+        }
+      },
+      "title": "ApiErrorTrace",
+      "description": "Contains technical reasons for the error."
+    },
+    "InspectionState": {
+      "type": "object",
+      "required": [
+        "context"
+      ],
+      "properties": {
+        "context": {
+          "description": "Production context associated with the current inspection.",
+          "$ref": "#/definitions/ProductionContext"
+        },
+        "fileContent": {
+          "type": "string",
+          "description": "Base64 encoded content of the inspected file."
+        },
+        "fileContentType": {
+          "type": "string",
+          "description": "Media type of the inspected file."
+        },
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the inspected file.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "inspectionLogTime": {
+          "description": "Date-time of the inspection.",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "isConformant": {
+          "type": "boolean",
+          "description": "Determines if the inspected file is identified as conformant or nonconformant."
+        },
+        "loggedNCS": {
+          "type": "array",
+          "description": "List of operator logged defects for the inspected file.",
+          "items": {
+            "$ref": "#/definitions/LoggedNC"
+          }
+        },
+        "predictions": {
+          "type": "array",
+          "description": "List of predicted defects for the inspected file.",
+          "items": {
+            "$ref": "#/definitions/Prediction"
+          }
+        },
+        "scenarioID": {
+          "type": "string",
+          "description": "AI/ML Scenario ID"
+        },
+        "scenarioVersion": {
+          "type": "integer",
+          "format": "int32",
+          "description": "AI/ML Scenario version"
+        }
+      },
+      "title": "InspectionState",
+      "description": "Representation of the latest inspection state."
+    },
+    "LoggedNC": {
+      "type": "object",
+      "required": [
+        "ncCode"
+      ],
+      "properties": {
+        "defectBoundingBoxCoords": {
+          "type": "string",
+          "description": "Boundary coordinates of the logged defect."
+        },
+        "ncCode": {
+          "type": "string",
+          "description": "Nonconformance code logged by the operator",
+          "minLength": 1,
+          "maxLength": 40
+        }
+      },
+      "title": "LoggedNC",
+      "description": "Representation of operator logged defect."
+    },
+    "Prediction": {
+      "type": "object",
+      "required": [
+        "ncCode",
+        "predictionClass",
+        "predictionScore"
+      ],
+      "properties": {
+        "isLogged": {
+          "type": "boolean",
+          "description": "Defines if the nonconformance has been logged for the prediction class."
+        },
+        "ncCode": {
+          "type": "string",
+          "description": "Nonconformance code associated with the prediction class.",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "predictionBoundingBoxCoords": {
+          "type": "string",
+          "description": "Boundary coordinates of the predicted defect."
+        },
+        "predictionClass": {
+          "type": "string",
+          "description": "Machine Learning model prediction class name.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "predictionScore": {
+          "type": "number",
+          "format": "double",
+          "description": "Prediction probability.",
+          "minimum": 0,
+          "maximum": 1,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        }
+      },
+      "title": "Prediction",
+      "description": "Representation of defect prediction."
+    }
+  },
+  "externalDocs": {
+    "description": "Application Help for AI/ML Scenarios Management",
+    "url": "https://help.sap.com/viewer/48311ee421904ba38d0592e30e2437a1/latest/en-US"
+  },
+  "schemes": [
+    "https"
+  ],
+  "x-sap-shortText": "Manage Artificial Intelligence and Machine Learning Scenarios for automation of manufacturing processes",
+  "x-servers": [
+    {
+      "url": "https://api.{regionHost}/aiml/v1",
+      "description": "Base URL",
+      "templates": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ]
+}

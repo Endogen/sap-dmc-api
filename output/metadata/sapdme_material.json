@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_material')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_material')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_material')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_material')/$value"
+  },
+  "Name": "sapdme_material",
+  "ID": "sapdme_material",
+  "Title": "Material",
+  "ShortText": "Browse and modify materials",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218366)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706354)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 February 2026\",\"notes\":\"Improved description of the DELETE /v1/materials API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"18 May 2025\",\"notes\":\"Improved description of the /v2/materials API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"18 May 2025\",\"notes\":\"Adding material locations to Material API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 February 2025\",\"notes\":\"Correct modifiedDateTime and createdDateTime example.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"15 February 2025\",\"notes\":\"Added the bomExplosionDependent, parallelUom, quantityRestriction, panel, targetLotSize fields to Material API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"23 November 2024\",\"notes\":\"Added the Material Header Details API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 August 2024\",\"notes\":\"Added the browsable field to the Response DataField area. Added the browsable field to the Response DataField area.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"Added Material file attachments API. Add download/preview/upload material file attachment content API\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2023\",\"notes\":\"Added Material serialNumberProfile property. Add GET material v2.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Corrected ErrorResponse timestamp type for UTC format.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Added Material orderProcessingMode property.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2022\",\"notes\":\"Material was separated into request and response. Added alternate unit of measure property to Material API Request and Response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"22 May 2021\",\"notes\":\"Added create and update endpoints\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"14 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_material')/Versions"
+    }
+  }
+}

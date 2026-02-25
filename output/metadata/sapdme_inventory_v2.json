@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_inventory_v2')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_inventory_v2')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_inventory_v2')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_inventory_v2')/$value"
+  },
+  "Name": "sapdme_inventory_v2",
+  "ID": "sapdme_inventory_v2",
+  "Title": "Inventory",
+  "ShortText": "Perform inventory relevant activities, such as retrieving stock information and updating stock data.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v2",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1763144303753)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706715)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 Feb 2026\",\"notes\":\"1) Added a new API endpoint for retrieving posted goods receipts: /inventory/goodsReceipts. 2) Added an API for submitting EWM goods receipts: /inventory/ewmGoodsReceipts. 3) Enhanced the PATCH stock API by including the 'serialNumber' in the request payload. 4) Added an API for retrieving posted goods issues: /inventory/goodsIssues.\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"16 Nov 2025\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v2\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_inventory_v2')/Versions"
+    }
+  }
+}

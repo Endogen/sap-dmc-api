@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_quantityConfirmation')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_quantityConfirmation')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_quantityConfirmation')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_quantityConfirmation')/$value"
+  },
+  "Name": "sapdme_quantityConfirmation",
+  "ID": "sapdme_quantityConfirmation",
+  "Title": "Quantity Confirmation",
+  "ShortText": "Perform quantity confirmations for an order",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639580440063)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706594)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"21 May 2023\",\"notes\":\"Added new API for getting quantity confirmation posting history, checkSchedulingAndOeeRelevant flag for quantity confirmation\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Added new API for getting quantity confirmation postings.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"18 Mar 2022\",\"notes\":\"Adjusted URL prefix '/quantityConfirmation'\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"26 Feb 2022\",\"notes\":\"Added final quantity confirmation & reason code key as input parameter for scrap confirmation\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"10 Dec 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_quantityConfirmation')/Versions"
+    }
+  }
+}

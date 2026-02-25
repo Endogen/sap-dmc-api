@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_wip')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_wip')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_wip')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_wip')/$value"
+  },
+  "Name": "sapdme_wip",
+  "ID": "sapdme_wip",
+  "Title": "Work in Process (WIP) Activities",
+  "ShortText": "Perform production activities for work-in-process (WIP) products, such as storing, staging and consuming them by posting WIP requests to Extended Warehouse Management",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1724428412080)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706262)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"23 Nov 2024\",\"notes\":\"Added a new API to discard the WIP storage request.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"17 Aug 2024\",\"notes\":\"Added a new API to send WIP storage request; Added a new API to send WIP staging request; Added a new API to send WIP goods issue request.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_wip')/Versions"
+    }
+  }
+}

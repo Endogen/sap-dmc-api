@@ -1,0 +1,610 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Issues",
+    "description": "An issue is created in reference to a generic product defect, or a process-related challenge observed on the shop floor. These issues can be addressed either by using tasks or by creating a problem-solving process in SAP Digital Manufacturing for Issue Resolution.",
+    "version": "v1",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.0",
+  "x-sap-shortText": "Allows you to create and read issues in SAP Digital Manufacturing for Issue Resolution.",
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/odata/v4/IssueService",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing Cloud is provisioned for your organization",
+          "enum": [
+            "test.eu20.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap"
+          ],
+          "default": "test.eu20.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu20.hana.ondemand.com"
+          ],
+          "default": "eu20.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Issues"
+    }
+  ],
+  "paths": {
+    "/Issues": {
+      "get": {
+        "summary": "Retrieves a list of issues.",
+        "tags": [
+          "Issues"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "issueId",
+                  "descriptionShort",
+                  "descriptionLong",
+                  "priorityId",
+                  "codeId",
+                  "codeGroupId",
+                  "issueStatusId",
+                  "responsible",
+                  "reportedBy",
+                  "sourceSystemId",
+                  "productExternalId",
+                  "plant",
+                  "productName",
+                  "plantName",
+                  "processUUID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "issueId",
+                  "descriptionShort",
+                  "descriptionLong",
+                  "priorityId",
+                  "codeId",
+                  "codeGroupId",
+                  "issueStatusId",
+                  "responsible",
+                  "reportedBy",
+                  "sourceSystemId",
+                  "productExternalId",
+                  "plant",
+                  "productName",
+                  "plantName",
+                  "processUUID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_Responsible",
+                  "to_ReportedBy",
+                  "to_CodeGroupCodeRelations",
+                  "to_CodeGroup",
+                  "to_Product",
+                  "to_Plant",
+                  "to_CreatedBy",
+                  "to_ModifiedBy"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved a list of issues successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "items": {
+                        "$ref": "#/components/schemas/GetIssue"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates an issue.",
+        "tags": [
+          "Issues"
+        ],
+        "requestBody": {
+          "description": "Creates an issue in reference to a generic product defect, or a process-related challenge observed on the shop floor.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIssue"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "An issue has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetIssue"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Issues('{issueId}')": {
+      "parameters": [
+        {
+          "description": "Unique identifier of an issue",
+          "in": "path",
+          "name": "issueId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves all values of an issue.",
+        "tags": [
+          "Issues"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "issueId",
+                  "descriptionShort",
+                  "descriptionLong",
+                  "priorityId",
+                  "codeId",
+                  "codeGroupId",
+                  "issueStatusId",
+                  "responsible",
+                  "reportedBy",
+                  "sourceSystemId",
+                  "productExternalId",
+                  "plant",
+                  "productName",
+                  "plantName",
+                  "processUUID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "to_Responsible",
+                  "to_ReportedBy",
+                  "to_CodeGroupCodeRelations",
+                  "to_CodeGroup",
+                  "to_Product",
+                  "to_Plant",
+                  "to_CreatedBy",
+                  "to_ModifiedBy"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved all values of an issue successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetIssue"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/error"
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetIssue": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "Unique universal identifier of an issue",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.000000Z"
+          },
+          "modifiedBy": {
+            "type": "string"
+          },
+          "issueId": {
+            "type": "string",
+            "description": "Unique identifier of an issue"
+          },
+          "descriptionShort": {
+            "type": "string",
+            "description": "Description of an issue"
+          },
+          "descriptionLong": {
+            "type": "string",
+            "description": "Detailed description of an issue"
+          },
+          "priorityId": {
+            "type": "string",
+            "description": "Unique identifier of an issue"
+          },
+          "codeId": {
+            "type": "string",
+            "description": "Unique identifier of code"
+          },
+          "codeGroupId": {
+            "type": "string",
+            "description": "Unique identifier of code group."
+          },
+          "issueStatusId": {
+            "type": "string",
+            "description": "Unique identifier of issue status. The issueStatusId can be one of the following:\nFor Supplier Problem-Solving Scenario:\n01 - New\n\n02 - In Process\n\n03 - Completed\n\n04 - Obsolete"
+          },
+          "responsible": {
+            "type": "string",
+            "description": "The person responsible for the resolution of the issue"
+          },
+          "reportedBy": {
+            "type": "string",
+            "description": "The person or entity who initially identifies and reports the quality issue."
+          },
+          "sourceSystemId": {
+            "type": "string",
+            "description": "Identifier of the system or source from which the quality issue originated."
+          },
+          "productExternalId": {
+            "type": "string",
+            "description": "A unique identifier assigned to a specific product or item used to track and manage quality issues associated with the product throughout its lifecycle."
+          },
+          "plant": {
+            "type": "string",
+            "description": "The manufacturing facility or production site where products are produced or assembled."
+          },
+          "productName": {
+            "type": "string",
+            "description": "Specific product addressed in relation to an issue."
+          },
+          "plantName": {
+            "type": "string",
+            "description": "Name or identification of a specific plant or facility where a quality issue has occurred."
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a problem-solving process",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      },
+      "CreateIssue": {
+        "type": "object",
+        "required": [
+          "descriptionShort",
+          "sourceSystemId"
+        ],
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "Unique universal identifier of an issue",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "descriptionShort": {
+            "type": "string",
+            "description": "Description of an issue"
+          },
+          "descriptionLong": {
+            "type": "string",
+            "description": "Detailed description of an issue"
+          },
+          "priorityId": {
+            "type": "string",
+            "description": "Unique identifier of an issue"
+          },
+          "codeId": {
+            "type": "string",
+            "description": "Unique identifier of code"
+          },
+          "codeGroupId": {
+            "type": "string",
+            "description": "Unique identifier of code group."
+          },
+          "issueStatusId": {
+            "type": "string",
+            "description": "Unique identifier of issue status. The issueStatusId can be one of the following:\nFor Supplier Problem-Solving Scenario:\n01 - New\n\n02 - In Process\n\n03 - Completed\n\n04 - Obsolete"
+          },
+          "responsible": {
+            "type": "string",
+            "description": "The person responsible for the resolution of the issue"
+          },
+          "reportedBy": {
+            "type": "string",
+            "description": "The person or entity who initially identifies and reports the quality issue."
+          },
+          "sourceSystemId": {
+            "type": "string",
+            "description": "Identifier of the system or source from which the quality issue originated."
+          },
+          "productExternalId": {
+            "type": "string",
+            "description": "A unique identifier assigned to a specific product or item used to track and manage quality issues associated with the product throughout its lifecycle."
+          },
+          "plant": {
+            "type": "string",
+            "description": "The manufacturing facility or production site where products are produced or assembled."
+          },
+          "productName": {
+            "type": "string",
+            "description": "Specific product addressed in relation to an issue."
+          },
+          "plantName": {
+            "type": "string",
+            "description": "Name or identification of a specific plant or facility where a quality issue has occurred."
+          },
+          "processUUID": {
+            "type": "string",
+            "description": "Universal unique identifier for a problem-solving process",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      },
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message",
+          "correlationId"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Contains a correlation ID for the error."
+          },
+          "message": {
+            "type": "string",
+            "description": "Internal error message"
+          },
+          "details": {
+            "type": "string",
+            "description": "Contains additional information, if any"
+          },
+          "causeMessage": {
+            "type": "string",
+            "description": "Contains technical reason for the error."
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "You are not authorized to call this resource",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

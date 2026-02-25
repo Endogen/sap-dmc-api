@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource')/$value"
+  },
+  "Name": "sapdme_plant_resource",
+  "ID": "sapdme_plant_resource",
+  "Title": "Resource",
+  "ShortText": "Manage resources used to perform an operation in a manufacturing process",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218346)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706232)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "DEPRECATED",
+  "ChangeLog": "[{\"date\":\"25 May 2024\",\"notes\":\"The delete, changestatus, loadbin, unloadbin endpoints are deprecated. Please use successor API: <a href=https://api.sap.com/api/sapdme_plant_resource_v2>Resource V2<\\/a>\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"02 Dec 2023\",\"notes\":\"The GET, POST, PATCH endpoints are deprecated for tenants that have activated the Enterprise Asset Base Model (EABM) service. Please use successor API: <a href=https://api.sap.com/api/sapdme_plant_resource_v2>Resource V2<\\/a>; Change status API add reasonCode hierarchy, deprecated fields userId(The user originates from the context), dateTime(The field value originates from the runtime)\",\"state\":\"Deprecated\",\"version\":\"v1\"},{\"date\":\"20 May 2023\",\"notes\":\"Added the setups field to get, create, or update resources in the resource API. Added new fields inQueueCapacity, outQueueCapacity, inQueueManagement, outQueueManagement to resource API response and request.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Added new fields sfcLimit, immediateStatusChange to resource API response, and API for create, update, and delete resource.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 May 2020\",\"notes\":\"Added API for load and unload a resource bin.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_resource')/Versions"
+    }
+  }
+}

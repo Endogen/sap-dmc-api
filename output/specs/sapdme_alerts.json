@@ -1,0 +1,768 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Alert Management",
+    "description": "Alerts are used to notify users about events that require their attention. Alerts can be created manually by a production operator or automatically by the system. The Alerts API allows you to create and update alerts in SAP Digital Manufacturing.",
+    "version": "v1",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "x-sap-stateInfo": {
+    "state": "Active"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.01",
+  "x-sap-shortText": "Create or update alerts in SAP Digital Manufacturing",
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/alerts",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization.",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization.",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Alerts"
+    }
+  ],
+  "paths": {
+    "/v1/Alerts": {
+      "get": {
+        "summary": "Retrieve a list of alerts.",
+        "description": "Retrieve a list of alerts based on the provided filter criteria. Alerts can be retrieved by their properties, such as alert type, severity, status, as well as other fields specific to the alert type's defined alert data schemas when the Alert-Type header is set.",
+        "tags": [
+          "Alerts"
+        ],
+        "parameters": [
+          {
+            "name": "Alert-Type",
+            "in": "header",
+            "description": "The Alert-Type request HTTP header is used to specify the alert type of the alert, as configured in the Manage Alert Configurations application.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values. For more information, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values. For more information, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "AlertType",
+                  "AlertType desc",
+                  "Severity",
+                  "Severity desc",
+                  "Status",
+                  "Status desc",
+                  "DeduplicationCount",
+                  "DeduplicationCount desc",
+                  "CreatedOn",
+                  "CreatedOn desc",
+                  "UpdatedOn",
+                  "UpdatedOn desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned. For more information, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Id",
+                  "Info",
+                  "ExternalId",
+                  "Source",
+                  "AlertType",
+                  "Plant",
+                  "Severity",
+                  "Status",
+                  "ProcessorId",
+                  "DeduplicationCount",
+                  "DeduplicationKey",
+                  "TriggeredOn",
+                  "FirstOccurredOn",
+                  "LastOccurredOn",
+                  "CreatedOn",
+                  "CreatedBy",
+                  "UpdatedOn",
+                  "UpdatedBy"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline. For more information, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Processor",
+                  "Processors"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved alerts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "A list of alerts.",
+                  "properties": {
+                    "@odata.count": {
+                      "description": "The count of retrieved alerts if $count parameter is true.",
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Alert"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new alert",
+        "tags": [
+          "Alerts"
+        ],
+        "parameters": [
+          {
+            "name": "Alert-Type",
+            "in": "header",
+            "description": "The Alert-Type request HTTP header is used to specify the alert type of the alert, as configured in the Manage Alert Configurations application.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Request body for creating a new alert.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAlertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Alert was created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAlertResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/v1/Alerts({id})": {
+      "patch": {
+        "summary": "Update an existing alert",
+        "tags": [
+          "Alerts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the existing alert.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Alert-Type",
+            "in": "header",
+            "description": "The Alert-Type request HTTP header is used to specify the alert type of the alert, as configured in the Manage Alert Configurations application.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Request body for updating an existing alert.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAlertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Alert was updated successfully."
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AlertProcessor": {
+        "type": "object",
+        "properties": {
+          "FirstName": {
+            "description": "First name of the processor of the alert.",
+            "type": "string"
+          },
+          "LastName": {
+            "description": "Last name of the processor of the alert.",
+            "type": "string"
+          },
+          "Id": {
+            "description": "Unique identifier of the processor of the alert.",
+            "type": "string"
+          }
+        }
+      },
+      "AlertPropertySetDMEShopfloor": {
+        "type": "object",
+        "properties": {
+          "DME_Material": {
+            "description": "Material for the context of the alert.",
+            "type": "string"
+          },
+          "DME_SFC_Event": {
+            "description": "SFC Event for the context of the alert.",
+            "type": "string"
+          },
+          "DME_SFC": {
+            "description": "Shop Floor Control for the context of the alert.",
+            "type": "string"
+          },
+          "DME_Comments": {
+            "description": "Comments for the context of the alert.",
+            "type": "string"
+          },
+          "DME_Plant": {
+            "description": "Plant for the context of the alert.",
+            "type": "string"
+          },
+          "DME_Workcenter": {
+            "description": "Work Center for the context of the alert.",
+            "type": "string"
+          },
+          "DME_Resource": {
+            "description": "Resource for the context of the alert.",
+            "type": "string"
+          },
+          "DME_Order": {
+            "description": "Order for the context of the alert.",
+            "type": "string"
+          },
+          "DME_Operation": {
+            "description": "Operation for the context of the alert.",
+            "type": "string"
+          }
+        }
+      },
+      "AlertNotification": {
+        "type": "object",
+        "properties": {
+          "ActionType": {
+            "description": "The type of notification that should be sent in response to an alert.",
+            "type": "string",
+            "enum": [
+              "IN_APP",
+              "SAP_EMAIL"
+            ]
+          },
+          "Value": {
+            "title": "Recipients",
+            "description": "List of recipients for notifications sent in response to an alert.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Alert": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "description": "Automatically-generated internal identifier for the alert.",
+            "type": "string"
+          },
+          "Info": {
+            "description": "Free text to provide additional information about the alert.",
+            "type": "string"
+          },
+          "ExternalId": {
+            "description": "Alert identifier (which is not unique) from an external system. Multiple alerts can be created with the same external ID.",
+            "type": "string"
+          },
+          "Source": {
+            "description": "Source",
+            "type": "string"
+          },
+          "AlertType": {
+            "description": "User-defined alert type name.",
+            "type": "string"
+          },
+          "Plant": {
+            "description": "The plant that this alert belongs to. When an alert is assigned to a plant, it's only accessible to users within that plant. If not provided, any user in any plant can access and modify the alert.",
+            "type": "string"
+          },
+          "Severity": {
+            "description": "Severity of the alert, which is configured as part of the alert type.",
+            "type": "string"
+          },
+          "Status": {
+            "description": "Status of the alert, which is configured as part of the alert type.",
+            "type": "string"
+          },
+          "ProcessorId": {
+            "description": "Identifier of the current processor assigned to the alert.",
+            "type": "string"
+          },
+          "DeduplicationCount": {
+            "description": "The number of times the deduplication logic has been activated for the alert.",
+            "type": "integer"
+          },
+          "DeduplicationKey": {
+            "description": "Key to drive the deduplication logic. When an alert exists for the given alert type and deduplication key within the deduplication period, then only the deduplication count of an alert is increased. When the deduplication key is not provided, then the deduplication logic is not executed.",
+            "type": "string"
+          },
+          "TriggeredOn": {
+            "description": "Timestamp of the business event which triggered the alert.",
+            "type": "string",
+            "format": "yyyy-MM-DDTHH:mm:ssZ"
+          },
+          "FirstOccurredOn": {
+            "description": "Timestamp corresponding to when the event for this alert first occurred.",
+            "type": "string",
+            "format": "yyyy-MM-DDTHH:mm:ssZ"
+          },
+          "LastOccurredOn": {
+            "description": "Timestamp corresponding to when the event for this alert last occurred.",
+            "type": "string",
+            "format": "yyyy-MM-DDTHH:mm:ssZ"
+          },
+          "CreatedOn": {
+            "description": "Timestamp of alert creation.",
+            "type": "string"
+          },
+          "CreatedBy": {
+            "description": "User who created the alert.",
+            "type": "string"
+          },
+          "UpdatedOn": {
+            "description": "Timestamp of alert update.",
+            "type": "string"
+          },
+          "UpdatedBy": {
+            "description": "User who most recently updated the alert.",
+            "type": "string"
+          },
+          "Processor": {
+            "$ref": "#/components/schemas/AlertProcessor"
+          },
+          "Processors": {
+            "description": "List of processors who are assigned to the alert.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertProcessor"
+            }
+          },
+          "DME_Shopfloor": {
+            "description": "Shop floor context for the alert.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertPropertySetDMEShopfloor"
+            }
+          }
+        }
+      },
+      "CreateAlertRequest": {
+        "type": "object",
+        "required": [
+          "AlertType",
+          "Status",
+          "Severity",
+          "TriggeredOn"
+        ],
+        "properties": {
+          "Info": {
+            "description": "Free text to provide additional information about the alert.",
+            "type": "string"
+          },
+          "ExternalId": {
+            "description": "Alert identifier (which is not unique) from an external system. Multiple alerts can be created with the same external ID.",
+            "type": "string"
+          },
+          "AlertType": {
+            "description": "User-defined alert type name.",
+            "type": "string"
+          },
+          "Plant": {
+            "description": "The plant that this alert belongs to. When an alert is assigned to a plant, it's only accessible to users within that plant. If not provided, any user in any plant can access and modify the alert.",
+            "type": "string"
+          },
+          "Severity": {
+            "description": "Severity of the alert, which is configured as part of the alert type.",
+            "type": "string"
+          },
+          "Status": {
+            "description": "Status of the alert, which is configured as part of the alert type.",
+            "type": "string"
+          },
+          "TriggeredOn": {
+            "description": "Timestamp of the business event which triggered the alert.",
+            "type": "string",
+            "format": "yyyy-MM-DDTHH:mm:ssZ"
+          },
+          "DeduplicationKey": {
+            "description": "Key to drive the deduplication logic. When an alert exists for the given alert type and deduplication key within the deduplication period, then only the deduplication count of an alert is increased. When the deduplication key is not provided, then the deduplication logic is not executed.",
+            "type": "string"
+          },
+          "Processor": {
+            "$ref": "#/components/schemas/AlertProcessor"
+          },
+          "Processors": {
+            "description": "List of processors to be assigned to the alert.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertProcessor"
+            }
+          },
+          "DME_Shopfloor": {
+            "description": "Shop floor context for the alert.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertPropertySetDMEShopfloor"
+            }
+          },
+          "AlertNotification": {
+            "description": "Notification configuration for the alert.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertNotification"
+            }
+          }
+        }
+      },
+      "CreateAlertResponse": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "description": "Automatically-generated internal identifier for the alert.",
+            "type": "string"
+          },
+          "Info": {
+            "description": "Free text to provide additional information about the alert.",
+            "type": "string"
+          },
+          "ExternalId": {
+            "description": "Alert identifier (which is not unique) from an external system. Multiple alerts can be created with the same external ID.",
+            "type": "string"
+          },
+          "Source": {
+            "description": "Source",
+            "type": "string"
+          },
+          "AlertType": {
+            "description": "User-defined alert type name.",
+            "type": "string"
+          },
+          "Plant": {
+            "description": "The plant that this alert belongs to. When an alert is assigned to a plant, it's only accessible to users within that plant. If not provided, any user in any plant can access and modify the alert.",
+            "type": "string"
+          },
+          "Severity": {
+            "description": "Severity of the alert, which is configured as part of the alert type.",
+            "type": "string"
+          },
+          "Status": {
+            "description": "Status of the alert, which is configured as part of the alert type.",
+            "type": "string"
+          },
+          "ProcessorId": {
+            "description": "Identifier of the current processor assigned to the alert.",
+            "type": "string"
+          },
+          "DeduplicationCount": {
+            "description": "The number of times the deduplication logic has been activated for the alert.",
+            "type": "integer"
+          },
+          "DeduplicationKey": {
+            "description": "Key to drive the deduplication logic. When an alert exists for the given alert type and deduplication key within the deduplication period, then only the deduplication count of an alert is increased. When the deduplication key is not provided, then the deduplication logic is not executed.",
+            "type": "string"
+          },
+          "TriggeredOn": {
+            "description": "Timestamp of the business event which triggered the alert.",
+            "type": "string",
+            "format": "yyyy-MM-DDTHH:mm:ssZ"
+          },
+          "FirstOccurredOn": {
+            "description": "Timestamp corresponding to when the event for this alert last occurred.",
+            "type": "string",
+            "format": "yyyy-MM-DDTHH:mm:ssZ"
+          },
+          "LastOccurredOn": {
+            "description": "Timestamp corresponding to when the event for this alert last occurred.",
+            "type": "string",
+            "format": "yyyy-MM-DDTHH:mm:ssZ"
+          },
+          "CreatedOn": {
+            "description": "Timestamp of alert creation.",
+            "type": "string"
+          },
+          "CreatedBy": {
+            "description": "User who created the alert.",
+            "type": "string"
+          },
+          "UpdatedOn": {
+            "description": "Timestamp of alert update.",
+            "type": "string"
+          },
+          "UpdatedBy": {
+            "description": "User who most recently updated the alert.",
+            "type": "string"
+          }
+        }
+      },
+      "UpdateAlertRequest": {
+        "type": "object",
+        "properties": {
+          "Info": {
+            "description": "Free text to provide additional information about the alert.",
+            "type": "string"
+          },
+          "ExternalId": {
+            "description": "Alert identifier (which is not unique) from an external system. Multiple alerts can be created with the same external ID.",
+            "type": "string"
+          },
+          "Severity": {
+            "description": "Severity of the alert, which is configured as part of the alert type.",
+            "type": "string"
+          },
+          "Status": {
+            "description": "Status of the alert, which is configured as part of the alert type.",
+            "type": "string"
+          },
+          "Processor": {
+            "$ref": "#/components/schemas/AlertProcessor"
+          },
+          "Processors": {
+            "description": "List of processors to be assigned to the alert.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertProcessor"
+            }
+          }
+        }
+      },
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message",
+          "correlationId"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Internal error message"
+          },
+          "message": {
+            "type": "string",
+            "description": "Contains additional information, if any"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Contains correlationId for the error."
+          },
+          "causeMessage": {
+            "type": "string",
+            "description": "Contains technical reason for the error."
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items. For more information, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items. For more information, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of items. For more information, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

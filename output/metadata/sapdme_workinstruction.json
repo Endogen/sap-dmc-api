@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_workinstruction')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_workinstruction')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_workinstruction')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_workinstruction')/$value"
+  },
+  "Name": "sapdme_workinstruction",
+  "ID": "sapdme_workinstruction",
+  "Title": "Work Instruction",
+  "ShortText": "Get a list of work instructions or one single work instruction",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218406)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706451)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 November 2025\",\"notes\":\"Added an attached points to an existing work instruction endpoint\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 February 2024\",\"notes\":\"Added new WorkInstruction Element type STREAMING\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"2 Dec 2023\",\"notes\":\"Added erpFilename, metadataCategory, metadataComponent, metadataRefDes fields to WorkInstruction Element\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2023\",\"notes\":\"Add new WorkInstruction Element Type value - LOCAL_FILE\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Feb 2023\",\"notes\":\"Add an update to the Work Instruction method. Add new fields to create/update a work instruction request. Add a version query parameter to the GET work instruction method.Add a work instruction method to create the list of work instructions.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Corrected created Work Instruction request/response\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2022\",\"notes\":\"Update work instruction attachment element model\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 Nov 2021\",\"notes\":\"Added API's to create and delete a work instruction\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"14 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_workinstruction')/Versions"
+    }
+  }
+}

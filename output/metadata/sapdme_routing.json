@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_routing')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_routing')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_routing')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_routing')/$value"
+  },
+  "Name": "sapdme_routing",
+  "ID": "sapdme_routing",
+  "Title": "Routing",
+  "ShortText": "Perform read, create, update and delete Routings",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218330)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706174)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 February 2026\",\"notes\":\"Added SERVICE_ORDER_ROUTING type to Routing Response.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 November 2025\",\"notes\":\"Adds relaxedFlow, isLastReportingStep, erpSequence to /routingSteps.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 November 2025\",\"notes\":\"Adds longText field to the Routing API for /routings.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 February 2025\",\"notes\":\"Correct modifiedDateTime and createdDateTime example.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"23 November 2024\",\"notes\":\"Adds additional fields to the Routing API for routings of the service order routing type. Adds an ERP sequence category to the Routing API responses on the routing step level.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 August 2024\",\"notes\":\"Adds an ERP sequence collection to the Routing API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"Adds a relaxed flow to the Routing API. Add Retrieve Routing Header Details (GET /routings/headerDetails), Update Routing Header Details (PATCH /routings/headerDetails) API. Add GET /routings/routingOperations and GET /routings/routingSteps APIs. Add a ERP operation number to the Routing API. Possibility to use step Id in the format '1234-1234'.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 February 2024\",\"notes\":\"Updated description of PUT routing endpoint\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 May 2023\",\"notes\":\"Add Step Component allocation property to routing read, update, create request. Add new fields to Scrap Routing step. Correct RoutingStep to RoutingStepId.Add fields to Routing Return Step structure. Add erpSequence field to routing step structure.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Corrected ErrorResponse timestamp type for UTC format. Add POST (create), PUT (update), DELETE (delete) routing API methods. Extended request/response model with controlKey, weighRelevant, automaticGoodsReceipt, createdDateTime, modifiedDateTime fields.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Extended Read Routing with quantityValidation and productionProcessId info in response\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"14 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_routing')/Versions"
+    }
+  }
+}

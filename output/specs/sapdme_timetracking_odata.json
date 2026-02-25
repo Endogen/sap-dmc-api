@@ -1,0 +1,332 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Time Tracking",
+    "description": "Improve transparency on your shop floor by recording and tracking attendance, labor, and production. Use the time tracking service to manage time tracking records and accurately record attendance, direct and indirect labor as well as production time and resource usage. ",
+    "version": "v1",
+    "contact": {
+      "email": "sap-dmoperation@sap.com",
+      "name": "SAP Digital Manufacturing Operations"
+    }
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.01",
+  "x-sap-shortText": "Manage time tracking records and events for activities on the shop floor.",
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/timetracking",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing Cloud is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu20.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu20.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Activities"
+    }
+  ],
+  "paths": {
+    "/v1/Activities": {
+      "get": {
+        "summary": "Fetch activities of a specific plant.",
+        "description": "Fetch activities for indirect labor and resource usage for a specific plant.",
+        "operationId": "Activities",
+        "tags": [
+          "Activities"
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "in": "query",
+            "name": "plant",
+            "description": "The plant assigned to the activities",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "sap-locale",
+            "description": "The locale on which the language of the activity description is dependent",
+            "schema": {
+              "type": "string"
+            },
+            "example": "en"
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of text objects. Each one has a different locale which implies the description language. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "texts",
+                  "trackingType"
+                ]
+              }
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "$orderby",
+            "description": "Orders items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc",
+                  "name",
+                  "name desc",
+                  "description",
+                  "description desc",
+                  "trackingType_code",
+                  "trackingType_code desc"
+                ]
+              }
+            }
+          },
+          {
+            "required": false,
+            "in": "query",
+            "name": "$filter",
+            "description": "Filters items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of Activities",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Activities"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicApiErrorResponse"
+                }
+              }
+            },
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server."
+          },
+          "401": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicApiErrorResponse"
+                }
+              }
+            },
+            "description": "You are not authorized to call this resource."
+          },
+          "403": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicApiErrorResponse"
+                }
+              }
+            },
+            "description": "Accessing the resource you are trying to reach is forbidden."
+          },
+          "404": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicApiErrorResponse"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "500": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicApiErrorResponse"
+                }
+              }
+            },
+            "description": "An internal error occurred."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Activities": {
+        "required": [
+          "plant"
+        ],
+        "title": "Activities",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "The ID of the activity"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 36,
+            "pattern": "^[a-zA-Z]+\\w*$",
+            "description": "The name of the activity"
+          },
+          "plant": {
+            "type": "string",
+            "maxLength": 6,
+            "description": "The plant of the activity"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 40,
+            "nullable": true,
+            "description": "A short description of the activity"
+          },
+          "trackingType_code": {
+            "type": "string",
+            "maxLength": 6,
+            "description": "The technical name of the tracking type",
+            "enum": [
+              "LABOR",
+              "RESOURCE"
+            ]
+          },
+          "trackingType": {
+            "title": "Tracking Type",
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 255,
+                "description": "The name of the tracking type"
+              },
+              "code": {
+                "type": "string",
+                "maxLength": 16,
+                "description": "The technical name of the tracking type"
+              },
+              "descr": {
+                "type": "string",
+                "maxLength": 1000,
+                "description": "The description of the tracking type"
+              }
+            }
+          },
+          "texts": {
+            "type": "array",
+            "description": "Array of translated versions of the description for the localization",
+            "items": {
+              "type": "object",
+              "properties": {
+                "locale": {
+                  "type": "string",
+                  "description": "The locale"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The description in the language corresponding to the locale"
+                }
+              }
+            }
+          }
+        }
+      },
+      "PublicApiErrorResponse": {
+        "title": "Error",
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

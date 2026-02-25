@@ -1,0 +1,2554 @@
+[
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder',Type='API')/$value"
+    },
+    "Name": "sapdme_processorder",
+    "Type": "API",
+    "DisplayName": "Process Order Execution",
+    "SubType": "REST",
+    "reg_id": "4849460bb2474d5b8061c0aa4b356274",
+    "Version": "v1",
+    "Description": "Perform production activities for a process order",
+    "CreatedAt": "/Date(1639390218363)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706301)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc',Type='API')/$value"
+    },
+    "Name": "sapdme_sfc",
+    "Type": "API",
+    "DisplayName": "Shop Floor Control Production Activities",
+    "SubType": "REST",
+    "reg_id": "dc6ebd94d3ca40bab89955b14fedb875",
+    "Version": "v1",
+    "Description": "Perform production activities on a Shop Floor Control, such as start, complete, serialize, relabel, split, merge, scrap and set quantity",
+    "CreatedAt": "/Date(1639390218493)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706750)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter',Type='API')/$value"
+    },
+    "Name": "sapdme_plant_workcenter",
+    "Type": "API",
+    "DisplayName": "Work Center",
+    "SubType": "REST",
+    "reg_id": "715ccd7c476649f0872e7f8a443e83d6",
+    "Version": "v1",
+    "Description": "Get a list of work centers for a given plant.",
+    "CreatedAt": "/Date(1639390218390)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706430)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "DEPRECATED",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_processlot_v2",
+    "Type": "API",
+    "DisplayName": "Process Lot",
+    "SubType": "REST",
+    "reg_id": "f1fe7eafbe034967b98bd699b87cb7c7",
+    "Version": "v2",
+    "Description": "Perform update and start activities on Process Lot",
+    "CreatedAt": "/Date(1757345219463)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706845)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pod',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pod',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pod',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pod',Type='API')/$value"
+    },
+    "Name": "sapdme_pod",
+    "Type": "API",
+    "DisplayName": "Production Operator Dashboard",
+    "SubType": "REST",
+    "reg_id": "9ca30f372919498787bde16882f369d2",
+    "Version": "v1",
+    "Description": "Create, import, and export a Production Operator Dashboard",
+    "CreatedAt": "/Date(1639390218433)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706578)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pod',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datacollection',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datacollection',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datacollection',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datacollection',Type='API')/$value"
+    },
+    "Name": "sapdme_datacollection",
+    "Type": "API",
+    "DisplayName": "Data Collection",
+    "SubType": "REST",
+    "reg_id": "e74473334f324d81a987afe00337112f",
+    "Version": "v1",
+    "Description": "Manage data collections",
+    "CreatedAt": "/Date(1639390218500)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706777)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datacollection',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_vimodel',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_vimodel',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_vimodel',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_vimodel',Type='API')/$value"
+    },
+    "Name": "sapdme_vimodel",
+    "Type": "API",
+    "DisplayName": "Visual Inspection Result Service",
+    "SubType": "ODATAV4",
+    "reg_id": "dfb68c9e59944b5db3ed67c8ceb3e85d",
+    "Version": "v1",
+    "Description": "Log, read and store images of visual inspection results in Digital Manufacturing",
+    "CreatedAt": "/Date(1708922732296)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706759)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_vimodel',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datafields',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datafields',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datafields',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datafields',Type='API')/$value"
+    },
+    "Name": "sapdme_datafields",
+    "Type": "API",
+    "DisplayName": "Data Fields API",
+    "SubType": "REST",
+    "reg_id": "b6d53bb1f3524289af9b674a91f6d482",
+    "Version": "v1",
+    "Description": "Use this API to manage data fields in SAP Digital Manufacturing.",
+    "CreatedAt": "/Date(1770994596914)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706642)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datafields',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardrate',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardrate',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardrate',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardrate',Type='API')/$value"
+    },
+    "Name": "sapdme_standardrate",
+    "Type": "API",
+    "DisplayName": "Standard Rates",
+    "SubType": "REST",
+    "reg_id": "eb85c59c61464c91a803cb3f635c5b0b",
+    "Version": "v1",
+    "Description": "Get a list of standard rates by resource or workcenter.",
+    "CreatedAt": "/Date(1645288178693)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706803)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardrate',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_print',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_print',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_print',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_print',Type='API')/$value"
+    },
+    "Name": "sapfnd_print",
+    "Type": "API",
+    "DisplayName": "Print",
+    "SubType": "REST",
+    "reg_id": "80125c1638c6486182b072515be7d258",
+    "Version": "v1",
+    "Description": "Document Print Template printing",
+    "CreatedAt": "/Date(1645288178476)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706480)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_print',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_routing',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_routing',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_routing',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_routing',Type='API')/$value"
+    },
+    "Name": "sapdme_routing",
+    "Type": "API",
+    "DisplayName": "Routing",
+    "SubType": "REST",
+    "reg_id": "0ffa422bc5c44fba8ebb305645112a8f",
+    "Version": "v1",
+    "Description": "Perform read, create, update and delete Routings",
+    "CreatedAt": "/Date(1639390218330)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706174)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_routing',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformance',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformance',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformance',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformance',Type='API')/$value"
+    },
+    "Name": "sapdme_nonconformance",
+    "Type": "API",
+    "DisplayName": "Nonconformance",
+    "SubType": "REST",
+    "reg_id": "8645008ff95b486a9852f006a665cbf2",
+    "Version": "v1",
+    "Description": "Manage nonconformances as part of quality checks",
+    "CreatedAt": "/Date(1639390218416)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706503)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformance',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory',Type='API')/$value"
+    },
+    "Name": "sapdme_inventory",
+    "Type": "API",
+    "DisplayName": "Inventory",
+    "SubType": "REST",
+    "reg_id": "19bc165282f64b79acef68620d58c494",
+    "Version": "v1",
+    "Description": "Perform inventory relevant activities, such as posting or canceling goods receipts, getting stock information, and updating stock data",
+    "CreatedAt": "/Date(1639390218336)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706189)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_integrationMessage',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_integrationMessage',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_integrationMessage',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_integrationMessage',Type='API')/$value"
+    },
+    "Name": "sapdme_integrationMessage",
+    "Type": "API",
+    "DisplayName": "Integration Messages",
+    "SubType": "REST",
+    "reg_id": "e7ad13301e8540e5b9b1acdc4873bdb2",
+    "Version": "v1",
+    "Description": "Interact with integration messages in the Manage Integration Dashboard.",
+    "CreatedAt": "/Date(1708922732333)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706785)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_integrationMessage',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering',Type='API')/$value"
+    },
+    "Name": "sapdme_numbering",
+    "Type": "API",
+    "DisplayName": "Identifiers",
+    "SubType": "REST",
+    "reg_id": "c0988e3b227d4e69b39ff175c746bd0f",
+    "Version": "v1",
+    "Description": "Create identifiers for the specified event at a plant.",
+    "CreatedAt": "/Date(1639390218466)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706666)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch',Type='API')/$value"
+    },
+    "Name": "sapdme_batch",
+    "Type": "API",
+    "DisplayName": "Batch",
+    "SubType": "REST",
+    "reg_id": "3ebff1eb522d49d4a1083656e7eb5819",
+    "Version": "v1",
+    "Description": "Create batches and retrieve batch characteristics, update or sync batch information",
+    "CreatedAt": "/Date(1639390218356)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706255)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_inventory_v2",
+    "Type": "API",
+    "DisplayName": "Inventory",
+    "SubType": "REST",
+    "reg_id": "cee3d3790e7f4589a1f5be947ad381ea",
+    "Version": "v2",
+    "Description": "Perform inventory relevant activities, such as retrieving stock information and updating stock data.",
+    "CreatedAt": "/Date(1763144303753)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706715)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_inventory_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_plant_resource_v2",
+    "Type": "API",
+    "DisplayName": "Resource",
+    "SubType": "REST",
+    "reg_id": "a7b15b41660b48b3a7d292871babcc6d",
+    "Version": "v2",
+    "Description": "Manage resources used to perform an operation in a manufacturing process",
+    "CreatedAt": "/Date(1701446404283)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706602)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document_v2',Type='API')/$value"
+    },
+    "Name": "sapfnd_document_v2",
+    "Type": "API",
+    "DisplayName": "Document",
+    "SubType": "REST",
+    "reg_id": "06992a93b28b42998956a1f47b63e1b7",
+    "Version": "v2",
+    "Description": "Manage documents",
+    "CreatedAt": "/Date(1747568614676)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706139)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_quantityConfirmation',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_quantityConfirmation',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_quantityConfirmation',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_quantityConfirmation',Type='API')/$value"
+    },
+    "Name": "sapdme_quantityConfirmation",
+    "Type": "API",
+    "DisplayName": "Quantity Confirmation",
+    "SubType": "REST",
+    "reg_id": "a574d56fa1cb4fd3acbb261c79e747b8",
+    "Version": "v1",
+    "Description": "Perform quantity confirmations for an order",
+    "CreatedAt": "/Date(1639580440063)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706594)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_quantityConfirmation',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labors',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labors',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labors',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labors',Type='API')/$value"
+    },
+    "Name": "sapdme_labors",
+    "Type": "API",
+    "DisplayName": "Labor Management",
+    "SubType": "ODATAV4",
+    "reg_id": "077282ac750a4644b116c64a58af6851",
+    "Version": "v1",
+    "Description": "Manage labor information in SAP Digital Manufacturing",
+    "CreatedAt": "/Date(1755492189703)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706160)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labors',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labor',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labor',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labor',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labor',Type='API')/$value"
+    },
+    "Name": "sapdme_labor",
+    "Type": "API",
+    "DisplayName": "Labor",
+    "SubType": "REST",
+    "reg_id": "577f948b24404393baa1caac4ff58929",
+    "Version": "v1",
+    "Description": "Retrieves the shift assignments including non-availability of assigned labors.",
+    "CreatedAt": "/Date(1639390218373)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706370)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_labor',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_printer',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_printer',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_printer',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_printer',Type='API')/$value"
+    },
+    "Name": "sapfnd_printer",
+    "Type": "API",
+    "DisplayName": "Printer",
+    "SubType": "REST",
+    "reg_id": "559402b905194a9a809708516b42dfaa",
+    "Version": "v1",
+    "Description": "Manage printers",
+    "CreatedAt": "/Date(1747568615426)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706345)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_printer',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardvalue',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardvalue',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardvalue',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardvalue',Type='API')/$value"
+    },
+    "Name": "sapdme_standardvalue",
+    "Type": "API",
+    "DisplayName": "Standard Values",
+    "SubType": "REST",
+    "reg_id": "8c38df248f984e96857f0c1e2764eb3a",
+    "Version": "v1",
+    "Description": "Retrieves standard values",
+    "CreatedAt": "/Date(1639580440016)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706529)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_standardvalue',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v3',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v3',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v3',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v3',Type='API')/$value"
+    },
+    "Name": "sapdme_plant_workcenter_v3",
+    "Type": "API",
+    "DisplayName": "Work Center",
+    "SubType": "REST",
+    "reg_id": "070f7134ee7e4637bdbd32b8b1dfd66e",
+    "Version": "v3",
+    "Description": "Retrieves work centers for a given plant.",
+    "CreatedAt": "/Date(1763144302716)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706146)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v3',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdmi_vishleshki',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdmi_vishleshki',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdmi_vishleshki',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdmi_vishleshki',Type='API')/$value"
+    },
+    "Name": "sapdmi_vishleshki",
+    "Type": "API",
+    "DisplayName": "Overall Equipment Effectiveness",
+    "SubType": "REST",
+    "reg_id": "acfc2e8e500a4787aee15ed8070eeda3",
+    "Version": "v1",
+    "Description": "Obtain data from SAP Digital Manufacturing for insights",
+    "CreatedAt": "/Date(1645288178576)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706618)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdmi_vishleshki',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction',Type='API')/$value"
+    },
+    "Name": "sapdme_workinstruction",
+    "Type": "API",
+    "DisplayName": "Work Instruction",
+    "SubType": "REST",
+    "reg_id": "77f957c5e94e45b9997539a7e761f7c8",
+    "Version": "v1",
+    "Description": "Get a list of work instructions or one single work instruction",
+    "CreatedAt": "/Date(1639390218406)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706451)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_recipe',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_recipe',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_recipe',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_recipe',Type='API')/$value"
+    },
+    "Name": "sapdme_recipe",
+    "Type": "API",
+    "DisplayName": "Recipe",
+    "SubType": "REST",
+    "reg_id": "723efd94bea344aa8db2b05f5e834680",
+    "Version": "v1",
+    "Description": "Perform read, create, update and delete Recipes",
+    "CreatedAt": "/Date(1639390218393)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706437)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_recipe',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_material',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_material',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_material',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_material',Type='API')/$value"
+    },
+    "Name": "sapdme_material",
+    "Type": "API",
+    "DisplayName": "Material",
+    "SubType": "REST",
+    "reg_id": "5661d98e01ed4eb78e39aa4a6f61fd5b",
+    "Version": "v1",
+    "Description": "Browse and modify materials",
+    "CreatedAt": "/Date(1639390218366)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706354)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_material',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_visualinspection',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_visualinspection',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_visualinspection',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_visualinspection',Type='API')/$value"
+    },
+    "Name": "sapdme_visualinspection",
+    "Type": "API",
+    "DisplayName": "Visual Inspection",
+    "SubType": "ODATAV4",
+    "reg_id": "ab17a172da734d7c85b8c4e72afd0cfd",
+    "Version": "v1",
+    "Description": "Manage visual inspection objects to embed AI-assisted processes on your shop floor.",
+    "CreatedAt": "/Date(1716560580576)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706610)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_visualinspection',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v3',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v3',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v3',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v3',Type='API')/$value"
+    },
+    "Name": "sapdme_setpoint_v3",
+    "Type": "API",
+    "DisplayName": "Setpoint Activities",
+    "SubType": "REST",
+    "reg_id": "42640b692e444f38a5da811187428ba5",
+    "Version": "v3",
+    "Description": "Perform production-related tasks involving Setpoints",
+    "CreatedAt": "/Date(1701446403670)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706269)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v3',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_reo',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_reo',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_reo',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_reo',Type='API')/$value"
+    },
+    "Name": "sapdme_reo",
+    "Type": "API",
+    "DisplayName": "Order Schedules",
+    "SubType": "REST",
+    "reg_id": "1ea0e75ddbc84b1388beaf008856fe2e",
+    "Version": "v1",
+    "Description": "Retrieve and schedule the order schedules of a plant for a specific date range",
+    "CreatedAt": "/Date(1639390218340)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706196)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_reo',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee_resourcereasoncode',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee_resourcereasoncode',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee_resourcereasoncode',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee_resourcereasoncode',Type='API')/$value"
+    },
+    "Name": "sapdme_oee_resourcereasoncode",
+    "Type": "API",
+    "DisplayName": "Resource Reason Code",
+    "SubType": "REST",
+    "reg_id": "bf2bd9c69d2b48b8b92b9d89662336b4",
+    "Version": "v1",
+    "Description": "Retrieve resource reason code using machine code and resource.",
+    "CreatedAt": "/Date(1645288178606)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706658)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee_resourcereasoncode',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_processorder_v2",
+    "Type": "API",
+    "DisplayName": "Process Order Execution",
+    "SubType": "REST",
+    "reg_id": "a34871502c374461a9a982652d37f9b6",
+    "Version": "v2",
+    "Description": "Update start time for a phase",
+    "CreatedAt": "/Date(1770994596821)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706586)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processorder_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_issues',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_issues',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_issues',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_issues',Type='API')/$value"
+    },
+    "Name": "sapdme_issues",
+    "Type": "API",
+    "DisplayName": "Issues",
+    "SubType": "ODATAV4",
+    "reg_id": "295f053a866a4b559a339a9e1a3897b0",
+    "Version": "v1",
+    "Description": "Allows you to create and read issues in SAP Digital Manufacturing for Issue Resolution.",
+    "CreatedAt": "/Date(1733203737860)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706217)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_issues',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking',Type='API')/$value"
+    },
+    "Name": "sapdme_timetracking",
+    "Type": "API",
+    "DisplayName": "Time Tracking",
+    "SubType": "REST",
+    "reg_id": "42ea6dc31c54436ebf5e71061ec1eb37",
+    "Version": "v1",
+    "Description": "Manage time tracking records and events for activities on the shop floor.",
+    "CreatedAt": "/Date(1684786255130)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706277)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operationactivity',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operationactivity',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operationactivity',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operationactivity',Type='API')/$value"
+    },
+    "Name": "sapdme_operationactivity",
+    "Type": "API",
+    "DisplayName": "Operation Activity",
+    "SubType": "REST",
+    "reg_id": "8a4b97e599044a818d900d34122bab5b",
+    "Version": "v1",
+    "Description": "Operation activities associated with a routing.",
+    "CreatedAt": "/Date(1708922731873)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706511)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operationactivity',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_assembly',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_assembly',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_assembly',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_assembly',Type='API')/$value"
+    },
+    "Name": "sapdme_assembly",
+    "Type": "API",
+    "DisplayName": "Assembly",
+    "SubType": "REST",
+    "reg_id": "3e2e458f6bd049d0881f04ca6ab943d3",
+    "Version": "v1",
+    "Description": "View components for assembly, assemble and remove components",
+    "CreatedAt": "/Date(1639390218350)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706247)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_assembly',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancecode',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancecode',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancecode',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancecode',Type='API')/$value"
+    },
+    "Name": "sapdme_nonconformancecode",
+    "Type": "API",
+    "DisplayName": "Nonconformance Code",
+    "SubType": "REST",
+    "reg_id": "b62cb08f84fa41a9be1125f17950dd2a",
+    "Version": "v1",
+    "Description": "Manage nonconformance codes",
+    "CreatedAt": "/Date(1639390218460)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706634)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancecode',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_certification',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_certification',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_certification',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_certification',Type='API')/$value"
+    },
+    "Name": "sapdme_plant_certification",
+    "Type": "API",
+    "DisplayName": "Certification",
+    "SubType": "REST",
+    "reg_id": "5257b8d4353e4d0bb92b5a3a8d4fe67f",
+    "Version": "v1",
+    "Description": "Checks certifications for the user.",
+    "CreatedAt": "/Date(1716560579883)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706336)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_certification',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_materialgroup',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_materialgroup',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_materialgroup',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_materialgroup',Type='API')/$value"
+    },
+    "Name": "sapdme_materialgroup",
+    "Type": "API",
+    "DisplayName": "Material Group",
+    "SubType": "REST",
+    "reg_id": "2465a84b891b45f092b227ffdfb272c2",
+    "Version": "v1",
+    "Description": "Browse and modify material groups",
+    "CreatedAt": "/Date(1661155734326)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706203)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_materialgroup',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_notification',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_notification',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_notification',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_notification',Type='API')/$value"
+    },
+    "Name": "sapdme_notification",
+    "Type": "API",
+    "DisplayName": "Production Operator Dashboard Notification",
+    "SubType": "REST",
+    "reg_id": "dbe672dac01e4b5fba6c01ed1122edc8",
+    "Version": "v1",
+    "Description": "Notification to alert a custom plugin or user about an event that has occurred.",
+    "CreatedAt": "/Date(1639390218490)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706741)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_notification',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_sfc_v2",
+    "Type": "API",
+    "DisplayName": "Shop Floor Control Production Activities",
+    "SubType": "REST",
+    "reg_id": "8f0e89f4ed974bf0bbe805a0f1611497",
+    "Version": "v2",
+    "Description": "Fetch data about shop floor control (SFC) production activities",
+    "CreatedAt": "/Date(1763144302533)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706537)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_sfc_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sappqm_aiml_scenarios',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sappqm_aiml_scenarios',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sappqm_aiml_scenarios',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sappqm_aiml_scenarios',Type='API')/$value"
+    },
+    "Name": "sappqm_aiml_scenarios",
+    "Type": "API",
+    "DisplayName": "Artificial Intelligence and Machine Learning Scenarios",
+    "SubType": "REST",
+    "reg_id": "ed7f6f18076c4fb4b2f564d737ee92b7",
+    "Version": "v1",
+    "Description": "Manage Artificial Intelligence and Machine Learning Scenarios for automation of manufacturing processes",
+    "CreatedAt": "/Date(1639390218513)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706813)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "DECOMMISSIONED",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sappqm_aiml_scenarios',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_staging_v2",
+    "Type": "API",
+    "DisplayName": "Extended Warehouse Management Staging",
+    "SubType": "REST",
+    "reg_id": "c122c0a416a3417e8e5db4f6207beaa4",
+    "Version": "v2",
+    "Description": "Perform material staging related activities in Extended Warehouse Management integration.",
+    "CreatedAt": "/Date(1770994596970)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706674)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_production_v2",
+    "Type": "API",
+    "DisplayName": "Production Change",
+    "SubType": "REST",
+    "reg_id": "178078e9fe4b4c8fa34389bcb1cf6ca2",
+    "Version": "v2",
+    "Description": "Perform production changes to a shop floor control",
+    "CreatedAt": "/Date(1724428411823)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706181)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operation',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operation',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operation',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operation',Type='API')/$value"
+    },
+    "Name": "sapdme_operation",
+    "Type": "API",
+    "DisplayName": "Master Operation",
+    "SubType": "REST",
+    "reg_id": "5bdc8897327749c3ae91b34ab8d8ca8c",
+    "Version": "v1",
+    "Description": "Search and view information about master operations",
+    "CreatedAt": "/Date(1653309204560)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706387)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_operation',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_uom',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_uom',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_uom',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_uom',Type='API')/$value"
+    },
+    "Name": "sapdme_uom",
+    "Type": "API",
+    "DisplayName": "Unit of Measure",
+    "SubType": "REST",
+    "reg_id": "908c5c4a265e4413ada12b50a3b5ed61",
+    "Version": "v1",
+    "Description": "Browse and modify custom units of measure",
+    "CreatedAt": "/Date(1639390218423)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706545)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_uom',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_setpoint_v2",
+    "Type": "API",
+    "DisplayName": "Setpoint Activities",
+    "SubType": "REST",
+    "reg_id": "0728c636c5854e7c9ad3e762f9447731",
+    "Version": "v2",
+    "Description": "Perform production-related tasks involving Setpoints",
+    "CreatedAt": "/Date(1693236020316)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706153)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "DECOMMISSIONED",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant',Type='API')/$value"
+    },
+    "Name": "sapdme_plant",
+    "Type": "API",
+    "DisplayName": "Plant",
+    "SubType": "REST",
+    "reg_id": "572565580e9642b28b6ff26992da0ce6",
+    "Version": "v1",
+    "Description": "Get a list of plants.",
+    "CreatedAt": "/Date(1645288178356)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706362)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee',Type='API')/$value"
+    },
+    "Name": "sapdme_oee",
+    "Type": "API",
+    "DisplayName": "Downtime and Speed Loss",
+    "SubType": "REST",
+    "reg_id": "91cff7371d7341909ac855befae56237",
+    "Version": "v1",
+    "Description": "Report speed loss and downtime",
+    "CreatedAt": "/Date(1645288178543)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706560)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_oee',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_activityConfirmation',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_activityConfirmation',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_activityConfirmation',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_activityConfirmation',Type='API')/$value"
+    },
+    "Name": "sapdme_activityConfirmation",
+    "Type": "API",
+    "DisplayName": "Activity Confirmation",
+    "SubType": "REST",
+    "reg_id": "2845e6d9b8f640f2878d9fe34c6188a0",
+    "Version": "v1",
+    "Description": "Post Activity confirmations",
+    "CreatedAt": "/Date(1661155734326)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706211)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_activityConfirmation',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging',Type='API')/$value"
+    },
+    "Name": "sapdme_staging",
+    "Type": "API",
+    "DisplayName": "Extended Warehouse Management Staging",
+    "SubType": "REST",
+    "reg_id": "2a77798e3dd645a0a31bb508c5b62474",
+    "Version": "v1",
+    "Description": "Perform material staging related activities in Extended Warehouse Management integration.",
+    "CreatedAt": "/Date(1668429986890)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706225)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_staging',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking_odata',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking_odata',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking_odata',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking_odata',Type='API')/$value"
+    },
+    "Name": "sapdme_timetracking_odata",
+    "Type": "API",
+    "DisplayName": "Time Tracking",
+    "SubType": "ODATAV4",
+    "reg_id": "5ab8170b740d4fe68e05eae2e5105281",
+    "Version": "v1",
+    "Description": "Manage time tracking records and events for activities on the shop floor.",
+    "CreatedAt": "/Date(1739555543430)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706379)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_timetracking_odata',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_alerts',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_alerts',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_alerts',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_alerts',Type='API')/$value"
+    },
+    "Name": "sapdme_alerts",
+    "Type": "API",
+    "DisplayName": "Alert Management",
+    "SubType": "ODATAV4",
+    "reg_id": "995b8f43ca5f40a7b698184249ff0800",
+    "Version": "v1",
+    "Description": "Create or update alerts in SAP Digital Manufacturing",
+    "CreatedAt": "/Date(1724428412910)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706568)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_alerts',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_signature',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_signature',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_signature',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_signature',Type='API')/$value"
+    },
+    "Name": "sapfnd_signature",
+    "Type": "API",
+    "DisplayName": "Electronic Signature",
+    "SubType": "ODATAV4",
+    "reg_id": "383773d574244f0989d1104d2fb2d0fb",
+    "Version": "v1",
+    "Description": "Maintain and make available Electronic Signatures in Digital Manufacturing",
+    "CreatedAt": "/Date(1693236020520)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706239)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_signature',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_qualityinspection_v2",
+    "Type": "API",
+    "DisplayName": "Quality Inspection",
+    "SubType": "REST",
+    "reg_id": "5111ad31cbec4123aec90957d1203a32",
+    "Version": "v2",
+    "Description": "Perform quality inspection related activities",
+    "CreatedAt": "/Date(1763144304173)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706326)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancegroup',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancegroup',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancegroup',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancegroup',Type='API')/$value"
+    },
+    "Name": "sapdme_nonconformancegroup",
+    "Type": "API",
+    "DisplayName": "Nonconformance Group",
+    "SubType": "REST",
+    "reg_id": "73ea28d210554933b23b7c8369eac9fd",
+    "Version": "v1",
+    "Description": "Browse and modify nonconformance groups",
+    "CreatedAt": "/Date(1639390218400)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706444)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_nonconformancegroup',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot',Type='API')/$value"
+    },
+    "Name": "sapdme_processlot",
+    "Type": "API",
+    "DisplayName": "Process Lot",
+    "SubType": "REST",
+    "reg_id": "4fcd236ddbe64a7bbb7842eda659953d",
+    "Version": "v1",
+    "Description": "Perform create, read, update and delete activities on Process Lot",
+    "CreatedAt": "/Date(1661155734683)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706318)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_processlot',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_order_v2",
+    "Type": "API",
+    "DisplayName": "Order",
+    "SubType": "REST",
+    "reg_id": "c328bbd135c74545ae67d7de801b39b7",
+    "Version": "v2",
+    "Description": "Perform order related activities, such as getting order details and releasing the order for manufacturing",
+    "CreatedAt": "/Date(1770994596998)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706690)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_user',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_user',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_user',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_user',Type='API')/$value"
+    },
+    "Name": "sapdme_user",
+    "Type": "API",
+    "DisplayName": "User",
+    "SubType": "REST",
+    "reg_id": "4475efa7e9ec439d96614e7209bc2f8d",
+    "Version": "v1",
+    "Description": "Manages users to perform operations in a manufacturing process.",
+    "CreatedAt": "/Date(1716560579793)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706285)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_user',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool',Type='API')/$value"
+    },
+    "Name": "sapdme_tool",
+    "Type": "API",
+    "DisplayName": "Tool",
+    "SubType": "REST",
+    "reg_id": "0f42d84b98b54c679da0481c470828d5",
+    "Version": "v1",
+    "Description": "Perform production tool related operations such as tool usage logging, tool validation, tool loading and unloading",
+    "CreatedAt": "/Date(1639390218326)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706166)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ebr',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ebr',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ebr',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ebr',Type='API')/$value"
+    },
+    "Name": "sapdme_ebr",
+    "Type": "API",
+    "DisplayName": "Electronic Batch Record",
+    "SubType": "REST",
+    "reg_id": "e2f97b08370c4a279472aeafeb4e6ffa",
+    "Version": "Beta",
+    "Description": "Creates an electronic batch record",
+    "CreatedAt": "/Date(1755492189500)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706767)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "BETA",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ebr',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint',Type='API')/$value"
+    },
+    "Name": "sapdme_setpoint",
+    "Type": "API",
+    "DisplayName": "Setpoint Activities",
+    "SubType": "REST",
+    "reg_id": "6dff4e5dc87b4980bc37087888eee0ac",
+    "Version": "v1",
+    "Description": "Perform production Setpoint related activities",
+    "CreatedAt": "/Date(1639390218383)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706422)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "DECOMMISSIONED",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_setpoint',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_batch_v2",
+    "Type": "API",
+    "DisplayName": "Batch",
+    "SubType": "REST",
+    "reg_id": "4546424155a743d0a5c2a8d34d105d05",
+    "Version": "v2",
+    "Description": "Create batches and retrieve batch characteristics, update or sync batch information.",
+    "CreatedAt": "/Date(1763144303650)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706293)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_batch_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_plant_workcenter_v2",
+    "Type": "API",
+    "DisplayName": "Work Center",
+    "SubType": "REST",
+    "reg_id": "4869eca32fac495380eb1bc5b5ea6574",
+    "Version": "v2",
+    "Description": "Maintain work centers for a given plant.",
+    "CreatedAt": "/Date(1645288178323)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706309)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_workcenter_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_logistics',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_logistics',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_logistics',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_logistics',Type='API')/$value"
+    },
+    "Name": "sapdme_logistics",
+    "Type": "API",
+    "DisplayName": "Logistics",
+    "SubType": "REST",
+    "reg_id": "f01278d9ddf94349a715d294dc09d949",
+    "Version": "v1",
+    "Description": "Perform logistics order relevant activities, such as creating orders and updating order status",
+    "CreatedAt": "/Date(1639390218516)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706822)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_logistics',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction_file',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction_file',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction_file',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction_file',Type='API')/$value"
+    },
+    "Name": "sapdme_workinstruction_file",
+    "Type": "API",
+    "DisplayName": "Work Instruction Attached File",
+    "SubType": "REST",
+    "reg_id": "698db54b1a9244f080a6d08b495450a6",
+    "Version": "v1",
+    "Description": "Upload File for Work Instruction Attachment",
+    "CreatedAt": "/Date(1653309204600)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706414)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_workinstruction_file',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document',Type='API')/$value"
+    },
+    "Name": "sapfnd_document",
+    "Type": "API",
+    "DisplayName": "Document",
+    "SubType": "REST",
+    "reg_id": "d2b33c41b412439e87fb201a2a681958",
+    "Version": "v1",
+    "Description": "Retrieve and print documents",
+    "CreatedAt": "/Date(1639390218483)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706731)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "DEPRECATED",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapfnd_document',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datatype',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datatype',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datatype',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datatype',Type='API')/$value"
+    },
+    "Name": "sapdme_datatype",
+    "Type": "API",
+    "DisplayName": "Data Type",
+    "SubType": "REST",
+    "reg_id": "05e1568089004ef79548feed23a1bc9e",
+    "Version": "v1",
+    "Description": "Create, update, retrieve, and delete data types.",
+    "CreatedAt": "/Date(1770994596038)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706131)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_datatype',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ewm_integration',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ewm_integration',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ewm_integration',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ewm_integration',Type='API')/$value"
+    },
+    "Name": "sapdme_ewm_integration",
+    "Type": "API",
+    "DisplayName": "Extended Warehouse Management Integration",
+    "SubType": "REST",
+    "reg_id": "eb581b24e0a843108da479be07d4026b",
+    "Version": "v1",
+    "Description": "Perform logistics related activities in Extended Warehouse Management integration such as material staging and goods receipt",
+    "CreatedAt": "/Date(1639390218506)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706794)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "DECOMMISSIONED",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_ewm_integration',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_bom',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_bom',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_bom',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_bom',Type='API')/$value"
+    },
+    "Name": "sapdme_bom",
+    "Type": "API",
+    "DisplayName": "Bill of Material",
+    "SubType": "REST",
+    "reg_id": "9100bccb62294f2db9a470f39d580d4b",
+    "Version": "v1",
+    "Description": "Manage bill of materials",
+    "CreatedAt": "/Date(1639390218426)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706553)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_bom',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_resourcetype',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_resourcetype',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_resourcetype',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_resourcetype',Type='API')/$value"
+    },
+    "Name": "sapdme_resourcetype",
+    "Type": "API",
+    "DisplayName": "Resource Type",
+    "SubType": "REST",
+    "reg_id": "fd6faf9db7a54838bf7062f397cad1d4",
+    "Version": "v1",
+    "Description": "Maintain resource types for a given plant.",
+    "CreatedAt": "/Date(1645288178756)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706854)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_resourcetype',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_wip',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_wip',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_wip',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_wip',Type='API')/$value"
+    },
+    "Name": "sapdme_wip",
+    "Type": "API",
+    "DisplayName": "Work in Process (WIP) Activities",
+    "SubType": "REST",
+    "reg_id": "40fedbafcd414762b962285a7d1d49f9",
+    "Version": "v1",
+    "Description": "Perform production activities for work-in-process (WIP) products, such as storing, staging and consuming them by posting WIP requests to Extended Warehouse Management",
+    "CreatedAt": "/Date(1724428412080)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706262)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_wip',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_psp',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_psp',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_psp',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_psp',Type='API')/$value"
+    },
+    "Name": "sapdme_psp",
+    "Type": "API",
+    "DisplayName": "Problem-Solving Process",
+    "SubType": "ODATAV4",
+    "reg_id": "b80e9ebf15334eb3a36c7d8c5235d24b",
+    "Version": "v1",
+    "Description": "Allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution",
+    "CreatedAt": "/Date(1733203737443)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706650)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_psp',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pgr_components',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pgr_components',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pgr_components',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pgr_components',Type='API')/$value"
+    },
+    "Name": "sapdme_pgr_components",
+    "Type": "API",
+    "DisplayName": "Product Genealogy Report (PGR) Assembly Components",
+    "SubType": "REST",
+    "reg_id": "79da987a735848a4a379aea96af42951",
+    "Version": "v1",
+    "Description": "Create a product genealogy report for an assembly",
+    "CreatedAt": "/Date(1653309204666)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706473)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "DEPRECATED",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_pgr_components',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource',Type='API')/$value"
+    },
+    "Name": "sapdme_plant_resource",
+    "Type": "API",
+    "DisplayName": "Resource",
+    "SubType": "REST",
+    "reg_id": "3551797e785447c397fb928e1091b7e4",
+    "Version": "v1",
+    "Description": "Manage resources used to perform an operation in a manufacturing process",
+    "CreatedAt": "/Date(1639390218346)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706232)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "DEPRECATED",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_plant_resource',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_lastindicator',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_lastindicator',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_lastindicator',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_lastindicator',Type='API')/$value"
+    },
+    "Name": "sapdme_lastindicator",
+    "Type": "API",
+    "DisplayName": "Last Indicator Value",
+    "SubType": "REST",
+    "reg_id": "79b48363bdf94f41b1debd40e74f00c2",
+    "Version": "v1",
+    "Description": "Last value for an Indicator",
+    "CreatedAt": "/Date(1708922731770)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706466)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_lastindicator',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering_identifier_config',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering_identifier_config',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering_identifier_config',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering_identifier_config',Type='API')/$value"
+    },
+    "Name": "sapdme_numbering_identifier_config",
+    "Type": "API",
+    "DisplayName": "Manage Identifiers Configuration",
+    "SubType": "REST",
+    "reg_id": "807c2c83c57848c69dc7b59b8602b8dd",
+    "Version": "v1",
+    "Description": "Create and maintain Identifiers configuration",
+    "CreatedAt": "/Date(1653309204690)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706495)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_numbering_identifier_config',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection',Type='API')/$value"
+    },
+    "Name": "sapdme_qualityinspection",
+    "Type": "API",
+    "DisplayName": "Quality Inspection",
+    "SubType": "REST",
+    "reg_id": "78ca3065514246a587f18d5e7bcd2230",
+    "Version": "v1",
+    "Description": "Perform quality inspection related activities",
+    "CreatedAt": "/Date(1639390218410)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706459)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_qualityinspection',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_packingunit',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_packingunit',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_packingunit',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_packingunit',Type='API')/$value"
+    },
+    "Name": "sapdme_packingunit",
+    "Type": "API",
+    "DisplayName": "Packing Unit",
+    "SubType": "REST",
+    "reg_id": "c3043abf393d4f4199617ad8226e70d0",
+    "Version": "v1",
+    "Description": "Manage activities for packing units",
+    "CreatedAt": "/Date(1639390218473)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706682)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_packingunit',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_shift',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_shift',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_shift',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_shift',Type='API')/$value"
+    },
+    "Name": "sapdme_shift",
+    "Type": "API",
+    "DisplayName": "Shift",
+    "SubType": "REST",
+    "reg_id": "8b30ca8f64a84ff1be0d7603e993238e",
+    "Version": "v1",
+    "Description": "Maintain shifts for a given plant",
+    "CreatedAt": "/Date(1645288178500)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706521)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_shift',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order',Type='API')/$value"
+    },
+    "Name": "sapdme_order",
+    "Type": "API",
+    "DisplayName": "Order",
+    "SubType": "REST",
+    "reg_id": "b2c6746a830c453a9d33bc74d5277d0a",
+    "Version": "v1",
+    "Description": "Perform order related activities, such as getting order details and releasing the order for manufacturing",
+    "CreatedAt": "/Date(1639390218436)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706627)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_order',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool_v2',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool_v2',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool_v2',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool_v2',Type='API')/$value"
+    },
+    "Name": "sapdme_tool_v2",
+    "Type": "API",
+    "DisplayName": "Tool",
+    "SubType": "REST",
+    "reg_id": "805f7a21613844449eb6a7dc731c13f0",
+    "Version": "v2",
+    "Description": "Perform production tool related operations such as tool usage logging, tool validation, tool loading and unloading",
+    "CreatedAt": "/Date(1770994596668)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706487)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_tool_v2',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production',Type='API')/$value"
+    },
+    "Name": "sapdme_production",
+    "Type": "API",
+    "DisplayName": "Production Change",
+    "SubType": "REST",
+    "reg_id": "f0e3e2f720cb4f33aa35d0d415d91cce",
+    "Version": "v1",
+    "Description": "Perform production changes to a shop floor control",
+    "CreatedAt": "/Date(1653309205000)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706836)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "DEPRECATED",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_production',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_classification',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_classification',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_classification',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_classification',Type='API')/$value"
+    },
+    "Name": "sapdme_classification",
+    "Type": "API",
+    "DisplayName": "Classification",
+    "SubType": "REST",
+    "reg_id": "cee529c211014205ace0bd0e240f1ff9",
+    "Version": "v1",
+    "Description": "Obtain details on the classes and characteristics of the materials",
+    "CreatedAt": "/Date(1639390218476)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706723)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_classification',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_process_manufacturing',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_process_manufacturing',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_process_manufacturing',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_process_manufacturing',Type='API')/$value"
+    },
+    "Name": "sapdme_process_manufacturing",
+    "Type": "API",
+    "DisplayName": "Process Manufacturing Execution",
+    "SubType": "REST",
+    "reg_id": "c5bcc30e6ea14c4d80314e681447f667",
+    "Version": "v1",
+    "Description": "Perform production activities for a production order or process order, such as start an operation activity, complete an operation activity",
+    "CreatedAt": "/Date(1661155736316)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706706)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_process_manufacturing',Type='API')/ContentPackages"
+      }
+    }
+  },
+  {
+    "__metadata": {
+      "id": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_asset_model',Type='API')",
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_asset_model',Type='API')",
+      "type": "ContentPackageModel.Artifact",
+      "content_type": "application/octet-stream",
+      "media_src": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_asset_model',Type='API')/$value",
+      "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_asset_model',Type='API')/$value"
+    },
+    "Name": "sapdme_asset_model",
+    "Type": "API",
+    "DisplayName": "Asset Model",
+    "SubType": "REST",
+    "reg_id": "c4b6e5c6b7cd4d20a94f7eca146f18c8",
+    "Version": "v1",
+    "Description": "Retrieves metadata of an asset.",
+    "CreatedAt": "/Date(1724428413203)/",
+    "CreatedBy": "XXX",
+    "ModifiedAt": "/Date(1770994706698)/",
+    "ModifiedBy": "XXX",
+    "ContentType": null,
+    "URI": null,
+    "State": "ACTIVE",
+    "ContentPackages": {
+      "__deferred": {
+        "uri": "https://api.sap.com/odata/1.0/catalog.svc/Artifacts(Name='sapdme_asset_model',Type='API')/ContentPackages"
+      }
+    }
+  }
+]

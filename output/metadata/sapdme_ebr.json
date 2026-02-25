@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ebr')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ebr')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ebr')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ebr')/$value"
+  },
+  "Name": "sapdme_ebr",
+  "ID": "sapdme_ebr",
+  "Title": "Electronic Batch Record",
+  "ShortText": "Creates an electronic batch record",
+  "Description": null,
+  "Direction": null,
+  "Version": "Beta",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1755492189500)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706767)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "BETA",
+  "ChangeLog": "[{\"date\":\"17 August 2025\",\"notes\":\"Beta version\",\"state\":\"Beta\",\"version\":\"Beta\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_ebr')/Versions"
+    }
+  }
+}

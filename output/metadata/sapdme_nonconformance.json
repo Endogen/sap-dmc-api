@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance')/$value"
+  },
+  "Name": "sapdme_nonconformance",
+  "ID": "sapdme_nonconformance",
+  "Title": "Nonconformance",
+  "ShortText": "Manage nonconformances as part of quality checks",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218416)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706503)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Nov 2025\",\"notes\":\"Description clarified for POST sfcs/disposition endpoint.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"30 May 2025\",\"notes\":\" Make correction get nonconformances API V2 - in response change type for 'code' property;add id to response; change operationId for correct ui behavior.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"18 May 2025\",\"notes\":\"Adding comments field to open/close nonconformance incidents requests. Add isEbr property to NonConformanceNode (The response object of nonconformance hierarchies API). Deprecate /nonconformances. V2 version is provided from get nonconformances API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 Feb 2025\",\"notes\":\"Retrieve nonconformance hierarchies API was added. The field allowNotAssembledComponents was added to the log nonconformance request.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Aug 2024\",\"notes\":\"Changed the routingStepId max length to 20 characters in the nonconformance get request and log nonconformance request.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Aug 2024\",\"notes\":\"The fromDate and toDate parameters added to the API request to retrieve nonconformances.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"Changed the routingStepId max length to 9 characters in the nonconformance get request and log nonconformance request.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2023\",\"notes\":\"The log non-conformance API is extended by adding primary non-conformance Id to request for log secondary code. The 'componentSfc' field in the retrieval nonconformance list API response was deprecated.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Feb 2023\",\"notes\":\"The log non-conformance API is extended by adding incident id to response. The log non-conformance API is extended by adding primary non-conformance Id to request for log secondary code. The read nonconformances API is extended by adding incident id to response.  Add open/close nonconformance API. The log non-conformance API is extended by adding process lot number filed to request. The validation logic for the component data field has been added to the log nonconformance API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"The routing step ID added to the API request when the nonconformance was logged.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"The retrieval nonconformance list API was enhanced to return nonconformance data fields.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"13 Nov 2021\",\"notes\":\"The partial nonconformance logging and auto split at disposition was added and the resource was made optional for Log Nonconformance and SFC Disposition APIs.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"22 May 2021\",\"notes\":\"The nonconformance API is extended by SFC disposition.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"15 Aug 2020\",\"notes\":\"The log non-conformance API is extended by an ability to attach files.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"14 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance')/Versions"
+    }
+  }
+}

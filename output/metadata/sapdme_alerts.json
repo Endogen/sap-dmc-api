@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_alerts')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_alerts')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_alerts')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_alerts')/$value"
+  },
+  "Name": "sapdme_alerts",
+  "ID": "sapdme_alerts",
+  "Title": "Alert Management",
+  "ShortText": "Create or update alerts in SAP Digital Manufacturing",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "ODATAV4",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1724428412910)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706568)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 Feb 2025\",\"notes\":\"Added support for functionality to get and filter the list of alerts.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Nov 2024\",\"notes\":\"Added support for multiple 'Processors' in the create alert and update alert requests. Added support for 'Plant' in the create alert request.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"10 Aug 2024\",\"notes\":\"Initial submission for functionality to create and update alerts.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_alerts')/Versions"
+    }
+  }
+}

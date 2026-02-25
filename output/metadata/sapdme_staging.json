@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_staging')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_staging')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_staging')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_staging')/$value"
+  },
+  "Name": "sapdme_staging",
+  "ID": "sapdme_staging",
+  "Title": "Extended Warehouse Management Staging",
+  "ShortText": "Perform material staging related activities in Extended Warehouse Management integration.",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1668429986890)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706225)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 Nov 2025\",\"notes\":\"1) Added the 'reservationNumber' and 'reservationItemNumber' properties in the response of the GET staging requests API. 2) The endpoint /staging/v1/staging/stagingRequests/discard for discards multiple staging requests has been deprecated. Please use new endpoint <a href=https://api.sap.com/api/sapdme_staging_v2/resource>/staging/stagingRequests/discard<\\/a>. 3) The endpoint /api/v1/staging/stagingRequests for retrieving all staging requests for a given plant has been deprecated. Please use new endpoint <a href=https://api.sap.com/api/sapdme_staging_v2/resource>/staging/stagingRequests/query<\\/a>.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"23 Nov 2024\",\"notes\":\"Added a new API to retrieve staging methods of components.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"1) Added an API to discard staging requests. 2) Added a 'DISCARDED' status in the stagingRequestItemStatuses property of GET staging request API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2023\",\"notes\":\"Updated staging request item statuses in GET staging request API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 May 2023\",\"notes\":\"Added reservationItemNumber request parameter in POST staging request API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Feb 2023\",\"notes\":\"Added stagingRequestNumber request parameter. Enhanced GET staging request API with batchNumber field in response. Added auto staging API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_staging')/Versions"
+    }
+  }
+}

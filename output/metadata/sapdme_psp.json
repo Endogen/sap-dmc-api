@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_psp')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_psp')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_psp')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_psp')/$value"
+  },
+  "Name": "sapdme_psp",
+  "ID": "sapdme_psp",
+  "Title": "Problem-Solving Process",
+  "ShortText": "Allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "ODATAV4",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1733203737443)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706650)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 Feb 2025\",\"notes\":\"Delete API enhancement.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 Nov 2025\",\"notes\":\"Updating error code\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Nov 2024\",\"notes\":\"Initial submission for problem-solving process API.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_psp')/Versions"
+    }
+  }
+}

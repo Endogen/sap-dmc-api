@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_bom')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_bom')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_bom')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_bom')/$value"
+  },
+  "Name": "sapdme_bom",
+  "ID": "sapdme_bom",
+  "Title": "Bill of Material",
+  "ShortText": "Manage bill of materials",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218426)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706553)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 February 2026\",\"notes\":\"Add BOM Component field 'orderItemNumber'.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 February 2025\",\"notes\":\"Correct modifiedDateTime and createdDateTime example.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"23 November 2024\",\"notes\":\"Added the Bill of Material Header API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 August 2024\",\"notes\":\"Added the currentVersion field to the BOM Header area. Added the browsable field to the Response DataField area.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"Added the assemblyDataType field to the BOM Header area.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"2 Dec 2023\",\"notes\":\"Added readReservationsAndBatch field to Retrieve BOM API to improve performance.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 August 2023\",\"notes\":\"Added description field to Bom Ref Des.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2023\",\"notes\":\"Added erpSequence field. Added Bom Ref Des, assemblyQuantityAsRequired and alternatesEnabled to BOM Component.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Corrected ErrorResponse timestamp type for UTC format.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2022\",\"notes\":\"Extended ReadBOM with warehouse info in response\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"22 May 2021\",\"notes\":\"Added create and update endpoints\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"14 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_bom')/Versions"
+    }
+  }
+}

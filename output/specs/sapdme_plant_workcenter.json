@@ -1,0 +1,516 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "A Work Center can be a place or a machine or a labor where production operations/activities are performed. This API can be called to retrieve work center details for a given plant.",
+    "version": "v1",
+    "title": "Work Center",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    }
+  },
+  "x-sap-stateInfo": {
+    "state": "Deprecated",
+    "deprecationDate": "2022-02-19",
+    "successorApi": "https://api.sap.com/api/sapdme_plant_workcenter_v2/overview"
+  },
+  "host": "hostname",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Work Center",
+      "description": "Work Center Api Controller"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "paths": {
+    "/workcenters": {
+      "get": {
+        "tags": [
+          "Work Center"
+        ],
+        "summary": "Retrieves work centers.",
+        "description": "Retrieves a list of work centers by name and plant.",
+        "operationId": "getWorkCentersUsingGET_1",
+        "parameters": [
+          {
+            "name": "plant",
+            "in": "query",
+            "description": "The plant containing a work center.",
+            "required": true,
+            "type": "string",
+            "maxLength": 6,
+            "minLength": 1
+          },
+          {
+            "name": "workCenter",
+            "in": "query",
+            "description": "The name to retrieve a work center.",
+            "required": true,
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WorkCenter"
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "An internal error occured.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": false
+      }
+    }
+  },
+  "securityDefinitions": {
+    "OauthClientCredentials": {
+      "type": "oauth2",
+      "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+      "flow": "application"
+    }
+  },
+  "definitions": {
+    "CustomValue": {
+      "type": "object",
+      "properties": {
+        "attribute": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "title": "CustomValue"
+    },
+    "Resource": {
+      "type": "object",
+      "properties": {
+        "bins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceBin"
+          }
+        },
+        "createdDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "customValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomValue"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "efficiency": {
+          "type": "number"
+        },
+        "modifiedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "plant": {
+          "type": "string"
+        },
+        "process": {
+          "type": "boolean"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "setupState": {
+          "type": "string",
+          "enum": [
+            "SETUP",
+            "PROPOSED",
+            "OPEN"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "PRODUCTIVE",
+            "SCHEDULED_DOWN",
+            "UNSCHEDULED_DOWN",
+            "ENABLED",
+            "DISABLED"
+          ]
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceType"
+          }
+        }
+      },
+      "title": "Resource"
+    },
+    "ResourceBin": {
+      "type": "object",
+      "properties": {
+        "bin": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "loadedComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceBinComponent"
+          }
+        },
+        "maxQuantity": {
+          "type": "number"
+        }
+      },
+      "title": "ResourceBin"
+    },
+    "ResourceBinComponent": {
+      "type": "object",
+      "properties": {
+        "loadedQuantity": {
+          "type": "number"
+        },
+        "material": {
+          "type": "string"
+        }
+      },
+      "title": "ResourceBinComponent"
+    },
+    "ResourceType": {
+      "type": "object",
+      "properties": {
+        "createdDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "modifiedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "plant": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "title": "ResourceType"
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "createdDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "current": {
+          "type": "boolean"
+        },
+        "customValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomValue"
+          }
+        },
+        "email": {
+          "type": "string"
+        },
+        "familyName": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "modifiedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "plant": {
+          "type": "string"
+        },
+        "userCalendarOverrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserCalendarOverrides"
+          }
+        },
+        "userCertifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserCertification"
+          }
+        },
+        "userId": {
+          "type": "string"
+        }
+      },
+      "title": "User"
+    },
+    "UserCalendarOverrides": {
+      "type": "object",
+      "properties": {
+        "createdDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modifiedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "workingDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "workingHours": {
+          "type": "number"
+        }
+      },
+      "title": "UserCalendarOverrides"
+    },
+    "UserCertification": {
+      "type": "object",
+      "properties": {
+        "certificationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "comments": {
+          "type": "string"
+        },
+        "expirationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "extensionExpirationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ENABLED",
+            "HOLD",
+            "REVOKED"
+          ]
+        }
+      },
+      "title": "UserCertification"
+    },
+    "WorkCenter": {
+      "type": "object",
+      "properties": {
+        "canBeReleasedTo": {
+          "type": "boolean"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "CELL",
+            "CELL_GROUP",
+            "LINE",
+            "LINE_GROUP",
+            "BUILDING"
+          ]
+        },
+        "createdDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "customValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomValue"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "maxNumberPeople": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WorkCenterMember"
+          }
+        },
+        "minNumberPeople": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "modifiedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "plant": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ENABLED",
+            "DISABLED"
+          ]
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
+        },
+        "workCenter": {
+          "type": "string"
+        }
+      },
+      "title": "WorkCenter"
+    },
+    "WorkCenterMember": {
+      "type": "object",
+      "properties": {
+        "child": {
+          "type": "string"
+        },
+        "childResource": {
+          "$ref": "#/definitions/Resource"
+        },
+        "childWorkCenter": {
+          "type": "string"
+        },
+        "defaultMember": {
+          "type": "boolean"
+        },
+        "monitoringRelevant": {
+          "type": "boolean"
+        },
+        "parentWorkCenter": {
+          "type": "string"
+        },
+        "schedulingRelevant": {
+          "type": "boolean"
+        },
+        "sequence": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "WorkCenterMember"
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "causeMessage": {
+          "type": "string",
+          "description": "Contains a technical reason for the error."
+        },
+        "code": {
+          "type": "string",
+          "description": "Internal error message"
+        },
+        "correlationId": {
+          "type": "string",
+          "description": "Contains a correlation ID for the error."
+        },
+        "message": {
+          "type": "string",
+          "description": "Contains additional information if any."
+        }
+      },
+      "title": "error",
+      "description": "Error response"
+    }
+  },
+  "externalDocs": {
+    "description": "SAP Digital Manufacturing Help Portal",
+    "url": "https://help.sap.com/viewer/product/SAP_DIGITAL_MANUFACTURING_CLOUD"
+  },
+  "schemes": [
+    "https"
+  ],
+  "x-sap-shortText": "Get a list of work centers for a given plant.",
+  "x-servers": [
+    {
+      "url": "https://api.{regionHost}/workcenter/v1",
+      "description": "Base URL",
+      "templates": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ]
+}

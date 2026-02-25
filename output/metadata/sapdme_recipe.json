@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_recipe')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_recipe')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_recipe')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_recipe')/$value"
+  },
+  "Name": "sapdme_recipe",
+  "ID": "sapdme_recipe",
+  "Title": "Recipe",
+  "ShortText": "Perform read, create, update and delete Recipes",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218393)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706437)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"16 November 2025\",\"notes\":\"Adds longText field to the Routing API for /recipes.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"16 February 2025\",\"notes\":\"Correct modifiedDateTime and createdDateTime example.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 May 2024\",\"notes\":\"Add Retrieve Recipe Header Details (GET /recipes/headerDetails) and Update Recipe Header Details (PATCH /recipes/headerDetails) API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 February 2024\",\"notes\":\"Updated description of PUT recipe endpoint\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2023\",\"notes\":\"Add RecipeScrapStepApiModel, RecipeReturnPhaseApiModel, ControlKeyIdApiModel, lastReportingPhase, rework, queueDecisionType properties to recipe read, update, create request.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 May 2023\",\"notes\":\"Add Step Component allocation property to recipe read, update, create request. Correct RecipeOperationGroupStep structure.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"11 Feb 2023\",\"notes\":\"Add relaxedFlow field to Recipe create request.Add relaxedFlow field to Recipe update request.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Corrected ErrorResponse timestamp type for UTC format. Add PATCH recipe API method to update allowed recipe fields and phase fields. Add POST (create), DELETE (delete) recipe API methods. Extended request/response model with controlKey, weighRelevant, automaticGoodsReceipt, createdDateTime, modifiedDateTime fields.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"09 Oct 2021\",\"notes\":\"Added recipeType and version query parameters to existing endpoints.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Feb 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_recipe')/Versions"
+    }
+  }
+}

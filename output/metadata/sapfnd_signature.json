@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_signature')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_signature')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_signature')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_signature')/$value"
+  },
+  "Name": "sapfnd_signature",
+  "ID": "sapfnd_signature",
+  "Title": "Electronic Signature",
+  "ShortText": "Maintain and make available Electronic Signatures in Digital Manufacturing",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "ODATAV4",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1693236020520)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706239)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"20 Aug 2023\",\"notes\":\"Functionality to retrieve electronic signatures.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapfnd_signature')/Versions"
+    }
+  }
+}

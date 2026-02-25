@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_tool')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_tool')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_tool')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_tool')/$value"
+  },
+  "Name": "sapdme_tool",
+  "ID": "sapdme_tool",
+  "Title": "Tool",
+  "ShortText": "Perform production tool related operations such as tool usage logging, tool validation, tool loading and unloading",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218326)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706166)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 Feb 2026\",\"notes\":\"1) The endpoint /tool/v1/tools for retrieving tools has been deprecated. Please use new endpoint <a href=https://api.sap.com/api/sapdme_tool_v2/resource>/tools <\\/a>. 2) The endpoint /tool/v1/prtLoadValidation for retrieving tool validation result for loaded tools has been deprecated. Please use new endpoint <a href=https://api.sap.com/api/sapdme_tool_v2/resource>/prtLoadValidation<\\/a>. 3) The endpoint /tool/v1/tools/{prt}/routings for retrieving routings and routing steps has been deprecated. Please use new endpoint <a href=https://api.sap.com/api/sapdme_tool_v2/resource>/tools/{prt}/routings<\\/a>. 4) The endpoint /tool/v1/tools/status for updating tool status has been deprecated. Please use new endpoint <a href=https://api.sap.com/api/sapdme_tool_v2/resource>/tools/status<\\/a>.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"17 August 2025\",\"notes\":\"Added 409 HTTP status code to POST/PUT requests of Tool API for resource conflict handling.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"Added endpoints for CRUD, update tool status, reset tool usage, create tool usage logs, retrieve PRT assignments, retrieve routing information by PRT.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"02 Dec 2023\",\"notes\":\"Added a new API to load tool; Added a new API to unload tool; Added a new API to retrieve loaded tools.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Minor documentation corrections/ updates\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"13th Nov 2021\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_tool')/Versions"
+    }
+  }
+}

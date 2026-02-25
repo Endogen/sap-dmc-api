@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_vimodel')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_vimodel')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_vimodel')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_vimodel')/$value"
+  },
+  "Name": "sapdme_vimodel",
+  "ID": "sapdme_vimodel",
+  "Title": "Visual Inspection Result Service",
+  "ShortText": "Log, read and store images of visual inspection results in Digital Manufacturing",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "ODATAV4",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1708922732296)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706759)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"26 May 2024\",\"notes\":\"Active version of Visual Inspection Service APIs\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"7 March 2024\",\"notes\":\"Corrected the service title and description\",\"state\":\"Beta\",\"version\":\"v1\"},{\"date\":\"24 Feb 2024\",\"notes\":\"First Beta version of Visual Inspection Service APIs\",\"state\":\"Beta\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_vimodel')/Versions"
+    }
+  }
+}

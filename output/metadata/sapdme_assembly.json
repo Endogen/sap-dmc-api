@@ -1,0 +1,39 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_assembly')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_assembly')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_assembly')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_assembly')/$value"
+  },
+  "Name": "sapdme_assembly",
+  "ID": "sapdme_assembly",
+  "Title": "Assembly",
+  "ShortText": "View components for assembly, assemble and remove components",
+  "Description": null,
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": "https://hostname/",
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1639390218350)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1770994706247)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"15 February 2026\",\"notes\":\"Updated the fields for get Assembled Components API\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"25 Nov 2024\",\"notes\":\"Added serviceOrder asBuilt upload public API \",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Jun 2024\",\"notes\":\"Introduced isBomComponentAssembly flag to enable non-bom component assembly \",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"29 Apr 2024\",\"notes\":\"1) Added installationPoint as response parameter in /plannedComponents API. 2) Added installationPoint as response parameter in /assembledComponents get API. 3) Added installationPoint as optional request parameter in /assembledComponents post API. \",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"2 Dec 2023\",\"notes\":\"1) Added check components Public API. This API Checks if the components are assembled according to predefined rules for the SFCs. 2) Added two parameters hasTimeBased and hasNonTimeBased to the request body of post /autoAssemble API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"21 May 2023\",\"notes\":\"1) Added two optional url parameters requireCustomData and assemblyDataTypes to get /plannedComponents. 2) Changing operationActivity url parameter from mandatory to optional for get /plannedComponents. Now, this parameter can support multiple values in comma separated way. 3) Added optional url parameter assemblyDataTypes to get /assembledComponents. 4) Added assemblyDataType to the response of the get /assembledComponents. 5) Added bomComponentCustomData to the response of the get /plannedComponents. \",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"12 Nov 2022\",\"notes\":\"Updated error codes for AssembledComponents API\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"20 Aug 2022\",\"notes\":\"Corrected URL for Developer Guide/ Prepare for API Integration\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"19 Feb 2022\",\"notes\":\"Added seqeunce property to Assembly Request for both Add and Remove.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"13 Nov 2021\",\"notes\":\"The Auto assembly API is extended with quantity support. The Auto Assembly internal API is switched to public API.\",\"state\":\"Active\",\"version\":\"v1\"},{\"date\":\"14 Feb 2020\",\"notes\":\"First version\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_assembly')/Versions"
+    }
+  }
+}
