@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parent
 OUTPUT_DIR = ROOT / "output"
 SPECS_DIR = OUTPUT_DIR / "specs"
 TEMPLATES_DIR = ROOT / "templates"
+STATIC_DIR = ROOT / "static"
 
 PORT = int(os.environ.get("PORT", 8080))
 
@@ -23,6 +24,8 @@ class APIHandler(SimpleHTTPRequestHandler):
 
         if path == "/" or path == "/index.html":
             self._serve_file(TEMPLATES_DIR / "index.html", "text/html")
+        elif path == "/favicon.ico":
+            self._serve_file(STATIC_DIR / "favicon.ico", "image/x-icon")
         elif path == "/summary.json":
             self._serve_file(OUTPUT_DIR / "summary.json", "application/json")
         elif path.startswith("/specs/") and path.endswith(".json"):
