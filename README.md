@@ -13,6 +13,7 @@ output/
   artifacts.json     # Raw artifact catalog from SAP
   specs/             # 88 Swagger JSON files (one per API)
   metadata/          # 88 API metadata files from OData catalog
+  collections/       # Postman & Insomnia collection files
 ```
 
 **Current stats:** 88 APIs · 344 endpoints · 1,288 schemas
@@ -63,6 +64,43 @@ A full scrape takes about 50 seconds. The scraper:
 2. Fetches the artifact list from the OData catalog API
 3. Downloads the Swagger spec + metadata for each API
 4. Generates `summary.json` and a markdown reference (`output/README.md`)
+
+## Browsing APIs
+
+A local web interface lets you browse and explore all API specs with Swagger UI — no build step or extra dependencies required.
+
+```bash
+python3 serve.py
+# Opens http://localhost:8080
+```
+
+The landing page lists all APIs with search/filter, endpoint counts, and links to view each spec in Swagger UI or download the raw JSON.
+
+Set a custom port with the `PORT` environment variable:
+
+```bash
+PORT=9090 python3 serve.py
+```
+
+## Postman & Insomnia Collections
+
+Generate importable collections for Postman and Insomnia from the downloaded specs:
+
+```bash
+python3 generate_collections.py
+```
+
+This creates two files in `output/collections/`:
+
+| File | Format | Import via |
+|------|--------|------------|
+| `postman_collection.json` | Postman v2.1 | Postman → Import → File |
+| `insomnia_collection.json` | Insomnia Export v4 | Insomnia → Import → From File |
+
+Both collections include:
+- One folder per API, one request per endpoint
+- Method, path, description, and request body examples (generated from schemas)
+- `{{base_url}}` / `{{token}}` variables for host and auth configuration
 
 ## Re-scraping
 
