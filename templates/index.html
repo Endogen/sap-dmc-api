@@ -62,6 +62,29 @@
     font-size: 18px;
     margin-right: 4px;
   }
+  .downloads {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .downloads-label {
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .dl-link {
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .dl-link:hover {
+    border-color: var(--accent);
+    background: rgba(78, 154, 245, 0.1);
+  }
   .controls {
     padding: 16px 32px;
     display: flex;
@@ -237,6 +260,12 @@
       <div class="stat"><strong id="api-count">0</strong> APIs</div>
       <div class="stat"><strong id="endpoint-count">0</strong> Endpoints</div>
       <div class="stat"><strong id="schema-count">0</strong> Schemas</div>
+    </div>
+    <div class="downloads">
+      <span class="downloads-label">Export:</span>
+      <a href="/summary.json" target="_blank" class="dl-link">Summary JSON</a>
+      <a href="/collections/postman_collection.json" target="_blank" class="dl-link">Postman Collection</a>
+      <a href="/collections/insomnia_collection.json" target="_blank" class="dl-link">Insomnia Collection</a>
     </div>
   </div>
   <div class="controls">

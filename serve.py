@@ -14,6 +14,7 @@ OUTPUT_DIR = ROOT / "output"
 SPECS_DIR = OUTPUT_DIR / "specs"
 TEMPLATES_DIR = ROOT / "templates"
 STATIC_DIR = ROOT / "static"
+COLLECTIONS_DIR = OUTPUT_DIR / "collections"
 
 PORT = int(os.environ.get("PORT", 8080))
 
@@ -33,6 +34,9 @@ class APIHandler(SimpleHTTPRequestHandler):
         elif path.startswith("/specs/") and path.endswith(".json"):
             name = path[7:]  # strip "/specs/"
             self._serve_file(SPECS_DIR / name, "application/json")
+        elif path.startswith("/collections/") and path.endswith(".json"):
+            name = path[13:]  # strip "/collections/"
+            self._serve_file(COLLECTIONS_DIR / name, "application/json")
         else:
             self.send_error(404)
 
