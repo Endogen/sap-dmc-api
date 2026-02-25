@@ -31,6 +31,8 @@ class APIHandler(SimpleHTTPRequestHandler):
             self._serve_file(STATIC_DIR / "logo.png", "image/png")
         elif path == "/summary.json":
             self._serve_file(OUTPUT_DIR / "summary.json", "application/json")
+        elif path == "/changelog.json":
+            self._serve_file(OUTPUT_DIR / "changelog.json", "application/json")
         elif path.startswith("/specs/") and path.endswith(".json"):
             name = path[7:]  # strip "/specs/"
             self._serve_file(SPECS_DIR / name, "application/json")

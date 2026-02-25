@@ -242,8 +242,181 @@
     font-size: 15px;
   }
 
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-top: 14px;
+  }
+  .tab {
+    padding: 7px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text2);
+    background: transparent;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    font-family: inherit;
+  }
+  .tab:first-child { border-radius: 6px 0 0 6px; }
+  .tab:last-child { border-radius: 0 6px 6px 0; }
+  .tab + .tab { border-left: none; }
+  .tab.active {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(78, 154, 245, 0.1);
+  }
+  .tab:hover:not(.active) { color: var(--text); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Changelog */
+  .changelog {
+    padding: 16px 32px 32px;
+    max-width: 900px;
+  }
+  .changelog-empty {
+    text-align: center;
+    padding: 48px;
+    color: var(--text2);
+    font-size: 15px;
+  }
+  .changelog-filters {
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--border);
+  }
+  .changelog-filters label {
+    font-size: 13px;
+    color: var(--text2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .changelog-filters input[type="checkbox"] {
+    accent-color: var(--accent);
+  }
+  .cl-entry {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .cl-entry-header {
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+  }
+  .cl-entry-header:hover { background: var(--surface2); }
+  .cl-date {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .cl-summary {
+    font-size: 13px;
+    color: var(--text2);
+    flex: 1;
+  }
+  .cl-breaking-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--red);
+    background: rgba(245, 86, 78, 0.15);
+    padding: 2px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .cl-chevron {
+    color: var(--text2);
+    font-size: 12px;
+    transition: transform 0.2s;
+  }
+  .cl-entry.open .cl-chevron { transform: rotate(90deg); }
+  .cl-entry-body {
+    display: none;
+    border-top: 1px solid var(--border);
+    padding: 12px 20px 16px;
+  }
+  .cl-entry.open .cl-entry-body { display: block; }
+  .cl-api {
+    margin-bottom: 12px;
+  }
+  .cl-api:last-child { margin-bottom: 0; }
+  .cl-api-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cl-api-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 1px 8px;
+    border-radius: 4px;
+  }
+  .cl-api-badge.added { background: rgba(61, 220, 132, 0.15); color: var(--green); }
+  .cl-api-badge.removed { background: rgba(245, 86, 78, 0.15); color: var(--red); }
+  .cl-api-badge.changed { background: rgba(245, 166, 35, 0.15); color: var(--orange); }
+  .cl-change {
+    font-size: 13px;
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: var(--text2);
+  }
+  .cl-icon {
+    font-weight: 700;
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+  .cl-icon.add { color: var(--green); }
+  .cl-icon.remove { color: var(--red); }
+  .cl-icon.modify { color: var(--orange); }
+  .cl-breaking-badge {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--red);
+    background: rgba(245, 86, 78, 0.15);
+    padding: 1px 6px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+  .cl-change-detail {
+    flex: 1;
+    word-break: break-word;
+  }
+  .cl-change-detail code {
+    font-size: 12px;
+    background: var(--tag-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
   @media (max-width: 600px) {
-    .header, .controls, .api-grid { padding-left: 16px; padding-right: 16px; }
+    .header, .controls, .api-grid, .changelog, .changelog-filters { padding-left: 16px; padding-right: 16px; }
     .api-grid { grid-template-columns: 1fr; }
     .stats { flex-wrap: wrap; gap: 12px; }
   }
@@ -267,12 +440,24 @@
       <a href="/collections/postman_collection.json" target="_blank" class="dl-link">Postman Collection</a>
       <a href="/collections/insomnia_collection.json" target="_blank" class="dl-link">Insomnia Collection</a>
     </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="apis" onclick="switchTab('apis')">APIs</button>
+      <button class="tab" data-tab="changelog" onclick="switchTab('changelog')">Changelog</button>
+    </div>
   </div>
-  <div class="controls">
-    <input type="text" class="search-box" id="search" placeholder="Search APIs by name, description, or endpoint path..." autocomplete="off">
-    <span class="result-count" id="result-count"></span>
+  <div class="tab-content active" id="tab-apis">
+    <div class="controls">
+      <input type="text" class="search-box" id="search" placeholder="Search APIs by name, description, or endpoint path..." autocomplete="off">
+      <span class="result-count" id="result-count"></span>
+    </div>
+    <div class="api-grid" id="api-grid"></div>
   </div>
-  <div class="api-grid" id="api-grid"></div>
+  <div class="tab-content" id="tab-changelog">
+    <div class="changelog-filters">
+      <label><input type="checkbox" id="breaking-only"> Show breaking only</label>
+    </div>
+    <div class="changelog" id="changelog"></div>
+  </div>
 </div>
 
 <!-- Swagger UI Page -->
@@ -289,6 +474,7 @@
 
 <script>
 let apis = [];
+let changelog = null;
 
 async function init() {
   const resp = await fetch('/summary.json');
@@ -303,11 +489,13 @@ async function init() {
 
   renderGrid(apis);
 
-  // Check if URL hash has a spec to show
+  // Check URL hash
   if (location.hash.startsWith('#/spec/')) {
     const name = decodeURIComponent(location.hash.slice(7));
     const api = apis.find(a => a.name === name);
     if (api) showSwagger(api.name, api.display_name);
+  } else if (location.hash === '#/changelog') {
+    switchTab('changelog');
   }
 }
 
@@ -361,6 +549,158 @@ document.getElementById('search').addEventListener('input', function() {
   renderGrid(filtered);
 });
 
+// Tabs
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  document.getElementById('tab-apis').classList.toggle('active', tab === 'apis');
+  document.getElementById('tab-changelog').classList.toggle('active', tab === 'changelog');
+
+  if (tab === 'changelog') {
+    location.hash = '#/changelog';
+    loadChangelog();
+  } else {
+    if (location.hash === '#/changelog') location.hash = '';
+  }
+}
+
+// Changelog
+async function loadChangelog() {
+  if (changelog !== null) {
+    renderChangelog();
+    return;
+  }
+  const el = document.getElementById('changelog');
+  el.innerHTML = '<div class="changelog-empty">Loading...</div>';
+  try {
+    const resp = await fetch('/changelog.json');
+    if (!resp.ok) { changelog = []; }
+    else { changelog = await resp.json(); }
+  } catch (e) { changelog = []; }
+  renderChangelog();
+}
+
+document.getElementById('breaking-only').addEventListener('change', renderChangelog);
+
+function renderChangelog() {
+  const el = document.getElementById('changelog');
+  const breakingOnly = document.getElementById('breaking-only').checked;
+
+  let entries = changelog || [];
+  if (breakingOnly) {
+    entries = entries.filter(e => e.summary && e.summary.breaking_changes > 0);
+  }
+
+  if (entries.length === 0) {
+    el.innerHTML = '<div class="changelog-empty">No changelog entries' + (breakingOnly ? ' with breaking changes' : '') + '.</div>';
+    return;
+  }
+
+  el.innerHTML = entries.map((entry, i) => {
+    const s = entry.summary || {};
+    const parts = [];
+    if (s.apis_added) parts.push(s.apis_added + ' API' + (s.apis_added !== 1 ? 's' : '') + ' added');
+    if (s.apis_removed) parts.push(s.apis_removed + ' API' + (s.apis_removed !== 1 ? 's' : '') + ' removed');
+    if (s.apis_changed) parts.push(s.apis_changed + ' API' + (s.apis_changed !== 1 ? 's' : '') + ' changed');
+    if (s.endpoints_added) parts.push(s.endpoints_added + ' new endpoint' + (s.endpoints_added !== 1 ? 's' : ''));
+    if (s.endpoints_removed) parts.push(s.endpoints_removed + ' endpoint' + (s.endpoints_removed !== 1 ? 's' : '') + ' removed');
+    const summaryText = parts.join(' &middot; ') || 'No changes';
+    const breakingHtml = s.breaking_changes > 0
+      ? '<span class="cl-breaking-count">' + s.breaking_changes + ' breaking</span>'
+      : '';
+
+    let changesHtml = '';
+    if (entry.changes && entry.changes.length > 0) {
+      changesHtml = entry.changes.map(ac => {
+        let apiChanges = '';
+        if (ac.type === 'added') {
+          apiChanges = '<div class="cl-change"><span class="cl-icon add">+</span><span class="cl-change-detail">New API added</span></div>';
+        } else if (ac.type === 'removed') {
+          apiChanges = '<div class="cl-change"><span class="cl-icon remove">&minus;</span><span class="cl-change-detail">API removed</span><span class="cl-breaking-badge">breaking</span></div>';
+        } else if (ac.changes) {
+          const filtered = breakingOnly ? ac.changes.filter(c => c.breaking) : ac.changes;
+          apiChanges = filtered.map(c => renderChange(c)).join('');
+        }
+        if (breakingOnly && ac.type === 'changed') {
+          const hasBreaking = ac.changes && ac.changes.some(c => c.breaking);
+          if (!hasBreaking) return '';
+        }
+        const badgeClass = ac.type === 'added' ? 'added' : ac.type === 'removed' ? 'removed' : 'changed';
+        return '<div class="cl-api">'
+          + '<div class="cl-api-name">' + esc(ac.display_name || ac.api) + ' <span class="cl-api-badge ' + badgeClass + '">' + ac.type + '</span></div>'
+          + apiChanges
+          + '</div>';
+      }).filter(Boolean).join('');
+    }
+
+    return '<div class="cl-entry">'
+      + '<div class="cl-entry-header" onclick="this.parentElement.classList.toggle(\'open\')">'
+      + '<span class="cl-date">' + esc(entry.date) + '</span>'
+      + '<span class="cl-summary">' + summaryText + '</span>'
+      + breakingHtml
+      + '<span class="cl-chevron">&#9654;</span>'
+      + '</div>'
+      + '<div class="cl-entry-body">' + (changesHtml || '<div class="cl-change"><span class="cl-change-detail">No details available</span></div>') + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function renderChange(c) {
+  const icon = changeIcon(c.kind, c.breaking);
+  const badge = c.breaking ? '<span class="cl-breaking-badge">breaking</span>' : '';
+  return '<div class="cl-change">'
+    + '<span class="cl-icon ' + icon.cls + '">' + icon.sym + '</span>'
+    + '<span class="cl-change-detail">' + changeText(c) + '</span>'
+    + badge
+    + '</div>';
+}
+
+function changeIcon(kind, breaking) {
+  if (kind.includes('added') || kind === 'schema_field_required') return { sym: '+', cls: 'add' };
+  if (kind.includes('removed') || breaking) return { sym: '\u2212', cls: 'remove' };
+  return { sym: '~', cls: 'modify' };
+}
+
+function changeText(c) {
+  switch (c.kind) {
+    case 'endpoint_added':
+      return '<code>' + esc(c.method + ' ' + c.path) + '</code> ' + esc(c.summary || '');
+    case 'endpoint_removed':
+      return '<code>' + esc(c.method + ' ' + c.path) + '</code> ' + esc(c.summary || '');
+    case 'param_added':
+      return 'Parameter <code>' + esc(c.param) + '</code> added to <code>' + esc(c.endpoint) + '</code>' + (c.required ? ' (required)' : '');
+    case 'param_removed':
+      return 'Parameter <code>' + esc(c.param) + '</code> removed from <code>' + esc(c.endpoint) + '</code>';
+    case 'request_field_added':
+      return 'Request field <code>' + esc(c.field) + '</code> added to <code>' + esc(c.endpoint) + '</code>' + (c.required ? ' (required)' : '');
+    case 'request_field_removed':
+      return 'Request field <code>' + esc(c.field) + '</code> removed from <code>' + esc(c.endpoint) + '</code>';
+    case 'request_type_changed':
+      return 'Request field <code>' + esc(c.field) + '</code> type changed: <code>' + esc(c.old_type) + '</code> &rarr; <code>' + esc(c.new_type) + '</code> on <code>' + esc(c.endpoint) + '</code>';
+    case 'response_field_added':
+      return 'Response field <code>' + esc(c.field) + '</code> added to <code>' + esc(c.endpoint) + '</code>';
+    case 'response_field_removed':
+      return 'Response field <code>' + esc(c.field) + '</code> removed from <code>' + esc(c.endpoint) + '</code>';
+    case 'response_type_changed':
+      return 'Response field <code>' + esc(c.field) + '</code> type changed: <code>' + esc(c.old_type) + '</code> &rarr; <code>' + esc(c.new_type) + '</code> on <code>' + esc(c.endpoint) + '</code>';
+    case 'schema_added':
+      return 'Schema <code>' + esc(c.schema) + '</code> added';
+    case 'schema_removed':
+      return 'Schema <code>' + esc(c.schema) + '</code> removed';
+    case 'schema_field_added':
+      return 'Field <code>' + esc(c.field) + '</code> added to <code>' + esc(c.schema) + '</code>' + (c.type ? ' (' + esc(c.type) + ')' : '');
+    case 'schema_field_removed':
+      return 'Field <code>' + esc(c.field) + '</code> removed from <code>' + esc(c.schema) + '</code>';
+    case 'schema_type_changed':
+      return 'Field <code>' + esc(c.field) + '</code> type changed in <code>' + esc(c.schema) + '</code>: <code>' + esc(c.old_type) + '</code> &rarr; <code>' + esc(c.new_type) + '</code>';
+    case 'schema_field_required':
+      return 'Field <code>' + esc(c.field) + '</code> now required in <code>' + esc(c.schema) + '</code>';
+    case 'version_changed':
+      return 'API version changed: <code>' + esc(c.old_version) + '</code> &rarr; <code>' + esc(c.new_version) + '</code>';
+    default:
+      return esc(c.kind);
+  }
+}
+
 function showSwagger(name, displayName) {
   document.getElementById('landing').classList.add('hidden');
   const sp = document.getElementById('swagger-page');
@@ -390,10 +730,14 @@ function showLanding() {
 window.addEventListener('hashchange', function() {
   if (!location.hash || location.hash === '#') {
     showLanding();
+    switchTab('apis');
   } else if (location.hash.startsWith('#/spec/')) {
     const name = decodeURIComponent(location.hash.slice(7));
     const api = apis.find(a => a.name === name);
     if (api) showSwagger(api.name, api.display_name);
+  } else if (location.hash === '#/changelog') {
+    showLanding();
+    switchTab('changelog');
   }
 });
 

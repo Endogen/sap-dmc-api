@@ -395,6 +395,30 @@ def main() -> None:
              len(artifacts), spec_count, total_endpoints, total_schemas)
     log.info("Output: %s", output_dir.resolve())
 
+    # Diff detection
+    try:
+        from diff_tracker import (
+            load_specs_from_git, load_specs_from_dir, diff_specs,
+            save_diff, rebuild_changelog,
+        )
+
+        old_specs = load_specs_from_git("HEAD")
+        new_specs = load_specs_from_dir(output_dir / "specs")
+        diff = diff_specs(old_specs, new_specs)
+
+        if diff:
+            history_dir = output_dir / "history"
+            history_dir.mkdir(exist_ok=True)
+            save_diff(diff, history_dir)
+            rebuild_changelog(history_dir, output_dir / "changelog.json")
+            log.info("Changes detected: %d APIs affected, %d breaking changes",
+                     diff["summary"]["apis_changed"] + diff["summary"]["apis_added"] + diff["summary"]["apis_removed"],
+                     diff["summary"]["breaking_changes"])
+        else:
+            log.info("No spec changes detected")
+    except Exception as e:
+        log.warning("Diff detection skipped: %s", e)
+
 
 if __name__ == "__main__":
     main()
