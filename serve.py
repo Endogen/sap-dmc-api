@@ -24,8 +24,8 @@ class APIHandler(SimpleHTTPRequestHandler):
 
         if path == "/" or path == "/index.html":
             self._serve_file(TEMPLATES_DIR / "index.html", "text/html")
-        elif path == "/favicon.ico":
-            self._serve_file(STATIC_DIR / "favicon.ico", "image/x-icon")
+        elif path == "/favicon.ico" or path == "/favicon.png":
+            self._serve_file(STATIC_DIR / "favicon.png", "image/png")
         elif path == "/logo.png":
             self._serve_file(STATIC_DIR / "logo.png", "image/png")
         elif path == "/summary.json":
