@@ -563,16 +563,22 @@ document.querySelectorAll('.tab').forEach(btn => {
   });
 });
 
+let _suppressHashChange = false;
+
 function switchTab(tab) {
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   document.getElementById('tab-apis').classList.toggle('active', tab === 'apis');
   document.getElementById('tab-changelog').classList.toggle('active', tab === 'changelog');
 
+  // Update hash without triggering hashchange listener
+  const targetHash = tab === 'changelog' ? '#/changelog' : '';
+  if (location.hash !== targetHash) {
+    _suppressHashChange = true;
+    location.hash = targetHash;
+  }
+
   if (tab === 'changelog') {
-    location.hash = '#/changelog';
     loadChangelog();
-  } else {
-    if (location.hash === '#/changelog') location.hash = '';
   }
 }
 
@@ -741,6 +747,10 @@ function showLanding() {
 }
 
 window.addEventListener('hashchange', function() {
+  if (_suppressHashChange) {
+    _suppressHashChange = false;
+    return;
+  }
   if (!location.hash || location.hash === '#') {
     showLanding();
     switchTab('apis');
