@@ -32,6 +32,11 @@
     border-bottom: 1px solid var(--border);
     padding: 24px 32px;
   }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
   .header h1 {
     font-size: 22px;
     font-weight: 600;
@@ -245,8 +250,8 @@
   /* Tabs */
   .tabs {
     display: flex;
-    gap: 0;
-    margin-top: 14px;
+    gap: 6px;
+    flex-shrink: 0;
   }
   .tab {
     padding: 7px 20px;
@@ -255,13 +260,11 @@
     color: var(--text2);
     background: transparent;
     border: 1px solid var(--border);
+    border-radius: 6px;
     cursor: pointer;
     transition: color 0.2s, border-color 0.2s, background 0.2s;
     font-family: inherit;
   }
-  .tab:first-child { border-radius: 6px 0 0 6px; }
-  .tab:last-child { border-radius: 0 6px 6px 0; }
-  .tab + .tab { border-left: none; }
   .tab.active {
     color: var(--accent);
     border-color: var(--accent);
@@ -427,7 +430,13 @@
 <!-- Landing Page -->
 <div class="landing-page" id="landing">
   <div class="header">
-    <h1><img src="/logo.png" alt="SAP">SAP Digital Manufacturing Cloud — APIs</h1>
+    <div class="header-top">
+      <h1><img src="/logo.png" alt="SAP">SAP Digital Manufacturing Cloud — APIs</h1>
+      <div class="tabs">
+        <button class="tab active" data-tab="apis">APIs</button>
+        <button class="tab" data-tab="changelog">Changelog</button>
+      </div>
+    </div>
     <p>Browse and explore all API specifications from the SAP DMC package</p>
     <div class="stats">
       <div class="stat"><strong id="api-count">0</strong> APIs</div>
@@ -439,10 +448,6 @@
       <a href="/summary.json" target="_blank" class="dl-link">Summary JSON</a>
       <a href="/collections/postman_collection.json" target="_blank" class="dl-link">Postman Collection</a>
       <a href="/collections/insomnia_collection.json" target="_blank" class="dl-link">Insomnia Collection</a>
-    </div>
-    <div class="tabs">
-      <button class="tab active" data-tab="apis" onclick="switchTab('apis')">APIs</button>
-      <button class="tab" data-tab="changelog" onclick="switchTab('changelog')">Changelog</button>
     </div>
   </div>
   <div class="tab-content active" id="tab-apis">
@@ -550,6 +555,14 @@ document.getElementById('search').addEventListener('input', function() {
 });
 
 // Tabs
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    switchTab(this.dataset.tab);
+  });
+});
+
 function switchTab(tab) {
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   document.getElementById('tab-apis').classList.toggle('active', tab === 'apis');
