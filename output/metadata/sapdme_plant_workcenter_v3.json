@@ -31,6 +31,7 @@
   "BusinessObjects": null,
   "Successors": null,
   "OrdId": null,
+  "MinSystemVersion": null,
   "Versions": {
     "__deferred": {
       "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_plant_workcenter_v3')/Versions"
