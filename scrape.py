@@ -58,6 +58,21 @@ API_SPEC_URL = (
 log = logging.getLogger("sap-scraper")
 
 
+class SessionAuthError(RuntimeError):
+    """Raised when SAP returns auth HTML instead of the requested JSON."""
+
+
+AUTH_HTML_MARKERS = (
+    "accounts.sap.com",
+    "oauth",
+    "saml",
+    "log on",
+    "signin",
+    "<html",
+    "<!doctype html",
+)
+
+
 # ── Auth ────────────────────────────────────────────────────────────
 
 def login(page: Page) -> None:
@@ -100,21 +115,92 @@ def login(page: Page) -> None:
     log.info("Login complete — URL: %s", page.url)
 
 
-def fetch_json(page: Page, url: str) -> Any:
+def refresh_session(page: Page) -> None:
+    """Bounce through the package page to refresh the authenticated browser session."""
+    log.info("Refreshing SAP session")
+    page.goto(PACKAGE_URL, timeout=30_000)
+    page.wait_for_timeout(2000)
+    login(page)
+
+
+def looks_like_auth_html(result: Any) -> bool:
+    """Detect SAP login/redirect HTML returned in place of JSON."""
+    if not isinstance(result, dict) or "__raw" not in result:
+        return False
+
+    raw = str(result.get("__raw", ""))
+    content_type = str(result.get("__content_type", "")).lower()
+    final_url = str(result.get("__final_url", "")).lower()
+    text = f"{content_type}\n{final_url}\n{raw[:1000]}".lower()
+    return any(marker in text for marker in AUTH_HTML_MARKERS)
+
+
+def fetch_json(page: Page, url: str, *, max_attempts: int = 2) -> Any:
     """Fetch JSON via the browser's authenticated session."""
-    result = page.evaluate(
-        """async (url) => {
-            const resp = await fetch(url);
-            if (!resp.ok) return {__error: resp.status, __url: url};
-            const text = await resp.text();
-            try { return JSON.parse(text); }
-            catch { return {__raw: text.substring(0, 500), __url: url}; }
-        }""",
-        url,
-    )
-    if isinstance(result, dict) and "__error" in result:
-        raise RuntimeError(f"HTTP {result['__error']} for {result['__url']}")
-    return result
+    for attempt in range(1, max_attempts + 1):
+        result = page.evaluate(
+            """async (url) => {
+                const resp = await fetch(url, { redirect: 'follow' });
+                const text = await resp.text();
+                const contentType = resp.headers.get('content-type') || '';
+                if (!resp.ok) {
+                    return {
+                        __error: resp.status,
+                        __url: url,
+                        __final_url: resp.url,
+                        __content_type: contentType,
+                        __raw: text.substring(0, 1000),
+                    };
+                }
+                try { return JSON.parse(text); }
+                catch {
+                    return {
+                        __raw: text.substring(0, 1000),
+                        __url: url,
+                        __final_url: resp.url,
+                        __content_type: contentType,
+                    };
+                }
+            }""",
+            url,
+        )
+
+        if isinstance(result, dict) and "__error" in result:
+            is_auth_error = result["__error"] in {401, 403} or looks_like_auth_html(result)
+            if is_auth_error and attempt < max_attempts:
+                log.warning(
+                    "Auth failed for %s on attempt %d/%d, re-authenticating",
+                    url,
+                    attempt,
+                    max_attempts,
+                )
+                refresh_session(page)
+                continue
+            if is_auth_error:
+                raise SessionAuthError(
+                    f"SAP returned auth/redirect content for {url} "
+                    f"(status {result['__error']}, final_url={result.get('__final_url')})"
+                )
+            raise RuntimeError(f"HTTP {result['__error']} for {result.get('__final_url', result['__url'])}")
+
+        if looks_like_auth_html(result):
+            if attempt < max_attempts:
+                log.warning(
+                    "Got auth HTML instead of JSON for %s on attempt %d/%d, re-authenticating",
+                    url,
+                    attempt,
+                    max_attempts,
+                )
+                refresh_session(page)
+                continue
+            raise SessionAuthError(
+                f"SAP returned login/redirect HTML for {url} "
+                f"(final_url={result.get('__final_url')})"
+            )
+
+        return result
+
+    raise RuntimeError(f"Exhausted retries fetching {url}")
 
 
 # ── Scraping ────────────────────────────────────────────────────────
@@ -145,6 +231,8 @@ def fetch_api_spec(page: Page, name: str) -> dict | None:
             return spec
         log.warning("Spec for %s doesn't look like OpenAPI: %s", name, list(spec.keys())[:5] if isinstance(spec, dict) else type(spec))
         return spec
+    except SessionAuthError:
+        raise
     except Exception as e:
         log.error("Failed to fetch spec for %s: %s", name, e)
         return None
@@ -359,6 +447,8 @@ def main() -> None:
             try:
                 meta = fetch_api_metadata(page, name)
                 metadata[name] = meta
+            except SessionAuthError:
+                raise
             except Exception as e:
                 log.error("  Metadata failed: %s", e)
 
