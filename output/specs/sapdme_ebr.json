@@ -3,14 +3,14 @@
   "info": {
     "title": "Electronic Batch Record",
     "description": "This API allows you to create an electronic batch record for a batch and order used for producing a material.",
-    "version": "Beta",
+    "version": "v1",
     "contact": {
       "name": "SAP Digital Manufacturing Operations",
       "email": "sap-dmoperation@sap.com"
     }
   },
   "x-sap-stateInfo": {
-    "state": "Beta"
+    "state": "Active"
   },
   "tags": [
     {
@@ -98,8 +98,41 @@
               }
             }
           },
+          "429": {
+            "description": "The client sent too many requests in a given amount of time. Please try again later."
+          },
           "500": {
             "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway. Failed to connect to shop floor to update indicators.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The service is unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Gateway Timeout.",
             "content": {
               "application/json": {
                 "schema": {
@@ -171,28 +204,20 @@
           },
           "version": {
             "description": "Version of the electronic batch record.",
-            "type": "string"
+            "type": "integer"
           }
         }
-      },
-      "ErrorDetail": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "description": "Contains multiple errors."
       },
       "ErrorResponse": {
         "type": "object",
         "properties": {
+          "causeMessage": {
+            "type": "string",
+            "description": "Contains the technical reason for the error."
+          },
           "code": {
             "type": "string",
-            "description": "Internal error message."
+            "description": "Internal error message"
           },
           "correlationId": {
             "type": "string",
@@ -201,13 +226,6 @@
           "message": {
             "type": "string",
             "description": "Contains any additional information."
-          },
-          "details": {
-            "type": "array",
-            "description": "Contains multiple errors.",
-            "items": {
-              "$ref": "#/components/schemas/ErrorDetail"
-            }
           }
         },
         "title": "ErrorResponse",

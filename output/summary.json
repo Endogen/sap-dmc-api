@@ -963,14 +963,14 @@
     "name": "sapdme_ebr",
     "display_name": "Electronic Batch Record",
     "description": "Creates an electronic batch record",
-    "version": "Beta",
+    "version": "v1",
     "status": "",
     "spec_version": "3.0.3",
-    "api_version": "Beta",
+    "api_version": "v1",
     "base_path": "",
     "host": "",
     "endpoint_count": 1,
-    "schema_count": 4,
+    "schema_count": 3,
     "endpoints": [
       {
         "method": "POST",
@@ -1795,7 +1795,7 @@
     "base_path": "/",
     "host": "hostname",
     "endpoint_count": 7,
-    "schema_count": 23,
+    "schema_count": 24,
     "endpoints": [
       {
         "method": "GET",
@@ -1950,12 +1950,12 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 9,
-    "schema_count": 36,
+    "endpoint_count": 8,
+    "schema_count": 31,
     "endpoints": [
       {
         "method": "POST",
-        "path": "/v1/log",
+        "path": "/log",
         "summary": "Logs a nonconformance.",
         "operation_id": "logNonConformanceUsingPOST_1",
         "tags": [
@@ -1964,7 +1964,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/checkForOpen",
+        "path": "/checkForOpen",
         "summary": "Check for open nonconformances",
         "operation_id": "checkForOpenNonConformancesUsingPOST",
         "tags": [
@@ -1973,7 +1973,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/close",
+        "path": "/close",
         "summary": "Closes a nonconformance.",
         "operation_id": "closeNonConformanceUsingPOST",
         "tags": [
@@ -1982,7 +1982,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/open",
+        "path": "/open",
         "summary": "Opens a nonconformance.",
         "operation_id": "openNonconformanceUsingPOST",
         "tags": [
@@ -1991,7 +1991,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/nonconformances",
+        "path": "/nonconformances",
         "summary": "Retrieves a non-conformance list.",
         "operation_id": "getNonConformancesUsingGET_1",
         "tags": [
@@ -2000,7 +2000,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/hierarchies",
+        "path": "/hierarchies",
         "summary": "Retrieves a list of nonconformance hierarchies.",
         "operation_id": "getNonConformanceHierarchies",
         "tags": [
@@ -2009,7 +2009,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/sfcs/disposition",
+        "path": "/sfcs/disposition",
         "summary": "Route nonconformant SFCs based on disposition settings.",
         "operation_id": "dispositionUsingPOST",
         "tags": [
@@ -2018,18 +2018,42 @@
       },
       {
         "method": "GET",
-        "path": "/v1/file/download",
+        "path": "/file/download",
         "summary": "Downloads a nonconformance file.",
         "operation_id": "downloadFileUsingGET_1",
         "tags": [
           "Nonconformance"
         ]
-      },
+      }
+    ]
+  },
+  {
+    "name": "sapdme_nonconformance_v2",
+    "display_name": "Nonconformance",
+    "description": "Manage nonconformances as part of quality checks",
+    "version": "v2",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 2,
+    "schema_count": 13,
+    "endpoints": [
       {
         "method": "GET",
-        "path": "/v2/nonconformances",
+        "path": "/nonconformances",
         "summary": "Retrieves a list of nonconformances.",
         "operation_id": "getNonConformancesUsingGET_2",
+        "tags": [
+          "Nonconformance"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/checkForOpen",
+        "summary": "Check for open nonconformances V2",
+        "operation_id": "checkForOpenNonConformancesV2UsingPOST",
         "tags": [
           "Nonconformance"
         ]
@@ -2236,7 +2260,7 @@
     "base_path": "",
     "host": "",
     "endpoint_count": 2,
-    "schema_count": 12,
+    "schema_count": 13,
     "endpoints": [
       {
         "method": "GET",
@@ -5286,90 +5310,6 @@
     ]
   },
   {
-    "name": "sapdme_visualinspection",
-    "display_name": "Visual Inspection",
-    "description": "Manage visual inspection objects to embed AI-assisted processes on your shop floor.",
-    "version": "v1",
-    "status": "",
-    "spec_version": "3.0.2",
-    "api_version": "v1",
-    "base_path": "",
-    "host": "",
-    "endpoint_count": 1,
-    "schema_count": 20,
-    "endpoints": [
-      {
-        "method": "GET",
-        "path": "/v1/findVisualInspections()",
-        "summary": "Find visual inspections using the business context",
-        "operation_id": "findVisualInspections",
-        "tags": [
-          "Visual Inspections"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "sapdme_vimodel",
-    "display_name": "Visual Inspection Result Service",
-    "description": "Log, read and store images of visual inspection results in Digital Manufacturing",
-    "version": "v1",
-    "status": "",
-    "spec_version": "3.0.2",
-    "api_version": "v1",
-    "base_path": "",
-    "host": "",
-    "endpoint_count": 3,
-    "schema_count": 9,
-    "endpoints": [
-      {
-        "method": "GET",
-        "path": "/inspectionResults",
-        "summary": "Finds all visual inspection results.",
-        "operation_id": "",
-        "tags": [
-          "InspectionResults"
-        ]
-      },
-      {
-        "method": "POST",
-        "path": "/inspectionResults",
-        "summary": "Create a visual inspection result.",
-        "operation_id": "",
-        "tags": [
-          "InspectionResults"
-        ]
-      },
-      {
-        "method": "GET",
-        "path": "/inspectionResults({id})",
-        "summary": "Finds a single visual inspection result by ID.",
-        "operation_id": "",
-        "tags": [
-          "InspectionResults"
-        ]
-      },
-      {
-        "method": "GET",
-        "path": "/inspectionResults({id})/image",
-        "summary": "Get the image of a visual inspection result.",
-        "operation_id": "",
-        "tags": [
-          "InspectionResults"
-        ]
-      },
-      {
-        "method": "PUT",
-        "path": "/inspectionResults({id})/image",
-        "summary": "Stores an image for a visual inspection result.",
-        "operation_id": "",
-        "tags": [
-          "InspectionResults"
-        ]
-      }
-    ]
-  },
-  {
     "name": "sapdme_plant_workcenter",
     "display_name": "Work Center",
     "description": "Get a list of work centers for a given plant.",
@@ -5514,6 +5454,39 @@
     ]
   },
   {
+    "name": "sapdme_workinstruction_v2",
+    "display_name": "Work Instruction",
+    "description": "Use this API to manage work instructions in SAP Digital Manufacturing.",
+    "version": "v2",
+    "status": "",
+    "spec_version": "3.0.1",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoint_count": 2,
+    "schema_count": 17,
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/workinstructions",
+        "summary": "Creates a list of work instructions for the given plant.",
+        "operation_id": "",
+        "tags": [
+          "Work Instructions"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/findAttachedWorkInstructions",
+        "summary": "Find attached work instructions by provided context.",
+        "operation_id": "",
+        "tags": [
+          "Work Instructions"
+        ]
+      }
+    ]
+  },
+  {
     "name": "sapdme_workinstruction",
     "display_name": "Work Instruction",
     "description": "Get a list of work instructions or one single work instruction",
@@ -5523,12 +5496,12 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 4,
+    "endpoint_count": 3,
     "schema_count": 20,
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/attachedworkinstructions",
+        "path": "/attachedworkinstructions",
         "summary": "Get list of work instructions according to the parameters.",
         "operation_id": "",
         "tags": [
@@ -5537,7 +5510,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/workinstructions",
+        "path": "/workinstructions",
         "summary": "Finds a work instruction by plant, name, and work instruction version",
         "operation_id": "",
         "tags": [
@@ -5546,7 +5519,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/workinstructions",
+        "path": "/workinstructions",
         "summary": "Creates a work instruction by plant and name",
         "operation_id": "",
         "tags": [
@@ -5555,7 +5528,7 @@
       },
       {
         "method": "PUT",
-        "path": "/v1/workinstructions",
+        "path": "/workinstructions",
         "summary": "Updates a list of work instructions for the given plant.",
         "operation_id": "",
         "tags": [
@@ -5564,7 +5537,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v1/workinstructions",
+        "path": "/workinstructions",
         "summary": "Deletes a work instruction by reference",
         "operation_id": "",
         "tags": [
@@ -5573,16 +5546,7 @@
       },
       {
         "method": "POST",
-        "path": "/v2/workinstructions",
-        "summary": "Creates a list of work instructions for the given plant.",
-        "operation_id": "",
-        "tags": [
-          "Work Instructions"
-        ]
-      },
-      {
-        "method": "POST",
-        "path": "/v1/workinstructions/attachedPoints",
+        "path": "/workinstructions/attachedPoints",
         "summary": "Adds work instruction attached points.",
         "operation_id": "",
         "tags": [

@@ -1,0 +1,786 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Nonconformance",
+    "description": "In a manufacturing process, product defects are often found as part of quality checks. Use this service to retrieve logged nonconformances and check for open nonconformances.",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    },
+    "version": "v2"
+  },
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/nonconformance/v2",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization.",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication token server where SAP Digital Manufacturing is provisioned for your organization.",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Nonconformance",
+      "description": "Non Conformance Api Controller"
+    }
+  ],
+  "paths": {
+    "/nonconformances": {
+      "get": {
+        "tags": [
+          "Nonconformance"
+        ],
+        "summary": "Retrieves a list of nonconformances.",
+        "description": "Retrieves a list of nonconformances for a given plant by various optional parameters.",
+        "operationId": "getNonConformancesUsingGET_2",
+        "parameters": [
+          {
+            "name": "operationActivity",
+            "in": "query",
+            "description": "The operation activity with the current version to search for nonconformances.",
+            "schema": {
+              "maxLength": 36,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "plant",
+            "in": "query",
+            "description": "The plant to search for nonconformances.",
+            "required": true,
+            "schema": {
+              "maxLength": 6,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "description": "The resource to search for nonconformances.",
+            "schema": {
+              "maxLength": 36,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the nonconformance incident.",
+            "schema": {
+              "maxLength": 412,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "routing",
+            "in": "query",
+            "description": "The routing with the current version to search for nonconformances.",
+            "schema": {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "routingStepId",
+            "in": "query",
+            "description": "The routing step to search for nonconformances.",
+            "schema": {
+              "maxLength": 20,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "sfc",
+            "in": "query",
+            "description": "The SFC to search for nonconformances.",
+            "schema": {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "The date and time to only show nonconformances logged after or at the given time stamp in UTC.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "The date and time to only show nonconformances logged before or at the given time stamp in UTC.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page of nonconformances. By default,  the system returns the first page.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the nonconformance page. By default, the page size is 20 records. The maximum page size is 1000.)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "The retrieved records can be sorted using one or more of the following fields: 'id', 'state', 'createdDateTime'. Example: 'https://xxx?xxxx&sort=id,desc&sort=createdDateTime,desc' (By default the result sorted by logged date) ",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Page of Logged nonconformances.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pageable_NonConformance"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/checkForOpen": {
+      "post": {
+        "tags": [
+          "Nonconformance"
+        ],
+        "summary": "Check for open nonconformances V2",
+        "description": "Check for open nonconformance V2 by the given SFCs.",
+        "operationId": "checkForOpenNonConformancesV2UsingPOST",
+        "requestBody": {
+          "description": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckOpenNonConformancesV2Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "List of SFCs with open nonconformances.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CheckOpenNonConformanceBySfcV2Response"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The client sent too many requests in a given amount of time. Please try again later."
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Temporarily Unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Gateway Timeout.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OauthClientCredentials": []
+          }
+        ],
+        "deprecated": false,
+        "x-codegen-request-body-name": "request"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DataField": {
+        "title": "DataField",
+        "type": "object",
+        "properties": {
+          "key": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name the data field."
+          },
+          "value": {
+            "maxLength": 1024,
+            "minLength": 1,
+            "type": "string",
+            "description": "The value of the data field."
+          }
+        },
+        "description": "Name/value pair to be collected as part of logging a Non Conformance."
+      },
+      "IncidentNumber": {
+        "title": "IncidentNumber",
+        "type": "object",
+        "properties": {
+          "createdDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "incidentNumber": {
+            "type": "string"
+          },
+          "modifiedDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "plant": {
+            "type": "string"
+          }
+        }
+      },
+      "CheckOpenNonConformancesV2Request": {
+        "title": "CheckOpenNonConformancesV2Request",
+        "required": [
+          "plant",
+          "sfcs"
+        ],
+        "type": "object",
+        "properties": {
+          "sfcs": {
+            "type": "array",
+            "description": "The SFC to check for open nonconformances.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "plant": {
+            "type": "string",
+            "description": "The plant at which nonconformances are checked."
+          },
+          "ncCode": {
+            "type": "string",
+            "description": "The name of the nonconformance code at which nonconformances are checked."
+          },
+          "workCenter": {
+            "type": "string",
+            "description": "The name of the work center at which nonconformances are checked."
+          },
+          "resource": {
+            "type": "string",
+            "description": "The name of the resource at which nonconformances are checked."
+          },
+          "operationActivity": {
+            "type": "string",
+            "description": "The name of the operation activity at which nonconformances are checked."
+          }
+        },
+        "description": "The request to check for open nonconformances (version 2)."
+      },
+      "Material": {
+        "title": "Material",
+        "type": "object",
+        "properties": {
+          "material": {
+            "type": "string"
+          },
+          "plant": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "CheckOpenNonConformanceBySfcV2Response": {
+        "title": "CheckOpenNonConformanceBySfcV2Response",
+        "type": "object",
+        "properties": {
+          "sfc": {
+            "type": "string",
+            "description": "The SFC with open nonconformances."
+          },
+          "openNcs": {
+            "type": "array",
+            "description": "The list of open nonconformance codes and incident IDs.",
+            "items": {
+              "$ref": "#/components/schemas/OpenNc"
+            }
+          }
+        },
+        "description": "The response of checking open nonconformances for SFC."
+      },
+      "OpenNc": {
+        "title": "Open nonconformance code and incident ID",
+        "type": "object",
+        "properties": {
+          "ncCode": {
+            "type": "string",
+            "description": "The nonconformance code of the open nonconformance incident."
+          },
+          "incidentId": {
+            "type": "string",
+            "description": "The open nonconformance incident ID."
+          }
+        }
+      },
+      "NonConformanceV2": {
+        "title": "NonConformance",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "parentNcIncident": {
+            "type": "string",
+            "description": "The ID of the parent nonconformance incident."
+          },
+          "comments": {
+            "type": "string"
+          },
+          "component": {
+            "$ref": "#/components/schemas/Material"
+          },
+          "componentSfc": {
+            "$ref": "#/components/schemas/Material"
+          },
+          "createdDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fileIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "incidentNumber": {
+            "$ref": "#/components/schemas/IncidentNumber"
+          },
+          "material": {
+            "$ref": "#/components/schemas/Material"
+          },
+          "modifiedDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "operationActivity": {
+            "$ref": "#/components/schemas/OperationActivity"
+          },
+          "plant": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "resource": {
+            "type": "string"
+          },
+          "routing": {
+            "$ref": "#/components/schemas/Routing"
+          },
+          "routingStepId": {
+            "type": "string"
+          },
+          "sfc": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "CLOSED",
+              "CANCELLED",
+              "CLOSE_PENDING"
+            ]
+          },
+          "user": {
+            "type": "string"
+          },
+          "workCenter": {
+            "type": "string"
+          },
+          "dataFields": {
+            "type": "array",
+            "description": "The data field/value pairs associated with the nonconformance.",
+            "items": {
+              "$ref": "#/components/schemas/DataField"
+            }
+          }
+        },
+        "description": "NonConformance Incident."
+      },
+      "Pageable": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "description": "Returns the nonconformance incidents according to the pageNumber and pageSize you set",
+            "format": "int64"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "description": "Indicates the page from which the nonconformance incidents are retrieved.",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "Specifies the number of records on one page.",
+            "format": "int32"
+          },
+          "paged": {
+            "type": "boolean",
+            "description": "If set to 'true', retrieves the nonconformance incidents based on the properties you set in Pageable. If set to 'false', all nonconformance incidents are retrieved."
+          },
+          "sort": {
+            "type": "array",
+            "description": "Defines how the nonconformance incidents records are sorted.",
+            "items": {
+              "$ref": "#/components/schemas/Sort"
+            }
+          },
+          "unpaged": {
+            "type": "boolean",
+            "description": "Indicates if the nonconformance incidents are retrieved based on the properties you set in Pageable, or they are all retrieved. The value of this field is automatically filled."
+          }
+        }
+      },
+      "Sort": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean",
+            "description": "If the value is 'true', it indicates that no nonconformance incident is retrieved. If the value is 'false', it indicates that there are nonconformance incidents retrieved."
+          },
+          "sorted": {
+            "type": "boolean",
+            "description": "If the value is 'true', it indicates that the nonconformance incidents retrieved are sorted accordingly. If the value is 'false', it indicates that no nonconformance incidents are retrieved."
+          },
+          "unsorted": {
+            "type": "boolean",
+            "description": "If the value is 'false', it indicates that the nonconformance incidents retrieved are sorted accordingly. If the value is 'true', it indicates that no nonconformance incidents are retrieved."
+          }
+        }
+      },
+      "Pageable_NonConformance": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NonConformanceV2"
+            }
+          },
+          "empty": {
+            "type": "boolean",
+            "description": "Returns true if the result is empty."
+          },
+          "first": {
+            "type": "boolean",
+            "description": "If the value is 'true', it indicates that the current page is the first page."
+          },
+          "last": {
+            "type": "boolean",
+            "description": "If the value is 'true', it indicates that the current page is the last page."
+          },
+          "number": {
+            "type": "integer",
+            "description": "The page number",
+            "format": "int32"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "description": "The number of nonconformance incidents on the current page.",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/Pageable"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "array",
+            "description": "Defines how the nonconformance incidents records are sorted",
+            "items": {
+              "$ref": "#/components/schemas/Sort"
+            }
+          },
+          "totalElements": {
+            "type": "integer",
+            "description": "The total number of the retrieved nonconformance incidents.",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "The total number of the returned pages.",
+            "format": "int32"
+          }
+        }
+      },
+      "OperationActivity": {
+        "title": "OperationActivity",
+        "type": "object",
+        "properties": {
+          "operationActivity": {
+            "type": "string"
+          },
+          "plant": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "Routing": {
+        "title": "Routing",
+        "type": "object",
+        "properties": {
+          "plant": {
+            "type": "string"
+          },
+          "routing": {
+            "type": "string"
+          },
+          "routingType": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "error": {
+        "title": "error",
+        "type": "object",
+        "properties": {
+          "causeMessage": {
+            "type": "string",
+            "description": "Contains a technical reason for the error."
+          },
+          "code": {
+            "type": "string",
+            "description": "Internal error message"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Contains correlationId for the error."
+          },
+          "message": {
+            "type": "string",
+            "description": "Contains additional information, if any"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "HTTP status code"
+          }
+        },
+        "description": "Error response."
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  },
+  "x-sap-shortText": "Manage nonconformances as part of quality checks"
+}

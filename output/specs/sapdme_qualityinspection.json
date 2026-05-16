@@ -158,11 +158,11 @@
             "name": "inspectionPoint",
             "in": "query",
             "description": "The inspection point number",
-            "required": true,
+            "required": false,
             "type": "string"
           },
           {
-            "name": "pageNumber",
+            "name": "page",
             "in": "query",
             "description": "The current page index (starts from 0). Default index is 0.",
             "required": false,
@@ -170,9 +170,9 @@
             "format": "int32"
           },
           {
-            "name": "pageSize",
+            "name": "size",
             "in": "query",
-            "description": "Specify the page size that determines the number of single value results that are displayed at one time in one page. Default is 50 and the maximum allowed is 100.",
+            "description": "Enter the number of single value results to display per page (the default is 50 and the maximum is 100).",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -494,6 +494,22 @@
             "items": {
               "type": "string"
             }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The current page index (starts from 0). Default index is 0.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Enter the number of single value results to display per page (the default is 50).",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {

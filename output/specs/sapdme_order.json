@@ -1408,13 +1408,17 @@
             "type": "string",
             "description": "The customer associated to the found order"
           },
+          "customerName": {
+            "type": "string",
+            "description": "The customer name associated with the found order"
+          },
           "customerOrder": {
             "type": "string",
-            "description": "The customer order associated to the found order"
+            "description": "The customer order associated with the found order"
           },
           "customerOrderItem": {
             "type": "string",
-            "description": "The customer order item associated to the found order"
+            "description": "The customer order item associated with the found order"
           },
           "doneQuantity": {
             "type": "number",
@@ -1581,7 +1585,7 @@
           },
           "inspectionLot": {
             "type": "string",
-            "description": "The inspection lot associated to the retrieved order"
+            "description": "The inspection lot associated with the retrieved order"
           },
           "headerText": {
             "type": "string",

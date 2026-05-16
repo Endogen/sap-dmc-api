@@ -211,6 +211,16 @@
             }
           },
           {
+            "name": "includeCustomValues",
+            "in": "query",
+            "description": "Include custom values in the response. Default is false.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
             "name": "page",
             "in": "query",
             "description": "The current page index (starts from 0). Default index is 0.",
@@ -586,6 +596,10 @@
             "type": "string",
             "description": "The customer associated with the found order"
           },
+          "customerName": {
+            "type": "string",
+            "description": "The customer name associated with the found order"
+          },
           "salesOrder": {
             "type": "string",
             "description": "The sales order associated with the found order"
@@ -645,6 +659,13 @@
           "erpAlternativeBomId": {
             "type": "string",
             "description": "ERP alternative BOM ID"
+          },
+          "customValues": {
+            "type": "array",
+            "description": "Custom values associated with the order. Only included when the includeCustomValues flag is true.",
+            "items": {
+              "$ref": "#/components/schemas/GetOrderListV2CustomValue"
+            }
           }
         },
         "description": "Found orders."
@@ -686,6 +707,20 @@
           }
         },
         "description": "BOM object"
+      },
+      "GetOrderListV2CustomValue": {
+        "type": "object",
+        "description": "This object represents a custom value.",
+        "properties": {
+          "attribute": {
+            "type": "string",
+            "description": "The attribute name of the custom field"
+          },
+          "value": {
+            "type": "string",
+            "description": "The value of the custom field"
+          }
+        }
       },
       "GetOrderListV2Routing": {
         "type": "object",

@@ -1,0 +1,869 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Work Instruction",
+    "description": "Work instruction is an electronic document containing information about how to perform a task, used by operators on the shop floor. This API provides functionality to create Work Instruction business object.",
+    "contact": {
+      "name": "SAP Digital Manufacturing Operations",
+      "email": "sap-dmoperation@sap.com"
+    },
+    "version": "v2"
+  },
+  "x-sap-shortText": "Use this API to manage work instructions in SAP Digital Manufacturing.",
+  "externalDocs": {
+    "description": "Prepare for API Integration",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/operations-guide/prepare-for-api-integration"
+  },
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/workinstruction/v2",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Work Instructions",
+      "description": "Allows you to interact with work instructions."
+    }
+  ],
+  "paths": {
+    "/workinstructions": {
+      "post": {
+        "tags": [
+          "Work Instructions"
+        ],
+        "summary": "Creates a list of work instructions for the given plant.",
+        "description": "Creates a work instruction which can be attached to other objects like a material, resource, order and work center.",
+        "requestBody": {
+          "description": "The list of work instructions to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WorkInstruction"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Message successfully processed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkInstruction"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The work instruction already exists.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occured.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "OAuthSecurity": []
+          }
+        ],
+        "x-codegen-request-body-name": "workInstructionList"
+      }
+    },
+    "/findAttachedWorkInstructions": {
+      "post": {
+        "tags": [
+          "Work Instructions"
+        ],
+        "summary": "Find attached work instructions by provided context.",
+        "description": "Retrieves the list of work instructions based on provided context parameters, such as material, routing, routing activity, order, operation activity, resource, and work center.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N).",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned. Default - 50. Maximum size - 200.",
+            "schema": {
+              "maximum": 200,
+              "type": "integer",
+              "default": 50
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The request containing the manufacturing context to search for attached work instructions.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FindAttachedWorkInstructionsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Message successfully processed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedFindAttachedWorkInstructionsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseV2"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseV2"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseV2"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseV2"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseV2"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "OAuthSecurity": []
+          }
+        ],
+        "x-codegen-request-body-name": "request"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MaterialId": {
+        "title": "MaterialId",
+        "type": "object",
+        "properties": {
+          "material": {
+            "type": "string",
+            "description": "The name of the material."
+          },
+          "plant": {
+            "type": "string",
+            "description": "The plant the material belongs to."
+          },
+          "version": {
+            "type": "string",
+            "description": "The version of the material."
+          }
+        },
+        "description": "This business object defines key fields of the material object."
+      },
+      "OperationActivityId": {
+        "title": "OperationActivityId",
+        "type": "object",
+        "properties": {
+          "operationActivity": {
+            "type": "string",
+            "description": "The name of the operation activity."
+          },
+          "plant": {
+            "type": "string",
+            "description": "The plant the operation activity belongs to."
+          },
+          "version": {
+            "type": "string",
+            "description": "The version of the operation activity."
+          }
+        },
+        "description": "This business object defines key fields of the operation activity object."
+      },
+      "RoutingId": {
+        "title": "RoutingId",
+        "type": "object",
+        "properties": {
+          "plant": {
+            "type": "string",
+            "description": "The plant the routing or recipe belongs to."
+          },
+          "routing": {
+            "type": "string",
+            "description": "The name of the routing or recipe."
+          },
+          "routingType": {
+            "type": "string",
+            "description": "Indicates the type of routing or recipe.",
+            "enum": [
+              "PRODUCTION",
+              "NC",
+              "SPECIAL",
+              "DISPOSITION_FUNCTION",
+              "SFC_SPECIFIC",
+              "SHOPORDER_SPECIFIC",
+              "CONFIGURABLE",
+              "PRODUCTION_RECIPE",
+              "SHOPORDER_SPECIFIC_RECIPE",
+              "SERVICE_ORDER_ROUTING"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "description": "The version of the routing."
+          }
+        },
+        "description": "This business object defines key fields of the routing or recipe object."
+      },
+      "ShopOrderId": {
+        "title": "ShopOrderId",
+        "type": "object",
+        "properties": {
+          "plant": {
+            "type": "string",
+            "description": "The plant assigned to the shop order."
+          },
+          "shopOrder": {
+            "type": "string",
+            "description": "The name of the shop order."
+          }
+        },
+        "description": "This business object defines key fields of the shop order object."
+      },
+      "WorkInstruction": {
+        "title": "WorkInstruction",
+        "type": "object",
+        "properties": {
+          "plant": {
+            "type": "string",
+            "description": "The plant the work instruction belongs to."
+          },
+          "workInstruction": {
+            "type": "string",
+            "description": "The name of the work instruction."
+          },
+          "version": {
+            "type": "string",
+            "description": "The version of the work instruction."
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the work instruction."
+          },
+          "instructionData": {
+            "type": "string",
+            "description": "The actual instruction (plain text or HTML)."
+          },
+          "required": {
+            "type": "boolean",
+            "description": "If true, then the work instruction will be displayed automatically in the POD."
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the work instruction.",
+            "enum": [
+              "NEW",
+              "RELEASABLE",
+              "OBSOLETE",
+              "HOLD"
+            ]
+          },
+          "currentVersion": {
+            "type": "boolean",
+            "description": "If true, the version of the work instruction is current."
+          },
+          "trackViewing": {
+            "type": "boolean",
+            "description": "Track viewing where the work instruction has to be performed."
+          },
+          "attachedPoints": {
+            "type": "array",
+            "description": "A list of attached points of the work instruction.",
+            "items": {
+              "$ref": "#/components/schemas/WorkInstructionAttachedPoint"
+            }
+          },
+          "customValues": {
+            "type": "array",
+            "description": "Custom values of the work instruction.",
+            "items": {
+              "$ref": "#/components/schemas/CustomValue"
+            }
+          },
+          "workInstructionElements": {
+            "type": "array",
+            "description": "List of work instruction elements of the work instruction.",
+            "items": {
+              "$ref": "#/components/schemas/WorkInstructionElement"
+            }
+          },
+          "createdDateTime": {
+            "type": "string",
+            "description": "The time when the work instruction was created.",
+            "format": "date-time",
+            "example": "2018-06-22T04:24:00Z"
+          },
+          "modifiedDateTime": {
+            "type": "string",
+            "description": "The time when the work instruction has most recently changed.",
+            "format": "date-time",
+            "example": "2018-06-22T04:24:00Z"
+          }
+        },
+        "description": "This business object defines the basic work instruction object. It controls which work instruction is displayed and how it is displayed."
+      },
+      "WorkInstructionAttachedPoint": {
+        "title": "WorkInstructionAttachedPoint",
+        "type": "object",
+        "properties": {
+          "material": {
+            "$ref": "#/components/schemas/MaterialId"
+          },
+          "operationActivity": {
+            "$ref": "#/components/schemas/OperationActivityId"
+          },
+          "resource": {
+            "type": "string",
+            "description": "A resource to which the work instruction is attached."
+          },
+          "routing": {
+            "$ref": "#/components/schemas/RoutingId"
+          },
+          "routingStep": {
+            "type": "string",
+            "description": "A routing step to which the work instruction is attached."
+          },
+          "sequence": {
+            "type": "number",
+            "description": "The sequence of the attachment point."
+          },
+          "shopOrder": {
+            "type": "string",
+            "description": "A shop order to which the work instruction is attached."
+          },
+          "workCenter": {
+            "type": "string",
+            "description": "A work center to which the work instruction is attached."
+          },
+          "headerMaterial": {
+            "type": "boolean",
+            "description": "Defines if a material is a header material."
+          }
+        },
+        "description": "This business object represents the work instruction attachment point."
+      },
+      "WorkInstructionElement": {
+        "title": "WorkInstructionElement",
+        "type": "object",
+        "properties": {
+          "fileName": {
+            "type": "string",
+            "description": "The file name of the element."
+          },
+          "fileExternalUrl": {
+            "type": "string",
+            "description": "The URL of the file of the element."
+          },
+          "mimeType": {
+            "type": "string",
+            "description": "The MIME type of the file of the element."
+          },
+          "sequence": {
+            "type": "integer",
+            "description": "The sequence of the element.",
+            "format": "int64"
+          },
+          "text": {
+            "type": "string",
+            "description": "The text content of the element (plain text or HTML from Rich Text control)."
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the element."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the element.",
+            "enum": [
+              "TEXT",
+              "FILE",
+              "URL",
+              "HEADER_TEXT",
+              "LOCAL_FILE",
+              "STREAMING"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL of the element"
+          },
+          "newWindow": {
+            "type": "boolean",
+            "description": "Defines if a work instruction should be opened in a new window."
+          },
+          "erpFilename": {
+            "type": "string",
+            "description": "The file name for a file from an ERP system."
+          },
+          "metadataCategory": {
+            "type": "string",
+            "description": "The metadata category of a 3D file."
+          },
+          "metadataComponent": {
+            "type": "string",
+            "description": "The 3D file metadata component name."
+          },
+          "metadataRefDes": {
+            "type": "string",
+            "description": "The 3D file metadata installation point."
+          }
+        },
+        "description": "This business object represents the work instruction element object."
+      },
+      "CustomValue": {
+        "title": "CustomValue",
+        "type": "object",
+        "properties": {
+          "attribute": {
+            "type": "string",
+            "description": "Custom attribute name."
+          },
+          "value": {
+            "type": "string",
+            "description": "Custom attribute value."
+          }
+        },
+        "description": "This business object defines the custom attribute object."
+      },
+      "ErrorResponse": {
+        "title": "ErrorResponse",
+        "type": "object",
+        "properties": {
+          "causeMessage": {
+            "type": "string",
+            "description": "Contains technical reason for the error."
+          },
+          "code": {
+            "type": "string",
+            "description": "Internal error message"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Contains correlationId for the error."
+          },
+          "message": {
+            "type": "string",
+            "description": "Contains additional information, if any"
+          }
+        },
+        "description": "Error response. "
+      },
+      "ErrorResponseV2": {
+        "title": "ErrorResponse",
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponseApiModelV2"
+          }
+        }
+      },
+      "ErrorResponseApiModelV2": {
+        "title": "ErrorResponseApiModel",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Contains a technical code for the error."
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Contains a correlation ID for the error."
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message."
+          },
+          "details": {
+            "type": "array",
+            "description": "Error message details.",
+            "items": {
+              "$ref": "#/components/schemas/ErrorDetailV2"
+            }
+          }
+        },
+        "description": "Error response."
+      },
+      "ErrorDetailV2": {
+        "title": "ErrorDetail",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Contains a technical code for the error."
+          },
+          "message": {
+            "type": "string",
+            "description": "Contains a detailed message for the error."
+          }
+        },
+        "description": "Error detail."
+      },
+      "FindAttachedWorkInstructionsRequest": {
+        "title": "FindAttachedWorkInstructionsRequest",
+        "required": [
+          "plant"
+        ],
+        "type": "object",
+        "properties": {
+          "plant": {
+            "type": "string",
+            "description": "The plant for the work instruction search."
+          },
+          "routing": {
+            "$ref": "#/components/schemas/RoutingId"
+          },
+          "routingStep": {
+            "type": "string",
+            "description": "Routing operation activity or phase for the work instruction search."
+          },
+          "material": {
+            "$ref": "#/components/schemas/MaterialId"
+          },
+          "headerMaterial": {
+            "type": "boolean",
+            "description": "Defines if a material is a header material, default value is TRUE.",
+            "default": true
+          },
+          "shopOrder": {
+            "$ref": "#/components/schemas/ShopOrderId"
+          },
+          "operationActivity": {
+            "$ref": "#/components/schemas/OperationActivityId"
+          },
+          "workCenter": {
+            "type": "string",
+            "description": "A work center to which the work instruction is attached."
+          },
+          "resource": {
+            "type": "string",
+            "description": "A resource to which the work instruction is attached."
+          },
+          "skipValidation": {
+            "type": "boolean",
+            "description": "Skip validation for material, routing with routing activity ID, order, resource, and work center to improve performance. Default value is TRUE, which means that validation will be skipped.",
+            "default": true
+          }
+        },
+        "description": "Request for finding attached work instructions by provided context."
+      },
+      "FindAttachedWorkInstructionsResponse": {
+        "title": "FindAttachedWorkInstructionsResponse",
+        "type": "object",
+        "properties": {
+          "workInstruction": {
+            "type": "string",
+            "description": "The name of the work instruction."
+          },
+          "version": {
+            "type": "string",
+            "description": "The version of the work instruction."
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the work instruction.",
+            "enum": [
+              "NEW",
+              "RELEASABLE",
+              "OBSOLETE",
+              "HOLD"
+            ]
+          },
+          "currentVersion": {
+            "type": "boolean",
+            "description": "If true, then this is the current revision of the work instruction."
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the work instruction."
+          },
+          "trackViewing": {
+            "type": "boolean",
+            "description": "Indicates whether the viewing of this work instruction should be tracked."
+          },
+          "types": {
+            "type": "array",
+            "description": "List of work instruction element types.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "TEXT",
+                "FILE",
+                "URL",
+                "HEADER_TEXT",
+                "LOCAL_FILE",
+                "STREAMING"
+              ]
+            }
+          },
+          "workInstructionElements": {
+            "type": "array",
+            "description": "List of work instruction elements.",
+            "items": {
+              "$ref": "#/components/schemas/WorkInstructionElement"
+            }
+          }
+        },
+        "description": "Represents a single work instruction result returned by the find attached work instructions operation."
+      },
+      "PagedFindAttachedWorkInstructionsResponse": {
+        "title": "PagedFindAttachedWorkInstructionsResponse",
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "description": "List of work instructions matching the search criteria.",
+            "items": {
+              "$ref": "#/components/schemas/FindAttachedWorkInstructionsResponse"
+            }
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "last": {
+            "type": "boolean",
+            "description": "True if it is the last page"
+          },
+          "totalElements": {
+            "type": "integer",
+            "description": "The total number of records that are retrieved",
+            "format": "int64",
+            "example": 100
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "The total number of pages returned",
+            "format": "int32",
+            "example": 5
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "example": 20
+          },
+          "number": {
+            "type": "integer",
+            "description": "The page number",
+            "format": "int32",
+            "example": 0
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "first": {
+            "type": "boolean",
+            "description": "True if it is the first page"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "description": "The number of elements in the current page",
+            "format": "int32",
+            "example": 20
+          },
+          "empty": {
+            "type": "boolean",
+            "description": "Returns true if the result is empty"
+          }
+        },
+        "description": "Paginated response containing a list of attached work instructions."
+      },
+      "PageableObject": {
+        "type": "object",
+        "properties": {
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SortObject"
+            }
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "paged": {
+            "type": "boolean"
+          },
+          "unpaged": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SortObject": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          },
+          "sorted": {
+            "type": "boolean"
+          },
+          "unsorted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuthSecurity": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

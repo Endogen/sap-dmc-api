@@ -897,8 +897,7 @@
             "DATE",
             "NUMBER",
             "CHECKBOX",
-            "LIST",
-            "FORMULA"
+            "LIST"
           ]
         },
         "browsable": {
@@ -934,13 +933,7 @@
           "type": "string",
           "description": "The category of the data type.",
           "enum": [
-            "ASSEMBLY",
-            "NC",
-            "PACKING_CONTAINER",
-            "PACKING_SFC",
-            "RMA_SFC",
-            "RMA_SHOP_ORDER",
-            "SFC"
+            "ASSEMBLY"
           ]
         },
         "dataFieldList": {
@@ -1169,9 +1162,17 @@
             "YEARS"
           ]
         },
+        "incrementBatchNumber": {
+          "type": "string",
+          "description": "Determines how the batch number for the order of a material is incremented.",
+          "enum": [
+            "NONE",
+            "ORDER"
+          ]
+        },
         "mrpController": {
           "type": "string",
-          "description": "Person or a team responsible for ensuring the availability of materials."
+          "description": "A person or team responsible for ensuring the availability of materials."
         },
         "origin": {
           "type": "string",
@@ -1238,6 +1239,10 @@
           "description": "The removal data type of the material.",
           "$ref": "#/definitions/DataType"
         },
+        "inventoryDataType": {
+          "description": "The inventory data type of the material.",
+          "$ref": "#/definitions/DataType"
+        },
         "routing": {
           "description": "The routing attached to the material.",
           "$ref": "#/definitions/Routing"
@@ -1271,6 +1276,10 @@
           "items": {
             "$ref": "#/definitions/MaterialLocationApiModel"
           }
+        },
+        "packingData": {
+          "description": "Packing data for the material.",
+          "$ref": "#/definitions/MaterialPackingData"
         },
         "createdDateTime": {
           "type": "string",
@@ -1362,6 +1371,10 @@
             "$ref": "#/definitions/MaterialLocationApiModel"
           }
         },
+        "packingData": {
+          "description": "Packing data for the material.",
+          "$ref": "#/definitions/MaterialPackingData"
+        },
         "materialType": {
           "type": "string",
           "description": "The type of the material.",
@@ -1401,9 +1414,17 @@
             "YEARS"
           ]
         },
+        "incrementBatchNumber": {
+          "type": "string",
+          "description": "Determines how the batch number for the order of a material is incremented.",
+          "enum": [
+            "NONE",
+            "ORDER"
+          ]
+        },
         "mrpController": {
           "type": "string",
-          "description": "Person or a team responsible for ensuring the availability of materials."
+          "description": "A person or team responsible for ensuring the availability of materials."
         },
         "origin": {
           "type": "string",
@@ -1458,6 +1479,10 @@
         },
         "removalComponentDataType": {
           "description": "The removal data type of the material.",
+          "$ref": "#/definitions/DataType"
+        },
+        "inventoryDataType": {
+          "description": "The inventory data type of the material.",
           "$ref": "#/definitions/DataType"
         },
         "routing": {
@@ -1547,6 +1572,36 @@
         }
       },
       "title": "MaterialLocationApiModel"
+    },
+    "MaterialPackingData": {
+      "type": "object",
+      "properties": {
+        "netWeight": {
+          "type": "number",
+          "description": "For Packaging and Returnable Packaging material types, this is the weight of the empty packaging material. For Finished and Semifinished material types, this is the planned weight of the SFC that is Done."
+        },
+        "grossWeight": {
+          "type": "number",
+          "description": "The allowed packaging weight for materials of the Packaging and Returnable Packaging material types. If this field displays 0, the weight isn't restricted for this packaging material."
+        },
+        "unitOfWeight": {
+          "type": "string",
+          "description": "The unit of measure for weight."
+        },
+        "volume": {
+          "type": "number",
+          "description": "For Packaging and Returnable Packaging material types, the allowed total packaging volume is stored in this field. For Finished and Semifinished material types, this is the planned volume of the SFC that is Done."
+        },
+        "unitOfVolume": {
+          "type": "string",
+          "description": "The unit of measure for volume."
+        },
+        "sfcQty": {
+          "type": "number",
+          "description": "The allowed total SFC quantity for Packaging and Returnable Packaging material types. If this field displays 0, the allowed total SFC quantity is not restricted for this packaging material."
+        }
+      },
+      "title": "MaterialPackingData"
     },
     "Routing": {
       "type": "object",

@@ -925,15 +925,15 @@
         },
         "batchNumber": {
           "type": "string",
-          "description": "BOM component batch number."
+          "description": "BOM component batch number. This field is used only in GET requests. Otherwise, this field is ignored in POST and PATCH requests."
         },
         "reservationItemNumber": {
           "type": "string",
-          "description": "BOM component reservation item."
+          "description": "BOM component reservation item. This field is used only in GET requests. Otherwise, this field is ignored in POST and PATCH requests."
         },
         "reservationOrderNumber": {
           "type": "string",
-          "description": "BOM component reservation number."
+          "description": "BOM component reservation number. This field is used only in GET requests. Otherwise, this field is ignored in POST and PATCH requests."
         },
         "totalQuantity": {
           "type": "number",
@@ -941,7 +941,7 @@
         },
         "warehouseNumber": {
           "type": "string",
-          "description": "Warehouse number of the BOM component."
+          "description": "Warehouse number of the BOM component. This field is used only in GET requests. Otherwise, this field is ignored in POST and PATCH requests."
         },
         "orderItemNumber": {
           "type": "string",

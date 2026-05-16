@@ -1311,7 +1311,7 @@
           {
             "name": "sfcStatuses",
             "in": "query",
-            "description": "List of SFC statuses that are used to filter the result set.",
+            "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
             "required": false,
             "type": "array",
             "uniqueItems": true,
@@ -1495,7 +1495,7 @@
           {
             "name": "sfcStatuses",
             "in": "query",
-            "description": "List of SFC statuses that are used to filter the result set.",
+            "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
             "required": false,
             "type": "array",
             "uniqueItems": true,
@@ -1673,7 +1673,7 @@
           {
             "name": "sfcStatuses",
             "in": "query",
-            "description": "List of SFC statuses that are used to filter the result set.",
+            "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
             "required": false,
             "type": "array",
             "uniqueItems": true,
@@ -1863,7 +1863,7 @@
           {
             "name": "sfcStatuses",
             "in": "query",
-            "description": "List of SFC statuses that are used to filter the result set.",
+            "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
             "required": false,
             "type": "array",
             "uniqueItems": true,
@@ -2536,7 +2536,8 @@
       "required": [
         "plant",
         "quantity",
-        "sfcs"
+        "sfcs",
+        "resource"
       ],
       "properties": {
         "plant": {

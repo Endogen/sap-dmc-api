@@ -1,1 +1,514 @@
-[]
+[
+  {
+    "date": "2026-05-16",
+    "summary": {
+      "apis_added": 2,
+      "apis_removed": 0,
+      "apis_changed": 9,
+      "endpoints_added": 14,
+      "endpoints_removed": 16,
+      "breaking_changes": 25
+    },
+    "changes": [
+      {
+        "api": "sapdme_ebr",
+        "display_name": "Electronic Batch Record",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "version_changed",
+            "old_version": "Beta",
+            "new_version": "v1",
+            "breaking": false
+          },
+          {
+            "kind": "response_type_changed",
+            "endpoint": "POST /ebrs",
+            "field": "version",
+            "old_type": "string",
+            "new_type": "integer",
+            "breaking": true
+          },
+          {
+            "kind": "schema_type_changed",
+            "schema": "CreateEBRPublicAPIResponse",
+            "field": "version",
+            "old_type": "string",
+            "new_type": "integer",
+            "breaking": true
+          },
+          {
+            "kind": "schema_removed",
+            "schema": "ErrorDetail",
+            "breaking": true
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "ErrorResponse",
+            "field": "causeMessage",
+            "type": "string",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_removed",
+            "schema": "ErrorResponse",
+            "field": "details",
+            "breaking": true
+          }
+        ]
+      },
+      {
+        "api": "sapdme_inventory_v2",
+        "display_name": "Inventory",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "schema_field_added",
+            "schema": "GetInventoryPostingsForGoodIssueResponseV2",
+            "field": "bomComponentSequence",
+            "type": "integer",
+            "required": false,
+            "breaking": false
+          }
+        ]
+      },
+      {
+        "api": "sapdme_material",
+        "display_name": "Material",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "schema_added",
+            "schema": "MaterialPackingData",
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "MaterialRequest",
+            "field": "incrementBatchNumber",
+            "type": "string",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "MaterialRequest",
+            "field": "inventoryDataType",
+            "type": "object",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "MaterialRequest",
+            "field": "packingData",
+            "type": "object",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "MaterialResponse",
+            "field": "incrementBatchNumber",
+            "type": "string",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "MaterialResponse",
+            "field": "inventoryDataType",
+            "type": "object",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "MaterialResponse",
+            "field": "packingData",
+            "type": "object",
+            "required": false,
+            "breaking": false
+          }
+        ]
+      },
+      {
+        "api": "sapdme_nonconformance",
+        "display_name": "Nonconformance",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "endpoint_added",
+            "method": "GET",
+            "path": "/file/download",
+            "summary": "Downloads a nonconformance file.",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "GET",
+            "path": "/hierarchies",
+            "summary": "Retrieves a list of nonconformance hierarchies.",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "GET",
+            "path": "/nonconformances",
+            "summary": "Retrieves a non-conformance list.",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "GET",
+            "path": "/v1/file/download",
+            "summary": "Downloads a nonconformance file.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "GET",
+            "path": "/v1/hierarchies",
+            "summary": "Retrieves a list of nonconformance hierarchies.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "GET",
+            "path": "/v1/nonconformances",
+            "summary": "Retrieves a non-conformance list.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "GET",
+            "path": "/v2/nonconformances",
+            "summary": "Retrieves a list of nonconformances.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "POST",
+            "path": "/checkForOpen",
+            "summary": "Check for open nonconformances",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "POST",
+            "path": "/close",
+            "summary": "Closes a nonconformance.",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "POST",
+            "path": "/log",
+            "summary": "Logs a nonconformance.",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "POST",
+            "path": "/open",
+            "summary": "Opens a nonconformance.",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "POST",
+            "path": "/sfcs/disposition",
+            "summary": "Route nonconformant SFCs based on disposition settings.",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "POST",
+            "path": "/v1/checkForOpen",
+            "summary": "Check for open nonconformances",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "POST",
+            "path": "/v1/close",
+            "summary": "Closes a nonconformance.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "POST",
+            "path": "/v1/log",
+            "summary": "Logs a nonconformance.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "POST",
+            "path": "/v1/open",
+            "summary": "Opens a nonconformance.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "POST",
+            "path": "/v1/sfcs/disposition",
+            "summary": "Route nonconformant SFCs based on disposition settings.",
+            "breaking": true
+          },
+          {
+            "kind": "schema_removed",
+            "schema": "NonConformanceV2",
+            "breaking": true
+          },
+          {
+            "kind": "schema_removed",
+            "schema": "Pageable",
+            "breaking": true
+          },
+          {
+            "kind": "schema_removed",
+            "schema": "Pageable_NonConformance",
+            "breaking": true
+          },
+          {
+            "kind": "schema_removed",
+            "schema": "Sort",
+            "breaking": true
+          },
+          {
+            "kind": "schema_removed",
+            "schema": "error2",
+            "breaking": true
+          }
+        ]
+      },
+      {
+        "api": "sapdme_nonconformance_v2",
+        "display_name": "Nonconformance",
+        "type": "added"
+      },
+      {
+        "api": "sapdme_order",
+        "display_name": "Order",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "response_field_added",
+            "endpoint": "GET /v1/orders",
+            "field": "customerName",
+            "type": "string",
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "FindOrderResponse",
+            "field": "customerName",
+            "type": "string",
+            "required": false,
+            "breaking": false
+          }
+        ]
+      },
+      {
+        "api": "sapdme_order_v2",
+        "display_name": "Order",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "param_added",
+            "endpoint": "GET /v2/plants/{plant}/orders",
+            "param": "includeCustomValues",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "schema_added",
+            "schema": "GetOrderListV2CustomValue",
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "GetOrderListV2Response",
+            "field": "customValues",
+            "type": "array",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "schema_field_added",
+            "schema": "GetOrderListV2Response",
+            "field": "customerName",
+            "type": "string",
+            "required": false,
+            "breaking": false
+          }
+        ]
+      },
+      {
+        "api": "sapdme_qualityinspection",
+        "display_name": "Quality Inspection",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "param_added",
+            "endpoint": "GET /lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
+            "param": "page",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "param_removed",
+            "endpoint": "GET /lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
+            "param": "pageNumber",
+            "breaking": false
+          },
+          {
+            "kind": "param_removed",
+            "endpoint": "GET /lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
+            "param": "pageSize",
+            "breaking": false
+          },
+          {
+            "kind": "param_added",
+            "endpoint": "GET /lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
+            "param": "size",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "param_added",
+            "endpoint": "GET /lots/{inspectionLot}/operations/{inspectionOperation}/results",
+            "param": "page",
+            "required": false,
+            "breaking": false
+          },
+          {
+            "kind": "param_added",
+            "endpoint": "GET /lots/{inspectionLot}/operations/{inspectionOperation}/results",
+            "param": "size",
+            "required": false,
+            "breaking": false
+          }
+        ]
+      },
+      {
+        "api": "sapdme_sfc",
+        "display_name": "Shop Floor Control Production Activities",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "schema_field_required",
+            "schema": "ScrapSfcRequest",
+            "field": "resource",
+            "breaking": false
+          }
+        ]
+      },
+      {
+        "api": "sapdme_workinstruction",
+        "display_name": "Work Instruction",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "endpoint_removed",
+            "method": "DELETE",
+            "path": "/v1/workinstructions",
+            "summary": "Deletes a work instruction by reference",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "DELETE",
+            "path": "/workinstructions",
+            "summary": "Deletes a work instruction by reference",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "GET",
+            "path": "/attachedworkinstructions",
+            "summary": "Get list of work instructions according to the parameters.",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "GET",
+            "path": "/v1/attachedworkinstructions",
+            "summary": "Get list of work instructions according to the parameters.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "GET",
+            "path": "/v1/workinstructions",
+            "summary": "Finds a work instruction by plant, name, and work instruction version",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "GET",
+            "path": "/workinstructions",
+            "summary": "Finds a work instruction by plant, name, and work instruction version",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "POST",
+            "path": "/v1/workinstructions",
+            "summary": "Creates a work instruction by plant and name",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "POST",
+            "path": "/v1/workinstructions/attachedPoints",
+            "summary": "Adds work instruction attached points.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "POST",
+            "path": "/v2/workinstructions",
+            "summary": "Creates a list of work instructions for the given plant.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "POST",
+            "path": "/workinstructions",
+            "summary": "Creates a work instruction by plant and name",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "POST",
+            "path": "/workinstructions/attachedPoints",
+            "summary": "Adds work instruction attached points.",
+            "breaking": false
+          },
+          {
+            "kind": "endpoint_removed",
+            "method": "PUT",
+            "path": "/v1/workinstructions",
+            "summary": "Updates a list of work instructions for the given plant.",
+            "breaking": true
+          },
+          {
+            "kind": "endpoint_added",
+            "method": "PUT",
+            "path": "/workinstructions",
+            "summary": "Updates a list of work instructions for the given plant.",
+            "breaking": false
+          }
+        ]
+      },
+      {
+        "api": "sapdme_workinstruction_v2",
+        "display_name": "Work Instruction",
+        "type": "added"
+      }
+    ]
+  }
+]

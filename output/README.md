@@ -1,12 +1,12 @@
 # SAP Digital Manufacturing Cloud — REST API Reference
 
-*Scraped: 2026-04-17 04:01 UTC*
+*Scraped: 2026-05-16 04:01 UTC*
 
 **Package:** [SAPDigitalManufacturingCloud](https://api.sap.com/package/SAPDigitalManufacturingCloud/rest)
 
 **Total APIs:** 88
-**Total Endpoints:** 344
-**Total Schemas:** 1288
+**Total Endpoints:** 342
+**Total Schemas:** 1285
 
 ---
 
@@ -30,7 +30,7 @@
 | 14 | [Document](specs/sapfnd_document_v2.json) | 2 | 13 | v2 |  |
 | 15 | [Document](specs/sapfnd_document.json) | 2 | 4 | v1 |  |
 | 16 | [Downtime and Speed Loss](specs/sapdme_oee.json) | 2 | 3 | v1 |  |
-| 17 | [Electronic Batch Record](specs/sapdme_ebr.json) | 1 | 4 | Beta |  |
+| 17 | [Electronic Batch Record](specs/sapdme_ebr.json) | 1 | 3 | v1 |  |
 | 18 | [Electronic Signature](specs/sapfnd_signature.json) | 1 | 5 | v1 |  |
 | 19 | [Extended Warehouse Management Integration](specs/sapdme_ewm_integration.json) | 1 | 10 | v1 |  |
 | 20 | [Extended Warehouse Management Staging](specs/sapdme_staging_v2.json) | 2 | 9 | v2 |  |
@@ -46,60 +46,60 @@
 | 30 | [Logistics](specs/sapdme_logistics.json) | 10 | 13 | v1 |  |
 | 31 | [Manage Identifiers Configuration](specs/sapdme_numbering_identifier_config.json) | 2 | 10 | v1 |  |
 | 32 | [Master Operation](specs/sapdme_operation.json) | 1 | 6 | v1 |  |
-| 33 | [Material](specs/sapdme_material.json) | 7 | 23 | v1 |  |
+| 33 | [Material](specs/sapdme_material.json) | 7 | 24 | v1 |  |
 | 34 | [Material Group](specs/sapdme_materialgroup.json) | 1 | 3 | v1 |  |
-| 35 | [Nonconformance](specs/sapdme_nonconformance.json) | 9 | 36 | v1 |  |
-| 36 | [Nonconformance Code](specs/sapdme_nonconformancecode.json) | 2 | 14 | v1 |  |
-| 37 | [Nonconformance Group](specs/sapdme_nonconformancegroup.json) | 1 | 5 | v1 |  |
-| 38 | [Operation Activity](specs/sapdme_operationactivity.json) | 1 | 13 | v1 |  |
-| 39 | [Order](specs/sapdme_order_v2.json) | 2 | 12 | v2 |  |
-| 40 | [Order](specs/sapdme_order.json) | 8 | 49 | v1 |  |
-| 41 | [Order Schedules](specs/sapdme_reo.json) | 3 | 6 | v1 |  |
-| 42 | [Overall Equipment Effectiveness](specs/sapdmi_vishleshki.json) | 6 | 47 | v1 |  |
-| 43 | [Packing Unit](specs/sapdme_packingunit.json) | 7 | 17 | v1 |  |
-| 44 | [Plant](specs/sapdme_plant.json) | 1 | 2 | v1 |  |
-| 45 | [Print](specs/sapfnd_print.json) | 3 | 11 | v1 |  |
-| 46 | [Printer](specs/sapfnd_printer.json) | 1 | 7 | v1 |  |
-| 47 | [Problem-Solving Process](specs/sapdme_psp.json) | 10 | 24 | v1 |  |
-| 48 | [Process Lot](specs/sapdme_processlot_v2.json) | 2 | 8 | v2 |  |
-| 49 | [Process Lot](specs/sapdme_processlot.json) | 5 | 11 | v1 |  |
-| 50 | [Process Manufacturing Execution](specs/sapdme_process_manufacturing.json) | 2 | 5 | v1 |  |
-| 51 | [Process Order Execution](specs/sapdme_processorder.json) | 9 | 28 | v1 |  |
-| 52 | [Process Order Execution](specs/sapdme_processorder_v2.json) | 1 | 3 | v2 |  |
-| 53 | [Product Genealogy Report (PGR) Assembly Components](specs/sapdme_pgr_components.json) | 1 | 4 | v1 |  |
-| 54 | [Production Change](specs/sapdme_production_v2.json) | 1 | 5 | v2 |  |
-| 55 | [Production Change](specs/sapdme_production.json) | 1 | 5 | v1 |  |
-| 56 | [Production Operator Dashboard](specs/sapdme_pod.json) | 3 | 4 | v1 |  |
-| 57 | [Production Operator Dashboard Notification](specs/sapdme_notification.json) | 1 | 4 | v1 |  |
-| 58 | [Quality Inspection](specs/sapdme_qualityinspection_v2.json) | 1 | 4 | v2 |  |
-| 59 | [Quality Inspection](specs/sapdme_qualityinspection.json) | 10 | 28 | v1 |  |
-| 60 | [Quantity Confirmation](specs/sapdme_quantityConfirmation.json) | 4 | 12 | v1 |  |
-| 61 | [Recipe](specs/sapdme_recipe.json) | 3 | 24 | v1 |  |
-| 62 | [Resource](specs/sapdme_plant_resource_v2.json) | 7 | 38 | v2 |  |
-| 63 | [Resource](specs/sapdme_plant_resource.json) | 4 | 25 | v1 |  |
-| 64 | [Resource Reason Code](specs/sapdme_oee_resourcereasoncode.json) | 1 | 4 | v1 |  |
-| 65 | [Resource Type](specs/sapdme_resourcetype.json) | 1 | 4 | v1 |  |
-| 66 | [Routing](specs/sapdme_routing.json) | 4 | 34 | v1 |  |
-| 67 | [Setpoint Activities](specs/sapdme_setpoint_v3.json) | 3 | 14 | v3 |  |
-| 68 | [Setpoint Activities](specs/sapdme_setpoint_v2.json) | 3 | 14 | v2 |  |
-| 69 | [Setpoint Activities](specs/sapdme_setpoint.json) | 3 | 14 | v1 |  |
-| 70 | [Shift](specs/sapdme_shift.json) | 2 | 14 | v1 |  |
-| 71 | [Shop Floor Control Production Activities](specs/sapdme_sfc.json) | 23 | 54 | v1 |  |
-| 72 | [Shop Floor Control Production Activities](specs/sapdme_sfc_v2.json) | 3 | 14 | v2 |  |
-| 73 | [Standard Rates](specs/sapdme_standardrate.json) | 2 | 10 | v1 |  |
-| 74 | [Standard Values](specs/sapdme_standardvalue.json) | 1 | 6 | v1 |  |
-| 75 | [Time Tracking](specs/sapdme_timetracking.json) | 28 | 23 | v1 |  |
-| 76 | [Time Tracking](specs/sapdme_timetracking_odata.json) | 1 | 2 | v1 |  |
-| 77 | [Tool](specs/sapdme_tool.json) | 11 | 32 | v1 |  |
-| 78 | [Tool](specs/sapdme_tool_v2.json) | 5 | 17 | v2 |  |
-| 79 | [Unit of Measure](specs/sapdme_uom.json) | 5 | 8 | v1 |  |
-| 80 | [User](specs/sapdme_user.json) | 3 | 14 | v1 |  |
-| 81 | [Visual Inspection](specs/sapdme_visualinspection.json) | 1 | 20 | v1 |  |
-| 82 | [Visual Inspection Result Service](specs/sapdme_vimodel.json) | 3 | 9 | v1 |  |
-| 83 | [Work Center](specs/sapdme_plant_workcenter.json) | 1 | 11 | v1 |  |
-| 84 | [Work Center](specs/sapdme_plant_workcenter_v3.json) | 2 | 13 | v3 |  |
-| 85 | [Work Center](specs/sapdme_plant_workcenter_v2.json) | 2 | 14 | v2 |  |
-| 86 | [Work Instruction](specs/sapdme_workinstruction.json) | 4 | 20 | v1 |  |
+| 35 | [Nonconformance](specs/sapdme_nonconformance.json) | 8 | 31 | v1 |  |
+| 36 | [Nonconformance](specs/sapdme_nonconformance_v2.json) | 2 | 13 | v2 |  |
+| 37 | [Nonconformance Code](specs/sapdme_nonconformancecode.json) | 2 | 14 | v1 |  |
+| 38 | [Nonconformance Group](specs/sapdme_nonconformancegroup.json) | 1 | 5 | v1 |  |
+| 39 | [Operation Activity](specs/sapdme_operationactivity.json) | 1 | 13 | v1 |  |
+| 40 | [Order](specs/sapdme_order_v2.json) | 2 | 13 | v2 |  |
+| 41 | [Order](specs/sapdme_order.json) | 8 | 49 | v1 |  |
+| 42 | [Order Schedules](specs/sapdme_reo.json) | 3 | 6 | v1 |  |
+| 43 | [Overall Equipment Effectiveness](specs/sapdmi_vishleshki.json) | 6 | 47 | v1 |  |
+| 44 | [Packing Unit](specs/sapdme_packingunit.json) | 7 | 17 | v1 |  |
+| 45 | [Plant](specs/sapdme_plant.json) | 1 | 2 | v1 |  |
+| 46 | [Print](specs/sapfnd_print.json) | 3 | 11 | v1 |  |
+| 47 | [Printer](specs/sapfnd_printer.json) | 1 | 7 | v1 |  |
+| 48 | [Problem-Solving Process](specs/sapdme_psp.json) | 10 | 24 | v1 |  |
+| 49 | [Process Lot](specs/sapdme_processlot_v2.json) | 2 | 8 | v2 |  |
+| 50 | [Process Lot](specs/sapdme_processlot.json) | 5 | 11 | v1 |  |
+| 51 | [Process Manufacturing Execution](specs/sapdme_process_manufacturing.json) | 2 | 5 | v1 |  |
+| 52 | [Process Order Execution](specs/sapdme_processorder.json) | 9 | 28 | v1 |  |
+| 53 | [Process Order Execution](specs/sapdme_processorder_v2.json) | 1 | 3 | v2 |  |
+| 54 | [Product Genealogy Report (PGR) Assembly Components](specs/sapdme_pgr_components.json) | 1 | 4 | v1 |  |
+| 55 | [Production Change](specs/sapdme_production_v2.json) | 1 | 5 | v2 |  |
+| 56 | [Production Change](specs/sapdme_production.json) | 1 | 5 | v1 |  |
+| 57 | [Production Operator Dashboard](specs/sapdme_pod.json) | 3 | 4 | v1 |  |
+| 58 | [Production Operator Dashboard Notification](specs/sapdme_notification.json) | 1 | 4 | v1 |  |
+| 59 | [Quality Inspection](specs/sapdme_qualityinspection_v2.json) | 1 | 4 | v2 |  |
+| 60 | [Quality Inspection](specs/sapdme_qualityinspection.json) | 10 | 28 | v1 |  |
+| 61 | [Quantity Confirmation](specs/sapdme_quantityConfirmation.json) | 4 | 12 | v1 |  |
+| 62 | [Recipe](specs/sapdme_recipe.json) | 3 | 24 | v1 |  |
+| 63 | [Resource](specs/sapdme_plant_resource_v2.json) | 7 | 38 | v2 |  |
+| 64 | [Resource](specs/sapdme_plant_resource.json) | 4 | 25 | v1 |  |
+| 65 | [Resource Reason Code](specs/sapdme_oee_resourcereasoncode.json) | 1 | 4 | v1 |  |
+| 66 | [Resource Type](specs/sapdme_resourcetype.json) | 1 | 4 | v1 |  |
+| 67 | [Routing](specs/sapdme_routing.json) | 4 | 34 | v1 |  |
+| 68 | [Setpoint Activities](specs/sapdme_setpoint_v3.json) | 3 | 14 | v3 |  |
+| 69 | [Setpoint Activities](specs/sapdme_setpoint_v2.json) | 3 | 14 | v2 |  |
+| 70 | [Setpoint Activities](specs/sapdme_setpoint.json) | 3 | 14 | v1 |  |
+| 71 | [Shift](specs/sapdme_shift.json) | 2 | 14 | v1 |  |
+| 72 | [Shop Floor Control Production Activities](specs/sapdme_sfc.json) | 23 | 54 | v1 |  |
+| 73 | [Shop Floor Control Production Activities](specs/sapdme_sfc_v2.json) | 3 | 14 | v2 |  |
+| 74 | [Standard Rates](specs/sapdme_standardrate.json) | 2 | 10 | v1 |  |
+| 75 | [Standard Values](specs/sapdme_standardvalue.json) | 1 | 6 | v1 |  |
+| 76 | [Time Tracking](specs/sapdme_timetracking.json) | 28 | 23 | v1 |  |
+| 77 | [Time Tracking](specs/sapdme_timetracking_odata.json) | 1 | 2 | v1 |  |
+| 78 | [Tool](specs/sapdme_tool.json) | 11 | 32 | v1 |  |
+| 79 | [Tool](specs/sapdme_tool_v2.json) | 5 | 17 | v2 |  |
+| 80 | [Unit of Measure](specs/sapdme_uom.json) | 5 | 8 | v1 |  |
+| 81 | [User](specs/sapdme_user.json) | 3 | 14 | v1 |  |
+| 82 | [Work Center](specs/sapdme_plant_workcenter.json) | 1 | 11 | v1 |  |
+| 83 | [Work Center](specs/sapdme_plant_workcenter_v3.json) | 2 | 13 | v3 |  |
+| 84 | [Work Center](specs/sapdme_plant_workcenter_v2.json) | 2 | 14 | v2 |  |
+| 85 | [Work Instruction](specs/sapdme_workinstruction_v2.json) | 2 | 17 | v2 |  |
+| 86 | [Work Instruction](specs/sapdme_workinstruction.json) | 3 | 20 | v1 |  |
 | 87 | [Work Instruction Attached File](specs/sapdme_workinstruction_file.json) | 1 | 2 | v1 |  |
 | 88 | [Work in Process (WIP) Activities](specs/sapdme_wip.json) | 4 | 13 | v1 |  |
 
@@ -568,15 +568,24 @@
 
 | Method | Path | Summary |
 |--------|------|---------|
-| `POST` | `/v1/log` | Logs a nonconformance. |
-| `POST` | `/v1/checkForOpen` | Check for open nonconformances |
-| `POST` | `/v1/close` | Closes a nonconformance. |
-| `POST` | `/v1/open` | Opens a nonconformance. |
-| `GET` | `/v1/nonconformances` | Retrieves a non-conformance list. |
-| `GET` | `/v1/hierarchies` | Retrieves a list of nonconformance hierarchies. |
-| `POST` | `/v1/sfcs/disposition` | Route nonconformant SFCs based on disposition settings. |
-| `GET` | `/v1/file/download` | Downloads a nonconformance file. |
-| `GET` | `/v2/nonconformances` | Retrieves a list of nonconformances. |
+| `POST` | `/log` | Logs a nonconformance. |
+| `POST` | `/checkForOpen` | Check for open nonconformances |
+| `POST` | `/close` | Closes a nonconformance. |
+| `POST` | `/open` | Opens a nonconformance. |
+| `GET` | `/nonconformances` | Retrieves a non-conformance list. |
+| `GET` | `/hierarchies` | Retrieves a list of nonconformance hierarchies. |
+| `POST` | `/sfcs/disposition` | Route nonconformant SFCs based on disposition settings. |
+| `GET` | `/file/download` | Downloads a nonconformance file. |
+
+### Nonconformance
+
+**Slug:** `sapdme_nonconformance_v2`
+**Description:** Manage nonconformances as part of quality checks
+
+| Method | Path | Summary |
+|--------|------|---------|
+| `GET` | `/nonconformances` | Retrieves a list of nonconformances. |
+| `POST` | `/checkForOpen` | Check for open nonconformances V2 |
 
 ### Nonconformance Code
 
@@ -1255,28 +1264,6 @@
 | `PATCH` | `/customFieldDefinitions` | Updates a custom field definition for the user. |
 | `DELETE` | `/customFieldDefinitions` | Deletes a custom field definition for the user. |
 
-### Visual Inspection
-
-**Slug:** `sapdme_visualinspection`
-**Description:** Manage visual inspection objects to embed AI-assisted processes on your shop floor.
-
-| Method | Path | Summary |
-|--------|------|---------|
-| `GET` | `/v1/findVisualInspections()` | Find visual inspections using the business context |
-
-### Visual Inspection Result Service
-
-**Slug:** `sapdme_vimodel`
-**Description:** Log, read and store images of visual inspection results in Digital Manufacturing
-
-| Method | Path | Summary |
-|--------|------|---------|
-| `GET` | `/inspectionResults` | Finds all visual inspection results. |
-| `POST` | `/inspectionResults` | Create a visual inspection result. |
-| `GET` | `/inspectionResults({id})` | Finds a single visual inspection result by ID. |
-| `GET` | `/inspectionResults({id})/image` | Get the image of a visual inspection result. |
-| `PUT` | `/inspectionResults({id})/image` | Stores an image for a visual inspection result. |
-
 ### Work Center
 
 **Slug:** `sapdme_plant_workcenter`
@@ -1316,19 +1303,28 @@
 
 ### Work Instruction
 
+**Slug:** `sapdme_workinstruction_v2`
+**Description:** Use this API to manage work instructions in SAP Digital Manufacturing.
+
+| Method | Path | Summary |
+|--------|------|---------|
+| `POST` | `/workinstructions` | Creates a list of work instructions for the given plant. |
+| `POST` | `/findAttachedWorkInstructions` | Find attached work instructions by provided context. |
+
+### Work Instruction
+
 **Slug:** `sapdme_workinstruction`
 **Base Path:** `/`
 **Description:** Get a list of work instructions or one single work instruction
 
 | Method | Path | Summary |
 |--------|------|---------|
-| `GET` | `/v1/attachedworkinstructions` | Get list of work instructions according to the parameters. |
-| `GET` | `/v1/workinstructions` | Finds a work instruction by plant, name, and work instruction version |
-| `POST` | `/v1/workinstructions` | Creates a work instruction by plant and name |
-| `PUT` | `/v1/workinstructions` | Updates a list of work instructions for the given plant. |
-| `DELETE` | `/v1/workinstructions` | Deletes a work instruction by reference |
-| `POST` | `/v2/workinstructions` | Creates a list of work instructions for the given plant. |
-| `POST` | `/v1/workinstructions/attachedPoints` | Adds work instruction attached points. |
+| `GET` | `/attachedworkinstructions` | Get list of work instructions according to the parameters. |
+| `GET` | `/workinstructions` | Finds a work instruction by plant, name, and work instruction version |
+| `POST` | `/workinstructions` | Creates a work instruction by plant and name |
+| `PUT` | `/workinstructions` | Updates a list of work instructions for the given plant. |
+| `DELETE` | `/workinstructions` | Deletes a work instruction by reference |
+| `POST` | `/workinstructions/attachedPoints` | Adds work instruction attached points. |
 
 ### Work Instruction Attached File
 

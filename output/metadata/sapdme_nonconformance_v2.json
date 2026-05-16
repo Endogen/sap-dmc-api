@@ -1,0 +1,40 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance_v2')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance_v2')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance_v2')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance_v2')/$value"
+  },
+  "Name": "sapdme_nonconformance_v2",
+  "ID": "sapdme_nonconformance_v2",
+  "Title": "Nonconformance",
+  "ShortText": "Manage nonconformances as part of quality checks",
+  "Description": "In a manufacturing process, product defects are often found as part of quality checks. Use this service to retrieve logged nonconformances and check for open nonconformances.",
+  "Direction": null,
+  "Version": "v2",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1778862596478)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1778862596480)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"04 Mar 2026\",\"notes\":\"Added new checkForOpen V2 API. Correct response structure for get nonconformances (v2)\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"30 May 2025\",\"notes\":\"Make correction get nonconformances API V2 - in response change type for 'code' property; add id to response; change operationId for correct ui behavior.\",\"state\":\"Active\",\"version\":\"v2\"},{\"date\":\"18 May 2025\",\"notes\":\"First version. V2 version is provided for get nonconformances API.\",\"state\":\"Active\",\"version\":\"v2\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "MinSystemVersion": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_nonconformance_v2')/Versions"
+    }
+  }
+}
