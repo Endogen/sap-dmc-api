@@ -1,0 +1,23 @@
+{
+  "date": "2026-07-06",
+  "summary": {
+    "apis_added": 0,
+    "apis_removed": 2,
+    "apis_changed": 0,
+    "endpoints_added": 0,
+    "endpoints_removed": 0,
+    "breaking_changes": 2
+  },
+  "changes": [
+    {
+      "api": "sapdme_vimodel",
+      "display_name": "Visual Inspection Result Service",
+      "type": "removed"
+    },
+    {
+      "api": "sapdme_visualinspection",
+      "display_name": "Visual Inspection",
+      "type": "removed"
+    }
+  ]
+}
