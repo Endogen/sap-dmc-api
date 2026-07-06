@@ -9,8 +9,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 4,
-    "schema_count": 10,
     "endpoints": [
       {
         "method": "POST",
@@ -48,7 +46,10 @@
           "Activity Confirmation"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 4,
+    "schema_count": 10
   },
   {
     "name": "sapdme_alerts",
@@ -60,8 +61,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 2,
-    "schema_count": 9,
     "endpoints": [
       {
         "method": "GET",
@@ -90,7 +89,10 @@
           "Alerts"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 3,
+    "path_count": 2,
+    "schema_count": 9
   },
   {
     "name": "sappqm_aiml_scenarios",
@@ -102,8 +104,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 4,
-    "schema_count": 25,
     "endpoints": [
       {
         "method": "GET",
@@ -150,7 +150,10 @@
           "Inspection Log"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 5,
+    "path_count": 4,
+    "schema_count": 25
   },
   {
     "name": "sapdme_assembly",
@@ -162,8 +165,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 6,
-    "schema_count": 10,
     "endpoints": [
       {
         "method": "GET",
@@ -237,7 +238,10 @@
           "Service Order Component Consumption"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 8,
+    "path_count": 6,
+    "schema_count": 10
   },
   {
     "name": "sapdme_asset_model",
@@ -249,8 +253,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 7,
     "endpoints": [
       {
         "method": "GET",
@@ -261,7 +263,10 @@
           "Assets"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 7
   },
   {
     "name": "sapdme_batch",
@@ -273,8 +278,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 5,
-    "schema_count": 16,
     "endpoints": [
       {
         "method": "POST",
@@ -330,7 +333,10 @@
           "Batch"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 6,
+    "path_count": 5,
+    "schema_count": 16
   },
   {
     "name": "sapdme_batch_v2",
@@ -342,8 +348,6 @@
     "api_version": "v2",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 12,
     "endpoints": [
       {
         "method": "POST",
@@ -381,7 +385,10 @@
           "Batch Characteristics"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 2,
+    "schema_count": 12
   },
   {
     "name": "sapdme_bom",
@@ -393,8 +400,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 4,
-    "schema_count": 15,
     "endpoints": [
       {
         "method": "GET",
@@ -468,7 +473,10 @@
           "BOM"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 8,
+    "path_count": 4,
+    "schema_count": 15
   },
   {
     "name": "sapdme_plant_certification",
@@ -480,8 +488,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 3,
-    "schema_count": 16,
     "endpoints": [
       {
         "method": "POST",
@@ -564,7 +570,10 @@
           "Custom Field Definition"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 9,
+    "path_count": 3,
+    "schema_count": 16
   },
   {
     "name": "sapdme_classification",
@@ -576,8 +585,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 11,
     "endpoints": [
       {
         "method": "POST",
@@ -588,7 +595,10 @@
           "Classification"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 11
   },
   {
     "name": "sapdme_datacollection",
@@ -600,8 +610,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 11,
-    "schema_count": 36,
     "endpoints": [
       {
         "method": "POST",
@@ -729,7 +737,10 @@
           "Data Collection"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 14,
+    "path_count": 11,
+    "schema_count": 36
   },
   {
     "name": "sapdme_datafields",
@@ -741,8 +752,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 9,
     "endpoints": [
       {
         "method": "GET",
@@ -780,7 +789,10 @@
           "Data Field API"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 1,
+    "schema_count": 9
   },
   {
     "name": "sapdme_datatype",
@@ -792,8 +804,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 12,
     "endpoints": [
       {
         "method": "GET",
@@ -831,7 +841,10 @@
           "Data Type"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 1,
+    "schema_count": 12
   },
   {
     "name": "sapfnd_document_v2",
@@ -843,8 +856,6 @@
     "api_version": "v2",
     "base_path": "",
     "host": "",
-    "endpoint_count": 2,
-    "schema_count": 13,
     "endpoints": [
       {
         "method": "GET",
@@ -891,7 +902,10 @@
           "Document"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 5,
+    "path_count": 2,
+    "schema_count": 13
   },
   {
     "name": "sapfnd_document",
@@ -903,8 +917,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 4,
     "endpoints": [
       {
         "method": "GET",
@@ -924,7 +936,10 @@
           "Document"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 4
   },
   {
     "name": "sapdme_oee",
@@ -936,8 +951,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 3,
     "endpoints": [
       {
         "method": "POST",
@@ -957,7 +970,10 @@
           "Downtime"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 3
   },
   {
     "name": "sapdme_ebr",
@@ -969,8 +985,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 3,
     "endpoints": [
       {
         "method": "POST",
@@ -981,7 +995,10 @@
           "Create Electronic Batch Record"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 3
   },
   {
     "name": "sapfnd_signature",
@@ -993,8 +1010,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 5,
     "endpoints": [
       {
         "method": "GET",
@@ -1005,7 +1020,10 @@
           "Signature Logs"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 5
   },
   {
     "name": "sapdme_ewm_integration",
@@ -1017,8 +1035,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 10,
     "endpoints": [
       {
         "method": "POST",
@@ -1029,7 +1045,10 @@
           "Material Staging"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 10
   },
   {
     "name": "sapdme_staging_v2",
@@ -1041,8 +1060,6 @@
     "api_version": "v2",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 9,
     "endpoints": [
       {
         "method": "POST",
@@ -1062,7 +1079,10 @@
           "Discard Staging"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 9
   },
   {
     "name": "sapdme_staging",
@@ -1074,8 +1094,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 4,
-    "schema_count": 21,
     "endpoints": [
       {
         "method": "POST",
@@ -1113,7 +1131,10 @@
           "Material Staging"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 4,
+    "schema_count": 21
   },
   {
     "name": "sapdme_numbering",
@@ -1125,8 +1146,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 7,
     "endpoints": [
       {
         "method": "POST",
@@ -1137,7 +1156,10 @@
           "Identifiers"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 7
   },
   {
     "name": "sapdme_integrationMessage",
@@ -1149,8 +1171,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 2,
-    "schema_count": 6,
     "endpoints": [
       {
         "method": "GET",
@@ -1170,7 +1190,10 @@
           "Integration Messages"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 6
   },
   {
     "name": "sapdme_inventory",
@@ -1182,8 +1205,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 18,
-    "schema_count": 67,
     "endpoints": [
       {
         "method": "GET",
@@ -1365,7 +1386,10 @@
           "Stocks"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 20,
+    "path_count": 18,
+    "schema_count": 67
   },
   {
     "name": "sapdme_inventory_v2",
@@ -1377,8 +1401,6 @@
     "api_version": "v2",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 10,
-    "schema_count": 45,
     "endpoints": [
       {
         "method": "POST",
@@ -1470,7 +1492,10 @@
           "Goods Issues"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 10,
+    "path_count": 10,
+    "schema_count": 45
   },
   {
     "name": "sapdme_issues",
@@ -1482,8 +1507,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 2,
-    "schema_count": 4,
     "endpoints": [
       {
         "method": "GET",
@@ -1512,7 +1535,10 @@
           "Issues"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 3,
+    "path_count": 2,
+    "schema_count": 4
   },
   {
     "name": "sapdme_labor",
@@ -1524,8 +1550,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 8,
     "endpoints": [
       {
         "method": "POST",
@@ -1545,7 +1569,10 @@
           "Labor"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 8
   },
   {
     "name": "sapdme_labors",
@@ -1557,8 +1584,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 5,
     "endpoints": [
       {
         "method": "GET",
@@ -1569,7 +1594,10 @@
           "Labor Skills"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 5
   },
   {
     "name": "sapdme_lastindicator",
@@ -1581,8 +1609,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 3,
     "endpoints": [
       {
         "method": "POST",
@@ -1593,7 +1619,10 @@
           "Last Indicator Value"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 3
   },
   {
     "name": "sapdme_logistics",
@@ -1605,8 +1634,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 10,
-    "schema_count": 13,
     "endpoints": [
       {
         "method": "POST",
@@ -1698,7 +1725,10 @@
           "Logistics Order"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 10,
+    "path_count": 10,
+    "schema_count": 13
   },
   {
     "name": "sapdme_numbering_identifier_config",
@@ -1710,8 +1740,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 10,
     "endpoints": [
       {
         "method": "POST",
@@ -1758,7 +1786,10 @@
           "Read All Identifiers Configuration"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 5,
+    "path_count": 2,
+    "schema_count": 10
   },
   {
     "name": "sapdme_operation",
@@ -1770,8 +1801,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 6,
     "endpoints": [
       {
         "method": "GET",
@@ -1782,7 +1811,10 @@
           "Operation"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 6
   },
   {
     "name": "sapdme_material",
@@ -1794,8 +1826,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 7,
-    "schema_count": 24,
     "endpoints": [
       {
         "method": "GET",
@@ -1887,7 +1917,10 @@
           "File Attachment"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 10,
+    "path_count": 7,
+    "schema_count": 24
   },
   {
     "name": "sapdme_materialgroup",
@@ -1899,8 +1932,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 3,
     "endpoints": [
       {
         "method": "GET",
@@ -1938,7 +1969,10 @@
           "Material Group"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 1,
+    "schema_count": 3
   },
   {
     "name": "sapdme_nonconformance",
@@ -1950,8 +1984,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 8,
-    "schema_count": 31,
     "endpoints": [
       {
         "method": "POST",
@@ -2025,7 +2057,10 @@
           "Nonconformance"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 8,
+    "path_count": 8,
+    "schema_count": 31
   },
   {
     "name": "sapdme_nonconformance_v2",
@@ -2037,8 +2072,6 @@
     "api_version": "v2",
     "base_path": "",
     "host": "",
-    "endpoint_count": 2,
-    "schema_count": 13,
     "endpoints": [
       {
         "method": "GET",
@@ -2058,7 +2091,10 @@
           "Nonconformance"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 13
   },
   {
     "name": "sapdme_nonconformancecode",
@@ -2070,8 +2106,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 14,
     "endpoints": [
       {
         "method": "GET",
@@ -2145,7 +2179,10 @@
           "Custom Field Definition"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 8,
+    "path_count": 2,
+    "schema_count": 14
   },
   {
     "name": "sapdme_nonconformancegroup",
@@ -2157,8 +2194,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 5,
     "endpoints": [
       {
         "method": "GET",
@@ -2196,7 +2231,10 @@
           "Nonconformance Group"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 1,
+    "schema_count": 5
   },
   {
     "name": "sapdme_operationactivity",
@@ -2208,8 +2246,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 13,
     "endpoints": [
       {
         "method": "GET",
@@ -2247,7 +2283,10 @@
           "Operation Activity"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 1,
+    "schema_count": 13
   },
   {
     "name": "sapdme_order_v2",
@@ -2259,8 +2298,6 @@
     "api_version": "v2",
     "base_path": "",
     "host": "",
-    "endpoint_count": 2,
-    "schema_count": 13,
     "endpoints": [
       {
         "method": "GET",
@@ -2280,7 +2317,10 @@
           "Order Processing"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 13
   },
   {
     "name": "sapdme_order",
@@ -2292,8 +2332,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 8,
-    "schema_count": 49,
     "endpoints": [
       {
         "method": "GET",
@@ -2403,7 +2441,10 @@
           "Custom Field Definition"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 12,
+    "path_count": 8,
+    "schema_count": 49
   },
   {
     "name": "sapdme_reo",
@@ -2415,8 +2456,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 3,
-    "schema_count": 6,
     "endpoints": [
       {
         "method": "POST",
@@ -2445,7 +2484,10 @@
           "Order Schedules"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 3,
+    "path_count": 3,
+    "schema_count": 6
   },
   {
     "name": "sapdmi_vishleshki",
@@ -2457,8 +2499,6 @@
     "api_version": "v1",
     "base_path": "/oee/",
     "host": "hostname",
-    "endpoint_count": 6,
-    "schema_count": 47,
     "endpoints": [
       {
         "method": "GET",
@@ -2514,7 +2554,10 @@
           "OEE"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 6,
+    "path_count": 6,
+    "schema_count": 47
   },
   {
     "name": "sapdme_packingunit",
@@ -2526,8 +2569,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 7,
-    "schema_count": 17,
     "endpoints": [
       {
         "method": "GET",
@@ -2619,7 +2660,10 @@
           "Packing"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 10,
+    "path_count": 7,
+    "schema_count": 17
   },
   {
     "name": "sapdme_plant",
@@ -2631,8 +2675,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 2,
     "endpoints": [
       {
         "method": "GET",
@@ -2643,7 +2685,10 @@
           "Plant"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 2
   },
   {
     "name": "sapfnd_print",
@@ -2655,8 +2700,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 3,
-    "schema_count": 11,
     "endpoints": [
       {
         "method": "POST",
@@ -2685,7 +2728,10 @@
           "Print Service Feedback"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 3,
+    "path_count": 3,
+    "schema_count": 11
   },
   {
     "name": "sapfnd_printer",
@@ -2697,8 +2743,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 7,
     "endpoints": [
       {
         "method": "GET",
@@ -2736,7 +2780,10 @@
           "Printer"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 1,
+    "schema_count": 7
   },
   {
     "name": "sapdme_psp",
@@ -2748,8 +2795,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 10,
-    "schema_count": 24,
     "endpoints": [
       {
         "method": "GET",
@@ -2931,7 +2976,10 @@
           "Team Members"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 20,
+    "path_count": 10,
+    "schema_count": 24
   },
   {
     "name": "sapdme_processlot_v2",
@@ -2943,8 +2991,6 @@
     "api_version": "v2",
     "base_path": "",
     "host": "",
-    "endpoint_count": 2,
-    "schema_count": 8,
     "endpoints": [
       {
         "method": "POST",
@@ -2964,7 +3010,10 @@
           "Process Lot Processing"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 8
   },
   {
     "name": "sapdme_processlot",
@@ -2976,8 +3025,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 5,
-    "schema_count": 11,
     "endpoints": [
       {
         "method": "POST",
@@ -3051,7 +3098,10 @@
           "Process Lot Processing"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 8,
+    "path_count": 5,
+    "schema_count": 11
   },
   {
     "name": "sapdme_process_manufacturing",
@@ -3063,8 +3113,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 5,
     "endpoints": [
       {
         "method": "POST",
@@ -3084,7 +3132,10 @@
           "Operation Activity Processing"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 5
   },
   {
     "name": "sapdme_processorder",
@@ -3096,8 +3147,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 9,
-    "schema_count": 28,
     "endpoints": [
       {
         "method": "POST",
@@ -3180,7 +3229,10 @@
           "Phase Processing"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 9,
+    "path_count": 9,
+    "schema_count": 28
   },
   {
     "name": "sapdme_processorder_v2",
@@ -3192,8 +3244,6 @@
     "api_version": "v2",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 3,
     "endpoints": [
       {
         "method": "POST",
@@ -3204,7 +3254,10 @@
           "Phase Processing"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 3
   },
   {
     "name": "sapdme_pgr_components",
@@ -3216,8 +3269,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 4,
     "endpoints": [
       {
         "method": "GET",
@@ -3228,7 +3279,10 @@
           "Assembly Components"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 4
   },
   {
     "name": "sapdme_production_v2",
@@ -3240,8 +3294,6 @@
     "api_version": "v2",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 5,
     "endpoints": [
       {
         "method": "POST",
@@ -3252,7 +3304,10 @@
           "Production Change"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 5
   },
   {
     "name": "sapdme_production",
@@ -3264,8 +3319,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 5,
     "endpoints": [
       {
         "method": "POST",
@@ -3276,7 +3329,10 @@
           "Production Change"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 5
   },
   {
     "name": "sapdme_pod",
@@ -3288,8 +3344,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 3,
-    "schema_count": 4,
     "endpoints": [
       {
         "method": "POST",
@@ -3318,7 +3372,10 @@
           "Production Operator Dashboard"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 3,
+    "path_count": 3,
+    "schema_count": 4
   },
   {
     "name": "sapdme_notification",
@@ -3330,8 +3387,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 4,
     "endpoints": [
       {
         "method": "POST",
@@ -3342,7 +3397,10 @@
           "Notification"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 4
   },
   {
     "name": "sapdme_qualityinspection_v2",
@@ -3354,8 +3412,6 @@
     "api_version": "v2",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 4,
     "endpoints": [
       {
         "method": "POST",
@@ -3366,7 +3422,10 @@
           "Check The Mandatory Characteristics Inspected"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 4
   },
   {
     "name": "sapdme_qualityinspection",
@@ -3378,8 +3437,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 10,
-    "schema_count": 28,
     "endpoints": [
       {
         "method": "POST",
@@ -3480,7 +3537,10 @@
           "Check The Mandatory Characteristics Inspected"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 11,
+    "path_count": 10,
+    "schema_count": 28
   },
   {
     "name": "sapdme_quantityConfirmation",
@@ -3492,8 +3552,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 4,
-    "schema_count": 12,
     "endpoints": [
       {
         "method": "POST",
@@ -3531,7 +3589,10 @@
           "Quantity Confirmation Posting History"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 4,
+    "schema_count": 12
   },
   {
     "name": "sapdme_recipe",
@@ -3543,8 +3604,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 3,
-    "schema_count": 24,
     "endpoints": [
       {
         "method": "GET",
@@ -3609,7 +3668,10 @@
           "Recipe and Phases"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 7,
+    "path_count": 3,
+    "schema_count": 24
   },
   {
     "name": "sapdme_plant_resource_v2",
@@ -3621,8 +3683,6 @@
     "api_version": "v2",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 7,
-    "schema_count": 38,
     "endpoints": [
       {
         "method": "GET",
@@ -3759,7 +3819,10 @@
           "Custom Field Definition"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 15,
+    "path_count": 7,
+    "schema_count": 38
   },
   {
     "name": "sapdme_plant_resource",
@@ -3771,8 +3834,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 4,
-    "schema_count": 25,
     "endpoints": [
       {
         "method": "POST",
@@ -3837,7 +3898,10 @@
           "Resource"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 7,
+    "path_count": 4,
+    "schema_count": 25
   },
   {
     "name": "sapdme_oee_resourcereasoncode",
@@ -3849,8 +3913,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 4,
     "endpoints": [
       {
         "method": "GET",
@@ -3861,7 +3923,10 @@
           "Resource Reason Code"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 4
   },
   {
     "name": "sapdme_resourcetype",
@@ -3873,8 +3938,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 4,
     "endpoints": [
       {
         "method": "GET",
@@ -3912,7 +3975,10 @@
           "ResourceType"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 1,
+    "schema_count": 4
   },
   {
     "name": "sapdme_routing",
@@ -3924,8 +3990,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 4,
-    "schema_count": 34,
     "endpoints": [
       {
         "method": "GET",
@@ -3999,7 +4063,10 @@
           "Routing"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 8,
+    "path_count": 4,
+    "schema_count": 34
   },
   {
     "name": "sapdme_setpoint_v3",
@@ -4011,8 +4078,6 @@
     "api_version": "v3",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 3,
-    "schema_count": 14,
     "endpoints": [
       {
         "method": "GET",
@@ -4068,7 +4133,10 @@
           "Setpoint Group Maintenance API Endpoints"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 6,
+    "path_count": 3,
+    "schema_count": 14
   },
   {
     "name": "sapdme_setpoint_v2",
@@ -4080,8 +4148,6 @@
     "api_version": "v2",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 3,
-    "schema_count": 14,
     "endpoints": [
       {
         "method": "GET",
@@ -4137,7 +4203,10 @@
           "Setpoint Group Maintenance API Endpoints"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 6,
+    "path_count": 3,
+    "schema_count": 14
   },
   {
     "name": "sapdme_setpoint",
@@ -4149,8 +4218,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 3,
-    "schema_count": 14,
     "endpoints": [
       {
         "method": "GET",
@@ -4206,7 +4273,10 @@
           "Setpoint Group Maintenance API Endpoints"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 6,
+    "path_count": 3,
+    "schema_count": 14
   },
   {
     "name": "sapdme_shift",
@@ -4218,8 +4288,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 14,
     "endpoints": [
       {
         "method": "GET",
@@ -4293,7 +4361,10 @@
           "Custom Field Definition"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 8,
+    "path_count": 2,
+    "schema_count": 14
   },
   {
     "name": "sapdme_sfc",
@@ -4305,8 +4376,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 23,
-    "schema_count": 54,
     "endpoints": [
       {
         "method": "POST",
@@ -4515,7 +4584,10 @@
           "SFC Processing"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 23,
+    "path_count": 23,
+    "schema_count": 54
   },
   {
     "name": "sapdme_sfc_v2",
@@ -4527,8 +4599,6 @@
     "api_version": "v2",
     "base_path": "",
     "host": "",
-    "endpoint_count": 3,
-    "schema_count": 14,
     "endpoints": [
       {
         "method": "GET",
@@ -4557,7 +4627,10 @@
           "Production Details"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 3,
+    "path_count": 3,
+    "schema_count": 14
   },
   {
     "name": "sapdme_standardrate",
@@ -4569,8 +4642,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 10,
     "endpoints": [
       {
         "method": "GET",
@@ -4608,7 +4679,10 @@
           "Standard rates"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 2,
+    "schema_count": 10
   },
   {
     "name": "sapdme_standardvalue",
@@ -4620,8 +4694,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 6,
     "endpoints": [
       {
         "method": "GET",
@@ -4632,7 +4704,10 @@
           "Standard Values"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 6
   },
   {
     "name": "sapdme_timetracking",
@@ -4644,8 +4719,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 28,
-    "schema_count": 23,
     "endpoints": [
       {
         "method": "POST",
@@ -4908,7 +4981,10 @@
           "Time Records"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 29,
+    "path_count": 28,
+    "schema_count": 23
   },
   {
     "name": "sapdme_timetracking_odata",
@@ -4920,8 +4996,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 1,
-    "schema_count": 2,
     "endpoints": [
       {
         "method": "GET",
@@ -4932,7 +5006,10 @@
           "Activities"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 2
   },
   {
     "name": "sapdme_tool",
@@ -4944,8 +5021,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 11,
-    "schema_count": 32,
     "endpoints": [
       {
         "method": "POST",
@@ -5064,7 +5139,10 @@
           "Tool"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 13,
+    "path_count": 11,
+    "schema_count": 32
   },
   {
     "name": "sapdme_tool_v2",
@@ -5076,8 +5154,6 @@
     "api_version": "v2",
     "base_path": "",
     "host": "",
-    "endpoint_count": 5,
-    "schema_count": 17,
     "endpoints": [
       {
         "method": "GET",
@@ -5124,7 +5200,10 @@
           "Tool"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 5,
+    "path_count": 5,
+    "schema_count": 17
   },
   {
     "name": "sapdme_uom",
@@ -5136,8 +5215,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 5,
-    "schema_count": 8,
     "endpoints": [
       {
         "method": "GET",
@@ -5211,7 +5288,10 @@
           "uom"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 8,
+    "path_count": 5,
+    "schema_count": 8
   },
   {
     "name": "sapdme_user",
@@ -5223,8 +5303,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 3,
-    "schema_count": 14,
     "endpoints": [
       {
         "method": "GET",
@@ -5307,7 +5385,10 @@
           "Custom Field Definition"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 9,
+    "path_count": 3,
+    "schema_count": 14
   },
   {
     "name": "sapdme_plant_workcenter",
@@ -5319,8 +5400,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 11,
     "endpoints": [
       {
         "method": "GET",
@@ -5331,7 +5410,10 @@
           "Work Center"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 1,
+    "path_count": 1,
+    "schema_count": 11
   },
   {
     "name": "sapdme_plant_workcenter_v3",
@@ -5343,8 +5425,6 @@
     "api_version": "v3",
     "base_path": "",
     "host": "",
-    "endpoint_count": 2,
-    "schema_count": 13,
     "endpoints": [
       {
         "method": "GET",
@@ -5364,7 +5444,10 @@
           "Work Center"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 13
   },
   {
     "name": "sapdme_plant_workcenter_v2",
@@ -5376,8 +5459,6 @@
     "api_version": "v2",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 2,
-    "schema_count": 14,
     "endpoints": [
       {
         "method": "GET",
@@ -5451,7 +5532,10 @@
           "Custom Field Definition"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 8,
+    "path_count": 2,
+    "schema_count": 14
   },
   {
     "name": "sapdme_workinstruction_v2",
@@ -5463,8 +5547,6 @@
     "api_version": "v2",
     "base_path": "",
     "host": "",
-    "endpoint_count": 2,
-    "schema_count": 17,
     "endpoints": [
       {
         "method": "POST",
@@ -5484,7 +5566,10 @@
           "Work Instructions"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 17
   },
   {
     "name": "sapdme_workinstruction",
@@ -5496,8 +5581,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 3,
-    "schema_count": 20,
     "endpoints": [
       {
         "method": "GET",
@@ -5553,7 +5636,10 @@
           "Work Instructions"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 6,
+    "path_count": 3,
+    "schema_count": 20
   },
   {
     "name": "sapdme_workinstruction_file",
@@ -5565,8 +5651,6 @@
     "api_version": "v1",
     "base_path": "/",
     "host": "hostname",
-    "endpoint_count": 1,
-    "schema_count": 2,
     "endpoints": [
       {
         "method": "POST",
@@ -5586,7 +5670,10 @@
           "Attached File"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 2,
+    "path_count": 1,
+    "schema_count": 2
   },
   {
     "name": "sapdme_wip",
@@ -5598,8 +5685,6 @@
     "api_version": "v1",
     "base_path": "",
     "host": "",
-    "endpoint_count": 4,
-    "schema_count": 13,
     "endpoints": [
       {
         "method": "POST",
@@ -5637,6 +5722,9 @@
           "WIP Handling"
         ]
       }
-    ]
+    ],
+    "endpoint_count": 4,
+    "path_count": 4,
+    "schema_count": 13
   }
 ]

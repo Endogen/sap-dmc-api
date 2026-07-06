@@ -1,11 +1,11 @@
 # SAP Digital Manufacturing Cloud — REST API Reference
 
-*Scraped: 2026-05-16 04:01 UTC*
+*Scraped: 2026-07-06 21:34 UTC*
 
 **Package:** [SAPDigitalManufacturingCloud](https://api.sap.com/package/SAPDigitalManufacturingCloud/rest)
 
 **Total APIs:** 88
-**Total Endpoints:** 342
+**Total Endpoints:** 480
 **Total Schemas:** 1285
 
 ---
@@ -15,19 +15,19 @@
 | # | API | Endpoints | Schemas | Version | Status |
 |---|-----|-----------|---------|---------|--------|
 | 1 | [Activity Confirmation](specs/sapdme_activityConfirmation.json) | 4 | 10 | v1 |  |
-| 2 | [Alert Management](specs/sapdme_alerts.json) | 2 | 9 | v1 |  |
-| 3 | [Artificial Intelligence and Machine Learning Scenarios](specs/sappqm_aiml_scenarios.json) | 4 | 25 | v1 |  |
-| 4 | [Assembly](specs/sapdme_assembly.json) | 6 | 10 | v1 |  |
+| 2 | [Alert Management](specs/sapdme_alerts.json) | 3 | 9 | v1 |  |
+| 3 | [Artificial Intelligence and Machine Learning Scenarios](specs/sappqm_aiml_scenarios.json) | 5 | 25 | v1 |  |
+| 4 | [Assembly](specs/sapdme_assembly.json) | 8 | 10 | v1 |  |
 | 5 | [Asset Model](specs/sapdme_asset_model.json) | 1 | 7 | v1 |  |
-| 6 | [Batch](specs/sapdme_batch.json) | 5 | 16 | v1 |  |
-| 7 | [Batch](specs/sapdme_batch_v2.json) | 2 | 12 | v2 |  |
-| 8 | [Bill of Material](specs/sapdme_bom.json) | 4 | 15 | v1 |  |
-| 9 | [Certification](specs/sapdme_plant_certification.json) | 3 | 16 | v1 |  |
+| 6 | [Batch](specs/sapdme_batch.json) | 6 | 16 | v1 |  |
+| 7 | [Batch](specs/sapdme_batch_v2.json) | 4 | 12 | v2 |  |
+| 8 | [Bill of Material](specs/sapdme_bom.json) | 8 | 15 | v1 |  |
+| 9 | [Certification](specs/sapdme_plant_certification.json) | 9 | 16 | v1 |  |
 | 10 | [Classification](specs/sapdme_classification.json) | 1 | 11 | v1 |  |
-| 11 | [Data Collection](specs/sapdme_datacollection.json) | 11 | 36 | v1 |  |
-| 12 | [Data Fields API](specs/sapdme_datafields.json) | 1 | 9 | v1 |  |
-| 13 | [Data Type](specs/sapdme_datatype.json) | 1 | 12 | v1 |  |
-| 14 | [Document](specs/sapfnd_document_v2.json) | 2 | 13 | v2 |  |
+| 11 | [Data Collection](specs/sapdme_datacollection.json) | 14 | 36 | v1 |  |
+| 12 | [Data Fields API](specs/sapdme_datafields.json) | 4 | 9 | v1 |  |
+| 13 | [Data Type](specs/sapdme_datatype.json) | 4 | 12 | v1 |  |
+| 14 | [Document](specs/sapfnd_document_v2.json) | 5 | 13 | v2 |  |
 | 15 | [Document](specs/sapfnd_document.json) | 2 | 4 | v1 |  |
 | 16 | [Downtime and Speed Loss](specs/sapdme_oee.json) | 2 | 3 | v1 |  |
 | 17 | [Electronic Batch Record](specs/sapdme_ebr.json) | 1 | 3 | v1 |  |
@@ -37,33 +37,33 @@
 | 21 | [Extended Warehouse Management Staging](specs/sapdme_staging.json) | 4 | 21 | v1 |  |
 | 22 | [Identifiers](specs/sapdme_numbering.json) | 1 | 7 | v1 |  |
 | 23 | [Integration Messages](specs/sapdme_integrationMessage.json) | 2 | 6 | v1 |  |
-| 24 | [Inventory](specs/sapdme_inventory.json) | 18 | 67 | v1 |  |
+| 24 | [Inventory](specs/sapdme_inventory.json) | 20 | 67 | v1 |  |
 | 25 | [Inventory](specs/sapdme_inventory_v2.json) | 10 | 45 | v2 |  |
-| 26 | [Issues](specs/sapdme_issues.json) | 2 | 4 | v1 |  |
+| 26 | [Issues](specs/sapdme_issues.json) | 3 | 4 | v1 |  |
 | 27 | [Labor](specs/sapdme_labor.json) | 2 | 8 | v1 |  |
 | 28 | [Labor Management](specs/sapdme_labors.json) | 1 | 5 | v1 |  |
 | 29 | [Last Indicator Value](specs/sapdme_lastindicator.json) | 1 | 3 | v1 |  |
 | 30 | [Logistics](specs/sapdme_logistics.json) | 10 | 13 | v1 |  |
-| 31 | [Manage Identifiers Configuration](specs/sapdme_numbering_identifier_config.json) | 2 | 10 | v1 |  |
+| 31 | [Manage Identifiers Configuration](specs/sapdme_numbering_identifier_config.json) | 5 | 10 | v1 |  |
 | 32 | [Master Operation](specs/sapdme_operation.json) | 1 | 6 | v1 |  |
-| 33 | [Material](specs/sapdme_material.json) | 7 | 24 | v1 |  |
-| 34 | [Material Group](specs/sapdme_materialgroup.json) | 1 | 3 | v1 |  |
+| 33 | [Material](specs/sapdme_material.json) | 10 | 24 | v1 |  |
+| 34 | [Material Group](specs/sapdme_materialgroup.json) | 4 | 3 | v1 |  |
 | 35 | [Nonconformance](specs/sapdme_nonconformance.json) | 8 | 31 | v1 |  |
 | 36 | [Nonconformance](specs/sapdme_nonconformance_v2.json) | 2 | 13 | v2 |  |
-| 37 | [Nonconformance Code](specs/sapdme_nonconformancecode.json) | 2 | 14 | v1 |  |
-| 38 | [Nonconformance Group](specs/sapdme_nonconformancegroup.json) | 1 | 5 | v1 |  |
-| 39 | [Operation Activity](specs/sapdme_operationactivity.json) | 1 | 13 | v1 |  |
+| 37 | [Nonconformance Code](specs/sapdme_nonconformancecode.json) | 8 | 14 | v1 |  |
+| 38 | [Nonconformance Group](specs/sapdme_nonconformancegroup.json) | 4 | 5 | v1 |  |
+| 39 | [Operation Activity](specs/sapdme_operationactivity.json) | 4 | 13 | v1 |  |
 | 40 | [Order](specs/sapdme_order_v2.json) | 2 | 13 | v2 |  |
-| 41 | [Order](specs/sapdme_order.json) | 8 | 49 | v1 |  |
+| 41 | [Order](specs/sapdme_order.json) | 12 | 49 | v1 |  |
 | 42 | [Order Schedules](specs/sapdme_reo.json) | 3 | 6 | v1 |  |
 | 43 | [Overall Equipment Effectiveness](specs/sapdmi_vishleshki.json) | 6 | 47 | v1 |  |
-| 44 | [Packing Unit](specs/sapdme_packingunit.json) | 7 | 17 | v1 |  |
+| 44 | [Packing Unit](specs/sapdme_packingunit.json) | 10 | 17 | v1 |  |
 | 45 | [Plant](specs/sapdme_plant.json) | 1 | 2 | v1 |  |
 | 46 | [Print](specs/sapfnd_print.json) | 3 | 11 | v1 |  |
-| 47 | [Printer](specs/sapfnd_printer.json) | 1 | 7 | v1 |  |
-| 48 | [Problem-Solving Process](specs/sapdme_psp.json) | 10 | 24 | v1 |  |
+| 47 | [Printer](specs/sapfnd_printer.json) | 4 | 7 | v1 |  |
+| 48 | [Problem-Solving Process](specs/sapdme_psp.json) | 20 | 24 | v1 |  |
 | 49 | [Process Lot](specs/sapdme_processlot_v2.json) | 2 | 8 | v2 |  |
-| 50 | [Process Lot](specs/sapdme_processlot.json) | 5 | 11 | v1 |  |
+| 50 | [Process Lot](specs/sapdme_processlot.json) | 8 | 11 | v1 |  |
 | 51 | [Process Manufacturing Execution](specs/sapdme_process_manufacturing.json) | 2 | 5 | v1 |  |
 | 52 | [Process Order Execution](specs/sapdme_processorder.json) | 9 | 28 | v1 |  |
 | 53 | [Process Order Execution](specs/sapdme_processorder_v2.json) | 1 | 3 | v2 |  |
@@ -73,34 +73,34 @@
 | 57 | [Production Operator Dashboard](specs/sapdme_pod.json) | 3 | 4 | v1 |  |
 | 58 | [Production Operator Dashboard Notification](specs/sapdme_notification.json) | 1 | 4 | v1 |  |
 | 59 | [Quality Inspection](specs/sapdme_qualityinspection_v2.json) | 1 | 4 | v2 |  |
-| 60 | [Quality Inspection](specs/sapdme_qualityinspection.json) | 10 | 28 | v1 |  |
+| 60 | [Quality Inspection](specs/sapdme_qualityinspection.json) | 11 | 28 | v1 |  |
 | 61 | [Quantity Confirmation](specs/sapdme_quantityConfirmation.json) | 4 | 12 | v1 |  |
-| 62 | [Recipe](specs/sapdme_recipe.json) | 3 | 24 | v1 |  |
-| 63 | [Resource](specs/sapdme_plant_resource_v2.json) | 7 | 38 | v2 |  |
-| 64 | [Resource](specs/sapdme_plant_resource.json) | 4 | 25 | v1 |  |
+| 62 | [Recipe](specs/sapdme_recipe.json) | 7 | 24 | v1 |  |
+| 63 | [Resource](specs/sapdme_plant_resource_v2.json) | 15 | 38 | v2 |  |
+| 64 | [Resource](specs/sapdme_plant_resource.json) | 7 | 25 | v1 |  |
 | 65 | [Resource Reason Code](specs/sapdme_oee_resourcereasoncode.json) | 1 | 4 | v1 |  |
-| 66 | [Resource Type](specs/sapdme_resourcetype.json) | 1 | 4 | v1 |  |
-| 67 | [Routing](specs/sapdme_routing.json) | 4 | 34 | v1 |  |
-| 68 | [Setpoint Activities](specs/sapdme_setpoint_v3.json) | 3 | 14 | v3 |  |
-| 69 | [Setpoint Activities](specs/sapdme_setpoint_v2.json) | 3 | 14 | v2 |  |
-| 70 | [Setpoint Activities](specs/sapdme_setpoint.json) | 3 | 14 | v1 |  |
-| 71 | [Shift](specs/sapdme_shift.json) | 2 | 14 | v1 |  |
+| 66 | [Resource Type](specs/sapdme_resourcetype.json) | 4 | 4 | v1 |  |
+| 67 | [Routing](specs/sapdme_routing.json) | 8 | 34 | v1 |  |
+| 68 | [Setpoint Activities](specs/sapdme_setpoint_v3.json) | 6 | 14 | v3 |  |
+| 69 | [Setpoint Activities](specs/sapdme_setpoint_v2.json) | 6 | 14 | v2 |  |
+| 70 | [Setpoint Activities](specs/sapdme_setpoint.json) | 6 | 14 | v1 |  |
+| 71 | [Shift](specs/sapdme_shift.json) | 8 | 14 | v1 |  |
 | 72 | [Shop Floor Control Production Activities](specs/sapdme_sfc.json) | 23 | 54 | v1 |  |
 | 73 | [Shop Floor Control Production Activities](specs/sapdme_sfc_v2.json) | 3 | 14 | v2 |  |
-| 74 | [Standard Rates](specs/sapdme_standardrate.json) | 2 | 10 | v1 |  |
+| 74 | [Standard Rates](specs/sapdme_standardrate.json) | 4 | 10 | v1 |  |
 | 75 | [Standard Values](specs/sapdme_standardvalue.json) | 1 | 6 | v1 |  |
-| 76 | [Time Tracking](specs/sapdme_timetracking.json) | 28 | 23 | v1 |  |
+| 76 | [Time Tracking](specs/sapdme_timetracking.json) | 29 | 23 | v1 |  |
 | 77 | [Time Tracking](specs/sapdme_timetracking_odata.json) | 1 | 2 | v1 |  |
-| 78 | [Tool](specs/sapdme_tool.json) | 11 | 32 | v1 |  |
+| 78 | [Tool](specs/sapdme_tool.json) | 13 | 32 | v1 |  |
 | 79 | [Tool](specs/sapdme_tool_v2.json) | 5 | 17 | v2 |  |
-| 80 | [Unit of Measure](specs/sapdme_uom.json) | 5 | 8 | v1 |  |
-| 81 | [User](specs/sapdme_user.json) | 3 | 14 | v1 |  |
+| 80 | [Unit of Measure](specs/sapdme_uom.json) | 8 | 8 | v1 |  |
+| 81 | [User](specs/sapdme_user.json) | 9 | 14 | v1 |  |
 | 82 | [Work Center](specs/sapdme_plant_workcenter.json) | 1 | 11 | v1 |  |
 | 83 | [Work Center](specs/sapdme_plant_workcenter_v3.json) | 2 | 13 | v3 |  |
-| 84 | [Work Center](specs/sapdme_plant_workcenter_v2.json) | 2 | 14 | v2 |  |
+| 84 | [Work Center](specs/sapdme_plant_workcenter_v2.json) | 8 | 14 | v2 |  |
 | 85 | [Work Instruction](specs/sapdme_workinstruction_v2.json) | 2 | 17 | v2 |  |
-| 86 | [Work Instruction](specs/sapdme_workinstruction.json) | 3 | 20 | v1 |  |
-| 87 | [Work Instruction Attached File](specs/sapdme_workinstruction_file.json) | 1 | 2 | v1 |  |
+| 86 | [Work Instruction](specs/sapdme_workinstruction.json) | 6 | 20 | v1 |  |
+| 87 | [Work Instruction Attached File](specs/sapdme_workinstruction_file.json) | 2 | 2 | v1 |  |
 | 88 | [Work in Process (WIP) Activities](specs/sapdme_wip.json) | 4 | 13 | v1 |  |
 
 ---

@@ -5935,7 +5935,7 @@
                 {
                   "key": "size",
                   "value": "",
-                  "description": "The page size determines how many goods receipt postings are returned per page. An internal validation limits the maximum value to 100. If not specified, the default value is 20.",
+                  "description": "The page size determines how many goods receipt postings are returned per page. An internal validation limits the maximum value to 500. If not specified, the default value is 20.",
                   "disabled": true
                 },
                 {
@@ -6078,7 +6078,7 @@
                 {
                   "key": "size",
                   "value": "",
-                  "description": "The size determines how many goods issue postings are displayed in one page. An internal validation limits the maximum value to 100. If not specified, the default value is 20.",
+                  "description": "The size determines how many goods issue postings are displayed in one page. An internal validation limits the maximum value to 500. If not specified, the default value is 20.",
                   "disabled": true
                 },
                 {
@@ -7132,7 +7132,7 @@
             "description": "Creates a list of materials for given plants.",
             "body": {
               "mode": "raw",
-              "raw": "[\n  {\n    \"alternateUnitsOfMeasure\": [\n      {\n        \"denominator\": {},\n        \"numerator\": {},\n        \"parallelUom\": {},\n        \"uom\": {}\n      }\n    ],\n    \"assemblyDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"bom\": {\n      \"bom\": \"string\",\n      \"bomType\": \"string\",\n      \"plant\": \"string\",\n      \"version\": \"string\"\n    },\n    \"bomExplosionDependent\": \"string\",\n    \"createdDateTime\": \"2024-01-01T00:00:00Z\",\n    \"customValues\": [\n      {\n        \"attribute\": {},\n        \"value\": {}\n      }\n    ],\n    \"description\": \"string\",\n    \"descriptions\": [\n      {\n        \"description\": {},\n        \"locale\": {}\n      }\n    ],\n    \"isAutocompleteAndConfirmed\": true,\n    \"isCurrentVersion\": true,\n    \"locations\": [\n      {\n        \"description\": {},\n        \"location\": {},\n        \"locationData\": {}\n      }\n    ],\n    \"lotSize\": 0.0,\n    \"material\": \"string\",\n    \"materialGroups\": [\n      \"string\"\n    ],\n    \"materialType\": \"string\",\n    \"maxShelfLife\": 0.0,\n    \"maxShelfLifeUnits\": \"string\",\n    \"modifiedDateTime\": \"2024-01-01T00:00:00Z\",\n    \"mrpController\": \"string\",\n    \"orderProcessingMode\": \"string\",\n    \"origin\": \"string\",\n    \"panel\": true,\n    \"plant\": \"string\",\n    \"procurementType\": \"string\",\n    \"productionStorageLocation\": \"string\",\n    \"putawayStorageLocation\": \"string\",\n    \"quantityRestriction\": \"string\",\n    \"removalComponentDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"routing\": {\n      \"plant\": \"string\",\n      \"routing\": \"string\",\n      \"routingType\": \"string\",\n      \"version\": \"string\"\n    },\n    \"serialNumberProfile\": \"string\",\n    \"status\": \"string\",\n    \"targetLotSize\": 0.0,\n    \"unitOfMeasure\": \"string\",\n    \"version\": \"string\"\n  }\n]",
+              "raw": "[\n  {\n    \"alternateUnitsOfMeasure\": [\n      {\n        \"denominator\": {},\n        \"numerator\": {},\n        \"parallelUom\": {},\n        \"uom\": {}\n      }\n    ],\n    \"assemblyDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"bom\": {\n      \"bom\": \"string\",\n      \"bomType\": \"string\",\n      \"plant\": \"string\",\n      \"version\": \"string\"\n    },\n    \"bomExplosionDependent\": \"string\",\n    \"createdDateTime\": \"2024-01-01T00:00:00Z\",\n    \"customValues\": [\n      {\n        \"attribute\": {},\n        \"value\": {}\n      }\n    ],\n    \"description\": \"string\",\n    \"descriptions\": [\n      {\n        \"description\": {},\n        \"locale\": {}\n      }\n    ],\n    \"incrementBatchNumber\": \"string\",\n    \"inventoryDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"isAutocompleteAndConfirmed\": true,\n    \"isCurrentVersion\": true,\n    \"locations\": [\n      {\n        \"description\": {},\n        \"location\": {},\n        \"locationData\": {}\n      }\n    ],\n    \"lotSize\": 0.0,\n    \"material\": \"string\",\n    \"materialGroups\": [\n      \"string\"\n    ],\n    \"materialType\": \"string\",\n    \"maxShelfLife\": 0.0,\n    \"maxShelfLifeUnits\": \"string\",\n    \"modifiedDateTime\": \"2024-01-01T00:00:00Z\",\n    \"mrpController\": \"string\",\n    \"orderProcessingMode\": \"string\",\n    \"origin\": \"string\",\n    \"packingData\": {\n      \"grossWeight\": 0.0,\n      \"netWeight\": 0.0,\n      \"sfcQty\": 0.0,\n      \"unitOfVolume\": \"string\",\n      \"unitOfWeight\": \"string\",\n      \"volume\": 0.0\n    },\n    \"panel\": true,\n    \"plant\": \"string\",\n    \"procurementType\": \"string\",\n    \"productionStorageLocation\": \"string\",\n    \"putawayStorageLocation\": \"string\",\n    \"quantityRestriction\": \"string\",\n    \"removalComponentDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"routing\": {\n      \"plant\": \"string\",\n      \"routing\": \"string\",\n      \"routingType\": \"string\",\n      \"version\": \"string\"\n    },\n    \"serialNumberProfile\": \"string\",\n    \"status\": \"string\",\n    \"targetLotSize\": 0.0,\n    \"unitOfMeasure\": \"string\",\n    \"version\": \"string\"\n  }\n]",
               "options": {
                 "raw": {
                   "language": "json"
@@ -7168,7 +7168,7 @@
             "description": "Every material that will be updated must have the material, plant, and version fields specified. Only the specified fields will be updated. Any unspecified fields will remain unchanged.",
             "body": {
               "mode": "raw",
-              "raw": "[\n  {\n    \"alternateUnitsOfMeasure\": [\n      {\n        \"denominator\": {},\n        \"numerator\": {},\n        \"parallelUom\": {},\n        \"uom\": {}\n      }\n    ],\n    \"assemblyDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"bom\": {\n      \"bom\": \"string\",\n      \"bomType\": \"string\",\n      \"plant\": \"string\",\n      \"version\": \"string\"\n    },\n    \"bomExplosionDependent\": \"string\",\n    \"createdDateTime\": \"2024-01-01T00:00:00Z\",\n    \"customValues\": [\n      {\n        \"attribute\": {},\n        \"value\": {}\n      }\n    ],\n    \"description\": \"string\",\n    \"descriptions\": [\n      {\n        \"description\": {},\n        \"locale\": {}\n      }\n    ],\n    \"isAutocompleteAndConfirmed\": true,\n    \"isCurrentVersion\": true,\n    \"locations\": [\n      {\n        \"description\": {},\n        \"location\": {},\n        \"locationData\": {}\n      }\n    ],\n    \"lotSize\": 0.0,\n    \"material\": \"string\",\n    \"materialGroups\": [\n      \"string\"\n    ],\n    \"materialType\": \"string\",\n    \"maxShelfLife\": 0.0,\n    \"maxShelfLifeUnits\": \"string\",\n    \"modifiedDateTime\": \"2024-01-01T00:00:00Z\",\n    \"mrpController\": \"string\",\n    \"orderProcessingMode\": \"string\",\n    \"origin\": \"string\",\n    \"panel\": true,\n    \"plant\": \"string\",\n    \"procurementType\": \"string\",\n    \"productionStorageLocation\": \"string\",\n    \"putawayStorageLocation\": \"string\",\n    \"quantityRestriction\": \"string\",\n    \"removalComponentDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"routing\": {\n      \"plant\": \"string\",\n      \"routing\": \"string\",\n      \"routingType\": \"string\",\n      \"version\": \"string\"\n    },\n    \"serialNumberProfile\": \"string\",\n    \"status\": \"string\",\n    \"targetLotSize\": 0.0,\n    \"unitOfMeasure\": \"string\",\n    \"version\": \"string\"\n  }\n]",
+              "raw": "[\n  {\n    \"alternateUnitsOfMeasure\": [\n      {\n        \"denominator\": {},\n        \"numerator\": {},\n        \"parallelUom\": {},\n        \"uom\": {}\n      }\n    ],\n    \"assemblyDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"bom\": {\n      \"bom\": \"string\",\n      \"bomType\": \"string\",\n      \"plant\": \"string\",\n      \"version\": \"string\"\n    },\n    \"bomExplosionDependent\": \"string\",\n    \"createdDateTime\": \"2024-01-01T00:00:00Z\",\n    \"customValues\": [\n      {\n        \"attribute\": {},\n        \"value\": {}\n      }\n    ],\n    \"description\": \"string\",\n    \"descriptions\": [\n      {\n        \"description\": {},\n        \"locale\": {}\n      }\n    ],\n    \"incrementBatchNumber\": \"string\",\n    \"inventoryDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"isAutocompleteAndConfirmed\": true,\n    \"isCurrentVersion\": true,\n    \"locations\": [\n      {\n        \"description\": {},\n        \"location\": {},\n        \"locationData\": {}\n      }\n    ],\n    \"lotSize\": 0.0,\n    \"material\": \"string\",\n    \"materialGroups\": [\n      \"string\"\n    ],\n    \"materialType\": \"string\",\n    \"maxShelfLife\": 0.0,\n    \"maxShelfLifeUnits\": \"string\",\n    \"modifiedDateTime\": \"2024-01-01T00:00:00Z\",\n    \"mrpController\": \"string\",\n    \"orderProcessingMode\": \"string\",\n    \"origin\": \"string\",\n    \"packingData\": {\n      \"grossWeight\": 0.0,\n      \"netWeight\": 0.0,\n      \"sfcQty\": 0.0,\n      \"unitOfVolume\": \"string\",\n      \"unitOfWeight\": \"string\",\n      \"volume\": 0.0\n    },\n    \"panel\": true,\n    \"plant\": \"string\",\n    \"procurementType\": \"string\",\n    \"productionStorageLocation\": \"string\",\n    \"putawayStorageLocation\": \"string\",\n    \"quantityRestriction\": \"string\",\n    \"removalComponentDataType\": {\n      \"category\": \"string\",\n      \"dataFieldList\": [\n        {}\n      ],\n      \"dataType\": \"string\",\n      \"description\": \"string\"\n    },\n    \"routing\": {\n      \"plant\": \"string\",\n      \"routing\": \"string\",\n      \"routingType\": \"string\",\n      \"version\": \"string\"\n    },\n    \"serialNumberProfile\": \"string\",\n    \"status\": \"string\",\n    \"targetLotSize\": 0.0,\n    \"unitOfMeasure\": \"string\",\n    \"version\": \"string\"\n  }\n]",
               "options": {
                 "raw": {
                   "language": "json"
@@ -7656,12 +7656,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/log",
+              "raw": "{{base_url}}/log",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "log"
               ]
             },
@@ -7692,12 +7691,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/checkForOpen",
+              "raw": "{{base_url}}/checkForOpen",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "checkForOpen"
               ]
             },
@@ -7728,12 +7726,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/close",
+              "raw": "{{base_url}}/close",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "close"
               ]
             },
@@ -7764,12 +7761,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/open",
+              "raw": "{{base_url}}/open",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "open"
               ]
             },
@@ -7800,12 +7796,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/nonconformances",
+              "raw": "{{base_url}}/nonconformances",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "nonconformances"
               ],
               "query": [
@@ -7877,12 +7872,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/hierarchies",
+              "raw": "{{base_url}}/hierarchies",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "hierarchies"
               ],
               "query": [
@@ -7918,12 +7912,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/sfcs/disposition",
+              "raw": "{{base_url}}/sfcs/disposition",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "sfcs",
                 "disposition"
               ]
@@ -7955,12 +7948,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/file/download",
+              "raw": "{{base_url}}/file/download",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "file",
                 "download"
               ],
@@ -7975,7 +7967,13 @@
             },
             "description": "Downloads a nonconformance file for the given file ID"
           }
-        },
+        }
+      ]
+    },
+    {
+      "name": "Nonconformance",
+      "description": "Manage nonconformances as part of quality checks",
+      "item": [
         {
           "name": "Retrieves a list of nonconformances.",
           "request": {
@@ -7991,12 +7989,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v2/nonconformances",
+              "raw": "{{base_url}}/nonconformances",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v2",
                 "nonconformances"
               ],
               "query": [
@@ -8075,6 +8072,41 @@
               ]
             },
             "description": "Retrieves a list of nonconformances for a given plant by various optional parameters."
+          }
+        },
+        {
+          "name": "Check for open nonconformances V2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/checkForOpen",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "checkForOpen"
+              ]
+            },
+            "description": "Check for open nonconformance V2 by the given SFCs.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plant\": \"string\",\n  \"sfcs\": [\n    \"string\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
           }
         }
       ]
@@ -8791,6 +8823,12 @@
                   "key": "scheduledEnd",
                   "value": "",
                   "description": "Scheduled completion date in UTC format (date-time). Orders with scheduled end equal to or earlier than this value are included.",
+                  "disabled": true
+                },
+                {
+                  "key": "includeCustomValues",
+                  "value": "",
+                  "description": "Include custom values in the response. Default is false.",
                   "disabled": true
                 },
                 {
@@ -12726,18 +12764,18 @@
                   "key": "inspectionPoint",
                   "value": "",
                   "description": "The inspection point number",
-                  "disabled": false
+                  "disabled": true
                 },
                 {
-                  "key": "pageNumber",
+                  "key": "page",
                   "value": "",
                   "description": "The current page index (starts from 0). Default index is 0.",
                   "disabled": true
                 },
                 {
-                  "key": "pageSize",
+                  "key": "size",
                   "value": "",
-                  "description": "Specify the page size that determines the number of single value results that are displayed at one time in one page. Default is 50 and the maximum allowed is 100.",
+                  "description": "Enter the number of single value results to display per page (the default is 50 and the maximum is 100).",
                   "disabled": true
                 },
                 {
@@ -12946,6 +12984,18 @@
                   "value": "",
                   "description": "The SFCs for which the inspection results are retrieved",
                   "disabled": false
+                },
+                {
+                  "key": "page",
+                  "value": "",
+                  "description": "The current page index (starts from 0). Default index is 0.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "",
+                  "description": "Enter the number of single value results to display per page (the default is 50).",
+                  "disabled": true
                 }
               ]
             },
@@ -16476,7 +16526,7 @@
             "description": "You scrap an SFC when the material is no longer viable for production. If the SFC is an assembly, then all assembled child SFCs are also scrapped. The status of each scrapped SFC is set to Scrapped.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"plant\": \"string\",\n  \"quantity\": 0.0,\n  \"sfcs\": [\n    \"string\"\n  ]\n}",
+              "raw": "{\n  \"plant\": \"string\",\n  \"quantity\": 0.0,\n  \"resource\": \"string\",\n  \"sfcs\": [\n    \"string\"\n  ]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -17014,7 +17064,7 @@
                 {
                   "key": "sfcStatuses",
                   "value": "",
-                  "description": "List of SFC statuses that are used to filter the result set.",
+                  "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
                   "disabled": true
                 }
               ]
@@ -17145,7 +17195,7 @@
                 {
                   "key": "sfcStatuses",
                   "value": "",
-                  "description": "List of SFC statuses that are used to filter the result set.",
+                  "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
                   "disabled": true
                 }
               ]
@@ -17265,7 +17315,7 @@
                 {
                   "key": "sfcStatuses",
                   "value": "",
-                  "description": "List of SFC statuses that are used to filter the result set.",
+                  "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
                   "disabled": true
                 }
               ]
@@ -17402,7 +17452,7 @@
                 {
                   "key": "sfcStatuses",
                   "value": "",
-                  "description": "List of SFC statuses that are used to filter the result set.",
+                  "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
                   "disabled": true
                 }
               ]
@@ -17716,7 +17766,7 @@
                 {
                   "key": "sfcStatuses",
                   "value": "",
-                  "description": "List of SFC statuses that are used to filter the result set.",
+                  "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
                   "disabled": true
                 }
               ]
@@ -17829,7 +17879,7 @@
                 {
                   "key": "sfcStatuses",
                   "value": "",
-                  "description": "List of SFC statuses that are used to filter the result set.",
+                  "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
                   "disabled": true
                 }
               ]
@@ -20793,300 +20843,6 @@
       ]
     },
     {
-      "name": "Visual Inspection",
-      "description": "Manage visual inspection objects to embed AI-assisted processes on your shop floor.",
-      "item": [
-        {
-          "name": "Find visual inspections using the business context",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/v1/findVisualInspections()",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "v1",
-                "findVisualInspections()"
-              ],
-              "query": [
-                {
-                  "key": "plant",
-                  "value": "",
-                  "description": "The plant assigned to the visual inspection",
-                  "disabled": false
-                },
-                {
-                  "key": "material",
-                  "value": "",
-                  "description": "The material assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "materialVersion",
-                  "value": "",
-                  "description": "The version of the material assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "routing",
-                  "value": "",
-                  "description": "The routing assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "routingType_code",
-                  "value": "",
-                  "description": "The type of the routing assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "routingVersion",
-                  "value": "",
-                  "description": "The version of the routing assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "operation",
-                  "value": "",
-                  "description": "The operation activity assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "operationVersion",
-                  "value": "",
-                  "description": "The version of the operation activity assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "workCenter",
-                  "value": "",
-                  "description": "The work center assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "resource",
-                  "value": "",
-                  "description": "The resource assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "shopOrder",
-                  "value": "",
-                  "description": "The order assigned to the visual inspection",
-                  "disabled": true
-                },
-                {
-                  "key": "$expand",
-                  "value": "",
-                  "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-                  "disabled": true
-                }
-              ]
-            },
-            "description": "Find visual inspections using the business context. The business context can be one or more of the business objects that visual inspections can be assigned to."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Visual Inspection Result Service",
-      "description": "Log, read and store images of visual inspection results in Digital Manufacturing",
-      "item": [
-        {
-          "name": "Finds all visual inspection results.",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/inspectionResults",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "inspectionResults"
-              ],
-              "query": [
-                {
-                  "key": "$filter",
-                  "value": "",
-                  "description": "Filters items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
-                  "disabled": true
-                },
-                {
-                  "key": "$orderby",
-                  "value": "",
-                  "description": "Orders items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
-                  "disabled": true
-                },
-                {
-                  "key": "$select",
-                  "value": "",
-                  "description": "Selects properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-                  "disabled": true
-                },
-                {
-                  "key": "$expand",
-                  "value": "",
-                  "description": "The value of the $expand query option is a comma-separated list of navigation property names, stream property names, or a value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-                  "disabled": true
-                }
-              ]
-            },
-            "description": "Finds all visual inspection results using various filter parameters"
-          }
-        },
-        {
-          "name": "Create a visual inspection result.",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/inspectionResults",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "inspectionResults"
-              ]
-            },
-            "description": "Create a visual inspection result.",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"conformanceStatus_code\": \"string\",\n  \"executedAt\": \"2024-01-01T00:00:00Z\",\n  \"inspectionMode_code\": \"string\",\n  \"inspectionType_code\": \"string\",\n  \"inspectionViewDescription\": \"string\",\n  \"inspectionViewId\": \"string\",\n  \"inspectionViewName\": \"string\",\n  \"material\": \"string\",\n  \"materialVersion\": \"string\",\n  \"modelName\": \"string\",\n  \"modelVersion\": \"string\",\n  \"ncResults\": [\n    {\n      \"className\": \"string\",\n      \"conformanceType_code\": \"string\",\n      \"description\": \"string\",\n      \"groundTruthBoundingBox\": {\n        \"height\": {},\n        \"isPredicted\": {},\n        \"topLeftX\": {},\n        \"topLeftY\": {},\n        \"width\": {}\n      },\n      \"ncName\": \"string\",\n      \"operatorResult_code\": \"string\",\n      \"predictedBoundingBox\": {\n        \"height\": {},\n        \"topLeftX\": {},\n        \"topLeftY\": {},\n        \"width\": {}\n      },\n      \"prediction\": {},\n      \"threshold\": {}\n    }\n  ],\n  \"operationActivityName\": \"string\",\n  \"operationActivityVersion\": \"string\",\n  \"orderName\": \"string\",\n  \"plant\": \"string\",\n  \"resourceName\": \"string\",\n  \"routingName\": \"string\",\n  \"routingStepId\": \"string\",\n  \"routingType\": \"string\",\n  \"routingVersion\": \"string\",\n  \"scenarioId\": \"string\",\n  \"scenarioName\": \"string\",\n  \"scenarioVersion\": \"string\",\n  \"scenarioViewId\": \"string\",\n  \"sfcId\": \"string\",\n  \"source\": \"string\",\n  \"workCenterName\": \"string\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          }
-        },
-        {
-          "name": "Finds a single visual inspection result by ID.",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/inspectionResults({id})",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "inspectionResults({id})"
-              ],
-              "query": [
-                {
-                  "key": "$select",
-                  "value": "",
-                  "description": "Selects properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-                  "disabled": true
-                },
-                {
-                  "key": "$expand",
-                  "value": "",
-                  "description": "The value of the $expand query option is a comma-separated list of navigation property names, stream property names, or a value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-                  "disabled": true
-                }
-              ]
-            },
-            "description": "Find a single inspection result by providing its ID"
-          }
-        },
-        {
-          "name": "Get the image of a visual inspection result.",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/inspectionResults({id})/image",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "inspectionResults({id})",
-                "image"
-              ]
-            },
-            "description": "Get the image of a visual inspection result by providing the associated visual inspection result ID."
-          }
-        },
-        {
-          "name": "Stores an image for a visual inspection result.",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/inspectionResults({id})/image",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "inspectionResults({id})",
-                "image"
-              ]
-            },
-            "description": "Stores an image for a visual inspection result by providing the associated visual inspection result ID."
-          }
-        }
-      ]
-    },
-    {
       "name": "Work Center",
       "description": "Get a list of work centers for a given plant.",
       "item": [
@@ -21534,6 +21290,96 @@
     },
     {
       "name": "Work Instruction",
+      "description": "Use this API to manage work instructions in SAP Digital Manufacturing.",
+      "item": [
+        {
+          "name": "Creates a list of work instructions for the given plant.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/workinstructions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workinstructions"
+              ]
+            },
+            "description": "Creates a work instruction which can be attached to other objects like a material, resource, order and work center.",
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"attachedPoints\": [\n      {\n        \"headerMaterial\": {},\n        \"material\": {},\n        \"operationActivity\": {},\n        \"resource\": {},\n        \"routing\": {},\n        \"routingStep\": {},\n        \"sequence\": {},\n        \"shopOrder\": {},\n        \"workCenter\": {}\n      }\n    ],\n    \"createdDateTime\": \"2024-01-01T00:00:00Z\",\n    \"currentVersion\": true,\n    \"customValues\": [\n      {\n        \"attribute\": {},\n        \"value\": {}\n      }\n    ],\n    \"description\": \"string\",\n    \"instructionData\": \"string\",\n    \"modifiedDateTime\": \"2024-01-01T00:00:00Z\",\n    \"plant\": \"string\",\n    \"required\": true,\n    \"status\": \"string\",\n    \"trackViewing\": true,\n    \"version\": \"string\",\n    \"workInstruction\": \"string\",\n    \"workInstructionElements\": [\n      {\n        \"description\": {},\n        \"erpFilename\": {},\n        \"fileExternalUrl\": {},\n        \"fileName\": {},\n        \"metadataCategory\": {},\n        \"metadataComponent\": {},\n        \"metadataRefDes\": {},\n        \"mimeType\": {},\n        \"newWindow\": {},\n        \"sequence\": {},\n        \"text\": {},\n        \"type\": {},\n        \"url\": {}\n      }\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Find attached work instructions by provided context.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/findAttachedWorkInstructions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "findAttachedWorkInstructions"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "",
+                  "description": "Zero-based page index (0..N).",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "",
+                  "description": "The size of the page to be returned. Default - 50. Maximum size - 200.",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves the list of work instructions based on provided context parameters, such as material, routing, routing activity, order, operation activity, resource, and work center.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plant\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Work Instruction",
       "description": "Get a list of work instructions or one single work instruction",
       "item": [
         {
@@ -21551,12 +21397,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/attachedworkinstructions",
+              "raw": "{{base_url}}/attachedworkinstructions",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "attachedworkinstructions"
               ],
               "query": [
@@ -21622,12 +21467,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/workinstructions",
+              "raw": "{{base_url}}/workinstructions",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "workinstructions"
               ],
               "query": [
@@ -21669,12 +21513,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/workinstructions",
+              "raw": "{{base_url}}/workinstructions",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "workinstructions"
               ]
             },
@@ -21705,12 +21548,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/workinstructions",
+              "raw": "{{base_url}}/workinstructions",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "workinstructions"
               ]
             },
@@ -21741,12 +21583,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/workinstructions",
+              "raw": "{{base_url}}/workinstructions",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "workinstructions"
               ],
               "query": [
@@ -21774,42 +21615,6 @@
           }
         },
         {
-          "name": "Creates a list of work instructions for the given plant.",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/v2/workinstructions",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "v2",
-                "workinstructions"
-              ]
-            },
-            "description": "Creates a work instruction which can be attached to other objects like a material, resource, order and work center.",
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"attachedPoints\": [\n      {\n        \"headerMaterial\": {},\n        \"material\": {},\n        \"operationActivity\": {},\n        \"resource\": {},\n        \"routing\": {},\n        \"routingStep\": {},\n        \"sequence\": {},\n        \"shopOrder\": {},\n        \"workCenter\": {}\n      }\n    ],\n    \"createdDateTime\": \"2024-01-01T00:00:00Z\",\n    \"currentVersion\": true,\n    \"customValues\": [\n      {\n        \"attribute\": {},\n        \"value\": {}\n      }\n    ],\n    \"description\": \"string\",\n    \"instructionData\": \"string\",\n    \"modifiedDateTime\": \"2024-01-01T00:00:00Z\",\n    \"plant\": \"string\",\n    \"required\": true,\n    \"status\": \"string\",\n    \"trackViewing\": true,\n    \"version\": \"string\",\n    \"workInstruction\": \"string\",\n    \"workInstructionElements\": [\n      {\n        \"description\": {},\n        \"erpFilename\": {},\n        \"fileExternalUrl\": {},\n        \"fileName\": {},\n        \"metadataCategory\": {},\n        \"metadataComponent\": {},\n        \"metadataRefDes\": {},\n        \"mimeType\": {},\n        \"newWindow\": {},\n        \"sequence\": {},\n        \"text\": {},\n        \"type\": {},\n        \"url\": {}\n      }\n    ]\n  }\n]",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          }
-        },
-        {
           "name": "Adds work instruction attached points.",
           "request": {
             "method": "POST",
@@ -21824,12 +21629,11 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/v1/workinstructions/attachedPoints",
+              "raw": "{{base_url}}/workinstructions/attachedPoints",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "v1",
                 "workinstructions",
                 "attachedPoints"
               ],
