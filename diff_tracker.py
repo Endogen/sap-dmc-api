@@ -450,11 +450,13 @@ def diff_single_api(old_spec: dict, new_spec: dict) -> dict | None:
                         "breaking": True,
                     })
                 elif sc["kind"] == "field_made_required":
+                    # Breaking for clients sending requests with this schema —
+                    # previously-valid payloads without the field are rejected.
                     changes.append({
                         "kind": "schema_field_required",
                         "schema": schema_name,
                         "field": sc["field"],
-                        "breaking": False,
+                        "breaking": True,
                     })
 
     return {"changes": changes} if changes else None

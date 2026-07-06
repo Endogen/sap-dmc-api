@@ -4,6 +4,8 @@ Scrapes all REST API specs from the [SAP Digital Manufacturing Cloud](https://ap
 
 Downloads complete Swagger 2.0 / OpenAPI specs for every API, including all endpoints, request/response schemas, and metadata.
 
+**Browse the APIs online:** https://endogen.github.io/sap-dmc-api/ — search, Swagger UI, changelog, and collection downloads, rebuilt automatically after every scrape.
+
 ## What's Included
 
 ```
@@ -11,12 +13,14 @@ output/
   README.md          # Full API reference (table of all APIs + endpoints)
   summary.json       # Machine-readable index of all APIs & endpoints
   artifacts.json     # Raw artifact catalog from SAP
+  changelog.json     # Combined changelog of all detected spec changes
+  history/           # One diff report per scrape run that found changes
   specs/             # 88 Swagger JSON files (one per API)
   metadata/          # 88 API metadata files from OData catalog
   collections/       # Postman & Insomnia collection files
 ```
 
-**Current stats:** 88 APIs · 344 endpoints · 1,288 schemas
+**Current stats:** 88 APIs · 480 endpoints · 1,285 schemas
 
 ## Setup
 
@@ -55,36 +59,61 @@ python3 scrape.py
 # Custom output directory
 python3 scrape.py --output-dir my-output
 
-# Regenerate summary/README from existing specs (no login needed)
+# Abort without saving if fewer than N specs were fetched
+# (guards against half-failed sessions; used by CI)
+python3 scrape.py --min-specs 80
+
+# Regenerate summary/README/collections from existing specs
+# (no login or Playwright needed)
 python3 scrape.py --summary-only
 ```
 
 A full scrape takes about 50 seconds. The scraper:
 1. Logs into api.sap.com via Playwright (headless Chromium)
 2. Fetches the artifact list from the OData catalog API
-3. Downloads the Swagger spec + metadata for each API
-4. Generates `summary.json` and a markdown reference (`output/README.md`)
+3. Downloads the Swagger spec + metadata for each API (and prunes specs for APIs SAP removed)
+4. Generates `summary.json`, a markdown reference (`output/README.md`), and Postman/Insomnia collections
+5. Diffs against the last committed specs and updates `output/changelog.json`
+
+On a failed login the scraper saves `login_failure.png` showing what the browser saw.
+
+## Automation (GitHub Actions + Pages)
+
+Everything also runs unattended on GitHub — no local machine needed:
+
+| Workflow | Trigger | What it does |
+|----------|---------|--------------|
+| `scrape.yml` | daily at 05:17 UTC + manual | Scrapes SAP, commits changed specs/changelog to `main`, triggers the Pages deploy |
+| `deploy-pages.yml` | push to `main` (output/templates/static) + manual | Assembles the static site and publishes it to GitHub Pages |
+| `test.yml` | push / PR | Runs the pytest suite |
+
+The live site is at **https://endogen.github.io/sap-dmc-api/**.
+
+Required repository secrets (Settings → Secrets and variables → Actions): `SAP_USER`, `SAP_PASS`, `SAP_ACCOUNT`.
+
+The scrape job runs with `--min-specs 80`, so a half-failed SAP session aborts instead of committing a gutted dataset. If the login fails, the run uploads a `login-failure` artifact with a screenshot of what SAP showed the headless browser.
 
 ## Browsing APIs
 
-A local web interface lets you browse and explore all API specs with Swagger UI — no build step or extra dependencies required.
+The same interface that runs on GitHub Pages can be served locally — no build step or extra dependencies required.
 
 ```bash
 python3 serve.py
-# Opens http://localhost:8080
+# Opens http://127.0.0.1:8080
 ```
 
 The landing page lists all APIs with search/filter, endpoint counts, and links to view each spec in Swagger UI or download the raw JSON.
 
-Set a custom port with the `PORT` environment variable:
+The server binds to localhost by default; use the `HOST`/`PORT` environment variables to change that:
 
 ```bash
 PORT=9090 python3 serve.py
+HOST=0.0.0.0 python3 serve.py   # expose on the network
 ```
 
 ## Postman & Insomnia Collections
 
-Generate importable collections for Postman and Insomnia from the downloaded specs:
+Collections are regenerated automatically at the end of every scrape. To rebuild them manually from existing specs:
 
 ```bash
 python3 generate_collections.py
@@ -104,10 +133,19 @@ Both collections include:
 
 ## Re-scraping
 
-Just run `python3 scrape.py` again. It overwrites all specs and regenerates the summary. Commit the diff to track what changed.
+The daily GitHub Actions run takes care of this, but a manual run works the same way: `scrape.py` overwrites all specs, regenerates summary and collections, and records any changes in `output/changelog.json`. Commit the diff to keep the history.
 
 ```bash
 python3 scrape.py
 git diff --stat output/
 git add -A && git commit -m "Update specs $(date +%Y-%m-%d)"
 ```
+
+## Tests
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest
+```
+
+Covers the diff tracker (change detection and breaking-change flags), collection generation, and the web server's routing/path-traversal protection.

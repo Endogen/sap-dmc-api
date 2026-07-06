@@ -1,0 +1,68 @@
+name: Scrape SAP DMC APIs
+
+on:
+  schedule:
+    - cron: "17 5 * * *"   # daily at 05:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write   # needed to trigger the Pages deploy workflow
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Scrape specs
+        env:
+          SAP_USER: ${{ secrets.SAP_USER }}
+          SAP_PASS: ${{ secrets.SAP_PASS }}
+          SAP_ACCOUNT: ${{ secrets.SAP_ACCOUNT }}
+        run: python scrape.py --min-specs 80
+
+      - name: Upload failure screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: login-failure
+          path: login_failure.png
+          if-no-files-found: ignore
+
+      - name: Commit and push changes
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A output README.md
+          if git diff --cached --quiet; then
+            echo "No spec changes"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Update specs $(date -u +%Y-%m-%d)"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Pushes made with GITHUB_TOKEN don't fire `on: push` workflows,
+      # so kick the Pages deploy explicitly.
+      - name: Trigger Pages deploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy-pages.yml --ref main

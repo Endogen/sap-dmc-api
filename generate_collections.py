@@ -8,9 +8,6 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-SPECS_DIR = ROOT / "output" / "specs"
-SUMMARY_PATH = ROOT / "output" / "summary.json"
-OUTPUT_DIR = ROOT / "output" / "collections"
 
 
 # ---------------------------------------------------------------------------
@@ -92,44 +89,18 @@ def schema_to_example(schema: dict, definitions: dict, depth: int = 0) -> object
 # Read specs & summary
 # ---------------------------------------------------------------------------
 
-def load_specs() -> list[tuple[dict, dict]]:
+def load_specs(specs_dir: Path, summary_path: Path) -> list[tuple[dict, dict]]:
     """Return list of (summary_entry, spec) pairs sorted by display name."""
-    summary = json.loads(SUMMARY_PATH.read_text())
+    summary = json.loads(summary_path.read_text())
     pairs = []
     for api in summary:
-        spec_path = SPECS_DIR / f"{api['name']}.json"
+        spec_path = specs_dir / f"{api['name']}.json"
         if not spec_path.exists():
             continue
         spec = json.loads(spec_path.read_text())
         pairs.append((api, spec))
     pairs.sort(key=lambda p: p[0].get("display_name", ""))
     return pairs
-
-
-def get_definitions(spec: dict) -> dict:
-    """Get the definitions/schemas dict from a spec (Swagger 2.0 or OAS 3)."""
-    if "definitions" in spec:
-        return spec
-    if "components" in spec and "schemas" in spec["components"]:
-        # Wrap so $ref resolution works with '#/components/schemas/X'
-        return spec
-    return spec
-
-
-def get_base_url(spec: dict) -> str:
-    """Extract a usable base URL template from a spec."""
-    # Swagger 2.0
-    if spec.get("swagger") == "2.0":
-        host = spec.get("host", "hostname")
-        base_path = spec.get("basePath", "/").rstrip("/")
-        schemes = spec.get("schemes", ["https"])
-        scheme = schemes[0] if schemes else "https"
-        return f"{scheme}://{host}{base_path}"
-    # OpenAPI 3.x
-    servers = spec.get("servers", [])
-    if servers:
-        return servers[0].get("url", "{{base_url}}")
-    return "{{base_url}}"
 
 
 def extract_body_example(operation: dict, definitions: dict) -> dict | None:
@@ -194,8 +165,8 @@ def build_postman(specs: list[tuple[dict, dict]]) -> dict:
     }
 
     for api_info, spec in specs:
-        definitions = get_definitions(spec)
-        base_url_raw = get_base_url(spec)
+        # $refs resolve from the spec root ('#/definitions/...' etc.)
+        definitions = spec
 
         folder: dict = {
             "name": api_info["display_name"],
@@ -298,7 +269,7 @@ def build_insomnia(specs: list[tuple[dict, dict]]) -> dict:
     })
 
     for api_info, spec in specs:
-        definitions = get_definitions(spec)
+        definitions = spec
 
         # Folder per API
         folder_id = _insomnia_id()
@@ -375,22 +346,27 @@ def build_insomnia(specs: list[tuple[dict, dict]]) -> dict:
 # Main
 # ---------------------------------------------------------------------------
 
-def main():
-    if not SPECS_DIR.exists() or not SUMMARY_PATH.exists():
-        print("Error: output/specs/ or output/summary.json not found.", file=sys.stderr)
-        print("Run scrape.py first, or check the output directory.", file=sys.stderr)
-        sys.exit(1)
+def generate(output_root: Path) -> None:
+    """Generate Postman and Insomnia collections into <output_root>/collections/."""
+    specs_dir = output_root / "specs"
+    summary_path = output_root / "summary.json"
+    collections_dir = output_root / "collections"
+
+    if not specs_dir.exists() or not summary_path.exists():
+        raise FileNotFoundError(
+            f"{specs_dir} or {summary_path} not found — run scrape.py first"
+        )
 
     print("Loading specs...")
-    specs = load_specs()
+    specs = load_specs(specs_dir, summary_path)
     print(f"  {len(specs)} APIs loaded\n")
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    collections_dir.mkdir(parents=True, exist_ok=True)
 
     # Postman
     print("Generating Postman collection...")
     postman = build_postman(specs)
-    postman_path = OUTPUT_DIR / "postman_collection.json"
+    postman_path = collections_dir / "postman_collection.json"
     postman_path.write_text(json.dumps(postman, indent=2))
     req_count = sum(len(f["item"]) for f in postman["item"])
     print(f"  {postman_path}  ({len(postman['item'])} folders, {req_count} requests)")
@@ -398,12 +374,19 @@ def main():
     # Insomnia
     print("Generating Insomnia collection...")
     insomnia = build_insomnia(specs)
-    insomnia_path = OUTPUT_DIR / "insomnia_collection.json"
+    insomnia_path = collections_dir / "insomnia_collection.json"
     insomnia_path.write_text(json.dumps(insomnia, indent=2))
     req_count_i = sum(1 for r in insomnia["resources"] if r["_type"] == "request")
     folder_count_i = sum(1 for r in insomnia["resources"] if r["_type"] == "request_group")
     print(f"  {insomnia_path}  ({folder_count_i} folders, {req_count_i} requests)")
 
+
+def main():
+    try:
+        generate(ROOT / "output")
+    except FileNotFoundError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
     print("\nDone.")
 
 

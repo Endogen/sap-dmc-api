@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SAP Digital Manufacturing Cloud — API Browser</title>
-<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="icon" href="favicon.png" type="image/png">
 <style>
   :root {
     --bg: #0f1117;
@@ -431,7 +431,7 @@
 <div class="landing-page" id="landing">
   <div class="header">
     <div class="header-top">
-      <h1><img src="/logo.png" alt="SAP">SAP Digital Manufacturing Cloud — APIs</h1>
+      <h1><img src="logo.png" alt="SAP">SAP Digital Manufacturing Cloud — APIs</h1>
       <div class="tabs">
         <button class="tab active" data-tab="apis">APIs</button>
         <button class="tab" data-tab="changelog">Changelog</button>
@@ -445,9 +445,9 @@
     </div>
     <div class="downloads">
       <span class="downloads-label">Export:</span>
-      <a href="/summary.json" target="_blank" class="dl-link">Summary JSON</a>
-      <a href="/collections/postman_collection.json" target="_blank" class="dl-link">Postman Collection</a>
-      <a href="/collections/insomnia_collection.json" target="_blank" class="dl-link">Insomnia Collection</a>
+      <a href="summary.json" target="_blank" class="dl-link">Summary JSON</a>
+      <a href="collections/postman_collection.json" target="_blank" class="dl-link">Postman Collection</a>
+      <a href="collections/insomnia_collection.json" target="_blank" class="dl-link">Insomnia Collection</a>
     </div>
   </div>
   <div class="tab-content active" id="tab-apis">
@@ -482,7 +482,7 @@ let apis = [];
 let changelog = null;
 
 async function init() {
-  const resp = await fetch('/summary.json');
+  const resp = await fetch('summary.json');
   apis = await resp.json();
 
   // Stats
@@ -527,7 +527,7 @@ function renderGrid(list) {
       </div>
       <div class="api-actions">
         <a class="btn btn-primary" href="#/spec/${encodeURIComponent(api.name)}" onclick="showSwagger('${esc(api.name)}', '${esc(api.display_name)}')">View API</a>
-        <a class="btn btn-secondary" href="/specs/${encodeURIComponent(api.name)}.json" target="_blank">Download JSON</a>
+        <a class="btn btn-secondary" href="specs/${encodeURIComponent(api.name)}.json" target="_blank">Download JSON</a>
       </div>
     </div>
   `).join('');
@@ -591,7 +591,7 @@ async function loadChangelog() {
   const el = document.getElementById('changelog');
   el.innerHTML = '<div class="changelog-empty">Loading...</div>';
   try {
-    const resp = await fetch('/changelog.json');
+    const resp = await fetch('changelog.json');
     if (!resp.ok) { changelog = []; }
     else { changelog = await resp.json(); }
   } catch (e) { changelog = []; }
@@ -729,7 +729,7 @@ function showSwagger(name, displayName) {
   location.hash = '#/spec/' + encodeURIComponent(name);
 
   SwaggerUIBundle({
-    url: '/specs/' + encodeURIComponent(name) + '.json',
+    url: 'specs/' + encodeURIComponent(name) + '.json',
     dom_id: '#swagger-container',
     presets: [SwaggerUIBundle.presets.apis, SwaggerUIBundle.SwaggerUIStandalonePreset],
     layout: 'BaseLayout',

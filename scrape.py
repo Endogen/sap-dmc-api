@@ -8,7 +8,7 @@ SAP Digital Manufacturing Cloud package, and generates summary files.
 Re-run at any time to update specs when SAP publishes changes.
 
 Usage:
-    python3 scrape.py [--output-dir specs] [--summary]
+    python3 scrape.py [--output-dir output] [--summary-only] [--min-specs N]
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 try:
     from dotenv import load_dotenv
@@ -30,7 +30,8 @@ except ImportError:
 
 import os
 
-from playwright.sync_api import sync_playwright, Page
+if TYPE_CHECKING:
+    from playwright.sync_api import Page
 
 # ── Config ──────────────────────────────────────────────────────────
 
@@ -75,6 +76,13 @@ AUTH_HTML_MARKERS = (
 
 # ── Auth ────────────────────────────────────────────────────────────
 
+def _click_submit(page: Page) -> None:
+    button = page.wait_for_selector(
+        "button[type='submit'], #logOnFormSubmit", timeout=10_000
+    )
+    button.click()
+
+
 def login(page: Page) -> None:
     """Perform SAP ID login and account selection."""
     log.info("Navigating to %s", PACKAGE_URL)
@@ -92,13 +100,13 @@ def login(page: Page) -> None:
         "input[type='email'], #j_username", timeout=10_000
     )
     email.fill(SAP_USER)
-    page.query_selector("button[type='submit'], #logOnFormSubmit").click()
+    _click_submit(page)
     page.wait_for_timeout(3000)
 
     # Password
     pw = page.wait_for_selector("input[type='password']", timeout=10_000)
     pw.fill(SAP_PASS)
-    page.query_selector("button[type='submit'], #logOnFormSubmit").click()
+    _click_submit(page)
     page.wait_for_timeout(5000)
 
     # Account selection
@@ -267,6 +275,15 @@ def save_specs(
             path = meta_dir / f"{name}.json"
             path.write_text(json.dumps(meta, indent=2), encoding="utf-8")
 
+    # Delete files for APIs no longer in SAP's artifact list — otherwise
+    # removed APIs linger on disk and never show up in the diff tracker.
+    current = {a["Name"] for a in artifacts}
+    for directory in (specs_dir, meta_dir):
+        for f in directory.glob("*.json"):
+            if f.stem not in current:
+                f.unlink()
+                log.info("Pruned stale file %s (API no longer published)", f)
+
     # Save artifact index
     index_path = output_dir / "artifacts.json"
     index_path.write_text(json.dumps(artifacts, indent=2), encoding="utf-8")
@@ -305,10 +322,8 @@ def generate_summary(
             entry["api_version"] = info.get("version", "")
             entry["base_path"] = spec.get("basePath", "")
             entry["host"] = spec.get("host", "")
-            entry["endpoint_count"] = len(paths)
-            entry["schema_count"] = len(definitions)
 
-            # Enumerate endpoints
+            # Enumerate endpoints (method-level operations)
             endpoints = []
             for path, methods in paths.items():
                 for method, details in methods.items():
@@ -322,9 +337,13 @@ def generate_summary(
                         "tags": details.get("tags", []),
                     })
             entry["endpoints"] = endpoints
+            entry["endpoint_count"] = len(endpoints)
+            entry["path_count"] = len(paths)
+            entry["schema_count"] = len(definitions)
         else:
             entry["spec_version"] = None
             entry["endpoint_count"] = 0
+            entry["path_count"] = 0
             entry["schema_count"] = 0
             entry["endpoints"] = []
 
@@ -333,6 +352,9 @@ def generate_summary(
     # Save summary JSON
     summary_path = output_dir / "summary.json"
     summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+
+    total_endpoints = sum(e["endpoint_count"] for e in summary)
+    total_schemas = sum(e["schema_count"] for e in summary)
 
     # Generate markdown overview
     md_lines = [
@@ -343,8 +365,8 @@ def generate_summary(
         f"**Package:** [{PACKAGE_ID}]({PACKAGE_URL})",
         f"",
         f"**Total APIs:** {len(summary)}",
-        f"**Total Endpoints:** {sum(e['endpoint_count'] for e in summary)}",
-        f"**Total Schemas:** {sum(e['schema_count'] for e in summary)}",
+        f"**Total Endpoints:** {total_endpoints}",
+        f"**Total Schemas:** {total_schemas}",
         f"",
         f"---",
         f"",
@@ -389,13 +411,58 @@ def generate_summary(
     readme_path.write_text("\n".join(md_lines), encoding="utf-8")
     log.info("Generated summary: %s", readme_path)
 
+    _update_repo_readme_stats(len(summary), total_endpoints, total_schemas)
+
+
+def _update_repo_readme_stats(api_count: int, endpoint_count: int, schema_count: int) -> None:
+    """Rewrite the stats line in the repository README so it doesn't drift."""
+    readme = Path(__file__).resolve().parent / "README.md"
+    if not readme.is_file():
+        return
+    lines = readme.read_text(encoding="utf-8").splitlines()
+    for i, line in enumerate(lines):
+        if line.startswith("**Current stats:**"):
+            lines[i] = (
+                f"**Current stats:** {api_count} APIs · "
+                f"{endpoint_count} endpoints · {schema_count:,} schemas"
+            )
+            readme.write_text("\n".join(lines) + "\n", encoding="utf-8")
+            log.info("Updated stats line in %s", readme)
+            return
+
+
+def generate_collection_files(output_dir: Path) -> None:
+    """Regenerate Postman/Insomnia collections so they never go stale."""
+    try:
+        from generate_collections import generate
+        generate(output_dir)
+    except Exception as e:
+        log.warning("Collection generation failed: %s", e)
+
 
 # ── Main ────────────────────────────────────────────────────────────
+
+def count_operations(spec: dict) -> int:
+    """Count method-level operations (path + HTTP method pairs) in a spec."""
+    count = 0
+    for methods in spec.get("paths", {}).values():
+        if not isinstance(methods, dict):
+            continue
+        for method in methods:
+            if method.startswith("x-") or method == "parameters":
+                continue
+            count += 1
+    return count
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Scrape SAP DMC REST APIs")
     parser.add_argument("--output-dir", default="output", help="Output directory")
     parser.add_argument("--summary-only", action="store_true", help="Regenerate summary from existing specs")
+    parser.add_argument(
+        "--min-specs", type=int, default=0,
+        help="Abort without saving if fewer specs were fetched (guards against half-failed sessions)",
+    )
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -420,62 +487,81 @@ def main() -> None:
         for f in (output_dir / "metadata").glob("*.json"):
             metadata[f.stem] = json.loads(f.read_text())
         generate_summary(artifacts, specs, metadata, output_dir)
+        generate_collection_files(output_dir)
         return
+
+    from playwright.sync_api import sync_playwright
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(viewport={"width": 1400, "height": 900})
         page = context.new_page()
 
-        # Login
-        login(page)
+        try:
+            # Login
+            login(page)
 
-        # Fetch artifact list
-        artifacts = fetch_artifact_list(page)
+            # Fetch artifact list
+            artifacts = fetch_artifact_list(page)
 
-        # Fetch specs and metadata for each API
-        specs: dict[str, dict | None] = {}
-        metadata: dict[str, dict] = {}
-        total = len(artifacts)
+            # Fetch specs and metadata for each API
+            specs: dict[str, dict | None] = {}
+            metadata: dict[str, dict] = {}
+            total = len(artifacts)
 
-        for i, artifact in enumerate(artifacts, 1):
-            name = artifact["Name"]
-            display = artifact.get("DisplayName", name)
-            log.info("[%d/%d] %s (%s)", i, total, display, name)
+            for i, artifact in enumerate(artifacts, 1):
+                name = artifact["Name"]
+                display = artifact.get("DisplayName", name)
+                log.info("[%d/%d] %s (%s)", i, total, display, name)
 
-            # Metadata
+                # Metadata
+                try:
+                    meta = fetch_api_metadata(page, name)
+                    metadata[name] = meta
+                except SessionAuthError:
+                    raise
+                except Exception as e:
+                    log.error("  Metadata failed: %s", e)
+
+                # Spec
+                spec = fetch_api_spec(page, name)
+                specs[name] = spec
+                if spec:
+                    log.info("  → %d endpoints, %d schemas",
+                             count_operations(spec),
+                             len(spec.get("definitions", spec.get("components", {}).get("schemas", {}))))
+                else:
+                    log.warning("  → No spec available")
+
+                # Small delay to be polite
+                time.sleep(0.3)
+        except Exception:
+            # Capture what the browser was showing — invaluable for
+            # debugging headless login failures (esp. in CI).
             try:
-                meta = fetch_api_metadata(page, name)
-                metadata[name] = meta
-            except SessionAuthError:
-                raise
-            except Exception as e:
-                log.error("  Metadata failed: %s", e)
+                page.screenshot(path="login_failure.png", full_page=True)
+                log.error("Saved failure screenshot to login_failure.png (URL: %s)", page.url)
+            except Exception:
+                pass
+            raise
+        finally:
+            browser.close()
 
-            # Spec
-            spec = fetch_api_spec(page, name)
-            specs[name] = spec
-            if spec:
-                paths = spec.get("paths", {})
-                defs = spec.get("definitions", spec.get("components", {}).get("schemas", {}))
-                log.info("  → %d endpoints, %d schemas", len(paths), len(defs))
-            else:
-                log.warning("  → No spec available")
-
-            # Small delay to be polite
-            time.sleep(0.3)
-
-        browser.close()
+    spec_count = sum(1 for s in specs.values() if s)
+    if args.min_specs and spec_count < args.min_specs:
+        log.error(
+            "Only %d specs fetched but --min-specs=%d — aborting without saving "
+            "(session likely half-failed)", spec_count, args.min_specs,
+        )
+        sys.exit(2)
 
     # Save everything
     save_specs(artifacts, specs, metadata, output_dir)
     generate_summary(artifacts, specs, metadata, output_dir)
+    generate_collection_files(output_dir)
 
     # Print stats
-    spec_count = sum(1 for s in specs.values() if s)
-    total_endpoints = sum(
-        len(s.get("paths", {})) for s in specs.values() if s
-    )
+    total_endpoints = sum(count_operations(s) for s in specs.values() if s)
     total_schemas = sum(
         len(s.get("definitions", s.get("components", {}).get("schemas", {})))
         for s in specs.values() if s

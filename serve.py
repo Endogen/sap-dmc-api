@@ -2,10 +2,9 @@
 """Lightweight web server for browsing SAP DMC API specs with Swagger UI."""
 from __future__ import annotations
 
-import json
 import os
 import sys
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -16,6 +15,7 @@ TEMPLATES_DIR = ROOT / "templates"
 STATIC_DIR = ROOT / "static"
 COLLECTIONS_DIR = OUTPUT_DIR / "collections"
 
+HOST = os.environ.get("HOST", "127.0.0.1")
 PORT = int(os.environ.get("PORT", 8080))
 
 
@@ -34,13 +34,19 @@ class APIHandler(SimpleHTTPRequestHandler):
         elif path == "/changelog.json":
             self._serve_file(OUTPUT_DIR / "changelog.json", "application/json")
         elif path.startswith("/specs/") and path.endswith(".json"):
-            name = path[7:]  # strip "/specs/"
-            self._serve_file(SPECS_DIR / name, "application/json")
+            self._serve_from_dir(SPECS_DIR, path[7:], "application/json")
         elif path.startswith("/collections/") and path.endswith(".json"):
-            name = path[13:]  # strip "/collections/"
-            self._serve_file(COLLECTIONS_DIR / name, "application/json")
+            self._serve_from_dir(COLLECTIONS_DIR, path[13:], "application/json")
         else:
             self.send_error(404)
+
+    def _serve_from_dir(self, base_dir: Path, name: str, content_type: str):
+        # Resolve and confine to base_dir — blocks ../ path traversal
+        target = (base_dir / name).resolve()
+        if not target.is_relative_to(base_dir.resolve()):
+            self.send_error(404)
+            return
+        self._serve_file(target, content_type)
 
     def _serve_file(self, filepath: Path, content_type: str):
         try:
@@ -61,9 +67,9 @@ class APIHandler(SimpleHTTPRequestHandler):
 
 
 def main():
-    server = HTTPServer(("0.0.0.0", PORT), APIHandler)
+    server = ThreadingHTTPServer((HOST, PORT), APIHandler)
     print(f"SAP DMC API Browser")
-    print(f"  http://localhost:{PORT}")
+    print(f"  http://{HOST}:{PORT}")
     print(f"  Serving {len(list(SPECS_DIR.glob('*.json')))} API specs")
     print(f"  Press Ctrl+C to stop\n")
     try:
