@@ -1,6 +1,6 @@
 # SAP Digital Manufacturing Cloud — REST API Reference
 
-*Scraped: 2026-07-06 21:41 UTC*
+*Scraped: 2026-07-07 08:43 UTC*
 
 **Package:** [SAPDigitalManufacturingCloud](https://api.sap.com/package/SAPDigitalManufacturingCloud/rest)
 
