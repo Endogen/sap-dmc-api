@@ -1,12 +1,12 @@
 # SAP Digital Manufacturing Cloud — REST API Reference
 
-*Scraped: 2026-07-07 08:43 UTC*
+*Scraped: 2026-07-08 07:43 UTC*
 
 **Package:** [SAPDigitalManufacturingCloud](https://api.sap.com/package/SAPDigitalManufacturingCloud/rest)
 
 **Total APIs:** 88
-**Total Endpoints:** 480
-**Total Schemas:** 1285
+**Total Endpoints:** 478
+**Total Schemas:** 1277
 
 ---
 
@@ -62,7 +62,7 @@
 | 46 | [Print](specs/sapfnd_print.json) | 3 | 11 | v1 |  |
 | 47 | [Printer](specs/sapfnd_printer.json) | 4 | 7 | v1 |  |
 | 48 | [Problem-Solving Process](specs/sapdme_psp.json) | 20 | 24 | v1 |  |
-| 49 | [Process Lot](specs/sapdme_processlot_v2.json) | 2 | 8 | v2 |  |
+| 49 | [Process Lot](specs/sapdme_processlot_v2.json) | 0 | 0 |  |  |
 | 50 | [Process Lot](specs/sapdme_processlot.json) | 8 | 11 | v1 |  |
 | 51 | [Process Manufacturing Execution](specs/sapdme_process_manufacturing.json) | 2 | 5 | v1 |  |
 | 52 | [Process Order Execution](specs/sapdme_processorder.json) | 9 | 28 | v1 |  |
@@ -765,16 +765,6 @@
 | `POST` | `/TeamMembers` | Adds team members to the D1 step of a problem-solving process. |
 | `GET` | `/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')` | Retrieves all values of a team member of a problem-solving process. |
 | `PATCH` | `/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')` | Updates team members of a problem-solving process. |
-
-### Process Lot
-
-**Slug:** `sapdme_processlot_v2`
-**Description:** Perform update and start activities on Process Lot
-
-| Method | Path | Summary |
-|--------|------|---------|
-| `POST` | `/processLot/members` | Updates a Process Lot by adding members. |
-| `POST` | `/processLot/start` | Start a Process Lot. |
 
 ### Process Lot
 
