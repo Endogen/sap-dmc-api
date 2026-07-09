@@ -1,12 +1,12 @@
 # SAP Digital Manufacturing Cloud — REST API Reference
 
-*Scraped: 2026-07-08 07:43 UTC*
+*Scraped: 2026-07-09 17:02 UTC*
 
 **Package:** [SAPDigitalManufacturingCloud](https://api.sap.com/package/SAPDigitalManufacturingCloud/rest)
 
 **Total APIs:** 88
-**Total Endpoints:** 478
-**Total Schemas:** 1277
+**Total Endpoints:** 477
+**Total Schemas:** 1281
 
 ---
 
@@ -62,7 +62,7 @@
 | 46 | [Print](specs/sapfnd_print.json) | 3 | 11 | v1 |  |
 | 47 | [Printer](specs/sapfnd_printer.json) | 4 | 7 | v1 |  |
 | 48 | [Problem-Solving Process](specs/sapdme_psp.json) | 20 | 24 | v1 |  |
-| 49 | [Process Lot](specs/sapdme_processlot_v2.json) | 0 | 0 |  |  |
+| 49 | [Process Lot](specs/sapdme_processlot_v2.json) | 2 | 8 | v2 |  |
 | 50 | [Process Lot](specs/sapdme_processlot.json) | 8 | 11 | v1 |  |
 | 51 | [Process Manufacturing Execution](specs/sapdme_process_manufacturing.json) | 2 | 5 | v1 |  |
 | 52 | [Process Order Execution](specs/sapdme_processorder.json) | 9 | 28 | v1 |  |
@@ -70,7 +70,7 @@
 | 54 | [Product Genealogy Report (PGR) Assembly Components](specs/sapdme_pgr_components.json) | 1 | 4 | v1 |  |
 | 55 | [Production Change](specs/sapdme_production_v2.json) | 1 | 5 | v2 |  |
 | 56 | [Production Change](specs/sapdme_production.json) | 1 | 5 | v1 |  |
-| 57 | [Production Operator Dashboard](specs/sapdme_pod.json) | 3 | 4 | v1 |  |
+| 57 | [Production Operator Dashboard](specs/sapdme_pod.json) | 0 | 0 |  |  |
 | 58 | [Production Operator Dashboard Notification](specs/sapdme_notification.json) | 1 | 4 | v1 |  |
 | 59 | [Quality Inspection](specs/sapdme_qualityinspection_v2.json) | 1 | 4 | v2 |  |
 | 60 | [Quality Inspection](specs/sapdme_qualityinspection.json) | 11 | 28 | v1 |  |
@@ -768,6 +768,16 @@
 
 ### Process Lot
 
+**Slug:** `sapdme_processlot_v2`
+**Description:** Perform update and start activities on Process Lot
+
+| Method | Path | Summary |
+|--------|------|---------|
+| `POST` | `/processLot/members` | Updates a Process Lot by adding members. |
+| `POST` | `/processLot/start` | Start a Process Lot. |
+
+### Process Lot
+
 **Slug:** `sapdme_processlot`
 **Base Path:** `/`
 **Description:** Perform create, read, update and delete activities on Process Lot
@@ -849,18 +859,6 @@
 | Method | Path | Summary |
 |--------|------|---------|
 | `POST` | `/changeProduction` | Assigns a new routing or a new Bill of Materials (BOM) to given Shop Floor Controls (SFCs) |
-
-### Production Operator Dashboard
-
-**Slug:** `sapdme_pod`
-**Base Path:** `/`
-**Description:** Create, import, and export a Production Operator Dashboard
-
-| Method | Path | Summary |
-|--------|------|---------|
-| `POST` | `/configurations` | API to create a new POD given a POD configuration. |
-| `GET` | `/export` | API to export a POD configuration. |
-| `POST` | `/import` | API to import a POD configuration from a local file system and creating a new POD. |
 
 ### Production Operator Dashboard Notification
 

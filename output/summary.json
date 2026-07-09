@@ -2987,11 +2987,33 @@
     "description": "Perform update and start activities on Process Lot",
     "version": "v2",
     "status": "",
-    "spec_version": null,
-    "endpoint_count": 0,
-    "path_count": 0,
-    "schema_count": 0,
-    "endpoints": []
+    "spec_version": "3.0.3",
+    "api_version": "v2",
+    "base_path": "",
+    "host": "",
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/processLot/members",
+        "summary": "Updates a Process Lot by adding members.",
+        "operation_id": "addMembersToProcessLotUsingPOST",
+        "tags": [
+          "Process Lot"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/processLot/start",
+        "summary": "Start a Process Lot.",
+        "operation_id": "startProcessLotUsingPOST",
+        "tags": [
+          "Process Lot Processing"
+        ]
+      }
+    ],
+    "endpoint_count": 2,
+    "path_count": 2,
+    "schema_count": 8
   },
   {
     "name": "sapdme_processlot",
@@ -3318,42 +3340,11 @@
     "description": "Create, import, and export a Production Operator Dashboard",
     "version": "v1",
     "status": "",
-    "spec_version": "2.0",
-    "api_version": "v1",
-    "base_path": "/",
-    "host": "hostname",
-    "endpoints": [
-      {
-        "method": "POST",
-        "path": "/configurations",
-        "summary": "API to create a new POD given a POD configuration.",
-        "operation_id": "createPodConfigurationUsingPOST",
-        "tags": [
-          "Production Operator Dashboard"
-        ]
-      },
-      {
-        "method": "GET",
-        "path": "/export",
-        "summary": "API to export a POD configuration.",
-        "operation_id": "exportPodUsingGET",
-        "tags": [
-          "Production Operator Dashboard"
-        ]
-      },
-      {
-        "method": "POST",
-        "path": "/import",
-        "summary": "API to import a POD configuration from a local file system and creating a new POD.",
-        "operation_id": "importPodUsingPOST",
-        "tags": [
-          "Production Operator Dashboard"
-        ]
-      }
-    ],
-    "endpoint_count": 3,
-    "path_count": 3,
-    "schema_count": 4
+    "spec_version": null,
+    "endpoint_count": 0,
+    "path_count": 0,
+    "schema_count": 0,
+    "endpoints": []
   },
   {
     "name": "sapdme_notification",
