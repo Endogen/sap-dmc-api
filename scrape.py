@@ -33,6 +33,12 @@ import os
 if TYPE_CHECKING:
     from playwright.sync_api import Page
 
+try:
+    from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+except ImportError:  # pragma: no cover - only used in environments without Playwright
+    class PlaywrightTimeoutError(Exception):
+        """Fallback timeout error used when Playwright isn't installed."""
+
 # ── Config ──────────────────────────────────────────────────────────
 
 PACKAGE_ID = "SAPDigitalManufacturingCloud"
@@ -73,6 +79,9 @@ AUTH_HTML_MARKERS = (
     "<!doctype html",
 )
 
+NAVIGATION_TIMEOUT_MS = 45_000
+POST_NAVIGATION_PAUSE_MS = 3_000
+
 
 # ── Auth ────────────────────────────────────────────────────────────
 
@@ -83,11 +92,60 @@ def _click_submit(page: Page) -> None:
     button.click()
 
 
+def _url_indicates_reachable_login(url: str) -> bool:
+    lowered = url.lower()
+    return (
+        "accounts.sap.com" in lowered
+        or PACKAGE_ID.lower() in lowered
+        or "api.sap.com/package/" in lowered
+    )
+
+
+def _settle_page(page: Page, pause_ms: int = POST_NAVIGATION_PAUSE_MS) -> None:
+    try:
+        page.wait_for_load_state("domcontentloaded", timeout=5_000)
+    except Exception:
+        pass
+    page.wait_for_timeout(pause_ms)
+
+
+def open_package(page: Page, *, max_attempts: int = 2) -> None:
+    """Open the SAP package page, tolerating slow login redirects."""
+    for attempt in range(1, max_attempts + 1):
+        try:
+            page.goto(
+                PACKAGE_URL,
+                timeout=NAVIGATION_TIMEOUT_MS,
+                wait_until="domcontentloaded",
+            )
+            _settle_page(page)
+            return
+        except PlaywrightTimeoutError:
+            current_url = page.url or ""
+            if _url_indicates_reachable_login(current_url):
+                log.warning(
+                    "Timed out waiting for %s to fully load, but reached %s; continuing",
+                    PACKAGE_URL,
+                    current_url,
+                )
+                _settle_page(page, pause_ms=1_000)
+                return
+            if attempt == max_attempts:
+                raise
+            log.warning(
+                "Timed out opening %s on attempt %d/%d (current URL: %s); retrying",
+                PACKAGE_URL,
+                attempt,
+                max_attempts,
+                current_url or "<unknown>",
+            )
+            page.wait_for_timeout(2_000)
+
+
 def login(page: Page) -> None:
     """Perform SAP ID login and account selection."""
     log.info("Navigating to %s", PACKAGE_URL)
-    page.goto(PACKAGE_URL, timeout=30_000)
-    page.wait_for_timeout(3000)
+    open_package(page)
 
     if "accounts.sap.com" not in page.url:
         log.info("Already logged in")
@@ -126,8 +184,7 @@ def login(page: Page) -> None:
 def refresh_session(page: Page) -> None:
     """Bounce through the package page to refresh the authenticated browser session."""
     log.info("Refreshing SAP session")
-    page.goto(PACKAGE_URL, timeout=30_000)
-    page.wait_for_timeout(2000)
+    open_package(page)
     login(page)
 
 
