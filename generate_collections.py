@@ -354,7 +354,7 @@ def generate(output_root: Path) -> None:
 
     if not specs_dir.exists() or not summary_path.exists():
         raise FileNotFoundError(
-            f"{specs_dir} or {summary_path} not found — run scrape.py first"
+            f"{specs_dir} or {summary_path} not found — run mirror.py first"
         )
 
     print("Loading specs...")

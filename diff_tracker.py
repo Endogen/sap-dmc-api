@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-API Diff Tracker — Detect structural changes between SAP DMC API scrape runs.
+API Diff Tracker — Detect structural changes between SAP DMC API mirror runs.
 
 Uses git history to compare the current specs against the last committed version.
 Generates per-run diff reports and a combined changelog.

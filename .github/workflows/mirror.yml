@@ -1,4 +1,4 @@
-name: Scrape SAP DMC APIs
+name: Mirror SAP DMC APIs
 
 on:
   schedule:
@@ -10,11 +10,11 @@ permissions:
   actions: write   # needed to trigger the Pages deploy workflow
 
 concurrency:
-  group: scrape
+  group: mirror
   cancel-in-progress: false
 
 jobs:
-  scrape:
+  mirror:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,17 +24,34 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Install dependencies
+      - name: Check public catalog
+        id: mirror-check
+        run: |
+          set +e
+          python mirror.py --check
+          status=$?
+          set -e
+          if [ "$status" -eq 0 ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          elif [ "$status" -eq 3 ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            exit "$status"
+          fi
+
+      - name: Install mirror dependencies
+        if: steps.mirror-check.outputs.changed == 'true'
         run: |
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
-      - name: Scrape specs
+      - name: Mirror changed specs
+        if: steps.mirror-check.outputs.changed == 'true'
         env:
           SAP_USER: ${{ secrets.SAP_USER }}
           SAP_PASS: ${{ secrets.SAP_PASS }}
           SAP_ACCOUNT: ${{ secrets.SAP_ACCOUNT }}
-        run: python scrape.py --min-specs 80
+        run: python mirror.py --min-specs 80
 
       - name: Upload failure screenshot
         if: failure()
@@ -46,6 +63,7 @@ jobs:
 
       - name: Commit and push changes
         id: commit
+        if: steps.mirror-check.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

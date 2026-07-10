@@ -1,4 +1,4 @@
-"""Make repo-root modules (scrape, serve, ...) importable from tests/."""
+"""Make repo-root modules (mirror, serve, ...) importable from tests/."""
 import sys
 from pathlib import Path
 

@@ -1,10 +1,10 @@
-# SAP Digital Manufacturing Cloud — API Scraper
+# SAP Digital Manufacturing Cloud — API Mirror
 
-Scrapes all REST API specs from the [SAP Digital Manufacturing Cloud](https://api.sap.com/package/SAPDigitalManufacturingCloud/rest) package on SAP Business Accelerator Hub.
+Mirrors all REST API specs from the [SAP Digital Manufacturing Cloud](https://api.sap.com/package/SAPDigitalManufacturingCloud/rest) package on SAP Business Accelerator Hub.
 
 Downloads complete Swagger 2.0 / OpenAPI specs for every API, including all endpoints, request/response schemas, and metadata.
 
-**Browse the APIs online:** https://endogen.github.io/sap-dmc-api/ — search, Swagger UI, changelog, and collection downloads, rebuilt automatically after every scrape.
+**Browse the APIs online:** https://endogen.github.io/sap-dmc-api/ — search, Swagger UI, changelog, and collection downloads, rebuilt automatically after every mirror update.
 
 ## What's Included
 
@@ -14,7 +14,7 @@ output/
   summary.json       # Machine-readable index of all APIs & endpoints
   artifacts.json     # Raw artifact catalog from SAP
   changelog.json     # Combined changelog of all detected spec changes
-  history/           # One diff report per scrape run that found changes
+  history/           # One diff report per mirror run that found changes
   specs/             # 88 Swagger JSON files (one per API)
   metadata/          # 88 API metadata files from OData catalog
   collections/       # Postman & Insomnia collection files
@@ -40,7 +40,7 @@ cp .env.example .env
 
 ### Credentials
 
-You need an SAP account with access to the SAP Digital Manufacturing Cloud package. Set these in `.env`:
+When catalog changes require protected specifications to be downloaded, you need an SAP account with access to the SAP Digital Manufacturing Cloud package. Set these in `.env`:
 
 ```
 SAP_USER=your.email@company.com
@@ -50,32 +50,39 @@ SAP_ACCOUNT=S00xxxxxxxx
 
 The account ID (`SAP_ACCOUNT`) is the S-number shown on the SAP ID account selection screen after login.
 
-## Scraping
+## Mirroring
 
 ```bash
-# Full scrape (login + download all 88 API specs)
-python3 scrape.py
+# Incremental mirror (checks the public catalog first)
+python3 mirror.py
 
 # Custom output directory
-python3 scrape.py --output-dir my-output
+python3 mirror.py --output-dir my-output
 
-# Abort without saving if fewer than N specs were fetched
+# Abort without saving if the resulting mirror has fewer than N specs
 # (guards against half-failed sessions; used by CI)
-python3 scrape.py --min-specs 80
+python3 mirror.py --min-specs 80
+
+# Check whether updates are needed without credentials or Playwright
+# Exit status: 0 = current, 3 = update needed
+python3 mirror.py --check
+
+# Force all specifications to be downloaded again
+python3 mirror.py --force
 
 # Regenerate summary/README/collections from existing specs
 # (no login or Playwright needed)
-python3 scrape.py --summary-only
+python3 mirror.py --summary-only
 ```
 
-A full scrape takes about 50 seconds. The scraper:
-1. Logs into api.sap.com via Playwright (headless Chromium)
-2. Fetches the artifact list from the OData catalog API
-3. Downloads the Swagger spec + metadata for each API (and prunes specs for APIs SAP removed)
-4. Generates `summary.json`, a markdown reference (`output/README.md`), and Postman/Insomnia collections
-5. Diffs against the last committed specs and updates `output/changelog.json`
+The mirror separates public discovery from authenticated downloads:
+1. Fetches the artifact list from the public OData catalog using ordinary HTTP
+2. Compares each API's version, state, subtype, and modification timestamp with the existing mirror
+3. Exits immediately without a browser when nothing changed
+4. When needed, logs in once via Playwright and downloads only changed specifications through Playwright's HTTP request context
+5. Fetches changed metadata publicly, prunes removed APIs, regenerates summaries/collections, and updates the changelog
 
-On a failed login the scraper saves `login_failure.png` showing what the browser saw.
+On a failed login the mirror saves `login_failure.png` showing what the browser saw. The old `python3 scrape.py` command remains as a compatibility entry point.
 
 ## Automation (GitHub Actions + Pages)
 
@@ -83,15 +90,15 @@ Everything also runs unattended on GitHub — no local machine needed:
 
 | Workflow | Trigger | What it does |
 |----------|---------|--------------|
-| `scrape.yml` | daily at 05:17 UTC + manual | Scrapes SAP, commits changed specs/changelog to `main`, triggers the Pages deploy |
+| `mirror.yml` | daily at 05:17 UTC + manual | Checks SAP publicly, mirrors changed specs, commits updates to `main`, and triggers the Pages deploy |
 | `deploy-pages.yml` | push to `main` (output/templates/static) + manual | Assembles the static site and publishes it to GitHub Pages |
 | `test.yml` | push / PR | Runs the pytest suite |
 
 The live site is at **https://endogen.github.io/sap-dmc-api/**.
 
-Required repository secrets (Settings → Secrets and variables → Actions): `SAP_USER`, `SAP_PASS`, `SAP_ACCOUNT`.
+Required repository secrets (Settings → Secrets and variables → Actions): `SAP_USER`, `SAP_PASS`, `SAP_ACCOUNT`. They are only used when the public catalog check reports changes.
 
-The scrape job runs with `--min-specs 80`, so a half-failed SAP session aborts instead of committing a gutted dataset. If the login fails, the run uploads a `login-failure` artifact with a screenshot of what SAP showed the headless browser.
+The mirror job runs with `--min-specs 80`, so a half-failed SAP session aborts instead of committing a gutted dataset. Chromium is installed only when the public catalog changed. If login fails, the run uploads a `login-failure` artifact with a screenshot of what SAP showed the headless browser.
 
 ## Browsing APIs
 
@@ -113,7 +120,7 @@ HOST=0.0.0.0 python3 serve.py   # expose on the network
 
 ## Postman & Insomnia Collections
 
-Collections are regenerated automatically at the end of every scrape. To rebuild them manually from existing specs:
+Collections are regenerated automatically after every mirror update. To rebuild them manually from existing specs:
 
 ```bash
 python3 generate_collections.py
@@ -131,12 +138,12 @@ Both collections include:
 - Method, path, description, and request body examples (generated from schemas)
 - `{{base_url}}` / `{{token}}` variables for host and auth configuration
 
-## Re-scraping
+## Refreshing the Mirror
 
-The daily GitHub Actions run takes care of this, but a manual run works the same way: `scrape.py` overwrites all specs, regenerates summary and collections, and records any changes in `output/changelog.json`. Commit the diff to keep the history.
+The daily GitHub Actions run takes care of this. A manual run checks the public catalog and only downloads specifications that changed; `--force` performs a complete refresh. Successful updates regenerate the summary and collections and record spec changes in `output/changelog.json`.
 
 ```bash
-python3 scrape.py
+python3 mirror.py
 git diff --stat output/
 git add -A && git commit -m "Update specs $(date +%Y-%m-%d)"
 ```
