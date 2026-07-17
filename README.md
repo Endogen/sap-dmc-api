@@ -90,13 +90,15 @@ Everything also runs unattended on GitHub — no local machine needed:
 
 | Workflow | Trigger | What it does |
 |----------|---------|--------------|
-| `mirror.yml` | daily at 05:17 UTC + manual | Checks SAP publicly, mirrors changed specs, commits updates to `main`, and triggers the Pages deploy |
+| `mirror.yml` | daily at 05:17 UTC + manual | Checks SAP publicly, mirrors changed specs, opens a deduplicated issue assigned to the repository owner when structural API changes are detected, commits updates to `main`, and triggers the Pages deploy |
 | `deploy-pages.yml` | push to `main` (output/templates/static) + manual | Assembles the static site and publishes it to GitHub Pages |
 | `test.yml` | push / PR | Runs the pytest suite |
 
 The live site is at **https://endogen.github.io/sap-dmc-api/**.
 
 Required repository secrets (Settings → Secrets and variables → Actions): `SAP_USER`, `SAP_PASS`, `SAP_ACCOUNT`. They are only used when the public catalog check reports changes.
+
+API-change issues use the workflow's built-in `GITHUB_TOKEN`; no additional secret is required. Metadata-only updates do not create an issue, and rerunning a change report does not create a duplicate.
 
 The mirror job runs with `--min-specs 80`, so a half-failed SAP session aborts instead of committing a gutted dataset. Chromium is installed only when the public catalog changed. If login fails, the run uploads a `login-failure` artifact with a screenshot of what SAP showed the headless browser.
 
