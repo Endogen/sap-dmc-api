@@ -79,8 +79,8 @@ The mirror separates public discovery from authenticated downloads:
 1. Fetches the artifact list from the public OData catalog using ordinary HTTP
 2. Compares each API's version, state, subtype, and modification timestamp with the existing mirror
 3. Exits immediately without a browser when nothing changed
-4. When needed, logs in once via Playwright and downloads only changed specifications through Playwright's HTTP request context
-5. Fetches changed metadata publicly, prunes removed APIs, regenerates summaries/collections, and updates the changelog
+4. When needed, logs in once via Playwright and downloads changed metadata and specifications through Playwright's authenticated HTTP request context
+5. Prunes removed APIs, regenerates summaries/collections, and updates the changelog
 
 On a failed login the mirror saves `login_failure.png` showing what the browser saw. The old `python3 scrape.py` command remains as a compatibility entry point.
 
