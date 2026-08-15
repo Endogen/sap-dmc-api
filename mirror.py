@@ -365,10 +365,14 @@ def fetch_artifact_list() -> list[dict]:
     return apis
 
 
-def fetch_api_metadata(name: str) -> dict:
-    """Fetch API metadata from OData catalog."""
+def fetch_api_metadata(
+    request: APIRequestContext,
+    page: Page,
+    name: str,
+) -> dict:
+    """Fetch API metadata using the authenticated SAP session."""
     url = API_META_URL.format(name=name)
-    data = fetch_public_json(url)
+    data = fetch_authenticated_json(request, page, url)
     return data.get("d", data)
 
 
@@ -742,10 +746,6 @@ def main() -> int:
         return 1
 
     metadata_updates: dict[str, dict] = {}
-    for i, name in enumerate(update_names, 1):
-        log.info("[%d/%d] Fetching public metadata for %s", i, len(update_names), name)
-        metadata_updates[name] = fetch_api_metadata(name)
-
     spec_updates: dict[str, dict | None] = {}
     if update_names:
         from playwright.sync_api import sync_playwright
@@ -765,6 +765,7 @@ def main() -> int:
                     artifact = artifacts_by_name[name]
                     display = artifact.get("DisplayName", name)
                     log.info("[%d/%d] %s (%s)", i, len(update_names), display, name)
+                    metadata_updates[name] = fetch_api_metadata(request, page, name)
                     spec = fetch_api_spec(request, page, name)
                     spec_updates[name] = spec
                     if spec:

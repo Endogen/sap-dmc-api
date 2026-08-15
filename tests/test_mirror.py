@@ -11,6 +11,7 @@ from mirror import (
     CHECK_CHANGES_EXIT_CODE,
     HttpStatusError,
     count_operations,
+    fetch_api_metadata,
     fetch_api_spec,
     fetch_authenticated_json,
     is_api_url,
@@ -231,6 +232,28 @@ def test_authenticated_fetch_uses_request_context_not_page_evaluate():
 
     assert result == {"openapi": "3.0.0"}
     assert request.calls[0][1]["fail_on_status_code"] is False
+
+
+def test_fetch_api_metadata_uses_authenticated_session(monkeypatch):
+    request = object()
+    page = object()
+    calls = []
+
+    def authenticated_fetch(actual_request, actual_page, url):
+        calls.append((actual_request, actual_page, url))
+        return {"d": {"Name": "example"}}
+
+    monkeypatch.setattr(mirror, "fetch_authenticated_json", authenticated_fetch)
+
+    assert fetch_api_metadata(request, page, "example") == {"Name": "example"}
+    assert calls == [
+        (
+            request,
+            page,
+            "https://api.sap.com/odata/1.0/catalog.svc/"
+            "APIContent.APIs('example')?$select=*&$format=json",
+        )
+    ]
 
 
 def test_fetch_api_spec_treats_not_found_as_unavailable(monkeypatch):
