@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import sys
+import types
 
 import mirror
 import pytest
@@ -234,6 +235,49 @@ def test_authenticated_fetch_uses_request_context_not_page_evaluate():
     assert request.calls[0][1]["fail_on_status_code"] is False
 
 
+def test_authenticated_fetch_refreshes_session_after_login_html(monkeypatch):
+    class Response:
+        ok = True
+        status = 200
+        url = "https://api.sap.com/metadata"
+
+        def __init__(self, body, content_type):
+            self._body = body
+            self.headers = {"content-type": content_type}
+
+        def text(self):
+            return self._body
+
+    class RequestContext:
+        def __init__(self):
+            self.responses = iter(
+                [
+                    Response("<html><body>Log On</body></html>", "text/html"),
+                    Response('{"d": {"Name": "example"}}', "application/json"),
+                ]
+            )
+            self.calls = 0
+
+        def get(self, *_args, **_kwargs):
+            self.calls += 1
+            return next(self.responses)
+
+    request = RequestContext()
+    page = object()
+    refreshes = []
+    monkeypatch.setattr(
+        mirror,
+        "refresh_session",
+        lambda actual_page, url: refreshes.append((actual_page, url)),
+    )
+
+    result = fetch_authenticated_json(request, page, "https://api.sap.com/metadata")
+
+    assert result == {"d": {"Name": "example"}}
+    assert request.calls == 2
+    assert refreshes == [(page, "https://api.sap.com/metadata")]
+
+
 def test_fetch_api_metadata_uses_authenticated_session(monkeypatch):
     request = object()
     page = object()
@@ -288,6 +332,108 @@ def test_check_mode_is_credential_free_when_mirror_is_current(tmp_path, monkeypa
     )
 
     assert mirror.main() == 0
+
+
+def test_removal_only_run_needs_no_credentials_or_playwright(tmp_path, monkeypatch):
+    previous = [artifact("kept"), artifact("removed")]
+    current = [artifact("kept")]
+    (tmp_path / "artifacts.json").write_text(json.dumps(previous), encoding="utf-8")
+    write_mirror_files(tmp_path, ["kept"])
+
+    monkeypatch.setattr(mirror, "fetch_artifact_list", lambda: current)
+    monkeypatch.setattr(mirror, "SAP_USER", "")
+    monkeypatch.setattr(mirror, "SAP_PASS", "")
+    monkeypatch.setattr(mirror, "SAP_ACCOUNT", "")
+    monkeypatch.setitem(sys.modules, "playwright.sync_api", None)
+    monkeypatch.setattr(mirror, "generate_summary", lambda *_args: None)
+    monkeypatch.setattr(mirror, "generate_collection_files", lambda *_args: None)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["mirror.py", "--output-dir", str(tmp_path)],
+    )
+
+    assert mirror.main() == 0
+    saved = json.loads((tmp_path / "artifacts.json").read_text(encoding="utf-8"))
+    assert saved == current
+
+
+def test_main_logs_in_before_fetching_metadata(tmp_path, monkeypatch):
+    current = [artifact()]
+    events = []
+
+    class Page:
+        url = "https://api.sap.com/"
+
+        def screenshot(self, **_kwargs):
+            raise AssertionError("The successful path must not take a screenshot")
+
+    class Context:
+        request = object()
+
+        @staticmethod
+        def new_page():
+            return Page()
+
+    class Browser:
+        @staticmethod
+        def new_context(**_kwargs):
+            return Context()
+
+        @staticmethod
+        def close():
+            events.append("close")
+
+    class Chromium:
+        @staticmethod
+        def launch(**_kwargs):
+            return Browser()
+
+    class Playwright:
+        chromium = Chromium()
+
+    class PlaywrightManager:
+        def __enter__(self):
+            return Playwright()
+
+        def __exit__(self, *_args):
+            return False
+
+    sync_api = types.ModuleType("playwright.sync_api")
+    setattr(sync_api, "sync_playwright", lambda: PlaywrightManager())
+    playwright = types.ModuleType("playwright")
+    playwright.__path__ = []
+    setattr(playwright, "sync_api", sync_api)
+    monkeypatch.setitem(sys.modules, "playwright", playwright)
+    monkeypatch.setitem(sys.modules, "playwright.sync_api", sync_api)
+
+    monkeypatch.setattr(mirror, "fetch_artifact_list", lambda: current)
+    monkeypatch.setattr(mirror, "SAP_USER", "user")
+    monkeypatch.setattr(mirror, "SAP_PASS", "password")
+    monkeypatch.setattr(mirror, "SAP_ACCOUNT", "account")
+    monkeypatch.setattr(mirror, "login", lambda *_args: events.append("login"))
+    monkeypatch.setattr(
+        mirror,
+        "fetch_api_metadata",
+        lambda *_args: events.append("metadata") or {"Name": "example"},
+    )
+    monkeypatch.setattr(
+        mirror,
+        "fetch_api_spec",
+        lambda *_args: events.append("spec") or {"openapi": "3.0.0", "paths": {}},
+    )
+    monkeypatch.setattr(mirror.time, "sleep", lambda *_args: None)
+    monkeypatch.setattr(mirror, "save_specs", lambda *_args: None)
+    monkeypatch.setattr(mirror, "generate_summary", lambda *_args: None)
+    monkeypatch.setattr(mirror, "generate_collection_files", lambda *_args: None)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["mirror.py", "--output-dir", str(tmp_path)],
+    )
+
+    assert mirror.main() == 0
+    assert events[:3] == ["login", "metadata", "spec"]
 
 
 def test_check_mode_signals_when_browser_run_is_needed(tmp_path, monkeypatch):
