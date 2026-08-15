@@ -1,0 +1,40 @@
+{
+  "__metadata": {
+    "id": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_panel_sfc')",
+    "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_panel_sfc')",
+    "type": "APIContent.API",
+    "content_type": "application/octet-stream",
+    "media_src": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_panel_sfc')/$value",
+    "edit_media": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_panel_sfc')/$value"
+  },
+  "Name": "sapdme_panel_sfc",
+  "ID": "sapdme_panel_sfc",
+  "Title": "Shop Floor Control (SFC) Location",
+  "ShortText": "Manage location data for shop floor control production activities.",
+  "Description": "Track and manage physical locations of SFCs. Use this API to retrieve and update location status, assign serial numbers, and maintain location-specific data for production activities.",
+  "Direction": null,
+  "Version": "v1",
+  "ServiceCode": "REST",
+  "ServiceUrl": null,
+  "Deprecated": null,
+  "hasManagedContent": false,
+  "CreatedAt": "/Date(1786720522314)/",
+  "CreatedBy": "XXX",
+  "ModifiedAt": "/Date(1786720522317)/",
+  "ModifiedBy": "XXX",
+  "ParentTechnicalName": "SAPDigitalManufacturingCloud",
+  "State": "ACTIVE",
+  "ChangeLog": "[{\"date\":\"01 Jun 2026\",\"notes\":\"Added Get and Patch APIs for accessing and updating panel sfc to the public api hub.\",\"state\":\"Active\",\"version\":\"v1\"}]",
+  "ExternalDocs": null,
+  "ReleaseInfo": null,
+  "MultiVersion": false,
+  "BusinessObjects": null,
+  "Successors": null,
+  "OrdId": null,
+  "MinSystemVersion": null,
+  "Versions": {
+    "__deferred": {
+      "uri": "https://api.sap.com/odata/1.0/catalog.svc/APIContent.APIs('sapdme_panel_sfc')/Versions"
+    }
+  }
+}

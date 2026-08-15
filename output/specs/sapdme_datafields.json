@@ -136,8 +136,8 @@
               }
             }
           },
-          "500": {
-            "description": "An internal error occurred.",
+          "4XX": {
+            "description": "Client error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -146,8 +146,8 @@
               }
             }
           },
-          "4XX": {
-            "description": "Client error occurred.",
+          "500": {
+            "description": "An internal error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -193,8 +193,8 @@
               }
             }
           },
-          "500": {
-            "description": "An internal error occurred.",
+          "4XX": {
+            "description": "A client error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -203,8 +203,8 @@
               }
             }
           },
-          "4XX": {
-            "description": "A client error occurred.",
+          "500": {
+            "description": "An internal error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -250,8 +250,8 @@
               }
             }
           },
-          "500": {
-            "description": "An internal error occurred.",
+          "4XX": {
+            "description": "A client error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -260,8 +260,8 @@
               }
             }
           },
-          "4XX": {
-            "description": "A client error occurred.",
+          "500": {
+            "description": "An internal error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -303,8 +303,8 @@
           "204": {
             "description": "Data field deleted successfully."
           },
-          "500": {
-            "description": "An internal error occurred.",
+          "4XX": {
+            "description": "A client error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -313,8 +313,8 @@
               }
             }
           },
-          "4XX": {
-            "description": "A client error occurred.",
+          "500": {
+            "description": "An internal error occurred.",
             "content": {
               "application/json": {
                 "schema": {

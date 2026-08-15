@@ -399,7 +399,7 @@
           "Resource"
         ],
         "summary": "Retrieves a page of resources.",
-        "description": "Retrieves a list of resources by plant or by resource name and plant.",
+        "description": "Retrieves a list of resources by plant.",
         "operationId": "getResourcesUsingGET_2",
         "parameters": [
           {

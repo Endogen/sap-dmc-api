@@ -259,13 +259,13 @@
         "assembled": {
           "type": "number",
           "format": "double",
-          "example": 2,
+          "example": 2.0,
           "description": "Amount of assembled"
         },
         "required": {
           "type": "number",
           "format": "double",
-          "example": 3,
+          "example": 3.0,
           "description": "Amount of required"
         },
         "tracingMark": {

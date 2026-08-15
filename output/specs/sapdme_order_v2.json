@@ -221,6 +221,43 @@
             }
           },
           {
+            "name": "customValueFilter",
+            "in": "query",
+            "description": "Filters orders by custom field values. Each entry must be in the format ATTRIBUTE:VALUE, where ATTRIBUTE is case-insensitive (normalized to uppercase) and VALUE is case-sensitive and matched exactly. Repeat this parameter to express IN semantics for the same attribute (OR within an attribute) or AND semantics across different attributes. Maximum 5 distinct attributes and 10 values per attribute per request.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "examples": {
+              "eq": {
+                "summary": "EQ \u2014 single value",
+                "value": [
+                  "PRIORITY_LEVEL:HIGH"
+                ]
+              },
+              "in": {
+                "summary": "IN \u2014 multiple values for the same attribute",
+                "value": [
+                  "STATUS:A",
+                  "STATUS:B",
+                  "STATUS:C"
+                ]
+              },
+              "and": {
+                "summary": "AND \u2014 multiple attributes",
+                "value": [
+                  "PRIORITY_LEVEL:HIGH",
+                  "PRODUCT_GROUP:GROUP_A"
+                ]
+              }
+            }
+          },
+          {
             "name": "page",
             "in": "query",
             "description": "The current page index (starts from 0). Default index is 0.",
@@ -681,6 +718,10 @@
           "version": {
             "type": "string",
             "description": "The version of the material object"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the material object"
           }
         },
         "description": "This object represents a material."

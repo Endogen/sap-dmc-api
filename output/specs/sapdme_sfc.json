@@ -1038,17 +1038,17 @@
               "$ref": "#/definitions/ParametersValidationError"
             }
           },
-          "401": {
-            "description": "You are not authorized to call or view this resource."
-          },
-          "403": {
-            "description": "Accessing the resource you are trying to reach is forbidden."
-          },
           "404": {
             "description": "One of the related elements (e.g. plant, resource) you are trying to reach is not found.",
             "schema": {
               "$ref": "#/definitions/error"
             }
+          },
+          "401": {
+            "description": "You are not authorized to call or view this resource."
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden."
           },
           "500": {
             "description": "There was an internal server error.",

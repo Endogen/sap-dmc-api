@@ -81,7 +81,7 @@
           "Phase Processing"
         ],
         "summary": "Starts a phase.",
-        "description": "Starts a phase at the default resource of a work center at user-specified time or in real time. Be aware that the API is deprecated, and will be decommissioned and retired from production in a few releases. It's recommended to use the new successor API <a href=https://api.sap.com/api/sapdme_process_manufacturing/resource>/operationActivity/start</a>.",
+        "description": "Starts a phase at the default resource of a work center at user-specified time or in real time. This endpoint is decommissioned, you\u2019re recommended to use the <a href=https://api.sap.com/api/sapdme_process_manufacturing/path/post_operationActivity_start>Start Operation Activity</a> API instead.",
         "consumes": [
           "application/json"
         ],
@@ -134,7 +134,12 @@
             }
           }
         },
-        "deprecated": true
+        "deprecated": true,
+        "x-sap-stateInfo": {
+          "state": "Decommissioned",
+          "decommissionedDate": "2026-08-15",
+          "successorApi": "https://api.sap.com/api/sapdme_process_manufacturing/path/post_operationActivity_start"
+        }
       }
     },
     "/v1/phase/complete": {
@@ -143,7 +148,7 @@
           "Phase Processing"
         ],
         "summary": "Completes a phase.",
-        "description": "Completes a phase at the default resource of a work center at user-specified time or in real time. Be aware that the API is deprecated, and will be decommissioned and retired from production in a few releases. It's recommended to use the new successor API <a href=https://api.sap.com/api/sapdme_process_manufacturing/resource>/operationActivity/complete</a>.",
+        "description": "Completes a phase at the default resource of a work center at user-specified time or in real time. This endpoint is decommissioned, you\u2019re recommended to use the <a href=https://api.sap.com/api/sapdme_process_manufacturing/path/post_operationActivity_complete>Complete Operation Activity</a> API instead.",
         "consumes": [
           "application/json"
         ],
@@ -196,7 +201,12 @@
             }
           }
         },
-        "deprecated": true
+        "deprecated": true,
+        "x-sap-stateInfo": {
+          "state": "Decommissioned",
+          "decommissionedDate": "2026-08-15",
+          "successorApi": "https://api.sap.com/api/sapdme_process_manufacturing/path/post_operationActivity_complete"
+        }
       }
     },
     "/v1/goodsissue": {
@@ -398,20 +408,14 @@
               "$ref": "#/definitions/GoodsIssueExtendedSummaryResponse"
             }
           },
-          "400": {
-            "description": "The http request is bad or invalid and can not be processed by the server.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResponse"
-            }
-          },
           "401": {
             "description": "You are not authorized to call this resource.",
             "schema": {
               "$ref": "#/definitions/GoodsIssueExtendedSummaryResponse"
             }
           },
-          "403": {
-            "description": "Accessing the resource you are trying to reach is forbidden.",
+          "400": {
+            "description": "The http request is bad or invalid and can not be processed by the server.",
             "schema": {
               "$ref": "#/definitions/ErrorResponse"
             }
@@ -424,6 +428,12 @@
           },
           "500": {
             "description": "There was an internal error somewhere in the call chain.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
             "schema": {
               "$ref": "#/definitions/ErrorResponse"
             }
@@ -487,20 +497,14 @@
               "$ref": "#/definitions/GoodsIssueExtendedSummaryResponseV2"
             }
           },
-          "400": {
-            "description": "The http request is bad or invalid and can not be processed by the server.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResponse"
-            }
-          },
           "401": {
             "description": "You are not authorized to call this resource.",
             "schema": {
               "$ref": "#/definitions/ErrorResponse"
             }
           },
-          "403": {
-            "description": "Accessing the resource you are trying to reach is forbidden.",
+          "400": {
+            "description": "The http request is bad or invalid and can not be processed by the server.",
             "schema": {
               "$ref": "#/definitions/ErrorResponse"
             }
@@ -513,6 +517,12 @@
           },
           "500": {
             "description": "There was an internal error somewhere in the call chain.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
             "schema": {
               "$ref": "#/definitions/ErrorResponse"
             }

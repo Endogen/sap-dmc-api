@@ -20,7 +20,7 @@ output/
   collections/       # Postman & Insomnia collection files
 ```
 
-**Current stats:** 88 APIs · 477 endpoints · 1,281 schemas
+**Current stats:** 90 APIs · 505 endpoints · 1,329 schemas
 
 ## Setup
 

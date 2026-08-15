@@ -1925,6 +1925,43 @@
           }
         },
         {
+          "name": "Updates custom values for a list of BOM components.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/boms/components/customValues",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "boms",
+                "components",
+                "customValues"
+              ]
+            },
+            "description": "Updates custom values for a list of BOM components. A BOM is identified by bom, version, plant and bomType fields provided in the request body. You must specify the sequence and custom values for each component.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bom\": \"string\",\n  \"bomType\": \"string\",\n  \"components\": [\n    {\n      \"sequence\": 0\n    }\n  ],\n  \"plant\": \"string\",\n  \"version\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
           "name": "Finds BOM header details.",
           "request": {
             "method": "GET",
@@ -2669,6 +2706,42 @@
           }
         },
         {
+          "name": "Add attachment points to an existing data collection group.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/dataCollectionGroups/attachmentPoints",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "dataCollectionGroups",
+                "attachmentPoints"
+              ]
+            },
+            "description": "Adds the provided attachment points to an existing data collection group identified by plant, data collection group name, and version.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"attachedPoints\": [\n    {\n      \"material\": {\n        \"material\": {},\n        \"version\": {}\n      },\n      \"operation\": {\n        \"operation\": {},\n        \"version\": {}\n      },\n      \"resource\": \"string\",\n      \"routing\": {\n        \"router\": {},\n        \"routerType\": {},\n        \"routerVersion\": {}\n      },\n      \"shopOrder\": \"string\",\n      \"stepId\": \"string\",\n      \"workCenter\": \"string\"\n    }\n  ],\n  \"group\": \"string\",\n  \"plant\": \"string\",\n  \"version\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
           "name": "Obtains a list of data collection groups.",
           "request": {
             "method": "GET",
@@ -2731,6 +2804,41 @@
               ]
             },
             "description": "This endpoint can be called to obtain a list of data collection groups in effect for an SFC in order to collect data against."
+          }
+        },
+        {
+          "name": "Retrieves measurement records with filtering.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/multiGroupMeasurements",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "multiGroupMeasurements"
+              ]
+            },
+            "description": "Returns logged measurement records based on filter criteria.\n\nMandatory: plant.\n\nConditional (SFCs or date range required): SFCs (max 500), startDateTime and endDateTime (yyyy-MM-ddTHH:mm:ssZ, max 30-day range).\n\nOptional: dcGroups (max 10, each with name, version, and optional parameter names), operation (name and version required if provided), resource, sort (dateCreated ASC/DESC, default DESC), pageNumber (default 0), pageSize (default 20, max 200).",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plant\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
           }
         },
         {
@@ -2813,7 +2921,7 @@
                 {
                   "key": "pageSize",
                   "value": "",
-                  "description": "The page size determines the number of records to be displayed in a single page. Default size is 20. Threshold is 50.",
+                  "description": "The page size determines the number of records to be displayed in a single page. Default size is 20. Threshold is 200.",
                   "disabled": true
                 },
                 {
@@ -2826,6 +2934,12 @@
                   "key": "endDateTime",
                   "value": "",
                   "description": "The end date time for which you need to retrieve the data. Define the value in yyyy-MM-ddTHH:mm:ssZ format.",
+                  "disabled": true
+                },
+                {
+                  "key": "includeComments",
+                  "value": "",
+                  "description": "When set to true, the response includes the comment field for each parameter. Defaults to false.",
                   "disabled": true
                 }
               ]
@@ -2896,7 +3010,13 @@
                 {
                   "key": "size",
                   "value": "",
-                  "description": "The page size determines the number of records to be displayed in a single page. Default size is 20. Threshold is 50.",
+                  "description": "The page size determines the number of records to be displayed in a single page. Default size is 20. Threshold is 200.",
+                  "disabled": true
+                },
+                {
+                  "key": "includeComments",
+                  "value": "",
+                  "description": "When set to true, the response includes the comment field for each parameter. Defaults to false.",
                   "disabled": true
                 }
               ]
@@ -6358,7 +6478,7 @@
     },
     {
       "name": "Last Indicator Value",
-      "description": "Last value for an Indicator",
+      "description": "Posts a last indicator value from the shopfloor to the cloud",
       "item": [
         {
           "name": "Saves the indicator's last value.",
@@ -6386,7 +6506,7 @@
             "description": "Send and save the indicator's last value from shop floor via Production Connector for SAP Digital Manufacturing.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"assetId\": \"string\",\n  \"indicator\": \"string\",\n  \"plant\": \"string\",\n  \"value\": \"string\",\n  \"workCenter\": \"string\"\n}",
+              "raw": "{\n  \"assetId\": \"string\",\n  \"indicator\": \"string\",\n  \"plant\": \"string\",\n  \"workCenter\": \"string\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -8829,6 +8949,12 @@
                   "key": "includeCustomValues",
                   "value": "",
                   "description": "Include custom values in the response. Default is false.",
+                  "disabled": true
+                },
+                {
+                  "key": "customValueFilter",
+                  "value": "",
+                  "description": "Filters orders by custom field values. Each entry must be in the format ATTRIBUTE:VALUE, where ATTRIBUTE is case-insensitive (normalized to uppercase) and VALUE is case-sensitive and matched exactly. Repeat this parameter to express IN semantics for the same attribute (OR within an attribute) or AND semantics across different attributes. Maximum 5 distinct attributes and 10 values per attribute per request.",
                   "disabled": true
                 },
                 {
@@ -11480,6 +11606,756 @@
       ]
     },
     {
+      "name": "Problem-Solving Process Management",
+      "description": "Allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution.",
+      "item": [
+        {
+          "name": "Retrieves a list of problem-solving processes.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ProblemSolvingProcess",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ProblemSolvingProcess"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "",
+                  "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                  "disabled": true
+                },
+                {
+                  "key": "$select",
+                  "value": "",
+                  "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "disabled": true
+                },
+                {
+                  "key": "$expand",
+                  "value": "",
+                  "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                  "disabled": true
+                },
+                {
+                  "key": "$orderby",
+                  "value": "",
+                  "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves a list of problem-solving processes."
+          }
+        },
+        {
+          "name": "Creates a problem-solving process.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ProblemSolvingProcess",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ProblemSolvingProcess"
+              ]
+            },
+            "description": "Creates a problem-solving process.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerProblemDescription\": \"string\",\n  \"defectCode\": \"string\",\n  \"defectCodeGroup\": \"string\",\n  \"methodologyId\": \"string\",\n  \"notificationId\": \"string\",\n  \"notificationItem\": \"string\",\n  \"partnerOrgId\": \"string\",\n  \"plant\": \"string\",\n  \"processDescription\": \"string\",\n  \"product\": \"string\",\n  \"scenarioId\": \"string\",\n  \"sourceSystemId\": \"string\",\n  \"subjectCode\": \"string\",\n  \"subjectCodeGroup\": \"string\",\n  \"to_SourceReference\": {},\n  \"to_Step\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Retrieves all values of a problem-solving process.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ProblemSolvingProcess('{processId}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ProblemSolvingProcess('{processId}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "",
+                  "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "disabled": true
+                },
+                {
+                  "key": "$expand",
+                  "value": "",
+                  "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves all values of a problem-solving process."
+          }
+        },
+        {
+          "name": "Updates a problem-solving process.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ProblemSolvingProcess('{processId}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ProblemSolvingProcess('{processId}')"
+              ]
+            },
+            "description": "Updates a problem-solving process.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"confirmationStatusId\": \"string\",\n  \"processDescription\": \"string\",\n  \"processId\": \"string\",\n  \"processStatusId\": \"string\",\n  \"processUUID\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Retrieves all values of each root cause from all the problem-solving processes.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/RootCause",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "RootCause"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "",
+                  "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                  "disabled": true
+                },
+                {
+                  "key": "$orderby",
+                  "value": "",
+                  "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                  "disabled": true
+                },
+                {
+                  "key": "$select",
+                  "value": "",
+                  "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "disabled": true
+                },
+                {
+                  "key": "$expand",
+                  "value": "",
+                  "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves all values of each root cause from all the problem-solving processes."
+          }
+        },
+        {
+          "name": "Creates a root cause for a problem-solving process.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/RootCause",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "RootCause"
+              ]
+            },
+            "description": "Creates a root cause for a problem-solving process.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"processId\": \"string\",\n  \"rootCauseDescription\": \"string\",\n  \"stepTypeId\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Retrieves all values of a root cause of a problem-solving process.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "",
+                  "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "disabled": true
+                },
+                {
+                  "key": "$expand",
+                  "value": "",
+                  "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves all values of a root cause of a problem-solving process."
+          }
+        },
+        {
+          "name": "Updates a root cause of a problem-solving process.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')"
+              ]
+            },
+            "description": "Updates a root cause of a problem-solving process.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codeGroupCatalogId\": \"string\",\n  \"headerUUID\": \"string\",\n  \"processId\": \"string\",\n  \"processUUID\": \"string\",\n  \"rootCauseCode\": \"string\",\n  \"rootCauseCodeGroup\": \"string\",\n  \"rootCauseDescription\": \"string\",\n  \"rootCauseDetailDescription\": \"string\",\n  \"rootCauseId\": \"string\",\n  \"rootCauseType\": \"string\",\n  \"stepTypeId\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Retrieves all values of a problem-solving process step.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "Step(stepTypeId='{stepTypeId}',processId='{processId}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "",
+                  "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "disabled": true
+                },
+                {
+                  "key": "$expand",
+                  "value": "",
+                  "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves all values of a problem-solving process step."
+          }
+        },
+        {
+          "name": "Updates a step of a problem-solving process.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "Step(stepTypeId='{stepTypeId}',processId='{processId}')"
+              ]
+            },
+            "description": "Updates a step of a problem-solving process.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"processId\": \"string\",\n  \"processUUID\": \"string\",\n  \"stepReviewStatusId\": \"string\",\n  \"stepStatusId\": \"string\",\n  \"stepTypeId\": \"string\",\n  \"stepUUID\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Creates a comment for a problem-solving process step.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/StepComments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "StepComments"
+              ]
+            },
+            "description": "Creates a comment for a problem-solving process step.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"string\",\n  \"commentCategory\": \"string\",\n  \"processId\": \"string\",\n  \"processUUID\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Retrieves all tasks from each step in all problem-solving processes.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/Tasks",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "Tasks"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "",
+                  "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                  "disabled": true
+                },
+                {
+                  "key": "$orderby",
+                  "value": "",
+                  "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                  "disabled": true
+                },
+                {
+                  "key": "$select",
+                  "value": "",
+                  "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "disabled": true
+                },
+                {
+                  "key": "$expand",
+                  "value": "",
+                  "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves all tasks from each step in all problem-solving processes."
+          }
+        },
+        {
+          "name": "Creates a task in a problem-solving process step.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/Tasks",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "Tasks"
+              ]
+            },
+            "description": "Creates a task in a problem-solving process step.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"descriptionShort\": \"string\",\n  \"processId\": \"string\",\n  \"stepTypeId\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Retrieves all values of a task within a step of a problem-solving process.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')"
+              ]
+            },
+            "description": "Retrieves all values of a task within a step of a problem-solving process."
+          }
+        },
+        {
+          "name": "Updates a task within a step of a problem-solving process.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')"
+              ]
+            },
+            "description": "Updates a task within a step of a problem-solving process.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codeGroupCatalogId\": \"string\",\n  \"codeGroupId\": \"string\",\n  \"codeId\": \"string\",\n  \"descriptionLong\": \"string\",\n  \"descriptionShort\": \"string\",\n  \"isLongTerm\": true,\n  \"processId\": \"string\",\n  \"processor\": \"string\",\n  \"stepTypeId\": \"string\",\n  \"taskNumber\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Retrieves all the team members from all the problem-solving processes.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/TeamMembers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "TeamMembers"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "",
+                  "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                  "disabled": true
+                },
+                {
+                  "key": "$orderby",
+                  "value": "",
+                  "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                  "disabled": true
+                },
+                {
+                  "key": "$select",
+                  "value": "",
+                  "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "disabled": true
+                },
+                {
+                  "key": "$expand",
+                  "value": "",
+                  "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves all the team members from all the problem-solving processes."
+          }
+        },
+        {
+          "name": "Adds team members to the D1 step of a problem-solving process.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/TeamMembers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "TeamMembers"
+              ]
+            },
+            "description": "Adds team members to the D1 step of a problem-solving process.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"processId\": \"string\",\n  \"stepTypeId\": \"string\",\n  \"teamMemberId\": \"string\",\n  \"teamMemberRoleId\": \"string\",\n  \"teamMemberTypeId\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Retrieves all values of a team member of a problem-solving process.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "",
+                  "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "disabled": true
+                },
+                {
+                  "key": "$expand",
+                  "value": "",
+                  "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves all values of a team member of a problem-solving process."
+          }
+        },
+        {
+          "name": "Updates team members of a problem-solving process.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')"
+              ]
+            },
+            "description": "Updates team members of a problem-solving process.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isContactPerson\": true,\n  \"processId\": \"string\",\n  \"sendEmail\": true,\n  \"stepTypeId\": \"string\",\n  \"teamMemberRoleId\": \"string\",\n  \"teamMemberRoleUUID\": \"string\",\n  \"teamMemberTypeId\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "name": "Process Lot",
       "description": "Perform update and start activities on Process Lot",
       "item": [
@@ -11970,7 +12846,7 @@
                 "start"
               ]
             },
-            "description": "Starts a phase at the default resource of a work center at user-specified time or in real time. Be aware that the API is deprecated, and will be decommissioned and retired from production in a few releases. It's recommended to use the new successor API <a href=https://api.sap.com/api/sapdme_process_manufacturing/resource>/operationActivity/start</a>.",
+            "description": "Starts a phase at the default resource of a work center at user-specified time or in real time. This endpoint is decommissioned, you\u2019re recommended to use the <a href=https://api.sap.com/api/sapdme_process_manufacturing/path/post_operationActivity_start>Start Operation Activity</a> API instead.",
             "body": {
               "mode": "raw",
               "raw": "{\n  \"order\": \"string\",\n  \"phase\": \"string\",\n  \"plant\": \"string\",\n  \"workCenter\": \"string\"\n}",
@@ -12007,7 +12883,7 @@
                 "complete"
               ]
             },
-            "description": "Completes a phase at the default resource of a work center at user-specified time or in real time. Be aware that the API is deprecated, and will be decommissioned and retired from production in a few releases. It's recommended to use the new successor API <a href=https://api.sap.com/api/sapdme_process_manufacturing/resource>/operationActivity/complete</a>.",
+            "description": "Completes a phase at the default resource of a work center at user-specified time or in real time. This endpoint is decommissioned, you\u2019re recommended to use the <a href=https://api.sap.com/api/sapdme_process_manufacturing/path/post_operationActivity_complete>Complete Operation Activity</a> API instead.",
             "body": {
               "mode": "raw",
               "raw": "{\n  \"order\": \"string\",\n  \"phase\": \"string\",\n  \"plant\": \"string\",\n  \"workCenter\": \"string\"\n}",
@@ -12506,7 +13382,7 @@
                 "changeProduction"
               ]
             },
-            "description": "Assigns a new routing or a new Bill of Materials (BOM), or both to given Shop Floor Controls (SFCs) for discrete industry. Before you make the change, ensure that each SFC is being processed at one operation only with one execution status.",
+            "description": "Assigns a new routing or a new Bill of Materials (BOM), or both to given Shop Floor Controls (SFCs) for discrete industry. Before you make the change, ensure that each SFC is being processed at one operation only with one execution status. This endpoint is decommissioned, you\u2019re recommended to use the <a href=https://api.sap.com/api/sapdme_production_v2/resource/Production_Change>Change Production</a> API instead.",
             "body": {
               "mode": "raw",
               "raw": "{\n  \"plant\": \"string\",\n  \"sfcs\": [\n    \"string\"\n  ]\n}",
@@ -13963,7 +14839,7 @@
                 }
               ]
             },
-            "description": "Retrieves a list of resources by plant or by resource name and plant."
+            "description": "Retrieves a list of resources by plant."
           }
         },
         {
@@ -16312,6 +17188,123 @@
       ]
     },
     {
+      "name": "Shop Floor Control (SFC) Location",
+      "description": "Manage location data for shop floor control production activities.",
+      "item": [
+        {
+          "name": "All locations for SFCs in a plant.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/sfcLocations",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "sfcLocations"
+              ],
+              "query": [
+                {
+                  "key": "plant",
+                  "value": "",
+                  "description": "Plant identifier",
+                  "disabled": false
+                },
+                {
+                  "key": "sfc",
+                  "value": "",
+                  "description": "SFC identifier",
+                  "disabled": false
+                },
+                {
+                  "key": "withAdditionalData",
+                  "value": "",
+                  "description": "Controls whether additional data fields are returned in the response.",
+                  "disabled": true
+                },
+                {
+                  "key": "location",
+                  "value": "",
+                  "description": "Filter by location identifier",
+                  "disabled": true
+                },
+                {
+                  "key": "serialNumber",
+                  "value": "",
+                  "description": "Filter by serial number",
+                  "disabled": true
+                },
+                {
+                  "key": "locationStatus",
+                  "value": "",
+                  "description": "Filter by location status",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "",
+                  "description": "Page number for pagination, starting from 0.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "",
+                  "description": "Number of records to return per page. This must be between 1 and 100.",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves location records associated with SFCs within a plant.By default, only records with a locationStatus of OK are returned. Results can be filtered by location identifier, serial number, or location status. Use withAdditionalData parameter to include additional data fields (additionalData1-5) in the response."
+          }
+        },
+        {
+          "name": "Update location.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/sfcLocations",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "sfcLocations"
+              ]
+            },
+            "description": "Modifies location attributes such as status, serial number, and descriptive information. Non-null values are updated.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": {\n    \"location\": \"string\",\n    \"modifiedDateTime\": \"2024-01-01T00:00:00Z\"\n  },\n  \"plant\": \"string\",\n  \"sfc\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "name": "Shop Floor Control Production Activities",
       "description": "Perform production activities on a Shop Floor Control, such as start, complete, serialize, relabel, split, merge, scrap and set quantity",
       "item": [
@@ -17768,6 +18761,18 @@
                   "value": "",
                   "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
                   "disabled": true
+                },
+                {
+                  "key": "allSfcSteps",
+                  "value": "",
+                  "description": "This boolean flag determines whether the system fetches all SFC steps. When set to true, the system returns all steps regardless of quantity. When set to false, the system returns only steps with a quantity greater than zero. This flag takes effect only when includeSfcSteps is also set to true.",
+                  "disabled": true
+                },
+                {
+                  "key": "includeSfcSteps",
+                  "value": "",
+                  "description": "This boolean flag determines whether the system fetches SFC steps. Using this flag can reduce API performance.",
+                  "disabled": true
                 }
               ]
             },
@@ -17880,6 +18885,18 @@
                   "key": "sfcStatuses",
                   "value": "",
                   "description": "List of SFC statuses, separated by a comma, that are used to filter the result set.",
+                  "disabled": true
+                },
+                {
+                  "key": "allSfcSteps",
+                  "value": "",
+                  "description": "This boolean flag determines whether the system fetches all SFC steps. When set to true, the system returns all steps regardless of quantity. When set to false, the system returns only steps with a quantity greater than zero. This flag takes effect only when includeSfcDetails and includeSfcSteps are also set to true.",
+                  "disabled": true
+                },
+                {
+                  "key": "includeSfcSteps",
+                  "value": "",
+                  "description": "This boolean flag determines whether the system fetches SFC steps. This flag takes effect only when includeSfcDetails is also set to true. Using this flag can reduce API performance.",
                   "disabled": true
                 }
               ]
@@ -20508,6 +21525,51 @@
               ]
             },
             "description": "Only custom units of measure can be deleted. Supports the unitCode parameter for special characters."
+          }
+        },
+        {
+          "name": "Update the commercial codes of a unit of measure.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/v2/uoms/commercialCodes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v2",
+                "uoms",
+                "commercialCodes"
+              ],
+              "query": [
+                {
+                  "key": "unitCode",
+                  "value": "",
+                  "description": "A unit of measure ID for which the request is executed.",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "A dedicated endpoint that updates the commercial codes of the unit of measure identified by the unitCode query parameter. The provided list fully replaces the existing commercial codes, no other fields of the unit of measure are affected. The commercialCodes parameter is required and must contain at least one entry; an empty, null, or omitted list is rejected with HTTP 400.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commercialCodes\": [\n    {\n      \"commercialCode\": \"string\",\n      \"language\": \"string\",\n      \"longText\": \"string\",\n      \"shortText\": \"string\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
           }
         }
       ]

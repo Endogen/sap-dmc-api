@@ -243,6 +243,9 @@
               }
             }
           },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          },
           "500": {
             "description": "An internal error occurred.",
             "content": {
@@ -252,9 +255,6 @@
                 }
               }
             }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
           }
         }
       }
@@ -300,6 +300,9 @@
           "204": {
             "description": "Alert was updated successfully."
           },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          },
           "500": {
             "description": "An internal error occurred.",
             "content": {
@@ -309,9 +312,6 @@
                 }
               }
             }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
           }
         }
       }

@@ -53,14 +53,14 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "The mandatory inspection characteristics check passed."
+          },
           "200": {
             "description": "There is at least one mandatory inspection characteristic that has not been inspected.",
             "schema": {
               "$ref": "#/definitions/CheckResultsRecordedFailureResponse"
             }
-          },
-          "204": {
-            "description": "The mandatory inspection characteristics check passed."
           },
           "400": {
             "description": "The HTTP request is bad or invalid and cannot be processed by the server.",

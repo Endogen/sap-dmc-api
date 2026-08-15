@@ -644,6 +644,87 @@
         "deprecated": false
       }
     },
+    "/boms/components/customValues": {
+      "patch": {
+        "tags": [
+          "BOM Component"
+        ],
+        "summary": "Updates custom values for a list of BOM components.",
+        "description": "Updates custom values for a list of BOM components. A BOM is identified by bom, version, plant and bomType fields provided in the request body. You must specify the sequence and custom values for each component.",
+        "operationId": "updateComponentsCustomValues",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "BOM identifier and list of components with custom values to update.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateBomComponentsCustomValues"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Message successfully processed.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BomComponent"
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV3"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV3"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV3"
+            }
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV3"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV3"
+            }
+          },
+          "502": {
+            "description": "Bad Gateway.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV3"
+            }
+          },
+          "503": {
+            "description": "Service Temporarily Unavailable.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV3"
+            }
+          },
+          "504": {
+            "description": "Gateway Timeout.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV3"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/boms/headerDetails": {
       "get": {
         "tags": [
@@ -1301,6 +1382,126 @@
         }
       },
       "title": "The reference designator of the BOM component."
+    },
+    "BomType": {
+      "type": "string",
+      "description": "The BOM type.",
+      "enum": [
+        "MASTER",
+        "SHOP_ORDER",
+        "SFC"
+      ],
+      "title": "BomType"
+    },
+    "BomComponentCustomValues": {
+      "type": "object",
+      "required": [
+        "sequence"
+      ],
+      "properties": {
+        "sequence": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The sequence of the BOM component to update."
+        },
+        "customValues": {
+          "type": "array",
+          "description": "Custom values to set on the BOM component.",
+          "items": {
+            "$ref": "#/definitions/CustomValue"
+          }
+        }
+      },
+      "title": "BomComponentCustomValues",
+      "description": "Identifies a BOM component by sequence and holds the custom values to update."
+    },
+    "UpdateBomComponentsCustomValues": {
+      "type": "object",
+      "required": [
+        "plant",
+        "bom",
+        "version",
+        "bomType",
+        "components"
+      ],
+      "properties": {
+        "plant": {
+          "type": "string",
+          "description": "The plant for which the BOM is defined."
+        },
+        "bom": {
+          "type": "string",
+          "description": "The name of the BOM."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the BOM."
+        },
+        "bomType": {
+          "$ref": "#/definitions/BomType"
+        },
+        "components": {
+          "type": "array",
+          "description": "List of components whose custom values should be updated.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/BomComponentCustomValues"
+          }
+        }
+      },
+      "title": "UpdateBomComponentsCustomValues",
+      "description": "Request body for updating custom values of BOM components."
+    },
+    "ErrorResponseV3": {
+      "title": "ErrorResponseV3",
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ErrorResponseApiModel"
+        }
+      },
+      "description": "Error response."
+    },
+    "ErrorResponseApiModel": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Internal error message."
+        },
+        "correlationId": {
+          "type": "string",
+          "description": "Contains a correlation ID for the error."
+        },
+        "message": {
+          "type": "string",
+          "description": "Contains additional information if any."
+        },
+        "details": {
+          "type": "array",
+          "description": "Contains error message details.",
+          "items": {
+            "$ref": "#/definitions/ErrorDetail"
+          }
+        }
+      },
+      "title": "ErrorResponseApiModel",
+      "description": "Error response API Payload."
+    },
+    "ErrorDetail": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Contains a technical code for the error."
+        },
+        "message": {
+          "type": "string",
+          "description": "Contains a detailed message for the error."
+        }
+      },
+      "title": "ErrorDetail",
+      "description": "Error detail."
     }
   },
   "externalDocs": {

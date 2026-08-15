@@ -465,6 +465,15 @@
         ]
       },
       {
+        "method": "PATCH",
+        "path": "/boms/components/customValues",
+        "summary": "Updates custom values for a list of BOM components.",
+        "operation_id": "updateComponentsCustomValues",
+        "tags": [
+          "BOM Component"
+        ]
+      },
+      {
         "method": "GET",
         "path": "/boms/headerDetails",
         "summary": "Finds BOM header details.",
@@ -474,9 +483,9 @@
         ]
       }
     ],
-    "endpoint_count": 8,
-    "path_count": 4,
-    "schema_count": 15
+    "endpoint_count": 9,
+    "path_count": 5,
+    "schema_count": 21
   },
   {
     "name": "sapdme_plant_certification",
@@ -684,10 +693,28 @@
         ]
       },
       {
+        "method": "POST",
+        "path": "/dataCollectionGroups/attachmentPoints",
+        "summary": "Add attachment points to an existing data collection group.",
+        "operation_id": "createAttachmentPoints",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
         "method": "GET",
         "path": "/sfc/groups",
         "summary": "Obtains a list of data collection groups.",
         "operation_id": "findDataCollectionGroupsUsingGET",
+        "tags": [
+          "Data Collection"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/multiGroupMeasurements",
+        "summary": "Retrieves measurement records with filtering.",
+        "operation_id": "postMultiGroupMeasurementsUsingPOST",
         "tags": [
           "Data Collection"
         ]
@@ -723,7 +750,7 @@
         "method": "GET",
         "path": "/nonwip/uncollectedParameters",
         "summary": "Fetch the uncollected Non-WIP data collection parameters for the given SFC.",
-        "operation_id": "uncollectedParametersUsingGET",
+        "operation_id": "nonWIPUncollectedParametersUsingGET",
         "tags": [
           "Standalone / Non-WIP Data Collection"
         ]
@@ -738,9 +765,9 @@
         ]
       }
     ],
-    "endpoint_count": 14,
-    "path_count": 11,
-    "schema_count": 36
+    "endpoint_count": 16,
+    "path_count": 13,
+    "schema_count": 44
   },
   {
     "name": "sapdme_datafields",
@@ -998,7 +1025,7 @@
     ],
     "endpoint_count": 1,
     "path_count": 1,
-    "schema_count": 3
+    "schema_count": 4
   },
   {
     "name": "sapfnd_signature",
@@ -1602,7 +1629,7 @@
   {
     "name": "sapdme_lastindicator",
     "display_name": "Last Indicator Value",
-    "description": "Last value for an Indicator",
+    "description": "Posts a last indicator value from the shopfloor to the cloud",
     "version": "v1",
     "status": "",
     "spec_version": "3.0.3",
@@ -2982,6 +3009,193 @@
     "schema_count": 24
   },
   {
+    "name": "psp_problem_solving_process",
+    "display_name": "Problem-Solving Process Management",
+    "description": "Allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.2",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/ProblemSolvingProcess",
+        "summary": "Retrieves a list of problem-solving processes.",
+        "operation_id": "",
+        "tags": [
+          "Problem-Solving Process"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/ProblemSolvingProcess",
+        "summary": "Creates a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Problem-Solving Process"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/ProblemSolvingProcess('{processId}')",
+        "summary": "Retrieves all values of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Problem-Solving Process"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/ProblemSolvingProcess('{processId}')",
+        "summary": "Updates a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Problem-Solving Process"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/RootCause",
+        "summary": "Retrieves all values of each root cause from all the problem-solving processes.",
+        "operation_id": "",
+        "tags": [
+          "Root Cause"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/RootCause",
+        "summary": "Creates a root cause for a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Root Cause"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')",
+        "summary": "Retrieves all values of a root cause of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Root Cause"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')",
+        "summary": "Updates a root cause of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Root Cause"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+        "summary": "Retrieves all values of a problem-solving process step.",
+        "operation_id": "",
+        "tags": [
+          "Step"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+        "summary": "Updates a step of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Step"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/StepComments",
+        "summary": "Creates a comment for a problem-solving process step.",
+        "operation_id": "",
+        "tags": [
+          "Step Comments"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/Tasks",
+        "summary": "Retrieves all tasks from each step in all problem-solving processes.",
+        "operation_id": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/Tasks",
+        "summary": "Creates a task in a problem-solving process step.",
+        "operation_id": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+        "summary": "Retrieves all values of a task within a step of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+        "summary": "Updates a task within a step of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/TeamMembers",
+        "summary": "Retrieves all the team members from all the problem-solving processes.",
+        "operation_id": "",
+        "tags": [
+          "Team Members"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/TeamMembers",
+        "summary": "Adds team members to the D1 step of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Team Members"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+        "summary": "Retrieves all values of a team member of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Team Members"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+        "summary": "Updates team members of a problem-solving process.",
+        "operation_id": "",
+        "tags": [
+          "Team Members"
+        ]
+      }
+    ],
+    "endpoint_count": 19,
+    "path_count": 10,
+    "schema_count": 24
+  },
+  {
     "name": "sapdme_processlot_v2",
     "display_name": "Process Lot",
     "description": "Perform update and start activities on Process Lot",
@@ -3340,11 +3554,42 @@
     "description": "Create, import, and export a Production Operator Dashboard",
     "version": "v1",
     "status": "",
-    "spec_version": null,
-    "endpoint_count": 0,
-    "path_count": 0,
-    "schema_count": 0,
-    "endpoints": []
+    "spec_version": "2.0",
+    "api_version": "v1",
+    "base_path": "/",
+    "host": "hostname",
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/configurations",
+        "summary": "API to create a new POD given a POD configuration.",
+        "operation_id": "createPodConfigurationUsingPOST",
+        "tags": [
+          "Production Operator Dashboard"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/export",
+        "summary": "API to export a POD configuration.",
+        "operation_id": "exportPodUsingGET",
+        "tags": [
+          "Production Operator Dashboard"
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/import",
+        "summary": "API to import a POD configuration from a local file system and creating a new POD.",
+        "operation_id": "importPodUsingPOST",
+        "tags": [
+          "Production Operator Dashboard"
+        ]
+      }
+    ],
+    "endpoint_count": 3,
+    "path_count": 3,
+    "schema_count": 4
   },
   {
     "name": "sapdme_notification",
@@ -4336,6 +4581,40 @@
     "schema_count": 14
   },
   {
+    "name": "sapdme_panel_sfc",
+    "display_name": "Shop Floor Control (SFC) Location",
+    "description": "Manage location data for shop floor control production activities.",
+    "version": "v1",
+    "status": "",
+    "spec_version": "3.0.3",
+    "api_version": "v1",
+    "base_path": "",
+    "host": "",
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/sfcLocations",
+        "summary": "All locations for SFCs in a plant.",
+        "operation_id": "getAllLocationsBySfc",
+        "tags": [
+          "Location Queries"
+        ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/sfcLocations",
+        "summary": "Update location.",
+        "operation_id": "updateLocations",
+        "tags": [
+          "Location Modification"
+        ]
+      }
+    ],
+    "endpoint_count": 2,
+    "path_count": 1,
+    "schema_count": 4
+  },
+  {
     "name": "sapdme_sfc",
     "display_name": "Shop Floor Control Production Activities",
     "description": "Perform production activities on a Shop Floor Control, such as start, complete, serialize, relabel, split, merge, scrap and set quantity",
@@ -5256,11 +5535,20 @@
         "tags": [
           "uom"
         ]
+      },
+      {
+        "method": "PATCH",
+        "path": "/v2/uoms/commercialCodes",
+        "summary": "Update the commercial codes of a unit of measure.",
+        "operation_id": "updateUnitOfMeasureCommercialCodesUsingPATCH_2",
+        "tags": [
+          "uom"
+        ]
       }
     ],
-    "endpoint_count": 8,
-    "path_count": 5,
-    "schema_count": 8
+    "endpoint_count": 9,
+    "path_count": 6,
+    "schema_count": 9
   },
   {
     "name": "sapdme_user",

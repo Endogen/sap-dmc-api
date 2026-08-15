@@ -1,12 +1,12 @@
 # SAP Digital Manufacturing Cloud — REST API Reference
 
-*Mirrored: 2026-07-09 17:02 UTC*
+*Mirrored: 2026-08-15 09:10 UTC*
 
 **Package:** [SAPDigitalManufacturingCloud](https://api.sap.com/package/SAPDigitalManufacturingCloud/rest)
 
-**Total APIs:** 88
-**Total Endpoints:** 477
-**Total Schemas:** 1281
+**Total APIs:** 90
+**Total Endpoints:** 505
+**Total Schemas:** 1329
 
 ---
 
@@ -21,16 +21,16 @@
 | 5 | [Asset Model](specs/sapdme_asset_model.json) | 1 | 7 | v1 |  |
 | 6 | [Batch](specs/sapdme_batch.json) | 6 | 16 | v1 |  |
 | 7 | [Batch](specs/sapdme_batch_v2.json) | 4 | 12 | v2 |  |
-| 8 | [Bill of Material](specs/sapdme_bom.json) | 8 | 15 | v1 |  |
+| 8 | [Bill of Material](specs/sapdme_bom.json) | 9 | 21 | v1 |  |
 | 9 | [Certification](specs/sapdme_plant_certification.json) | 9 | 16 | v1 |  |
 | 10 | [Classification](specs/sapdme_classification.json) | 1 | 11 | v1 |  |
-| 11 | [Data Collection](specs/sapdme_datacollection.json) | 14 | 36 | v1 |  |
+| 11 | [Data Collection](specs/sapdme_datacollection.json) | 16 | 44 | v1 |  |
 | 12 | [Data Fields API](specs/sapdme_datafields.json) | 4 | 9 | v1 |  |
 | 13 | [Data Type](specs/sapdme_datatype.json) | 4 | 12 | v1 |  |
 | 14 | [Document](specs/sapfnd_document_v2.json) | 5 | 13 | v2 |  |
 | 15 | [Document](specs/sapfnd_document.json) | 2 | 4 | v1 |  |
 | 16 | [Downtime and Speed Loss](specs/sapdme_oee.json) | 2 | 3 | v1 |  |
-| 17 | [Electronic Batch Record](specs/sapdme_ebr.json) | 1 | 3 | v1 |  |
+| 17 | [Electronic Batch Record](specs/sapdme_ebr.json) | 1 | 4 | v1 |  |
 | 18 | [Electronic Signature](specs/sapfnd_signature.json) | 1 | 5 | v1 |  |
 | 19 | [Extended Warehouse Management Integration](specs/sapdme_ewm_integration.json) | 1 | 10 | v1 |  |
 | 20 | [Extended Warehouse Management Staging](specs/sapdme_staging_v2.json) | 2 | 9 | v2 |  |
@@ -62,46 +62,48 @@
 | 46 | [Print](specs/sapfnd_print.json) | 3 | 11 | v1 |  |
 | 47 | [Printer](specs/sapfnd_printer.json) | 4 | 7 | v1 |  |
 | 48 | [Problem-Solving Process](specs/sapdme_psp.json) | 20 | 24 | v1 |  |
-| 49 | [Process Lot](specs/sapdme_processlot_v2.json) | 2 | 8 | v2 |  |
-| 50 | [Process Lot](specs/sapdme_processlot.json) | 8 | 11 | v1 |  |
-| 51 | [Process Manufacturing Execution](specs/sapdme_process_manufacturing.json) | 2 | 5 | v1 |  |
-| 52 | [Process Order Execution](specs/sapdme_processorder.json) | 9 | 28 | v1 |  |
-| 53 | [Process Order Execution](specs/sapdme_processorder_v2.json) | 1 | 3 | v2 |  |
-| 54 | [Product Genealogy Report (PGR) Assembly Components](specs/sapdme_pgr_components.json) | 1 | 4 | v1 |  |
-| 55 | [Production Change](specs/sapdme_production_v2.json) | 1 | 5 | v2 |  |
-| 56 | [Production Change](specs/sapdme_production.json) | 1 | 5 | v1 |  |
-| 57 | [Production Operator Dashboard](specs/sapdme_pod.json) | 0 | 0 |  |  |
-| 58 | [Production Operator Dashboard Notification](specs/sapdme_notification.json) | 1 | 4 | v1 |  |
-| 59 | [Quality Inspection](specs/sapdme_qualityinspection_v2.json) | 1 | 4 | v2 |  |
-| 60 | [Quality Inspection](specs/sapdme_qualityinspection.json) | 11 | 28 | v1 |  |
-| 61 | [Quantity Confirmation](specs/sapdme_quantityConfirmation.json) | 4 | 12 | v1 |  |
-| 62 | [Recipe](specs/sapdme_recipe.json) | 7 | 24 | v1 |  |
-| 63 | [Resource](specs/sapdme_plant_resource_v2.json) | 15 | 38 | v2 |  |
-| 64 | [Resource](specs/sapdme_plant_resource.json) | 7 | 25 | v1 |  |
-| 65 | [Resource Reason Code](specs/sapdme_oee_resourcereasoncode.json) | 1 | 4 | v1 |  |
-| 66 | [Resource Type](specs/sapdme_resourcetype.json) | 4 | 4 | v1 |  |
-| 67 | [Routing](specs/sapdme_routing.json) | 8 | 34 | v1 |  |
-| 68 | [Setpoint Activities](specs/sapdme_setpoint_v3.json) | 6 | 14 | v3 |  |
-| 69 | [Setpoint Activities](specs/sapdme_setpoint_v2.json) | 6 | 14 | v2 |  |
-| 70 | [Setpoint Activities](specs/sapdme_setpoint.json) | 6 | 14 | v1 |  |
-| 71 | [Shift](specs/sapdme_shift.json) | 8 | 14 | v1 |  |
-| 72 | [Shop Floor Control Production Activities](specs/sapdme_sfc.json) | 23 | 54 | v1 |  |
-| 73 | [Shop Floor Control Production Activities](specs/sapdme_sfc_v2.json) | 3 | 14 | v2 |  |
-| 74 | [Standard Rates](specs/sapdme_standardrate.json) | 4 | 10 | v1 |  |
-| 75 | [Standard Values](specs/sapdme_standardvalue.json) | 1 | 6 | v1 |  |
-| 76 | [Time Tracking](specs/sapdme_timetracking.json) | 29 | 23 | v1 |  |
-| 77 | [Time Tracking](specs/sapdme_timetracking_odata.json) | 1 | 2 | v1 |  |
-| 78 | [Tool](specs/sapdme_tool.json) | 13 | 32 | v1 |  |
-| 79 | [Tool](specs/sapdme_tool_v2.json) | 5 | 17 | v2 |  |
-| 80 | [Unit of Measure](specs/sapdme_uom.json) | 8 | 8 | v1 |  |
-| 81 | [User](specs/sapdme_user.json) | 9 | 14 | v1 |  |
-| 82 | [Work Center](specs/sapdme_plant_workcenter.json) | 1 | 11 | v1 |  |
-| 83 | [Work Center](specs/sapdme_plant_workcenter_v3.json) | 2 | 13 | v3 |  |
-| 84 | [Work Center](specs/sapdme_plant_workcenter_v2.json) | 8 | 14 | v2 |  |
-| 85 | [Work Instruction](specs/sapdme_workinstruction_v2.json) | 2 | 17 | v2 |  |
-| 86 | [Work Instruction](specs/sapdme_workinstruction.json) | 6 | 20 | v1 |  |
-| 87 | [Work Instruction Attached File](specs/sapdme_workinstruction_file.json) | 2 | 2 | v1 |  |
-| 88 | [Work in Process (WIP) Activities](specs/sapdme_wip.json) | 4 | 13 | v1 |  |
+| 49 | [Problem-Solving Process Management](specs/psp_problem_solving_process.json) | 19 | 24 | v1 |  |
+| 50 | [Process Lot](specs/sapdme_processlot_v2.json) | 2 | 8 | v2 |  |
+| 51 | [Process Lot](specs/sapdme_processlot.json) | 8 | 11 | v1 |  |
+| 52 | [Process Manufacturing Execution](specs/sapdme_process_manufacturing.json) | 2 | 5 | v1 |  |
+| 53 | [Process Order Execution](specs/sapdme_processorder.json) | 9 | 28 | v1 |  |
+| 54 | [Process Order Execution](specs/sapdme_processorder_v2.json) | 1 | 3 | v2 |  |
+| 55 | [Product Genealogy Report (PGR) Assembly Components](specs/sapdme_pgr_components.json) | 1 | 4 | v1 |  |
+| 56 | [Production Change](specs/sapdme_production_v2.json) | 1 | 5 | v2 |  |
+| 57 | [Production Change](specs/sapdme_production.json) | 1 | 5 | v1 |  |
+| 58 | [Production Operator Dashboard](specs/sapdme_pod.json) | 3 | 4 | v1 |  |
+| 59 | [Production Operator Dashboard Notification](specs/sapdme_notification.json) | 1 | 4 | v1 |  |
+| 60 | [Quality Inspection](specs/sapdme_qualityinspection_v2.json) | 1 | 4 | v2 |  |
+| 61 | [Quality Inspection](specs/sapdme_qualityinspection.json) | 11 | 28 | v1 |  |
+| 62 | [Quantity Confirmation](specs/sapdme_quantityConfirmation.json) | 4 | 12 | v1 |  |
+| 63 | [Recipe](specs/sapdme_recipe.json) | 7 | 24 | v1 |  |
+| 64 | [Resource](specs/sapdme_plant_resource_v2.json) | 15 | 38 | v2 |  |
+| 65 | [Resource](specs/sapdme_plant_resource.json) | 7 | 25 | v1 |  |
+| 66 | [Resource Reason Code](specs/sapdme_oee_resourcereasoncode.json) | 1 | 4 | v1 |  |
+| 67 | [Resource Type](specs/sapdme_resourcetype.json) | 4 | 4 | v1 |  |
+| 68 | [Routing](specs/sapdme_routing.json) | 8 | 34 | v1 |  |
+| 69 | [Setpoint Activities](specs/sapdme_setpoint_v3.json) | 6 | 14 | v3 |  |
+| 70 | [Setpoint Activities](specs/sapdme_setpoint_v2.json) | 6 | 14 | v2 |  |
+| 71 | [Setpoint Activities](specs/sapdme_setpoint.json) | 6 | 14 | v1 |  |
+| 72 | [Shift](specs/sapdme_shift.json) | 8 | 14 | v1 |  |
+| 73 | [Shop Floor Control (SFC) Location](specs/sapdme_panel_sfc.json) | 2 | 4 | v1 |  |
+| 74 | [Shop Floor Control Production Activities](specs/sapdme_sfc.json) | 23 | 54 | v1 |  |
+| 75 | [Shop Floor Control Production Activities](specs/sapdme_sfc_v2.json) | 3 | 14 | v2 |  |
+| 76 | [Standard Rates](specs/sapdme_standardrate.json) | 4 | 10 | v1 |  |
+| 77 | [Standard Values](specs/sapdme_standardvalue.json) | 1 | 6 | v1 |  |
+| 78 | [Time Tracking](specs/sapdme_timetracking.json) | 29 | 23 | v1 |  |
+| 79 | [Time Tracking](specs/sapdme_timetracking_odata.json) | 1 | 2 | v1 |  |
+| 80 | [Tool](specs/sapdme_tool.json) | 13 | 32 | v1 |  |
+| 81 | [Tool](specs/sapdme_tool_v2.json) | 5 | 17 | v2 |  |
+| 82 | [Unit of Measure](specs/sapdme_uom.json) | 9 | 9 | v1 |  |
+| 83 | [User](specs/sapdme_user.json) | 9 | 14 | v1 |  |
+| 84 | [Work Center](specs/sapdme_plant_workcenter.json) | 1 | 11 | v1 |  |
+| 85 | [Work Center](specs/sapdme_plant_workcenter_v3.json) | 2 | 13 | v3 |  |
+| 86 | [Work Center](specs/sapdme_plant_workcenter_v2.json) | 8 | 14 | v2 |  |
+| 87 | [Work Instruction](specs/sapdme_workinstruction_v2.json) | 2 | 17 | v2 |  |
+| 88 | [Work Instruction](specs/sapdme_workinstruction.json) | 6 | 20 | v1 |  |
+| 89 | [Work Instruction Attached File](specs/sapdme_workinstruction_file.json) | 2 | 2 | v1 |  |
+| 90 | [Work in Process (WIP) Activities](specs/sapdme_wip.json) | 4 | 13 | v1 |  |
 
 ---
 
@@ -214,6 +216,7 @@
 | `POST` | `/boms/{bom}/{version}/components` | Create BOM components. |
 | `DELETE` | `/boms/{bom}/{version}/components/{sequence}` | Delete BOM component. |
 | `PATCH` | `/boms/{bom}/{version}/components/{sequence}` | Update BOM component. |
+| `PATCH` | `/boms/components/customValues` | Updates custom values for a list of BOM components. |
 | `GET` | `/boms/headerDetails` | Finds BOM header details. |
 
 ### Certification
@@ -260,7 +263,9 @@
 | `POST` | `/groups` | Create a new data collection group. |
 | `PUT` | `/groups` | Update a data collection group. |
 | `DELETE` | `/groups` | Delete a data collection group. |
+| `POST` | `/dataCollectionGroups/attachmentPoints` | Add attachment points to an existing data collection group. |
 | `GET` | `/sfc/groups` | Obtains a list of data collection groups. |
+| `POST` | `/multiGroupMeasurements` | Retrieves measurement records with filtering. |
 | `GET` | `/measurements` | Retrieves records of SFCs. |
 | `GET` | `/nonwip/measurements` | Retrieves the measured Non-WIP data collection parameters. |
 | `GET` | `/uncollectedParameters` | Fetch the uncollected data collection parameters for the given SFC. |
@@ -480,7 +485,7 @@
 ### Last Indicator Value
 
 **Slug:** `sapdme_lastindicator`
-**Description:** Last value for an Indicator
+**Description:** Posts a last indicator value from the shopfloor to the cloud
 
 | Method | Path | Summary |
 |--------|------|---------|
@@ -766,6 +771,33 @@
 | `GET` | `/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')` | Retrieves all values of a team member of a problem-solving process. |
 | `PATCH` | `/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')` | Updates team members of a problem-solving process. |
 
+### Problem-Solving Process Management
+
+**Slug:** `psp_problem_solving_process`
+**Description:** Allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution.
+
+| Method | Path | Summary |
+|--------|------|---------|
+| `GET` | `/ProblemSolvingProcess` | Retrieves a list of problem-solving processes. |
+| `POST` | `/ProblemSolvingProcess` | Creates a problem-solving process. |
+| `GET` | `/ProblemSolvingProcess('{processId}')` | Retrieves all values of a problem-solving process. |
+| `PATCH` | `/ProblemSolvingProcess('{processId}')` | Updates a problem-solving process. |
+| `GET` | `/RootCause` | Retrieves all values of each root cause from all the problem-solving processes. |
+| `POST` | `/RootCause` | Creates a root cause for a problem-solving process. |
+| `GET` | `/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')` | Retrieves all values of a root cause of a problem-solving process. |
+| `PATCH` | `/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')` | Updates a root cause of a problem-solving process. |
+| `GET` | `/Step(stepTypeId='{stepTypeId}',processId='{processId}')` | Retrieves all values of a problem-solving process step. |
+| `PATCH` | `/Step(stepTypeId='{stepTypeId}',processId='{processId}')` | Updates a step of a problem-solving process. |
+| `POST` | `/StepComments` | Creates a comment for a problem-solving process step. |
+| `GET` | `/Tasks` | Retrieves all tasks from each step in all problem-solving processes. |
+| `POST` | `/Tasks` | Creates a task in a problem-solving process step. |
+| `GET` | `/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')` | Retrieves all values of a task within a step of a problem-solving process. |
+| `PATCH` | `/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')` | Updates a task within a step of a problem-solving process. |
+| `GET` | `/TeamMembers` | Retrieves all the team members from all the problem-solving processes. |
+| `POST` | `/TeamMembers` | Adds team members to the D1 step of a problem-solving process. |
+| `GET` | `/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')` | Retrieves all values of a team member of a problem-solving process. |
+| `PATCH` | `/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')` | Updates team members of a problem-solving process. |
+
 ### Process Lot
 
 **Slug:** `sapdme_processlot_v2`
@@ -859,6 +891,18 @@
 | Method | Path | Summary |
 |--------|------|---------|
 | `POST` | `/changeProduction` | Assigns a new routing or a new Bill of Materials (BOM) to given Shop Floor Controls (SFCs) |
+
+### Production Operator Dashboard
+
+**Slug:** `sapdme_pod`
+**Base Path:** `/`
+**Description:** Create, import, and export a Production Operator Dashboard
+
+| Method | Path | Summary |
+|--------|------|---------|
+| `POST` | `/configurations` | API to create a new POD given a POD configuration. |
+| `GET` | `/export` | API to export a POD configuration. |
+| `POST` | `/import` | API to import a POD configuration from a local file system and creating a new POD. |
 
 ### Production Operator Dashboard Notification
 
@@ -1071,6 +1115,16 @@
 | `PATCH` | `/customFieldDefinitions` | Updates a custom field definition for the shift. |
 | `DELETE` | `/customFieldDefinitions` | Deletes a custom field definition for the shift. |
 
+### Shop Floor Control (SFC) Location
+
+**Slug:** `sapdme_panel_sfc`
+**Description:** Manage location data for shop floor control production activities.
+
+| Method | Path | Summary |
+|--------|------|---------|
+| `GET` | `/sfcLocations` | All locations for SFCs in a plant. |
+| `PATCH` | `/sfcLocations` | Update location. |
+
 ### Shop Floor Control Production Activities
 
 **Slug:** `sapdme_sfc`
@@ -1233,6 +1287,7 @@
 | `DELETE` | `/v1/uoms/{id}` | Delete a unit of measure by unit code. |
 | `GET` | `/v2/uoms` | Get a unit of measure using unitCode. |
 | `DELETE` | `/v2/uoms` | Delete a unit of measure using unitCode. |
+| `PATCH` | `/v2/uoms/commercialCodes` | Update the commercial codes of a unit of measure. |
 
 ### User
 

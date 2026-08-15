@@ -35,8 +35,8 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
@@ -113,8 +113,7 @@
           "plant",
           "workCenter",
           "assetId",
-          "indicator",
-          "value"
+          "indicator"
         ],
         "properties": {
           "plant": {
@@ -212,10 +211,10 @@
       "OauthClientCredentials": []
     }
   ],
-  "x-sap-shortText": "Last value for an Indicator",
+  "x-sap-shortText": "Posts a last indicator value from the shopfloor to the cloud",
   "servers": [
     {
-      "url": "https://api.{regionHost}/api/v1/indicator/",
+      "url": "https://api.{regionHost}/linemonitor/v1/lastindicator",
       "description": "Base URL",
       "variables": {
         "regionHost": {

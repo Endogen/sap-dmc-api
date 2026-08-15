@@ -291,6 +291,26 @@
                 ]
               }
             }
+          },
+          {
+            "name": "allSfcSteps",
+            "in": "query",
+            "description": "This boolean flag determines whether the system fetches all SFC steps. When set to true, the system returns all steps regardless of quantity. When set to false, the system returns only steps with a quantity greater than zero. This flag takes effect only when includeSfcSteps is also set to true.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "includeSfcSteps",
+            "in": "query",
+            "description": "This boolean flag determines whether the system fetches SFC steps. Using this flag can reduce API performance.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
           }
         ],
         "responses": {
@@ -502,6 +522,26 @@
                 ]
               }
             }
+          },
+          {
+            "name": "allSfcSteps",
+            "in": "query",
+            "description": "This boolean flag determines whether the system fetches all SFC steps. When set to true, the system returns all steps regardless of quantity. When set to false, the system returns only steps with a quantity greater than zero. This flag takes effect only when includeSfcDetails and includeSfcSteps are also set to true.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "includeSfcSteps",
+            "in": "query",
+            "description": "This boolean flag determines whether the system fetches SFC steps. This flag takes effect only when includeSfcDetails is also set to true. Using this flag can reduce API performance.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
           }
         ],
         "responses": {
@@ -633,6 +673,13 @@
             "description": "The list of custom data for the SFC in attribute-value pairs.",
             "items": {
               "$ref": "#/components/schemas/CustomValue"
+            }
+          },
+          "steps": {
+            "type": "array",
+            "description": "The routing steps for the given SFC.",
+            "items": {
+              "$ref": "#/components/schemas/SfcStep"
             }
           }
         },
@@ -1086,16 +1133,6 @@
             "format": "date-time",
             "description": "The Resource Orchestration operation scheduled start date and time in UTC.",
             "example": "2022-07-07T09:00:00Z"
-          },
-          "operationScheduledStartDate": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The Resource Orchestration operation scheduled start date and time in UTC."
-          },
-          "operationScheduledCompletionDate": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The Resource Orchestration operation scheduled completion date and time in UTC."
           },
           "description": {
             "type": "string",

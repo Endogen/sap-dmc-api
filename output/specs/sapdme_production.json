@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Production Change",
-    "description": "You can use this service to assign a new bill of materials, a routing or both to one or more shop floor controls. The SFCs will have the updated bill of materials with the appropriate components, and the updated routing with the corresponding operation activities.",
+    "description": "You can use this service to assign a new bill of materials, a routing or both to one or more shop floor controls. The SFCs will have the updated bill of materials with the appropriate components, and the updated routing with the corresponding operation activities. The endpoint under this service is decommissioned, you\u2019re recommended to use the <a href=https://api.sap.com/api/sapdme_production_v2/resource/Production_Change>Change Production</a> API instead.",
     "version": "v1",
     "contact": {
       "name": "SAP Digital Manufacturing Operations",
@@ -10,9 +10,9 @@
     }
   },
   "x-sap-stateInfo": {
-    "state": "Deprecated",
-    "deprecationDate": "2024-08-25",
-    "successorApi": "https://api.sap.com/api/sapdme_production_v2/overview"
+    "state": "Decommissioned",
+    "decommissionedDate": "2026-08-15",
+    "successorApi": "https://api.sap.com/api/sapdme_production_v2/resource/Production_Change"
   },
   "externalDocs": {
     "description": "Prepare for API Integration",
@@ -86,7 +86,7 @@
           "Production Change"
         ],
         "summary": "Assigns a new routing or a new Bill of Materials (BOM) to given Shop Floor Controls (SFCs)",
-        "description": "Assigns a new routing or a new Bill of Materials (BOM), or both to given Shop Floor Controls (SFCs) for discrete industry. Before you make the change, ensure that each SFC is being processed at one operation only with one execution status.",
+        "description": "Assigns a new routing or a new Bill of Materials (BOM), or both to given Shop Floor Controls (SFCs) for discrete industry. Before you make the change, ensure that each SFC is being processed at one operation only with one execution status. This endpoint is decommissioned, you\u2019re recommended to use the <a href=https://api.sap.com/api/sapdme_production_v2/resource/Production_Change>Change Production</a> API instead.",
         "consumes": [
           "application/json"
         ],
@@ -138,6 +138,12 @@
               "$ref": "#/definitions/ErrorResponse"
             }
           }
+        },
+        "deprecated": true,
+        "x-sap-stateInfo": {
+          "state": "Decommissioned",
+          "decommissionedDate": "2026-08-15",
+          "successorApi": "https://api.sap.com/api/sapdme_production_v2/resource/Production_Change"
         }
       }
     }

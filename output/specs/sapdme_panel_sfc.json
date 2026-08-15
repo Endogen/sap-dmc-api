@@ -1,0 +1,675 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "description": "Track and manage physical locations of SFCs. Use this API to retrieve and update location status, assign serial numbers, and maintain location-specific data for production activities.",
+    "version": "v1",
+    "title": "Shop Floor Control (SFC) Location",
+    "contact": {
+      "name": "DME Team"
+    }
+  },
+  "x-sap-stateInfo": {
+    "state": "Active"
+  },
+  "x-sap-shortText": "Manage location data for shop floor control production activities.",
+  "externalDocs": {
+    "description": "SFC Location API Documentation",
+    "url": "https://help.sap.com/docs/sap-digital-manufacturing/apis/sfc-location"
+  },
+  "servers": [
+    {
+      "url": "https://api.{regionHost}/sfc/v1",
+      "description": "Base URL",
+      "variables": {
+        "regionHost": {
+          "description": "The data center where SAP Digital Manufacturing is provisioned for your organization.",
+          "enum": [
+            "eu10.dmc.cloud.sap",
+            "eu20.dmc.cloud.sap",
+            "us10.dmc.cloud.sap",
+            "us20.dmc.cloud.sap",
+            "test.eu10.dmc.cloud.sap",
+            "test.eu20.dmc.cloud.sap",
+            "test.us10.dmc.cloud.sap",
+            "test.us20.dmc.cloud.sap"
+          ],
+          "default": "test.eu10.dmc.cloud.sap"
+        },
+        "tokenHost": {
+          "description": "The authentication server where SAP Digital Manufacturing is provisioned for your organization.",
+          "enum": [
+            "eu10.hana.ondemand.com",
+            "eu20.hana.ondemand.com",
+            "us10.hana.ondemand.com",
+            "us20.hana.ondemand.com"
+          ],
+          "default": "eu10.hana.ondemand.com"
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "Location Queries",
+      "description": "Retrieves location information for SFCs using various search criteria."
+    },
+    {
+      "name": "Location Modification",
+      "description": "Modify location information for SFCs"
+    }
+  ],
+  "paths": {
+    "/sfcLocations": {
+      "get": {
+        "tags": [
+          "Location Queries"
+        ],
+        "summary": "All locations for SFCs in a plant.",
+        "description": "Retrieves location records associated with SFCs within a plant.By default, only records with a locationStatus of OK are returned. Results can be filtered by location identifier, serial number, or location status. Use withAdditionalData parameter to include additional data fields (additionalData1-5) in the response.",
+        "operationId": "getAllLocationsBySfc",
+        "parameters": [
+          {
+            "name": "plant",
+            "in": "query",
+            "description": "Plant identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sfc",
+            "in": "query",
+            "description": "SFC identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "withAdditionalData",
+            "in": "query",
+            "description": "Controls whether additional data fields are returned in the response.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "description": "Filter by location identifier",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "serialNumber",
+            "in": "query",
+            "description": "Filter by serial number",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locationStatus",
+            "in": "query",
+            "description": "Filter by location status",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ALL",
+                "OK",
+                "NOK",
+                "NOT_USABLE"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination, starting from 0.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0,
+              "minimum": 0
+            },
+            "x-example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Number of records to return per page. This must be between 1 and 100.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20,
+              "minimum": 1,
+              "maximum": 100
+            },
+            "x-example": 20
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Location records retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SfcLocationPageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request contains invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call or view this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access to the requested location data is forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "tags": [
+          "Location Modification"
+        ],
+        "summary": "Update location.",
+        "description": "Modifies location attributes such as status, serial number, and descriptive information. Non-null values are updated.",
+        "operationId": "updateLocations",
+        "requestBody": {
+          "description": "Request containing plant, sfc, and location update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SfcLocationUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Location updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SfcLocationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request contains invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call or view this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access to the requested location data is forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Location not found for the given Plant, SFC, and Location combination.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The location cannot be processed due to a state conflict for the specified Plant, SFC, and Location.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SfcLocationPageResponse": {
+        "type": "object",
+        "description": "Paginated response containing SFC Location records",
+        "properties": {
+          "content": {
+            "type": "array",
+            "description": "Array of SFC Location records for the current page",
+            "items": {
+              "$ref": "#/components/schemas/SfcLocationResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Current page number (0-indexed)",
+            "example": 0
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of records per page",
+            "example": 20
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total number of records across all pages",
+            "example": 50
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of pages",
+            "example": 3
+          },
+          "empty": {
+            "type": "boolean",
+            "description": "Indicates if the current page has no content",
+            "example": false
+          }
+        },
+        "example": {
+          "content": [
+            {
+              "plant": "PLANT1",
+              "sfc": "SFC-001",
+              "location": "LOC-A1",
+              "locationData": "Slot 1, Row A",
+              "description": "Panel location 1",
+              "serialNumber": "SN-12345678",
+              "serialNumberAssignmentType": "A",
+              "locationStatus": "OK",
+              "targetSfc": "TARGET-SFC-001",
+              "createdDateTime": "2026-06-01T10:30:00Z",
+              "modifiedDateTime": "2026-06-01T11:00:00Z"
+            }
+          ],
+          "number": 0,
+          "size": 20,
+          "totalElements": 1,
+          "totalPages": 1,
+          "empty": false
+        }
+      },
+      "SfcLocationResponse": {
+        "type": "object",
+        "description": "SFC Location response. Note: ID field is never returned. Additional Data fields (additionalData1-5) are only included when withAdditionalData=true.",
+        "properties": {
+          "plant": {
+            "type": "string",
+            "description": "Plant identifier",
+            "example": "PLANT1"
+          },
+          "sfc": {
+            "type": "string",
+            "description": "SFC identifier",
+            "example": "SFC-001"
+          },
+          "location": {
+            "type": "string",
+            "description": "Location identifier (unique within Plant + SFC)",
+            "example": "LOC-A1"
+          },
+          "locationData": {
+            "type": "string",
+            "description": "Additional location data",
+            "example": "Slot 1, Row A"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the location",
+            "example": "Panel location for assembly"
+          },
+          "serialNumber": {
+            "type": "string",
+            "description": "Serial number assigned to this location",
+            "example": "SN-12345678"
+          },
+          "serialNumberAssignmentType": {
+            "type": "string",
+            "description": "Type of serial number assignment. A = Automatic, M = Manual",
+            "enum": [
+              "A",
+              "M"
+            ],
+            "example": "A"
+          },
+          "locationStatus": {
+            "type": "string",
+            "description": "Current status of the location",
+            "enum": [
+              "OK",
+              "NOK",
+              "NOT_USABLE"
+            ],
+            "example": "OK"
+          },
+          "targetSfc": {
+            "type": "string",
+            "description": "Target SFC for this location",
+            "example": "TARGET-SFC-001"
+          },
+          "additionalData1": {
+            "type": "string",
+            "description": "Additional data field 1. Only returned when withAdditionalData=true.",
+            "example": "Custom value 1"
+          },
+          "additionalData2": {
+            "type": "string",
+            "description": "Additional data field 2. Only returned when withAdditionalData=true.",
+            "example": "Custom value 2"
+          },
+          "additionalData3": {
+            "type": "string",
+            "description": "Additional data field 3. Only returned when withAdditionalData=true.",
+            "example": "Custom value 3"
+          },
+          "additionalData4": {
+            "type": "string",
+            "description": "Additional data field 4. Only returned when withAdditionalData=true.",
+            "example": "Custom value 4"
+          },
+          "additionalData5": {
+            "type": "string",
+            "description": "Additional data field 5. Only returned when withAdditionalData=true.",
+            "example": "Custom value 5"
+          },
+          "createdDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the record was created (ISO 8601 format)",
+            "example": "2026-06-01T10:30:00Z"
+          },
+          "modifiedDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the record was last modified (ISO 8601 format)",
+            "example": "2026-06-01T11:00:00Z"
+          }
+        },
+        "example": {
+          "plant": "PLANT1",
+          "sfc": "SFC-001",
+          "location": "LOC-A1",
+          "locationData": "Slot 1, Row A",
+          "description": "Panel location for assembly",
+          "serialNumber": "SN-12345678",
+          "serialNumberAssignmentType": "A",
+          "locationStatus": "OK",
+          "targetSfc": "TARGET-SFC-001",
+          "additionalData1": "Custom value 1",
+          "additionalData2": "Custom value 2",
+          "additionalData3": "Custom value 3",
+          "additionalData4": "Custom value 4",
+          "additionalData5": "Custom value 5",
+          "createdDateTime": "2026-06-01T10:30:00Z",
+          "modifiedDateTime": "2026-06-01T11:00:00Z"
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "description": "Standard error response",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "correlationId",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Internal error code"
+              },
+              "correlationId": {
+                "type": "string",
+                "description": "Contains a correlation ID for the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "Error message describing what went wrong"
+              },
+              "details": {
+                "type": "array",
+                "description": "Detailed list of error entries.",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "description": "Detailed error code"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Detailed error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "string",
+            "correlationId": "string",
+            "message": "string",
+            "details": [
+              {
+                "code": "string",
+                "message": "string"
+              }
+            ]
+          }
+        }
+      },
+      "SfcLocationUpdateRequest": {
+        "type": "object",
+        "description": "Request for update of SFC Location fields. Updates all location fields including LOCATION_DATA, DESCRIPTION, SERIAL_NUMBER, SERIAL_NUMBER_ASSIGNMENT_TYPE, LOCATION_STATUS, TARGET_SFC, and ADDITIONAL_DATA_1 to ADDITIONAL_DATA_5. Only non-null values will be updated.",
+        "required": [
+          "plant",
+          "sfc",
+          "location"
+        ],
+        "properties": {
+          "plant": {
+            "type": "string",
+            "description": "Plant identifier (required)",
+            "example": "PLANT1"
+          },
+          "sfc": {
+            "type": "string",
+            "description": "SFC identifier (required)",
+            "example": "SFC-001"
+          },
+          "location": {
+            "description": "Location update object",
+            "type": "object",
+            "required": [
+              "location",
+              "modifiedDateTime"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "Location identifier (required, unique within Plant + SFC)",
+                "example": "LOC-A1"
+              },
+              "modifiedDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Last known modifiedDateTime of the location (required for optimistic locking)",
+                "example": "2026-06-01T11:00:00Z"
+              },
+              "serialNumber": {
+                "type": "string",
+                "description": "Serial number (optional, update only if provided)",
+                "example": "SN-12345678"
+              },
+              "locationStatus": {
+                "type": "string",
+                "description": "Location status (optional, update only if provided)",
+                "enum": [
+                  "OK",
+                  "NOK",
+                  "NOT_USABLE"
+                ],
+                "example": "OK"
+              },
+              "targetSfc": {
+                "type": "string",
+                "description": "Target SFC (optional, update only if provided)",
+                "example": "TARGET-SFC-001"
+              },
+              "additionalData1": {
+                "type": "string",
+                "description": "Additional data field 1 (optional, update only if provided)",
+                "example": "Custom value 1"
+              },
+              "additionalData2": {
+                "type": "string",
+                "description": "Additional data field 2 (optional, update only if provided)",
+                "example": "Custom value 2"
+              },
+              "additionalData3": {
+                "type": "string",
+                "description": "Additional data field 3 (optional, update only if provided)",
+                "example": "Custom value 3"
+              },
+              "additionalData4": {
+                "type": "string",
+                "description": "Additional data field 4 (optional, update only if provided)",
+                "example": "Custom value 4"
+              },
+              "additionalData5": {
+                "type": "string",
+                "description": "Additional data field 5 (optional, update only if provided)",
+                "example": "Custom value 5"
+              }
+            }
+          }
+        },
+        "example": {
+          "plant": "PLANT1",
+          "sfc": "SFC-001",
+          "location": {
+            "location": "LOC-A1",
+            "modifiedDateTime": "2026-06-01T11:00:00Z",
+            "serialNumber": "SN-12345678",
+            "locationStatus": "OK",
+            "targetSfc": "TARGET-SFC-001",
+            "additionalData1": "Custom value 1",
+            "additionalData2": "Custom value 2",
+            "additionalData3": "Custom value 3",
+            "additionalData4": "Custom value 4",
+            "additionalData5": "Custom value 5"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://{subdomain}.authentication.{tokenHost}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "OauthClientCredentials": []
+    }
+  ]
+}

@@ -72,32 +72,22 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Ok",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AssetMetadata"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The HTTP request is bad or invalid, and therefore can't be processed by the sever.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
           "401": {
             "description": "You are not authorized to call this resource.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetMetadata"
                 }
               }
             }
@@ -124,6 +114,16 @@
           },
           "500": {
             "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid, and therefore can't be processed by the sever.",
             "content": {
               "application/json": {
                 "schema": {

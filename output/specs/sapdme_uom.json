@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "SAP Digital Manufacturing supports standard units of measure (UOM) for different business objects. Customers can also create custom units of measure. This API can be called to create, view, and delete custom units of measure.",
+    "description": "SAP Digital Manufacturing supports standard units of measure (UOM) for different business objects. Customers can also create custom units of measure. This API can be called to create, view, update, and delete units of measure.",
     "version": "v1",
     "title": "Unit of Measure",
     "contact": {
@@ -13,7 +13,7 @@
   "basePath": "/",
   "tags": [
     {
-      "name": "uom",
+      "name": "Uom",
       "description": "Uom Api Controller"
     }
   ],
@@ -485,6 +485,80 @@
         },
         "deprecated": false
       }
+    },
+    "/v2/uoms/commercialCodes": {
+      "patch": {
+        "tags": [
+          "uom"
+        ],
+        "summary": "Update the commercial codes of a unit of measure.",
+        "description": "A dedicated endpoint that updates the commercial codes of the unit of measure identified by the unitCode query parameter. The provided list fully replaces the existing commercial codes, no other fields of the unit of measure are affected. The commercialCodes parameter is required and must contain at least one entry; an empty, null, or omitted list is rejected with HTTP 400.",
+        "operationId": "updateUnitOfMeasureCommercialCodesUsingPATCH_2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "unitCode",
+            "in": "query",
+            "description": "A unit of measure ID for which the request is executed.",
+            "required": true,
+            "allowEmptyValue": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "patch",
+            "description": "A list of commercial codes to be applied. The provided list fully replaces the existing commercial codes. This is a required parameter and must contain at least one entry.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateUnitOfMeasureCommercialCodes"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The message was successfully processed.",
+            "schema": {
+              "$ref": "#/definitions/UnitOfMeasure"
+            }
+          },
+          "400": {
+            "description": "The HTTP request is bad or invalid and cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV2"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV2"
+            }
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV2"
+            }
+          },
+          "404": {
+            "description": "One of the related elements was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV2"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseV2"
+            }
+          }
+        },
+        "deprecated": false
+      }
     }
   },
   "securityDefinitions": {
@@ -500,22 +574,44 @@
       "properties": {
         "commercialCode": {
           "type": "string",
-          "description": "The commercial code of the unit of measure."
+          "description": "The commercial code of the unit of measure.",
+          "maxLength": 3
         },
         "language": {
           "type": "string",
-          "description": "Language code of the descriptions."
+          "description": "Language code of the descriptions.",
+          "maxLength": 2
         },
         "longText": {
           "type": "string",
-          "description": "Long text description of the commercial code."
+          "description": "Long text description of the commercial code.",
+          "maxLength": 60
         },
         "shortText": {
           "type": "string",
-          "description": "Short text description of the commercial code."
+          "description": "Short text description of the commercial code.",
+          "maxLength": 20
         }
       },
       "title": "CommercialCode"
+    },
+    "UpdateUnitOfMeasureCommercialCodes": {
+      "type": "object",
+      "description": "The request body for the dedicated endpoint that updates the commercial codes of a unit of measure.",
+      "required": [
+        "commercialCodes"
+      ],
+      "properties": {
+        "commercialCodes": {
+          "type": "array",
+          "description": "The commercial codes of the unit of measure. The provided list fully replaces the existing commercial codes. This is a required parameter and must contain at least one entry; an empty, null, or omitted list is rejected with HTTP 400.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/CommercialCode"
+          }
+        }
+      },
+      "title": "UpdateUnitOfMeasureCommercialCodes"
     },
     "Dimension": {
       "type": "object",

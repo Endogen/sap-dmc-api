@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Electronic Batch Record",
-    "description": "This API allows you to create an electronic batch record for a batch and order used for producing a material.",
+    "description": "Electronic batch records (EBRs) are digital systems used in manufacturing to document, guide, and track each step of a batch in real time, replacing paper-based records. EBRs help you improve accuracy, compliance, and efficiency by reducing manual errors, enforcing standardized procedures, and making data easier to review, audit, and analyze.",
     "version": "v1",
     "contact": {
       "name": "SAP Digital Manufacturing Operations",
@@ -112,7 +112,7 @@
             }
           },
           "502": {
-            "description": "Bad gateway. Failed to connect to shop floor to update indicators.",
+            "description": "Bad gateway.",
             "content": {
               "application/json": {
                 "schema": {
@@ -188,10 +188,28 @@
           "comment": {
             "description": "Comment while creating the electronic batch record.",
             "type": "string"
+          },
+          "options": {
+            "$ref": "#/components/schemas/CreateEBROptions"
           }
         },
         "title": "CreateEBRRequest",
         "description": "Request to create an electronic batch record."
+      },
+      "CreateEBROptions": {
+        "type": "object",
+        "title": "CreateEBROptions",
+        "description": "Optional settings to control the behavior of an electronic batch record.",
+        "properties": {
+          "enforceUniqueReviewers": {
+            "type": "boolean",
+            "description": "Prevents the same user from signing off on more than one status update of an electronic batch record. True if not specified."
+          },
+          "enforceGoodsReceiptExists": {
+            "type": "boolean",
+            "description": "Prevents the creation of an electronic batch record if a goods receipt hasn't been posted for the order execution. True if not specified."
+          }
+        }
       },
       "CreateEBRPublicAPIResponse": {
         "type": "object",
@@ -262,7 +280,6 @@
         "regionHost": {
           "description": "The data center where SAP Digital Manufacturing is provisioned for your organization.",
           "enum": [
-            "eu10.dmc.cloud.sap",
             "eu20.dmc.cloud.sap",
             "us10.dmc.cloud.sap",
             "us20.dmc.cloud.sap",

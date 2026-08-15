@@ -231,14 +231,14 @@
               "$ref": "#/definitions/error"
             }
           },
-          "500": {
-            "description": "Internal server error.",
+          "503": {
+            "description": "The service is unavailable. The file upload to storage or the file scan has failed due to technical issues.",
             "schema": {
               "$ref": "#/definitions/error"
             }
           },
-          "503": {
-            "description": "The service is unavailable. The file upload to storage or the file scan has failed due to technical issues.",
+          "500": {
+            "description": "Internal server error.",
             "schema": {
               "$ref": "#/definitions/error"
             }
@@ -601,6 +601,60 @@
         "deprecated": false
       }
     },
+    "/dataCollectionGroups/attachmentPoints": {
+      "post": {
+        "tags": [
+          "Data Collection"
+        ],
+        "summary": "Add attachment points to an existing data collection group.",
+        "description": "Adds the provided attachment points to an existing data collection group identified by plant, data collection group name, and version.",
+        "operationId": "createAttachmentPoints",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "Create request for attachment points",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateAttachmentPointsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Have successfully added the attachment points."
+          },
+          "400": {
+            "description": "The http request is bad or invalid and can't be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource."
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden."
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "There was an internal error in the call chain.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/sfc/groups": {
       "get": {
         "tags": [
@@ -703,6 +757,66 @@
         "deprecated": false
       }
     },
+    "/multiGroupMeasurements": {
+      "post": {
+        "tags": [
+          "Data Collection"
+        ],
+        "summary": "Retrieves measurement records with filtering.",
+        "description": "Returns logged measurement records based on filter criteria.\n\nMandatory: plant.\n\nConditional (SFCs or date range required): SFCs (max 500), startDateTime and endDateTime (yyyy-MM-ddTHH:mm:ssZ, max 30-day range).\n\nOptional: dcGroups (max 10, each with name, version, and optional parameter names), operation (name and version required if provided), resource, sort (dateCreated ASC/DESC, default DESC), pageNumber (default 0), pageSize (default 20, max 200).",
+        "operationId": "postMultiGroupMeasurementsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "Request object for retrieving data collection measurements with filters.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PostMultiGroupMeasurementsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The data collection measurement records are successfully retrieved.",
+            "schema": {
+              "$ref": "#/definitions/PostMultiGroupMeasurementsResponse"
+            }
+          },
+          "400": {
+            "description": "The request body contains wrong format or invalid elements that cannot be processed by the server.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to call this resource."
+          },
+          "403": {
+            "description": "Accessing the resource you are trying to reach is forbidden."
+          },
+          "404": {
+            "description": "One of the related elements is not found.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "Internal server error. The operation you had requested led to an error during execution.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/measurements": {
       "get": {
         "tags": [
@@ -786,7 +900,7 @@
           {
             "name": "pageSize",
             "in": "query",
-            "description": "The page size determines the number of records to be displayed in a single page. Default size is 20. Threshold is 50.",
+            "description": "The page size determines the number of records to be displayed in a single page. Default size is 20. Threshold is 200.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -806,6 +920,14 @@
             "required": false,
             "type": "string",
             "format": "date-time"
+          },
+          {
+            "name": "includeComments",
+            "in": "query",
+            "description": "When set to true, the response includes the comment field for each parameter. Defaults to false.",
+            "required": false,
+            "type": "boolean",
+            "default": false
           }
         ],
         "responses": {
@@ -900,9 +1022,17 @@
           {
             "name": "size",
             "in": "query",
-            "description": "The page size determines the number of records to be displayed in a single page. Default size is 20. Threshold is 50.",
+            "description": "The page size determines the number of records to be displayed in a single page. Default size is 20. Threshold is 200.",
             "required": false,
             "type": "integer"
+          },
+          {
+            "name": "includeComments",
+            "in": "query",
+            "description": "When set to true, the response includes the comment field for each parameter. Defaults to false.",
+            "required": false,
+            "type": "boolean",
+            "default": false
           }
         ],
         "responses": {
@@ -1042,7 +1172,7 @@
         ],
         "summary": "Fetch the uncollected Non-WIP data collection parameters for the given SFC.",
         "description": "Fetch the uncollected Non-WIP data collection parameters for the given SFC for which the data collection groups are in releasable status and parameters in enabled status. The collective missing parameters for the given SFC will be listed. By default, the results are sorted based on fields: DC Group Name and Parameter Sequence Order",
-        "operationId": "uncollectedParametersUsingGET",
+        "operationId": "nonWIPUncollectedParametersUsingGET",
         "produces": [
           "application/json"
         ],
@@ -1292,6 +1422,10 @@
           "type": "string",
           "description": "The status (pass, fail, etc.) of the measure taken for the parameter."
         },
+        "comment": {
+          "type": "string",
+          "description": "The description associated with the parameter. Only returned when the includeComments query parameter is set to true."
+        },
         "attachment": {
           "type": "object",
           "description": "The attachments for the parameter.",
@@ -1299,6 +1433,10 @@
         },
         "dateCreated": {
           "description": "The created date.",
+          "$ref": "#/definitions/TimestampWithSSS"
+        },
+        "postingDateTime": {
+          "description": "The posting date and time of the collected data in UTC.",
           "$ref": "#/definitions/TimestampWithSSS"
         }
       },
@@ -2191,6 +2329,117 @@
       "description": "Timestamp",
       "title": "Timestamp"
     },
+    "CreateAttachmentPointsRequest": {
+      "type": "object",
+      "required": [
+        "plant",
+        "group",
+        "version",
+        "attachedPoints"
+      ],
+      "properties": {
+        "plant": {
+          "type": "string",
+          "description": "Plant"
+        },
+        "group": {
+          "type": "string",
+          "description": "Data collection group name"
+        },
+        "version": {
+          "type": "string",
+          "description": "Data collection group version"
+        },
+        "attachedPoints": {
+          "type": "array",
+          "description": "List of attachment points. At least one attachment point is required.",
+          "items": {
+            "type": "object",
+            "description": "An attached point in a create-attachment-points request. At least one attachment point is required.",
+            "properties": {
+              "material": {
+                "type": "object",
+                "description": "A material attached point, if exists.",
+                "required": [
+                  "material",
+                  "version"
+                ],
+                "properties": {
+                  "material": {
+                    "type": "string",
+                    "description": "Material name."
+                  },
+                  "version": {
+                    "type": "string",
+                    "description": "Material version."
+                  }
+                }
+              },
+              "routing": {
+                "type": "object",
+                "description": "A routing attached point, if exists.",
+                "required": [
+                  "router",
+                  "routerVersion",
+                  "routerType"
+                ],
+                "properties": {
+                  "router": {
+                    "type": "string",
+                    "description": "Router/ Recipe name."
+                  },
+                  "routerVersion": {
+                    "type": "string",
+                    "description": "Router/ Recipe version."
+                  },
+                  "routerType": {
+                    "type": "string",
+                    "description": "Router/ Recipe type. Allowed types are: PRODUCTION, NC, SPECIAL, DISPOSITION_FUNCTION, SFC_SPECIFIC, SHOPORDER_SPECIFIC, CONFIGURABLE, PRODUCTION_RECIPE, SHOPORDER_SPECIFIC_RECIPE, SERVICE_ORDER_ROUTING."
+                  }
+                }
+              },
+              "stepId": {
+                "type": "string",
+                "description": "The routing step identifier."
+              },
+              "operation": {
+                "type": "object",
+                "description": "An operation attached point, if exists.",
+                "required": [
+                  "operation",
+                  "version"
+                ],
+                "properties": {
+                  "operation": {
+                    "type": "string",
+                    "description": "Operation name."
+                  },
+                  "version": {
+                    "type": "string",
+                    "description": "Operation version."
+                  }
+                }
+              },
+              "shopOrder": {
+                "type": "string",
+                "description": "A shop order attached point, if exists."
+              },
+              "resource": {
+                "type": "string",
+                "description": "A resource attached point, if exists."
+              },
+              "workCenter": {
+                "type": "string",
+                "description": "A work center attached point, if exists.",
+                "maxLength": 36
+              }
+            }
+          }
+        }
+      },
+      "title": "CreateAttachmentPointsRequest",
+      "description": "Request payload to add attachment points to an existing data collection group."
+    },
     "DataCollectionGroupCreateRequest": {
       "type": "object",
       "required": [
@@ -2422,6 +2671,14 @@
           "type": "string",
           "description": "The SFC the data has been collected for."
         },
+        "operation": {
+          "type": "string",
+          "description": "The operation for which the data has been collected."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user who collected the data."
+        },
         "parameter": {
           "description": "The Data Collection parameters holding the collected values.",
           "$ref": "#/definitions/ParameterStateMeasurements"
@@ -2429,6 +2686,240 @@
       },
       "title": "ParametricData",
       "description": "Response object to list previously collected parameter measure data."
+    },
+    "PostMultiGroupMeasurementsRequest": {
+      "type": "object",
+      "required": [
+        "plant"
+      ],
+      "properties": {
+        "plant": {
+          "type": "string",
+          "description": "The plant for which the data has been collected. Mandatory."
+        },
+        "sfcs": {
+          "type": "array",
+          "description": "One or more SFCs for which the data has been collected. Maximum 500 SFCs per request. Conditional: either sfcs or both startDateTime and endDateTime must be provided.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start date time to filter measurement records. Define the value in yyyy-MM-ddTHH:mm:ssZ format. Conditional: required when sfcs are not provided. Must be provided together with endDateTime. The difference between startDateTime and endDateTime must not exceed 30 days."
+        },
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end date time to filter measurement records. Define the value in yyyy-MM-ddTHH:mm:ssZ format. Conditional: required when sfcs are not provided. Must be provided together with startDateTime. The difference between startDateTime and endDateTime must not exceed 30 days."
+        },
+        "dcGroups": {
+          "type": "array",
+          "description": "Array of data collection groups with their specific parameter names to filter by. Maximum 10 groups per request. Each group must exist in the database and each parameter name must be valid for the corresponding group. Optional.",
+          "items": {
+            "$ref": "#/definitions/DCGroupMultiGroupFilter"
+          }
+        },
+        "operation": {
+          "description": "The operation where the data was collected. If provided, both name and version are mandatory. Optional.",
+          "$ref": "#/definitions/OperationMultiGroupFilter"
+        },
+        "resource": {
+          "type": "string",
+          "description": "The resource where the data was collected. Optional."
+        },
+        "sort": {
+          "description": "Sorting configuration for the returned records. Optional. If not provided, records are sorted by dateCreated in descending order (newest first).",
+          "$ref": "#/definitions/MultiGroupMeasurementsSort"
+        },
+        "pageNumber": {
+          "type": "integer",
+          "format": "int32",
+          "default": 0,
+          "description": "The current page of the record. Page number starts from 0. Optional, defaults to 0."
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": 20,
+          "description": "The number of records per page. Default is 20. Maximum allowed is 200. Optional."
+        },
+        "includeComments": {
+          "type": "boolean",
+          "default": false,
+          "description": "If true, the comment field is included in the response. Default is false. Optional."
+        }
+      },
+      "title": "PostMultiGroupMeasurementsRequest",
+      "description": "Request object for retrieving DC measurements with filtering options. Either sfcs or both startDateTime and endDateTime must be provided."
+    },
+    "DCGroupMultiGroupFilter": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "parameterNames"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the data collection group. Must exist in the database for the specified plant."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the data collection group. Must exist in the database for the specified plant."
+        },
+        "parameterNames": {
+          "type": "array",
+          "description": "List of parameter names to retrieve for this data collection group. At least one parameter name must be provided. Each parameter name must be valid for the corresponding data collection group.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "DCGroupMultiGroupFilter",
+      "description": "Filter for a specific data collection group with its parameter names. Only the specified parameter names will be returned for this group."
+    },
+    "OperationMultiGroupFilter": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the operation for which the data has been collected."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the operation for which the data has been collected."
+        }
+      },
+      "title": "OperationMultiGroupFilter",
+      "description": "Operation filter. Both name and version are mandatory when the operation filter is provided."
+    },
+    "MultiGroupMeasurementsSort": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "enum": [
+            "dateCreated"
+          ],
+          "description": "The field to sort results by. Currently only dateCreated is supported."
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "ASC",
+            "DESC"
+          ],
+          "description": "The sort direction. ASC returns oldest records first, DESC returns newest records first. Defaults to DESC."
+        }
+      },
+      "title": "MultiGroupMeasurementsSort",
+      "description": "Sorting configuration for measurement records."
+    },
+    "PostMultiGroupMeasurementsResponse": {
+      "type": "object",
+      "properties": {
+        "numberOfPages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total number of pages containing measurement data."
+        },
+        "count": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Total count of matching measurement records regardless of paging."
+        },
+        "currentPage": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The current page number (zero-based)."
+        },
+        "data": {
+          "type": "array",
+          "description": "The list of measurement records for the current page.",
+          "items": {
+            "$ref": "#/definitions/MultiGroupMeasurementRecord"
+          }
+        }
+      },
+      "title": "PostMultiGroupMeasurementsResponse",
+      "description": "Response object containing paginated DC measurement records."
+    },
+    "MultiGroupMeasurementRecord": {
+      "type": "object",
+      "properties": {
+        "plant": {
+          "type": "string",
+          "description": "The plant the data has been collected at."
+        },
+        "sfc": {
+          "type": "string",
+          "description": "The SFC the data has been collected for."
+        },
+        "operation": {
+          "type": "string",
+          "description": "The operation at which the data was collected."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The user ID of the user who collected the data."
+        },
+        "parameter": {
+          "description": "The measurement parameter details including the collected value, status, and optional attachment.",
+          "$ref": "#/definitions/MultiGroupMeasurementParameter"
+        }
+      },
+      "title": "MultiGroupMeasurementRecord",
+      "description": "A single measurement record in the multiGroupMeasurements response format."
+    },
+    "MultiGroupMeasurementParameter": {
+      "type": "object",
+      "properties": {
+        "measureName": {
+          "type": "string",
+          "description": "The parameter name."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "The unit of measure for the parameter. Absent if not defined."
+        },
+        "measureGroup": {
+          "type": "string",
+          "description": "The data collection group the parameter belongs to."
+        },
+        "actual": {
+          "type": "string",
+          "description": "The actual value collected for the parameter as a string."
+        },
+        "actualNumber": {
+          "type": "number",
+          "description": "The actual value collected as a number. Preserves decimal precision. Absent if the value is non-numeric."
+        },
+        "measureStatus": {
+          "type": "string",
+          "description": "The status of the measurement. Possible values: PASS, FAIL."
+        },
+        "comment": {
+          "type": "string",
+          "description": "Comment entered during data collection. Absent if no comment was provided."
+        },
+        "dateCreated": {
+          "description": "The date and time when the measurement was logged.",
+          "$ref": "#/definitions/TimestampWithSSS"
+        },
+        "attachment": {
+          "description": "File attachment linked to this measurement. Only present when a file was attached during data collection.",
+          "$ref": "#/definitions/Attachment"
+        }
+      },
+      "title": "MultiGroupMeasurementParameter",
+      "description": "Measurement parameter details including the collected value, status, comment, timestamp, and optional file attachment. Null fields are absent from the response."
     }
   },
   "externalDocs": {

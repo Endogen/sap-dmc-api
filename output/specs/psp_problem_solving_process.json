@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Problem-Solving Process",
-    "description": "A problem-solving process is created in reference to a specific defect. You define containment actions, identify root causes, and specify corrective and preventive measures for a problem-solving process, using either the standard 8D methodology or a custom methodology.",
+    "title": "Problem-Solving Process Management",
+    "description": "A problem-solving process is created in reference to a specific defect. You define containment actions, identify root causes, and specify corrective and preventive measures for a problem-solving process, using either the standard 8D methodology or a custom methodology. This API service allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution.",
     "version": "v1",
     "contact": {
       "name": "SAP Digital Manufacturing Operations",
@@ -15,7 +15,7 @@
   },
   "x-sap-api-type": "ODATAV4",
   "x-odata-version": "4.0",
-  "x-sap-shortText": "Allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution",
+  "x-sap-shortText": "Allows you to create, read, and update problem-solving processes in SAP Digital Manufacturing for Issue Resolution.",
   "servers": [
     {
       "url": "https://api.{regionHost}/odata/v4/ProblemSolvingProcessService",
@@ -68,7 +68,6 @@
     "/ProblemSolvingProcess": {
       "get": {
         "summary": "Retrieves a list of problem-solving processes.",
-        "description": "Retrieves a list of problem-solving processes",
         "tags": [
           "Problem-Solving Process"
         ],
@@ -179,24 +178,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       },
       "post": {
         "summary": "Creates a problem-solving process.",
-        "description": "Creates a problem-solving process",
         "tags": [
           "Problem-Solving Process"
         ],
@@ -222,18 +210,8 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
@@ -253,7 +231,6 @@
       ],
       "get": {
         "summary": "Retrieves all values of a problem-solving process.",
-        "description": "Retrieves all values of a problem-solving process",
         "tags": [
           "Problem-Solving Process"
         ],
@@ -314,24 +291,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       },
       "patch": {
         "summary": "Updates a problem-solving process.",
-        "description": "Updates a problem-solving process",
         "tags": [
           "Problem-Solving Process"
         ],
@@ -350,43 +316,8 @@
           "204": {
             "description": "Problem-solving process has been successfully updated."
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Deletes a problem-solving process.",
-        "description": "Deletes a problem-solving process",
-        "tags": [
-          "Problem-Solving Process"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted a problem-solving process successfully."
-          },
-          "401": {
-            "$ref": "#/components/responses/error"
-          },
-          "400": {
-            "description": "Bad request.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
@@ -394,7 +325,6 @@
     "/RootCause": {
       "get": {
         "summary": "Retrieves all values of each root cause from all the problem-solving processes.",
-        "description": "Retrieves all values of each root cause from all the problem-solving processes",
         "tags": [
           "Root Cause"
         ],
@@ -511,24 +441,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       },
       "post": {
         "summary": "Creates a root cause for a problem-solving process.",
-        "description": "Creates a root cause for a problem-solving process",
         "tags": [
           "Root Cause"
         ],
@@ -554,23 +473,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
     },
-    "/RootCause(rootCauseUUID={rootCauseUUID},stepUUID={stepUUID})": {
+    "/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')": {
       "parameters": [
         {
           "description": "Universal unique identifier of root cause",
@@ -595,7 +504,6 @@
       ],
       "get": {
         "summary": "Retrieves all values of a root cause of a problem-solving process.",
-        "description": "Retrieves all values of a root cause of a problem-solving proces.",
         "tags": [
           "Root Cause"
         ],
@@ -666,24 +574,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       },
       "patch": {
         "summary": "Updates a root cause of a problem-solving process.",
-        "description": "Updates a root cause of a problem-solving process",
         "tags": [
           "Root Cause"
         ],
@@ -702,18 +599,8 @@
           "204": {
             "description": "Root cause of the problem-solving process has been successfully updated."
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
@@ -743,7 +630,6 @@
       ],
       "get": {
         "summary": "Retrieves all values of a problem-solving process step.",
-        "description": "Retrieves all values of a problem-solving process step",
         "tags": [
           "Step"
         ],
@@ -822,24 +708,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       },
       "patch": {
         "summary": "Updates a step of a problem-solving process.",
-        "description": "Updates a step of a problem-solving process",
         "tags": [
           "Step"
         ],
@@ -858,18 +733,8 @@
           "204": {
             "description": "Problem-solving process step has been successfully updated."
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
@@ -877,7 +742,6 @@
     "/StepComments": {
       "post": {
         "summary": "Creates a comment for a problem-solving process step.",
-        "description": "Creates a comment for a problem-solving process step",
         "tags": [
           "Step Comments"
         ],
@@ -903,18 +767,8 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
@@ -922,7 +776,6 @@
     "/Tasks": {
       "get": {
         "summary": "Retrieves all tasks from each step in all problem-solving processes.",
-        "description": "Retrieves all tasks from each step in all problem-solving processes",
         "tags": [
           "Tasks"
         ],
@@ -1086,24 +939,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       },
       "post": {
         "summary": "Creates a task in a problem-solving process step.",
-        "description": "Creates a task in a problem-solving process step",
         "tags": [
           "Tasks"
         ],
@@ -1129,18 +971,8 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
@@ -1177,7 +1009,6 @@
       ],
       "get": {
         "summary": "Retrieves all values of a task within a step of a problem-solving process.",
-        "description": "Retrieves all values of a task within a step of a problem-solving proces.",
         "tags": [
           "Tasks"
         ],
@@ -1192,24 +1023,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       },
       "patch": {
         "summary": "Updates a task within a step of a problem-solving process.",
-        "description": "Updates a task within a step of a problem-solving process",
         "tags": [
           "Tasks"
         ],
@@ -1228,18 +1048,8 @@
           "204": {
             "description": "Task of the problem-solving process has been successfully updated."
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
@@ -1247,7 +1057,6 @@
     "/TeamMembers": {
       "get": {
         "summary": "Retrieves all the team members from all the problem-solving processes.",
-        "description": "Retrieves all the team members from all the problem-solving processes",
         "tags": [
           "Team Members"
         ],
@@ -1364,24 +1173,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       },
       "post": {
         "summary": "Adds team members to the D1 step of a problem-solving process.",
-        "description": "Adds team members to the D1 step of a problem-solving process",
         "tags": [
           "Team Members"
         ],
@@ -1407,18 +1205,8 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
@@ -1455,7 +1243,6 @@
       ],
       "get": {
         "summary": "Retrieves all values of a team member of a problem-solving process.",
-        "description": "Retrieves all values of a team member of a problem-solving process",
         "tags": [
           "Team Members"
         ],
@@ -1524,24 +1311,13 @@
               }
             }
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       },
       "patch": {
         "summary": "Updates team members of a problem-solving process.",
-        "description": "Updates team members of a problem-solving process",
         "tags": [
           "Team Members"
         ],
@@ -1560,18 +1336,8 @@
           "204": {
             "description": "Team members of the problem-solving process have been successfully updated."
           },
-          "401": {
+          "4XX": {
             "$ref": "#/components/responses/error"
-          },
-          "500": {
-            "description": "An internal error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
           }
         }
       }
@@ -2984,19 +2750,15 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "Error code"
-          },
-          "correlationId": {
-            "type": "string",
-            "description": "Contains a correlation ID for the error."
+            "description": "Internal error message"
           },
           "message": {
             "type": "string",
-            "description": "Internal error message"
-          },
-          "details": {
-            "type": "string",
             "description": "Contains additional information, if any"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Contains correlationId for the error."
           },
           "causeMessage": {
             "type": "string",
@@ -3044,7 +2806,7 @@
     },
     "responses": {
       "error": {
-        "description": "You are not authorized to call this resource",
+        "description": "Error",
         "content": {
           "application/json": {
             "schema": {

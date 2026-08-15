@@ -1,0 +1,298 @@
+{
+  "date": "2026-08-15",
+  "summary": {
+    "apis_added": 2,
+    "apis_removed": 0,
+    "apis_changed": 6,
+    "endpoints_added": 4,
+    "endpoints_removed": 0,
+    "breaking_changes": 2
+  },
+  "changes": [
+    {
+      "api": "psp_problem_solving_process",
+      "display_name": "Problem-Solving Process Management",
+      "type": "added"
+    },
+    {
+      "api": "sapdme_bom",
+      "display_name": "Bill of Material",
+      "type": "changed",
+      "changes": [
+        {
+          "kind": "endpoint_added",
+          "method": "PATCH",
+          "path": "/boms/components/customValues",
+          "summary": "Updates custom values for a list of BOM components.",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "BomComponentCustomValues",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "BomType",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "ErrorDetail",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "ErrorResponseApiModel",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "ErrorResponseV3",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "UpdateBomComponentsCustomValues",
+          "breaking": false
+        }
+      ]
+    },
+    {
+      "api": "sapdme_datacollection",
+      "display_name": "Data Collection",
+      "type": "changed",
+      "changes": [
+        {
+          "kind": "param_added",
+          "endpoint": "GET /measurements",
+          "param": "includeComments",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "param_added",
+          "endpoint": "GET /nonwip/measurements",
+          "param": "includeComments",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "endpoint_added",
+          "method": "POST",
+          "path": "/dataCollectionGroups/attachmentPoints",
+          "summary": "Add attachment points to an existing data collection group.",
+          "breaking": false
+        },
+        {
+          "kind": "endpoint_added",
+          "method": "POST",
+          "path": "/multiGroupMeasurements",
+          "summary": "Retrieves measurement records with filtering.",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "CreateAttachmentPointsRequest",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "DCGroupMultiGroupFilter",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "MultiGroupMeasurementParameter",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "MultiGroupMeasurementRecord",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "MultiGroupMeasurementsSort",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "OperationMultiGroupFilter",
+          "breaking": false
+        },
+        {
+          "kind": "schema_field_added",
+          "schema": "ParameterStateMeasurements",
+          "field": "comment",
+          "type": "string",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "schema_field_added",
+          "schema": "ParameterStateMeasurements",
+          "field": "postingDateTime",
+          "type": "string",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "schema_field_added",
+          "schema": "ParametricData",
+          "field": "operation",
+          "type": "string",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "schema_field_added",
+          "schema": "ParametricData",
+          "field": "userId",
+          "type": "string",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "PostMultiGroupMeasurementsRequest",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "PostMultiGroupMeasurementsResponse",
+          "breaking": false
+        }
+      ]
+    },
+    {
+      "api": "sapdme_ebr",
+      "display_name": "Electronic Batch Record",
+      "type": "changed",
+      "changes": [
+        {
+          "kind": "request_field_added",
+          "endpoint": "POST /ebrs",
+          "field": "options",
+          "type": "object",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "CreateEBROptions",
+          "breaking": false
+        },
+        {
+          "kind": "schema_field_added",
+          "schema": "CreateEBRPublicAPIRequest",
+          "field": "options",
+          "type": "object",
+          "required": false,
+          "breaking": false
+        }
+      ]
+    },
+    {
+      "api": "sapdme_order_v2",
+      "display_name": "Order",
+      "type": "changed",
+      "changes": [
+        {
+          "kind": "param_added",
+          "endpoint": "GET /v2/plants/{plant}/orders",
+          "param": "customValueFilter",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "schema_field_added",
+          "schema": "Material",
+          "field": "description",
+          "type": "string",
+          "required": false,
+          "breaking": false
+        }
+      ]
+    },
+    {
+      "api": "sapdme_panel_sfc",
+      "display_name": "Shop Floor Control (SFC) Location",
+      "type": "added"
+    },
+    {
+      "api": "sapdme_sfc_v2",
+      "display_name": "Shop Floor Control Production Activities",
+      "type": "changed",
+      "changes": [
+        {
+          "kind": "param_added",
+          "endpoint": "GET /worklist/orders",
+          "param": "allSfcSteps",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "param_added",
+          "endpoint": "GET /worklist/orders",
+          "param": "includeSfcSteps",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "param_added",
+          "endpoint": "GET /worklist/sfcs",
+          "param": "allSfcSteps",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "param_added",
+          "endpoint": "GET /worklist/sfcs",
+          "param": "includeSfcSteps",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "schema_field_added",
+          "schema": "SfcDetailsV2",
+          "field": "steps",
+          "type": "array",
+          "required": false,
+          "breaking": false
+        },
+        {
+          "kind": "schema_field_removed",
+          "schema": "SfcStep",
+          "field": "operationScheduledCompletionDate",
+          "breaking": true
+        },
+        {
+          "kind": "schema_field_removed",
+          "schema": "SfcStep",
+          "field": "operationScheduledStartDate",
+          "breaking": true
+        }
+      ]
+    },
+    {
+      "api": "sapdme_uom",
+      "display_name": "Unit of Measure",
+      "type": "changed",
+      "changes": [
+        {
+          "kind": "endpoint_added",
+          "method": "PATCH",
+          "path": "/v2/uoms/commercialCodes",
+          "summary": "Update the commercial codes of a unit of measure.",
+          "breaking": false
+        },
+        {
+          "kind": "schema_added",
+          "schema": "UpdateUnitOfMeasureCommercialCodes",
+          "breaking": false
+        }
+      ]
+    }
+  ]
+}
