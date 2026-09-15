@@ -64,6 +64,12 @@ def _describe_breaking_change(change: dict[str, Any]) -> str:
     schema = change.get("schema")
     field = change.get("field")
 
+    if kind == "base_url_changed":
+        return (
+            f"base path moved from {_code(change.get('old_path') or '/')} to "
+            f"{_code(change.get('new_path') or '/')}, so every request path in "
+            "this API changed"
+        )
     if kind == "endpoint_removed":
         endpoint_label = f"{change.get('method', '')} {change.get('path', '')}".strip()
         return f"endpoint {_code(endpoint_label)} was removed"
@@ -257,7 +263,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         ref=args.ref,
     )
     args.body_file.parent.mkdir(parents=True, exist_ok=True)
-    args.body_file.write_text(notification.body, encoding="utf-8")
+    args.body_file.write_text(notification.body, encoding="utf-8", newline="\n")
     if args.github_output:
         _write_github_output(args.github_output, notification)
     else:

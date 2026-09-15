@@ -21,6 +21,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from spec_paths import join_path, service_prefix
+
 log = logging.getLogger("diff-tracker")
 
 SPECS_SUBDIR = "output/specs"
@@ -196,6 +198,58 @@ def _get_endpoints(spec: dict) -> dict[str, dict]:
     return endpoints
 
 
+def _index_endpoints(
+    spec_norm: dict, prefix: str, key_prefix: str | None = None
+) -> tuple[dict[str, dict], dict[str, str]]:
+    """Index a spec's endpoints by full request path.
+
+    The displayed path is always the real one. `key_prefix` only changes the
+    comparison key, rebasing this side onto another prefix.
+
+    Returns (details by key, path to display by key).
+    """
+    details: dict[str, dict] = {}
+    display: dict[str, str] = {}
+    for key, value in _get_endpoints(spec_norm).items():
+        method, path = key.split(" ", 1)
+        full = join_path(prefix, path)
+        comparison = full
+        if key_prefix is not None and key_prefix != prefix:
+            relative = full[len(prefix):] if prefix and full.startswith(prefix) else full
+            comparison = join_path(key_prefix, relative)
+        details[f"{method} {comparison}"] = value
+        display[f"{method} {comparison}"] = full
+    return details, display
+
+
+def _align_endpoints(
+    old_norm: dict, new_norm: dict, old_prefix: str, new_prefix: str
+) -> tuple[dict[str, dict], dict[str, str], dict[str, dict], dict[str, str]]:
+    """Line the two sides up so that only genuine endpoint changes show.
+
+    Keying on the full request path already absorbs SAP shuffling a segment
+    between the server URL and the path keys — sapdme_nonconformance moved `/v1`
+    across that boundary and the old changelog reported 8 endpoints added and 9
+    removed for an API whose URLs never changed.
+
+    A genuine base-URL move (`/assembly/v1` -> `/assembly/v2`) is the opposite
+    case: every full path differs, so the old side is rebased onto the new
+    prefix to match. Rebasing is only kept when it actually pairs up more
+    endpoints, which is what tells the two situations apart.
+    """
+    new_endpoints, new_display = _index_endpoints(new_norm, new_prefix)
+    old_endpoints, old_display = _index_endpoints(old_norm, old_prefix)
+
+    if old_prefix != new_prefix:
+        rebased, rebased_display = _index_endpoints(old_norm, old_prefix, new_prefix)
+        if len(set(rebased) & set(new_endpoints)) > len(
+            set(old_endpoints) & set(new_endpoints)
+        ):
+            old_endpoints, old_display = rebased, rebased_display
+
+    return old_endpoints, old_display, new_endpoints, new_display
+
+
 def _get_params(endpoint: dict) -> dict[str, dict]:
     """Extract parameters from an endpoint as {name: info} dict."""
     params: dict[str, dict] = {}
@@ -275,7 +329,22 @@ def diff_single_api(old_spec: dict, new_spec: dict) -> dict | None:
     old_norm = _normalize_spec(old_spec)
     new_norm = _normalize_spec(new_spec)
 
+    # The prefix SAP hides in x-servers is part of the request URL, so it takes
+    # part in both the comparison (see _align_endpoints) and the reported paths.
+    # A move of the prefix itself is reported once here rather than as a churn
+    # of every endpoint in the API.
+    old_prefix = service_prefix(old_spec)
+    new_prefix = service_prefix(new_spec)
+
     changes: list[dict] = []
+
+    if old_prefix != new_prefix:
+        changes.append({
+            "kind": "base_url_changed",
+            "old_path": old_prefix,
+            "new_path": new_prefix,
+            "breaking": True,
+        })
 
     # Version change
     old_version = old_norm.get("info", {}).get("version", "")
@@ -289,11 +358,14 @@ def diff_single_api(old_spec: dict, new_spec: dict) -> dict | None:
         })
 
     # Endpoints
-    old_endpoints = _get_endpoints(old_norm)
-    new_endpoints = _get_endpoints(new_norm)
+    old_endpoints, old_display, new_endpoints, new_display = _align_endpoints(
+        old_norm, new_norm, old_prefix, new_prefix
+    )
 
     for key in sorted(set(old_endpoints) | set(new_endpoints)):
-        method, path = key.split(" ", 1)
+        method = key.split(" ", 1)[0]
+        # show the path as it is actually requested, prefix included
+        path = new_display.get(key) or old_display[key]
         if key in new_endpoints and key not in old_endpoints:
             changes.append({
                 "kind": "endpoint_added",
@@ -589,7 +661,7 @@ def save_diff(diff: dict, history_dir: Path) -> Path:
                 break
             counter += 1
 
-    filepath.write_text(json.dumps(diff, indent=2), encoding="utf-8")
+    filepath.write_text(json.dumps(diff, indent=2), encoding="utf-8", newline="\n")
     log.info("Saved diff to %s", filepath)
     return filepath
 
@@ -611,7 +683,7 @@ def generate_changelog(history_dir: Path) -> list[dict]:
 def rebuild_changelog(history_dir: Path, changelog_path: Path) -> None:
     """Rebuild the changelog.json from all history files."""
     entries = generate_changelog(history_dir)
-    changelog_path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
+    changelog_path.write_text(json.dumps(entries, indent=2), encoding="utf-8", newline="\n")
     log.info("Rebuilt changelog with %d entries → %s", len(entries), changelog_path)
 
 

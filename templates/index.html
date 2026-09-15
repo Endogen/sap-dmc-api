@@ -715,6 +715,8 @@ function changeText(c) {
       return 'Field <code>' + esc(c.field) + '</code> now required in <code>' + esc(c.schema) + '</code>';
     case 'version_changed':
       return 'API version changed: <code>' + esc(c.old_version) + '</code> &rarr; <code>' + esc(c.new_version) + '</code>';
+    case 'base_url_changed':
+      return 'Base path changed: <code>' + esc(c.old_path || '/') + '</code> &rarr; <code>' + esc(c.new_path || '/') + '</code> &mdash; every request path in this API moved';
     default:
       return esc(c.kind);
   }

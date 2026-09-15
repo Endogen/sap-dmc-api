@@ -22,7 +22,7 @@
         {
           "kind": "endpoint_added",
           "method": "PATCH",
-          "path": "/boms/components/customValues",
+          "path": "/bom/v1/boms/components/customValues",
           "summary": "Updates custom values for a list of BOM components.",
           "breaking": false
         },
@@ -65,14 +65,14 @@
       "changes": [
         {
           "kind": "param_added",
-          "endpoint": "GET /measurements",
+          "endpoint": "GET /datacollection/v1/measurements",
           "param": "includeComments",
           "required": false,
           "breaking": false
         },
         {
           "kind": "param_added",
-          "endpoint": "GET /nonwip/measurements",
+          "endpoint": "GET /datacollection/v1/nonwip/measurements",
           "param": "includeComments",
           "required": false,
           "breaking": false
@@ -80,14 +80,14 @@
         {
           "kind": "endpoint_added",
           "method": "POST",
-          "path": "/dataCollectionGroups/attachmentPoints",
+          "path": "/datacollection/v1/dataCollectionGroups/attachmentPoints",
           "summary": "Add attachment points to an existing data collection group.",
           "breaking": false
         },
         {
           "kind": "endpoint_added",
           "method": "POST",
-          "path": "/multiGroupMeasurements",
+          "path": "/datacollection/v1/multiGroupMeasurements",
           "summary": "Retrieves measurement records with filtering.",
           "breaking": false
         },
@@ -172,7 +172,7 @@
       "changes": [
         {
           "kind": "request_field_added",
-          "endpoint": "POST /ebrs",
+          "endpoint": "POST /ebr/v1/ebrs",
           "field": "options",
           "type": "object",
           "required": false,
@@ -200,7 +200,7 @@
       "changes": [
         {
           "kind": "param_added",
-          "endpoint": "GET /v2/plants/{plant}/orders",
+          "endpoint": "GET /order/v2/plants/{plant}/orders",
           "param": "customValueFilter",
           "required": false,
           "breaking": false
@@ -227,28 +227,28 @@
       "changes": [
         {
           "kind": "param_added",
-          "endpoint": "GET /worklist/orders",
+          "endpoint": "GET /sfc/v2/worklist/orders",
           "param": "allSfcSteps",
           "required": false,
           "breaking": false
         },
         {
           "kind": "param_added",
-          "endpoint": "GET /worklist/orders",
+          "endpoint": "GET /sfc/v2/worklist/orders",
           "param": "includeSfcSteps",
           "required": false,
           "breaking": false
         },
         {
           "kind": "param_added",
-          "endpoint": "GET /worklist/sfcs",
+          "endpoint": "GET /sfc/v2/worklist/sfcs",
           "param": "allSfcSteps",
           "required": false,
           "breaking": false
         },
         {
           "kind": "param_added",
-          "endpoint": "GET /worklist/sfcs",
+          "endpoint": "GET /sfc/v2/worklist/sfcs",
           "param": "includeSfcSteps",
           "required": false,
           "breaking": false
@@ -283,7 +283,7 @@
         {
           "kind": "endpoint_added",
           "method": "PATCH",
-          "path": "/v2/uoms/commercialCodes",
+          "path": "/uom/v2/uoms/commercialCodes",
           "summary": "Update the commercial codes of a unit of measure.",
           "breaking": false
         },

@@ -170,3 +170,126 @@ def test_request_body_field_via_ref():
     kinds = change_kinds(diff)
     assert kinds["request_field_added"]["field"] == "color"
     assert kinds["request_field_added"]["breaking"] is False
+
+
+# ---------------------------------------------------------------------------
+# Service prefix — shown in the changelog, but never used as the compare key
+# ---------------------------------------------------------------------------
+
+
+def prefixed_spec(url="https://api.{regionHost}/assembly/v1", paths=None):
+    spec = make_spec(paths=paths if paths is not None else copy.deepcopy(BASE_PATHS))
+    spec["basePath"] = "/"
+    spec["x-servers"] = [{"url": url}]
+    return spec
+
+
+def test_added_endpoint_reports_the_full_request_path():
+    old = prefixed_spec()
+    new = prefixed_spec()
+    new["paths"]["/brandNew"] = {"post": {"summary": "New thing"}}
+
+    changes = diff_single_api(old, new)["changes"]
+    added = [c for c in changes if c["kind"] == "endpoint_added"]
+    assert [c["path"] for c in added] == ["/assembly/v1/brandNew"]
+
+
+def test_removed_endpoint_reports_the_full_request_path():
+    old = prefixed_spec()
+    new = prefixed_spec(paths={})
+
+    changes = diff_single_api(old, new)["changes"]
+    removed = [c for c in changes if c["kind"] == "endpoint_removed"]
+    assert [c["path"] for c in removed] == ["/assembly/v1/widgets"]
+
+
+def test_param_change_labels_the_endpoint_with_its_full_path():
+    old = prefixed_spec()
+    new = prefixed_spec()
+    new["paths"]["/widgets"]["get"]["parameters"].append(
+        {"name": "limit", "in": "query", "type": "integer", "required": True}
+    )
+
+    changes = diff_single_api(old, new)["changes"]
+    added = [c for c in changes if c["kind"] == "param_added"]
+    assert [c["endpoint"] for c in added] == ["GET /assembly/v1/widgets"]
+
+
+def test_base_url_move_reports_one_entry_not_every_endpoint():
+    """The whole point: moving the base URL must not churn the changelog."""
+    old = prefixed_spec()
+    new = prefixed_spec(url="https://api.{regionHost}/assembly/v2")
+
+    changes = diff_single_api(old, new)["changes"]
+
+    assert [c["kind"] for c in changes] == ["base_url_changed"]
+    assert changes[0]["old_path"] == "/assembly/v1"
+    assert changes[0]["new_path"] == "/assembly/v2"
+    assert changes[0]["breaking"] is True
+
+
+def test_base_url_move_does_not_re_key_endpoints():
+    old = prefixed_spec()
+    new = prefixed_spec(url="https://api.{regionHost}/assembly/v2")
+
+    kinds = [c["kind"] for c in diff_single_api(old, new)["changes"]]
+    assert "endpoint_added" not in kinds
+    assert "endpoint_removed" not in kinds
+
+
+def test_unchanged_prefixed_spec_still_produces_no_diff():
+    spec = prefixed_spec()
+    assert diff_single_api(spec, copy.deepcopy(spec)) is None
+
+
+def test_segment_moved_out_of_the_server_url_is_not_a_change():
+    """The sapdme_nonconformance case: same URLs, different split.
+
+    SAP moved '/v1' from the server URL into the path keys. Every request URL
+    stayed the same, so the changelog should stay quiet.
+    """
+    old = prefixed_spec(
+        url="https://api.{regionHost}/nonconformance/v1",
+        paths={"/nonconformances": {"get": {"summary": "List"}}},
+    )
+    new = prefixed_spec(
+        url="https://api.{regionHost}/nonconformance",
+        paths={"/v1/nonconformances": {"get": {"summary": "List"}}},
+    )
+
+    changes = diff_single_api(old, new)["changes"]
+    kinds = [c["kind"] for c in changes]
+    assert "endpoint_added" not in kinds
+    assert "endpoint_removed" not in kinds
+
+
+def test_segment_shuffle_still_reports_a_genuinely_removed_endpoint():
+    old = prefixed_spec(
+        url="https://api.{regionHost}/nonconformance/v1",
+        paths={
+            "/nonconformances": {"get": {"summary": "List"}},
+            "/legacy": {"get": {"summary": "Old"}},
+        },
+    )
+    new = prefixed_spec(
+        url="https://api.{regionHost}/nonconformance",
+        paths={"/v1/nonconformances": {"get": {"summary": "List"}}},
+    )
+
+    changes = diff_single_api(old, new)["changes"]
+    removed = [c for c in changes if c["kind"] == "endpoint_removed"]
+    assert [c["path"] for c in removed] == ["/nonconformance/v1/legacy"]
+    assert not [c for c in changes if c["kind"] == "endpoint_added"]
+
+
+def test_base_url_move_still_compares_endpoint_internals():
+    """Rebasing must pair endpoints up, not just silence them."""
+    old = prefixed_spec()
+    new = prefixed_spec(url="https://api.{regionHost}/assembly/v2")
+    new["paths"]["/widgets"]["get"]["parameters"].append(
+        {"name": "limit", "in": "query", "type": "integer", "required": True}
+    )
+
+    changes = diff_single_api(old, new)["changes"]
+    params = [c for c in changes if c["kind"] == "param_added"]
+    assert [c["endpoint"] for c in params] == ["GET /assembly/v2/widgets"]
