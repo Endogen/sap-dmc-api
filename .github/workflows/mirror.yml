@@ -56,6 +56,7 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Mirror changed specs
+        id: mirror
         if: steps.mirror-check.outputs.changed == 'true'
         env:
           SAP_USER: ${{ secrets.SAP_USER }}
@@ -63,6 +64,8 @@ jobs:
           SAP_ACCOUNT: ${{ secrets.SAP_ACCOUNT }}
         run: python mirror.py --min-specs 80
 
+      # mirror.py blanks out the form fields before capturing this, so the
+      # artifact cannot publish the SAP account on a public repository.
       - name: Upload failure screenshot
         if: failure()
         uses: actions/upload-artifact@v7
@@ -71,18 +74,22 @@ jobs:
           path: login_failure.png
           if-no-files-found: ignore
 
+      # mirror.py reports the history file it wrote. Rediscovering it with
+      # `git diff HEAD` did not work: the file is untracked until the commit
+      # step below, so the diff never listed it and no issue was ever opened.
       - name: Prepare API change notification
         id: api-change
-        if: steps.mirror-check.outputs.changed == 'true'
+        if: steps.mirror.outputs.history_file != ''
+        env:
+          HISTORY_FILE: ${{ steps.mirror.outputs.history_file }}
         run: |
-          diff_file="$(git diff --name-only --diff-filter=A HEAD -- output/history | tail -n 1)"
-          if [ -z "$diff_file" ]; then
-            echo "detected=false" >> "$GITHUB_OUTPUT"
-            exit 0
+          if [ ! -f "$HISTORY_FILE" ]; then
+            echo "::error::mirror.py reported $HISTORY_FILE but it does not exist"
+            exit 1
           fi
 
           echo "detected=true" >> "$GITHUB_OUTPUT"
-          python issue_notification.py "$diff_file" \
+          python issue_notification.py "$HISTORY_FILE" \
             --repository "$GITHUB_REPOSITORY" \
             --ref "$GITHUB_REF_NAME" \
             --body-file "$RUNNER_TEMP/api-change-issue.md" \
@@ -114,6 +121,13 @@ jobs:
               --body-file "$RUNNER_TEMP/api-change-issue.md" \
               --assignee "$REPOSITORY_OWNER"
           fi
+
+      - name: Flag APIs that could not be mirrored
+        if: steps.mirror.outputs.failed_apis != ''
+        env:
+          FAILED_APIS: ${{ steps.mirror.outputs.failed_apis }}
+        run: |
+          echo "::warning::Kept previous specs for these APIs - $FAILED_APIS"
 
       - name: Commit and push changes
         id: commit

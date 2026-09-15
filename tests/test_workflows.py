@@ -39,3 +39,29 @@ def test_workflows_do_not_use_node20_action_releases() -> None:
     }
 
     assert not {name: refs for name, refs in offenders.items() if refs}
+
+
+def test_api_change_notification_uses_the_path_mirror_reported() -> None:
+    """`git diff HEAD` never matched: the history file is untracked at that point.
+
+    It cost two months of silent runs, so pin the wiring down.
+    """
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+
+    assert "git diff --name-only --diff-filter=A HEAD -- output/history" not in workflow
+
+    mirror_step = _step_block(workflow, "- name: Mirror changed specs")
+    assert "id: mirror" in mirror_step
+
+    notification = _step_block(workflow, "- name: Prepare API change notification")
+    assert "if: steps.mirror.outputs.history_file != ''" in notification
+    assert "${{ steps.mirror.outputs.history_file }}" in notification
+    assert '"$HISTORY_FILE"' in notification
+
+
+def test_partially_failed_mirrors_are_flagged() -> None:
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+
+    step = _step_block(workflow, "- name: Flag APIs that could not be mirrored")
+    assert "if: steps.mirror.outputs.failed_apis != ''" in step
+    assert "::warning::" in step

@@ -18,6 +18,10 @@ from mirror import (
     is_api_url,
     looks_like_auth_html,
     generate_summary,
+    emit_github_output,
+    fetch_public_json,
+    record_changes,
+    fetch_updates,
     open_protected_resource,
     plan_mirror,
     save_specs,
@@ -522,3 +526,260 @@ def test_generate_summary_writes_lf_newlines(tmp_path, monkeypatch):
     for name in ("summary.json", "README.md"):
         raw = (tmp_path / name).read_bytes()
         assert b"\r\n" not in raw
+
+
+# ---------------------------------------------------------------------------
+# One bad API must not cost the whole run
+# ---------------------------------------------------------------------------
+
+
+class StubPage:
+    """Stands in for the Playwright page; fetch_updates never touches it."""
+
+    url = "https://api.sap.com/"
+
+
+def _spec(name):
+    return {"swagger": "2.0", "paths": {"/" + name: {"get": {"summary": name}}}}
+
+
+def fetch_updates_over(monkeypatch, names, failing=None, error=None):
+    failing = failing or {}
+    monkeypatch.setattr(mirror.time, "sleep", lambda *_: None)
+    monkeypatch.setattr(mirror, "fetch_api_metadata", lambda r, p, name: {"Name": name})
+
+    def fake_spec(request, page, name):
+        if name in failing:
+            raise failing[name]
+        return _spec(name)
+
+    monkeypatch.setattr(mirror, "fetch_api_spec", fake_spec)
+    return mirror.fetch_updates(
+        None, StubPage(), list(names), {n: artifact(n) for n in names}
+    )
+
+
+def test_one_failing_api_does_not_abort_the_others(monkeypatch):
+    metadata, specs, failures = fetch_updates_over(
+        monkeypatch,
+        ["good1", "bad", "good2"],
+        failing={"bad": ValueError("does not look like OpenAPI")},
+    )
+
+    assert sorted(specs) == ["good1", "good2"]
+    assert sorted(metadata) == ["good1", "good2"]
+    assert failures == [("bad", "does not look like OpenAPI")]
+
+
+def test_failed_api_is_left_out_so_its_previous_spec_survives(monkeypatch):
+    _, specs, _ = fetch_updates_over(
+        monkeypatch, ["bad"], failing={"bad": RuntimeError("boom")}
+    )
+
+    # None would mean "SAP dropped this API" and delete the file — absent means
+    # "we could not refresh it", which keeps what was mirrored before.
+    assert "bad" not in specs
+
+
+def test_withdrawn_api_is_still_recorded_as_none(monkeypatch):
+    monkeypatch.setattr(mirror.time, "sleep", lambda *_: None)
+    monkeypatch.setattr(mirror, "fetch_api_metadata", lambda r, p, name: {})
+    monkeypatch.setattr(mirror, "fetch_api_spec", lambda r, p, name: None)
+
+    _, specs, failures = mirror.fetch_updates(
+        None, StubPage(), ["gone"], {"gone": artifact("gone")}
+    )
+
+    assert specs == {"gone": None}
+    assert failures == []
+
+
+def test_lost_session_still_aborts_the_run(monkeypatch):
+    """Every remaining API would fail the same way — no point continuing."""
+    with pytest.raises(mirror.SessionAuthError):
+        fetch_updates_over(
+            monkeypatch,
+            ["a", "b"],
+            failing={"a": mirror.SessionAuthError("session gone")},
+        )
+
+
+# ---------------------------------------------------------------------------
+# The public catalog fetch retries
+# ---------------------------------------------------------------------------
+
+
+def _http_error(code):
+    from urllib.error import HTTPError
+
+    return HTTPError("https://api.sap.com/x", code, "boom", {}, None)
+
+
+def public_fetch_returning(monkeypatch, results):
+    """Drive fetch_public_json over a scripted list of outcomes."""
+    calls = []
+
+    def fake_read(url):
+        outcome = results[len(calls)]
+        calls.append(url)
+        if isinstance(outcome, Exception):
+            raise outcome
+        return outcome, "application/json", url
+
+    monkeypatch.setattr(mirror, "_read_public_url", fake_read)
+    monkeypatch.setattr(mirror.time, "sleep", lambda *_: None)
+    return calls
+
+
+def test_public_fetch_retries_a_transient_server_error(monkeypatch):
+    calls = public_fetch_returning(
+        monkeypatch, [_http_error(503), '{"ok": true}']
+    )
+
+    assert fetch_public_json("https://api.sap.com/x") == {"ok": True}
+    assert len(calls) == 2
+
+
+def test_public_fetch_retries_a_network_error(monkeypatch):
+    from urllib.error import URLError
+
+    calls = public_fetch_returning(
+        monkeypatch, [URLError("connection reset"), '{"ok": true}']
+    )
+
+    assert fetch_public_json("https://api.sap.com/x") == {"ok": True}
+    assert len(calls) == 2
+
+
+def test_public_fetch_does_not_retry_a_404(monkeypatch):
+    calls = public_fetch_returning(monkeypatch, [_http_error(404)])
+
+    with pytest.raises(RuntimeError, match="HTTP 404"):
+        fetch_public_json("https://api.sap.com/x")
+    assert len(calls) == 1
+
+
+def test_public_fetch_gives_up_after_the_last_attempt(monkeypatch):
+    calls = public_fetch_returning(
+        monkeypatch, [_http_error(503)] * mirror.PUBLIC_FETCH_ATTEMPTS
+    )
+
+    with pytest.raises(RuntimeError, match="HTTP 503"):
+        fetch_public_json("https://api.sap.com/x")
+    assert len(calls) == mirror.PUBLIC_FETCH_ATTEMPTS
+
+
+# ---------------------------------------------------------------------------
+# Reporting back to the workflow
+# ---------------------------------------------------------------------------
+
+
+def test_emit_github_output_appends_key_values(tmp_path, monkeypatch):
+    out = tmp_path / "gh-output"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(out))
+
+    emit_github_output("history_file", "output/history/2026-09-15.json")
+    emit_github_output("failed_apis", "a,b")
+
+    assert out.read_text(encoding="utf-8").splitlines() == [
+        "history_file=output/history/2026-09-15.json",
+        "failed_apis=a,b",
+    ]
+
+
+def test_emit_github_output_is_a_no_op_outside_actions(monkeypatch):
+    monkeypatch.delenv("GITHUB_OUTPUT", raising=False)
+    emit_github_output("history_file", "x")  # must not raise
+
+
+# ---------------------------------------------------------------------------
+# The failure screenshot must not publish the SAP account
+# ---------------------------------------------------------------------------
+
+
+class RecordingPage:
+    url = "https://accounts.sap.com/saml2/idp/sso"
+
+    def __init__(self, redact_fails=False):
+        self.evaluated = []
+        self.screenshots = []
+        self.redact_fails = redact_fails
+
+    def evaluate(self, script):
+        if self.redact_fails:
+            raise RuntimeError("page closed")
+        self.evaluated.append(script)
+
+    def screenshot(self, **kwargs):
+        self.screenshots.append(kwargs)
+
+
+def test_failure_screenshot_redacts_form_fields_first(tmp_path):
+    page = RecordingPage()
+
+    mirror._save_failure_screenshot(page, path=str(tmp_path / "shot.png"))
+
+    assert len(page.screenshots) == 1
+    assert page.evaluated, "inputs must be cleared before the capture"
+    assert "field.value = ''" in page.evaluated[0]
+
+
+def test_no_screenshot_is_written_if_redaction_fails(tmp_path):
+    """Better no artifact at all than one showing the login form."""
+    page = RecordingPage(redact_fails=True)
+
+    mirror._save_failure_screenshot(page, path=str(tmp_path / "shot.png"))
+
+    assert page.screenshots == []
+
+
+# ---------------------------------------------------------------------------
+# A broken changelog must fail loudly, not silently stop updating
+# ---------------------------------------------------------------------------
+
+
+def test_record_changes_returns_none_when_nothing_changed(tmp_path, monkeypatch):
+    import diff_tracker
+
+    monkeypatch.setattr(diff_tracker, "load_specs_from_git", lambda ref: {})
+    monkeypatch.setattr(diff_tracker, "load_specs_from_dir", lambda d: {})
+    monkeypatch.setattr(diff_tracker, "diff_specs", lambda old, new: None)
+
+    assert record_changes(tmp_path) is None
+
+
+def test_record_changes_writes_history_and_returns_its_path(tmp_path, monkeypatch):
+    import diff_tracker
+
+    diff = {
+        "date": "2026-09-15",
+        "summary": {
+            "apis_added": 0, "apis_removed": 0, "apis_changed": 1,
+            "endpoints_added": 1, "endpoints_removed": 0, "breaking_changes": 0,
+        },
+        "changes": [],
+    }
+    monkeypatch.setattr(diff_tracker, "load_specs_from_git", lambda ref: {})
+    monkeypatch.setattr(diff_tracker, "load_specs_from_dir", lambda d: {})
+    monkeypatch.setattr(diff_tracker, "diff_specs", lambda old, new: diff)
+
+    history_file = record_changes(tmp_path)
+
+    assert history_file is not None
+    assert history_file.is_file()
+    assert (tmp_path / "changelog.json").is_file()
+
+
+def test_record_changes_lets_a_diff_failure_surface(tmp_path, monkeypatch):
+    """Swallowing this is what hid the changelog and the issues for two months."""
+    import diff_tracker
+
+    def boom(old, new):
+        raise KeyError("summary")
+
+    monkeypatch.setattr(diff_tracker, "load_specs_from_git", lambda ref: {})
+    monkeypatch.setattr(diff_tracker, "load_specs_from_dir", lambda d: {})
+    monkeypatch.setattr(diff_tracker, "diff_specs", boom)
+
+    with pytest.raises(KeyError):
+        record_changes(tmp_path)

@@ -78,9 +78,14 @@ ARTIFACT_CHANGE_FIELDS = (
 )
 CHECK_CHANGES_EXIT_CODE = 3
 HTTP_TIMEOUT_SECONDS = 30
+PUBLIC_FETCH_ATTEMPTS = 3
+PUBLIC_FETCH_BACKOFF_SECONDS = 2
+# Transient on SAP's side — worth another attempt rather than failing the run.
+RETRYABLE_STATUSES = frozenset({429, 500, 502, 503, 504})
 NAVIGATION_TIMEOUT_MS = 45_000
 POST_NAVIGATION_PAUSE_MS = 3_000
 USER_AGENT = "sap-dmc-api-mirror/1.0"
+FAILURE_SCREENSHOT = "login_failure.png"
 
 log = logging.getLogger("sap-mirror")
 
@@ -242,23 +247,46 @@ def looks_like_auth_html(result: Any) -> bool:
     return any(marker in text for marker in AUTH_HTML_MARKERS)
 
 
-def fetch_public_json(url: str) -> Any:
-    """Fetch JSON from an endpoint that does not require a SAP session."""
+def _read_public_url(url: str) -> tuple[str, str, str]:
+    """One attempt at an unauthenticated GET. Returns (body, content type, URL)."""
     request = Request(
         url,
         headers={"Accept": "application/json", "User-Agent": USER_AGENT},
     )
-    try:
-        with urlopen(request, timeout=HTTP_TIMEOUT_SECONDS) as response:
-            raw = response.read().decode(
-                response.headers.get_content_charset() or "utf-8"
-            )
-            content_type = response.headers.get("content-type", "")
-            final_url = response.geturl()
-    except HTTPError as exc:
-        raise RuntimeError(f"HTTP {exc.code} for {url}") from exc
-    except URLError as exc:
-        raise RuntimeError(f"Failed to fetch {url}: {exc.reason}") from exc
+    with urlopen(request, timeout=HTTP_TIMEOUT_SECONDS) as response:
+        raw = response.read().decode(response.headers.get_content_charset() or "utf-8")
+        return raw, response.headers.get("content-type", ""), response.geturl()
+
+
+def fetch_public_json(url: str) -> Any:
+    """Fetch JSON from an endpoint that does not require a SAP session.
+
+    The catalog check runs unattended every morning, so a momentary blip from
+    api.sap.com should cost a retry rather than the whole run.
+    """
+    for attempt in range(1, PUBLIC_FETCH_ATTEMPTS + 1):
+        try:
+            raw, content_type, final_url = _read_public_url(url)
+            break
+        except HTTPError as exc:
+            if exc.code not in RETRYABLE_STATUSES or attempt == PUBLIC_FETCH_ATTEMPTS:
+                raise RuntimeError(f"HTTP {exc.code} for {url}") from exc
+            reason: Any = f"HTTP {exc.code}"
+        except URLError as exc:
+            if attempt == PUBLIC_FETCH_ATTEMPTS:
+                raise RuntimeError(f"Failed to fetch {url}: {exc.reason}") from exc
+            reason = exc.reason
+        except TimeoutError as exc:
+            if attempt == PUBLIC_FETCH_ATTEMPTS:
+                raise RuntimeError(f"Failed to fetch {url}: timed out") from exc
+            reason = "timed out"
+
+        delay = PUBLIC_FETCH_BACKOFF_SECONDS * attempt
+        log.warning(
+            "Fetching %s failed (%s) on attempt %d/%d; retrying in %ds",
+            url, reason, attempt, PUBLIC_FETCH_ATTEMPTS, delay,
+        )
+        time.sleep(delay)
 
     try:
         return json.loads(raw)
@@ -354,6 +382,55 @@ def fetch_authenticated_json(
     raise RuntimeError(f"Exhausted retries fetching {url}")
 
 
+def emit_github_output(key: str, value: str) -> None:
+    """Publish a value to the calling GitHub Actions step, if there is one.
+
+    The workflow used to rediscover the new history file with `git diff HEAD`,
+    which never matched because the file is still untracked at that point. The
+    run that writes the file knows its path, so it reports it directly.
+    """
+    output_path = os.environ.get("GITHUB_OUTPUT")
+    if not output_path:
+        return
+    try:
+        with open(output_path, "a", encoding="utf-8", newline="\n") as handle:
+            handle.write(f"{key}={value}\n")
+    except OSError as exc:
+        log.warning("Could not write %s to GITHUB_OUTPUT: %s", key, exc)
+
+
+def _redact_page_inputs(page: Page) -> None:
+    """Blank out form fields so a screenshot cannot publish the SAP account.
+
+    The failure screenshot is uploaded as a workflow artifact, and artifacts on
+    a public repository are downloadable by anyone; a login-page capture would
+    otherwise show the address in SAP_USER.
+    """
+    page.evaluate(
+        """() => {
+            for (const field of document.querySelectorAll('input, textarea')) {
+                field.value = '';
+                field.setAttribute('value', '');
+                field.setAttribute('placeholder', 'redacted');
+            }
+        }"""
+    )
+
+
+def _save_failure_screenshot(page: Page, path: str = FAILURE_SCREENSHOT) -> None:
+    """Capture what SAP showed the headless browser, with inputs redacted."""
+    try:
+        try:
+            _redact_page_inputs(page)
+        except Exception:
+            log.warning("Could not redact form fields; skipping the screenshot")
+            return
+        page.screenshot(path=path, full_page=True)
+        log.error("Saved redacted failure screenshot to %s (URL: %s)", path, page.url)
+    except Exception:
+        log.warning("Could not save a failure screenshot", exc_info=True)
+
+
 # ── Mirroring ───────────────────────────────────────────────────────
 
 
@@ -398,6 +475,56 @@ def fetch_api_spec(
         return spec
     keys = list(spec.keys())[:5] if isinstance(spec, dict) else type(spec)
     raise ValueError(f"Spec for {name} does not look like OpenAPI: {keys}")
+
+
+def fetch_updates(
+    request: APIRequestContext,
+    page: Page,
+    update_names: list[str],
+    artifacts_by_name: dict[str, dict],
+) -> tuple[dict[str, dict], dict[str, dict | None], list[tuple[str, str]]]:
+    """Download metadata and specs for each API that needs updating.
+
+    A single API that SAP serves badly should cost that API, not the run — the
+    name is simply left out of the returned specs, so whatever was mirrored
+    before is kept. A lost session is the exception: every remaining API would
+    fail the same way, so it propagates.
+
+    Returns (metadata by name, specs by name, [(name, reason)] for failures).
+    """
+    metadata_updates: dict[str, dict] = {}
+    spec_updates: dict[str, dict | None] = {}
+    failures: list[tuple[str, str]] = []
+
+    for i, name in enumerate(update_names, 1):
+        artifact = artifacts_by_name[name]
+        display = artifact.get("DisplayName", name)
+        log.info("[%d/%d] %s (%s)", i, len(update_names), display, name)
+        try:
+            metadata = fetch_api_metadata(request, page, name)
+            spec = fetch_api_spec(request, page, name)
+        except SessionAuthError:
+            raise
+        except Exception as exc:
+            log.error("  ✗ %s (%s) failed: %s", display, name, exc)
+            failures.append((name, str(exc)))
+            continue
+
+        metadata_updates[name] = metadata
+        spec_updates[name] = spec
+        if spec:
+            log.info(
+                "  → %d endpoints, %d schemas",
+                count_operations(spec),
+                len(
+                    spec.get(
+                        "definitions", spec.get("components", {}).get("schemas", {})
+                    )
+                ),
+            )
+        time.sleep(0.3)
+
+    return metadata_updates, spec_updates, failures
 
 
 def load_json_directory(directory: Path) -> dict[str, dict]:
@@ -677,6 +804,49 @@ def count_operations(spec: dict) -> int:
     return count
 
 
+def record_changes(output_dir: Path) -> Path | None:
+    """Diff the freshly saved specs against git HEAD and record what changed.
+
+    Returns the history file that was written, or None when nothing changed.
+
+    Only a missing diff_tracker is tolerated here. Every other failure is a bug,
+    and catching it would quietly stop the changelog and the API-change issues
+    while the run still reported success.
+    """
+    try:
+        from diff_tracker import (
+            load_specs_from_git,
+            load_specs_from_dir,
+            diff_specs,
+            save_diff,
+            rebuild_changelog,
+        )
+    except ImportError as exc:
+        log.warning("Diff detection skipped — diff_tracker unavailable: %s", exc)
+        return None
+
+    old_specs = load_specs_from_git("HEAD")
+    new_specs = load_specs_from_dir(output_dir / "specs")
+    diff = diff_specs(old_specs, new_specs)
+
+    if not diff:
+        log.info("No spec changes detected")
+        return None
+
+    history_dir = output_dir / "history"
+    history_dir.mkdir(parents=True, exist_ok=True)
+    history_file = save_diff(diff, history_dir)
+    rebuild_changelog(history_dir, output_dir / "changelog.json")
+    log.info(
+        "Changes detected: %d APIs affected, %d breaking changes",
+        diff["summary"]["apis_changed"]
+        + diff["summary"]["apis_added"]
+        + diff["summary"]["apis_removed"],
+        diff["summary"]["breaking_changes"],
+    )
+    return history_file
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Mirror SAP DMC REST APIs")
     parser.add_argument("--output-dir", default="output", help="Output directory")
@@ -752,6 +922,7 @@ def main() -> int:
 
     metadata_updates: dict[str, dict] = {}
     spec_updates: dict[str, dict | None] = {}
+    failures: list[tuple[str, str]] = []
     if update_names:
         from playwright.sync_api import sync_playwright
 
@@ -766,34 +937,11 @@ def main() -> int:
                 artifacts_by_name = {
                     artifact["Name"]: artifact for artifact in artifacts
                 }
-                for i, name in enumerate(update_names, 1):
-                    artifact = artifacts_by_name[name]
-                    display = artifact.get("DisplayName", name)
-                    log.info("[%d/%d] %s (%s)", i, len(update_names), display, name)
-                    metadata_updates[name] = fetch_api_metadata(request, page, name)
-                    spec = fetch_api_spec(request, page, name)
-                    spec_updates[name] = spec
-                    if spec:
-                        log.info(
-                            "  → %d endpoints, %d schemas",
-                            count_operations(spec),
-                            len(
-                                spec.get(
-                                    "definitions",
-                                    spec.get("components", {}).get("schemas", {}),
-                                )
-                            ),
-                        )
-                    time.sleep(0.3)
+                metadata_updates, spec_updates, failures = fetch_updates(
+                    request, page, update_names, artifacts_by_name
+                )
             except Exception:
-                try:
-                    page.screenshot(path="login_failure.png", full_page=True)
-                    log.error(
-                        "Saved failure screenshot to login_failure.png (URL: %s)",
-                        page.url,
-                    )
-                except Exception:
-                    pass
+                _save_failure_screenshot(page)
                 raise
             finally:
                 browser.close()
@@ -834,37 +982,19 @@ def main() -> int:
         total_schemas,
     )
     log.info("Output: %s", output_dir.resolve())
-
-    # Diff detection
-    try:
-        from diff_tracker import (
-            load_specs_from_git,
-            load_specs_from_dir,
-            diff_specs,
-            save_diff,
-            rebuild_changelog,
+    if failures:
+        log.error(
+            "%d of %d API(s) could not be mirrored and kept their previous spec:",
+            len(failures),
+            len(update_names),
         )
+        for name, reason in failures:
+            log.error("  %s — %s", name, reason)
+        emit_github_output("failed_apis", ",".join(name for name, _ in failures))
 
-        old_specs = load_specs_from_git("HEAD")
-        new_specs = load_specs_from_dir(output_dir / "specs")
-        diff = diff_specs(old_specs, new_specs)
-
-        if diff:
-            history_dir = output_dir / "history"
-            history_dir.mkdir(exist_ok=True)
-            save_diff(diff, history_dir)
-            rebuild_changelog(history_dir, output_dir / "changelog.json")
-            log.info(
-                "Changes detected: %d APIs affected, %d breaking changes",
-                diff["summary"]["apis_changed"]
-                + diff["summary"]["apis_added"]
-                + diff["summary"]["apis_removed"],
-                diff["summary"]["breaking_changes"],
-            )
-        else:
-            log.info("No spec changes detected")
-    except Exception as e:
-        log.warning("Diff detection skipped: %s", e)
+    history_file = record_changes(output_dir)
+    if history_file:
+        emit_github_output("history_file", history_file.as_posix())
 
     return 0
 

@@ -100,7 +100,13 @@ Required repository secrets (Settings → Secrets and variables → Actions): `S
 
 API-change issues use the workflow's built-in `GITHUB_TOKEN`; no additional secret is required. Metadata-only updates do not create an issue, and rerunning a change report does not create a duplicate.
 
-The mirror job runs with `--min-specs 80`, so a half-failed SAP session aborts instead of committing a gutted dataset. Chromium is installed only when the public catalog changed. If login fails, the run uploads a `login-failure` artifact with a screenshot of what SAP showed the headless browser.
+The mirror job runs with `--min-specs 80`, so a half-failed SAP session aborts instead of committing a gutted dataset. Chromium is installed only when the public catalog changed.
+
+A single API that SAP serves badly costs that API rather than the run: its previous spec is kept, the name is listed as a workflow warning, and the other APIs are still mirrored and committed. A lost session is different — every remaining API would fail the same way, so the run stops. Failures in the changelog step are not caught at all; they fail the run rather than leaving the changelog silently stale.
+
+If login fails, the run uploads a `login-failure` artifact with a screenshot of what SAP showed the headless browser. Form fields are blanked out first, because artifacts on a public repository are downloadable by anyone and the login page would otherwise show the address in `SAP_USER`. If that redaction cannot be applied, no screenshot is written.
+
+Runtime dependencies are pinned exactly in `requirements.txt`. An unattended 05:17 UTC job driving a headless browser is the last place a surprise release should land, so bump them deliberately.
 
 ## Browsing APIs
 

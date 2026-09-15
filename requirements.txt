@@ -1,2 +1,5 @@
-playwright>=1.50
-python-dotenv>=1.0
+# Pinned exactly on purpose. The mirror runs unattended at 05:17 UTC against a
+# headless browser, so a surprise release must not be able to break a run with
+# nobody watching. Bump these deliberately, in a commit of their own.
+playwright==1.63.0
+python-dotenv==1.2.3
