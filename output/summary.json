@@ -7,12 +7,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/activityConfirmation/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/confirm",
+        "path": "/activityConfirmation/v1/confirm",
         "summary": "Post activity confirmations.",
         "operation_id": "",
         "tags": [
@@ -21,7 +21,7 @@
       },
       {
         "method": "POST",
-        "path": "/autoconfirm",
+        "path": "/activityConfirmation/v1/autoconfirm",
         "summary": "Confirms activities automatically.",
         "operation_id": "",
         "tags": [
@@ -30,7 +30,7 @@
       },
       {
         "method": "GET",
-        "path": "/postings/summary",
+        "path": "/activityConfirmation/v1/postings/summary",
         "summary": "Retrieves activity confirmation posting.",
         "operation_id": "",
         "tags": [
@@ -39,7 +39,7 @@
       },
       {
         "method": "GET",
-        "path": "/postings/details",
+        "path": "/activityConfirmation/v1/postings/details",
         "summary": "Retrieves activity confirmation posting details.",
         "operation_id": "",
         "tags": [
@@ -59,12 +59,12 @@
     "status": "",
     "spec_version": "3.0.2",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/alerts",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/Alerts",
+        "path": "/alerts/v1/Alerts",
         "summary": "Retrieve a list of alerts.",
         "operation_id": "",
         "tags": [
@@ -73,7 +73,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/Alerts",
+        "path": "/alerts/v1/Alerts",
         "summary": "Create a new alert",
         "operation_id": "",
         "tags": [
@@ -82,7 +82,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/Alerts({id})",
+        "path": "/alerts/v1/Alerts({id})",
         "summary": "Update an existing alert",
         "operation_id": "",
         "tags": [
@@ -102,12 +102,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/aiml/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/active-scenarios",
+        "path": "/aiml/v1/active-scenarios",
         "summary": "Retrieves the active AI/ML scenarios.",
         "operation_id": "getActiveAiMlScenariosUsingGET",
         "tags": [
@@ -116,7 +116,7 @@
       },
       {
         "method": "GET",
-        "path": "/scenario/{id}/version/{version}/file/{fileName}",
+        "path": "/aiml/v1/scenario/{id}/version/{version}/file/{fileName}",
         "summary": "Download a file uploaded for an AI/ML scenario.",
         "operation_id": "downloadAiMlScenarioFileUsingGET",
         "tags": [
@@ -125,7 +125,7 @@
       },
       {
         "method": "POST",
-        "path": "/inspectionLog",
+        "path": "/aiml/v1/inspectionLog",
         "summary": "Creates inspection log for a Shop Floor Control (SFC).",
         "operation_id": "saveInspectionStateUsingPOST",
         "tags": [
@@ -134,7 +134,7 @@
       },
       {
         "method": "GET",
-        "path": "/inspectionLog",
+        "path": "/aiml/v1/inspectionLog",
         "summary": "Provides all the inspection logs for a SFC.",
         "operation_id": "getInspectionStateUsingGET",
         "tags": [
@@ -163,12 +163,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/assembly/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/plannedComponents",
+        "path": "/assembly/v1/plannedComponents",
         "summary": "Retrieves the planned component list.",
         "operation_id": "",
         "tags": [
@@ -177,7 +177,7 @@
       },
       {
         "method": "POST",
-        "path": "/autoAssemble",
+        "path": "/assembly/v1/autoAssemble",
         "summary": "Auto assembles components.",
         "operation_id": "autoAssembleComponentsUsingPOST_1",
         "tags": [
@@ -186,7 +186,7 @@
       },
       {
         "method": "POST",
-        "path": "/components/quantity/check",
+        "path": "/assembly/v1/components/quantity/check",
         "summary": "Checks the resource bin component quantity.",
         "operation_id": "",
         "tags": [
@@ -195,7 +195,7 @@
       },
       {
         "method": "POST",
-        "path": "/assembledComponents",
+        "path": "/assembly/v1/assembledComponents",
         "summary": "Adds a component.",
         "operation_id": "",
         "tags": [
@@ -204,7 +204,7 @@
       },
       {
         "method": "GET",
-        "path": "/assembledComponents",
+        "path": "/assembly/v1/assembledComponents",
         "summary": "Retrieves the components already assembled.",
         "operation_id": "",
         "tags": [
@@ -213,7 +213,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/assembledComponents",
+        "path": "/assembly/v1/assembledComponents",
         "summary": "Removes a component.",
         "operation_id": "",
         "tags": [
@@ -222,7 +222,7 @@
       },
       {
         "method": "POST",
-        "path": "/checkComponents",
+        "path": "/assembly/v1/checkComponents",
         "summary": "Checks assembled components.",
         "operation_id": "",
         "tags": [
@@ -231,7 +231,7 @@
       },
       {
         "method": "POST",
-        "path": "/serviceOrder/asBuilt/upload",
+        "path": "/assembly/v1/serviceOrder/asBuilt/upload",
         "summary": "Saves as-built information via file upload.",
         "operation_id": "ServiceOrderFileUploadUsingPOST",
         "tags": [
@@ -251,12 +251,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/assetmodel/v1",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/assets/{assetId}/metadata",
+        "path": "/assetmodel/v1/assets/{assetId}/metadata",
         "summary": "Retrieves metadata of an asset",
         "operation_id": "getAssetsByIdMetadata",
         "tags": [
@@ -276,12 +276,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/inventory/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/batch",
+        "path": "/inventory/v1/batch",
         "summary": "Creates a batch number for a given plant and material.",
         "operation_id": "createBatchByMaterialUsingPOST_1",
         "tags": [
@@ -290,7 +290,7 @@
       },
       {
         "method": "GET",
-        "path": "/batchCharacteristics",
+        "path": "/inventory/v1/batchCharacteristics",
         "summary": "Gets batch characteristics.",
         "operation_id": "getBatchCharacteristicsUsingGET_1",
         "tags": [
@@ -299,7 +299,7 @@
       },
       {
         "method": "POST",
-        "path": "/batchCharacteristics",
+        "path": "/inventory/v1/batchCharacteristics",
         "summary": "Create or update batch characteristics.",
         "operation_id": "postBatchCharacteristicsUsingPOST_2",
         "tags": [
@@ -308,7 +308,7 @@
       },
       {
         "method": "GET",
-        "path": "/batches",
+        "path": "/inventory/v1/batches",
         "summary": "Retrieves batches and batch characteristics for a given plant and material.",
         "operation_id": "getBatchesUsingGET_2",
         "tags": [
@@ -317,7 +317,7 @@
       },
       {
         "method": "POST",
-        "path": "/batches/{batchNumber}/synchronization",
+        "path": "/inventory/v1/batches/{batchNumber}/synchronization",
         "summary": "Synchronizes batch information from the integrated ERP system to SAP Digital Manufacturing (DMC) for a given plant, material, and batch number.",
         "operation_id": "syncBatchUsingPOST",
         "tags": [
@@ -326,7 +326,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/batches/{batchNumber}",
+        "path": "/inventory/v1/batches/{batchNumber}",
         "summary": "Updates batch information for a given plant, material and batch number.",
         "operation_id": "patchBatchesUsingPATCH",
         "tags": [
@@ -346,12 +346,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v2",
-    "base_path": "/",
+    "base_path": "/inventory/v2",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/batches",
+        "path": "/inventory/v2/batches",
         "summary": "Creates a batch number for a given plant and material.",
         "operation_id": "createBatchByMaterialUsingPOST_V2",
         "tags": [
@@ -360,7 +360,7 @@
       },
       {
         "method": "GET",
-        "path": "/batches",
+        "path": "/inventory/v2/batches",
         "summary": "Retrieves batches and batch characteristics for a given plant and material.",
         "operation_id": "getBatchesUsingGET_V2",
         "tags": [
@@ -369,7 +369,7 @@
       },
       {
         "method": "GET",
-        "path": "/batchCharacteristics",
+        "path": "/inventory/v2/batchCharacteristics",
         "summary": "Gets batch characteristics.",
         "operation_id": "getBatchCharacteristicsUsingGET_V2",
         "tags": [
@@ -378,7 +378,7 @@
       },
       {
         "method": "POST",
-        "path": "/batchCharacteristics",
+        "path": "/inventory/v2/batchCharacteristics",
         "summary": "Create or update batch characteristics.",
         "operation_id": "postBatchCharacteristicsUsingPOST_V2",
         "tags": [
@@ -398,12 +398,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/bom/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/boms",
+        "path": "/bom/v1/boms",
         "summary": "Find BOM.",
         "operation_id": "findBomByPlantAndNameAndTypeUsingGET",
         "tags": [
@@ -412,7 +412,7 @@
       },
       {
         "method": "POST",
-        "path": "/boms",
+        "path": "/bom/v1/boms",
         "summary": "Create BOM.",
         "operation_id": "createUsingPOST",
         "tags": [
@@ -421,7 +421,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/boms",
+        "path": "/bom/v1/boms",
         "summary": "Delete BOM.",
         "operation_id": "deleteUsingDELETE",
         "tags": [
@@ -430,7 +430,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/boms",
+        "path": "/bom/v1/boms",
         "summary": "Update BOM.",
         "operation_id": "updateUsingPATCH",
         "tags": [
@@ -439,7 +439,7 @@
       },
       {
         "method": "POST",
-        "path": "/boms/{bom}/{version}/components",
+        "path": "/bom/v1/boms/{bom}/{version}/components",
         "summary": "Create BOM components.",
         "operation_id": "createBomComponentsUsingPOST",
         "tags": [
@@ -448,7 +448,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/boms/{bom}/{version}/components/{sequence}",
+        "path": "/bom/v1/boms/{bom}/{version}/components/{sequence}",
         "summary": "Delete BOM component.",
         "operation_id": "deleteComponentUsingDELETE",
         "tags": [
@@ -457,7 +457,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/boms/{bom}/{version}/components/{sequence}",
+        "path": "/bom/v1/boms/{bom}/{version}/components/{sequence}",
         "summary": "Update BOM component.",
         "operation_id": "updateComponentUsingPATCH",
         "tags": [
@@ -466,7 +466,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/boms/components/customValues",
+        "path": "/bom/v1/boms/components/customValues",
         "summary": "Updates custom values for a list of BOM components.",
         "operation_id": "updateComponentsCustomValues",
         "tags": [
@@ -475,7 +475,7 @@
       },
       {
         "method": "GET",
-        "path": "/boms/headerDetails",
+        "path": "/bom/v1/boms/headerDetails",
         "summary": "Finds BOM header details.",
         "operation_id": "findBomHeaderDetailsByPlantAndNameAndTypeGET",
         "tags": [
@@ -495,12 +495,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/certification/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/certifications/check",
+        "path": "/certification/v1/certifications/check",
         "summary": "Checks certifications for a user",
         "operation_id": "",
         "tags": [
@@ -509,7 +509,7 @@
       },
       {
         "method": "GET",
-        "path": "/certifications",
+        "path": "/certification/v1/certifications",
         "summary": "Retrieves a list of certifications.",
         "operation_id": "getCertificationUsingGET_1",
         "tags": [
@@ -518,7 +518,7 @@
       },
       {
         "method": "POST",
-        "path": "/certifications",
+        "path": "/certification/v1/certifications",
         "summary": "Creates a certification.",
         "operation_id": "createCertificationUsingPOST_1",
         "tags": [
@@ -527,7 +527,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/certifications",
+        "path": "/certification/v1/certifications",
         "summary": "Updates the certification.",
         "operation_id": "updateCertificationUsingPATCH_1",
         "tags": [
@@ -536,7 +536,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/certifications",
+        "path": "/certification/v1/certifications",
         "summary": "Deletes the certification.",
         "operation_id": "deleteUsingDELETE",
         "tags": [
@@ -545,7 +545,7 @@
       },
       {
         "method": "GET",
-        "path": "/customFieldDefinitions",
+        "path": "/certification/v1/customFieldDefinitions",
         "summary": "Retrieves a list of custom field definitions for the certification.",
         "operation_id": "getCustomFieldDefinition",
         "tags": [
@@ -554,7 +554,7 @@
       },
       {
         "method": "POST",
-        "path": "/customFieldDefinitions",
+        "path": "/certification/v1/customFieldDefinitions",
         "summary": "Creates a custom field definition for the certification.",
         "operation_id": "createCustomFieldDefinition",
         "tags": [
@@ -563,7 +563,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/customFieldDefinitions",
+        "path": "/certification/v1/customFieldDefinitions",
         "summary": "Updates a custom field definition for the certification.",
         "operation_id": "updateCustomFieldDefinition",
         "tags": [
@@ -572,7 +572,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/customFieldDefinitions",
+        "path": "/certification/v1/customFieldDefinitions",
         "summary": "Deletes a custom field definition for the certification.",
         "operation_id": "deleteCustomFieldDefinition",
         "tags": [
@@ -592,12 +592,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/classification/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/read",
+        "path": "/classification/v1/read",
         "summary": "Retrieves classes and characteristics by materials, class type and classes.",
         "operation_id": "",
         "tags": [
@@ -617,12 +617,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/datacollection/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/log",
+        "path": "/datacollection/v1/log",
         "summary": "Logs values for data collection parameters.",
         "operation_id": "logDataCollectionUsingPOST",
         "tags": [
@@ -631,7 +631,7 @@
       },
       {
         "method": "POST",
-        "path": "/standalone/log",
+        "path": "/datacollection/v1/standalone/log",
         "summary": "Standalone / Non-WIP logs values for data collection parameters.",
         "operation_id": "logStandaloneDataCollectionUsingPOST",
         "tags": [
@@ -640,7 +640,7 @@
       },
       {
         "method": "POST",
-        "path": "/nonwip/uploadFile",
+        "path": "/datacollection/v1/nonwip/uploadFile",
         "summary": "Upload a file with metadata for non-WIP data collection.",
         "operation_id": "nonWIPUploadFileUsingPOST",
         "tags": [
@@ -649,7 +649,7 @@
       },
       {
         "method": "GET",
-        "path": "/parameters",
+        "path": "/datacollection/v1/parameters",
         "summary": "Endpoint returning collected data for SFCs.",
         "operation_id": "getLoggedSfcDataUsingGET",
         "tags": [
@@ -658,7 +658,7 @@
       },
       {
         "method": "GET",
-        "path": "/groups",
+        "path": "/datacollection/v1/groups",
         "summary": "Returns a data collection group.",
         "operation_id": "getDataCollectionGroupsUsingGET",
         "tags": [
@@ -667,7 +667,7 @@
       },
       {
         "method": "POST",
-        "path": "/groups",
+        "path": "/datacollection/v1/groups",
         "summary": "Create a new data collection group.",
         "operation_id": "createDataCollectionGroup",
         "tags": [
@@ -676,7 +676,7 @@
       },
       {
         "method": "PUT",
-        "path": "/groups",
+        "path": "/datacollection/v1/groups",
         "summary": "Update a data collection group.",
         "operation_id": "updateDataCollectionGroup",
         "tags": [
@@ -685,7 +685,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/groups",
+        "path": "/datacollection/v1/groups",
         "summary": "Delete a data collection group.",
         "operation_id": "deleteDataCollectionGroup",
         "tags": [
@@ -694,7 +694,7 @@
       },
       {
         "method": "POST",
-        "path": "/dataCollectionGroups/attachmentPoints",
+        "path": "/datacollection/v1/dataCollectionGroups/attachmentPoints",
         "summary": "Add attachment points to an existing data collection group.",
         "operation_id": "createAttachmentPoints",
         "tags": [
@@ -703,7 +703,7 @@
       },
       {
         "method": "GET",
-        "path": "/sfc/groups",
+        "path": "/datacollection/v1/sfc/groups",
         "summary": "Obtains a list of data collection groups.",
         "operation_id": "findDataCollectionGroupsUsingGET",
         "tags": [
@@ -712,7 +712,7 @@
       },
       {
         "method": "POST",
-        "path": "/multiGroupMeasurements",
+        "path": "/datacollection/v1/multiGroupMeasurements",
         "summary": "Retrieves measurement records with filtering.",
         "operation_id": "postMultiGroupMeasurementsUsingPOST",
         "tags": [
@@ -721,7 +721,7 @@
       },
       {
         "method": "GET",
-        "path": "/measurements",
+        "path": "/datacollection/v1/measurements",
         "summary": "Retrieves records of SFCs.",
         "operation_id": "getLoggedMeasuresUsingGET",
         "tags": [
@@ -730,7 +730,7 @@
       },
       {
         "method": "GET",
-        "path": "/nonwip/measurements",
+        "path": "/datacollection/v1/nonwip/measurements",
         "summary": "Retrieves the measured Non-WIP data collection parameters.",
         "operation_id": "nonWIPGetMeasurementsUsingGET",
         "tags": [
@@ -739,7 +739,7 @@
       },
       {
         "method": "GET",
-        "path": "/uncollectedParameters",
+        "path": "/datacollection/v1/uncollectedParameters",
         "summary": "Fetch the uncollected data collection parameters for the given SFC.",
         "operation_id": "uncollectedParametersUsingGET",
         "tags": [
@@ -748,7 +748,7 @@
       },
       {
         "method": "GET",
-        "path": "/nonwip/uncollectedParameters",
+        "path": "/datacollection/v1/nonwip/uncollectedParameters",
         "summary": "Fetch the uncollected Non-WIP data collection parameters for the given SFC.",
         "operation_id": "nonWIPUncollectedParametersUsingGET",
         "tags": [
@@ -757,7 +757,7 @@
       },
       {
         "method": "GET",
-        "path": "/downloadLoggedAttachments",
+        "path": "/datacollection/v1/downloadLoggedAttachments",
         "summary": "Download the file.",
         "operation_id": "downloadLoggedAttachmentsUsingGET",
         "tags": [
@@ -777,12 +777,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/dataField",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/dataFields",
+        "path": "/dataField/v1/dataFields",
         "summary": "Gets paginated list of data fields by plant",
         "operation_id": "getDataFields",
         "tags": [
@@ -791,7 +791,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/dataFields",
+        "path": "/dataField/v1/dataFields",
         "summary": "Creates a list of data fields",
         "operation_id": "createDataFields",
         "tags": [
@@ -800,7 +800,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/dataFields",
+        "path": "/dataField/v1/dataFields",
         "summary": "Updates a list of data fields",
         "operation_id": "updateDataFields",
         "tags": [
@@ -809,7 +809,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v1/dataFields",
+        "path": "/dataField/v1/dataFields",
         "summary": "Deletes a data field by plant and field name",
         "operation_id": "deleteDataField",
         "tags": [
@@ -829,12 +829,12 @@
     "status": "",
     "spec_version": "3.0.2",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/dataType",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/dataTypes",
+        "path": "/dataType/v1/dataTypes",
         "summary": "Gets paginated list of data types by plant and optional search parameters",
         "operation_id": "getDataTypes",
         "tags": [
@@ -843,7 +843,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/dataTypes",
+        "path": "/dataType/v1/dataTypes",
         "summary": "Creates a list of data types",
         "operation_id": "createDataTypes",
         "tags": [
@@ -852,7 +852,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/dataTypes",
+        "path": "/dataType/v1/dataTypes",
         "summary": "Updates a list of data types",
         "operation_id": "updateDataTypes",
         "tags": [
@@ -861,7 +861,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v1/dataTypes",
+        "path": "/dataType/v1/dataTypes",
         "summary": "Deletes a data type by plant, data type name, and category",
         "operation_id": "deleteDataType",
         "tags": [
@@ -881,12 +881,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v2",
-    "base_path": "",
+    "base_path": "/document/v2",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/documents",
+        "path": "/document/v2/documents",
         "summary": "Retrieves a page of document print templates.",
         "operation_id": "getDocumentsUsingGET_1",
         "tags": [
@@ -895,7 +895,7 @@
       },
       {
         "method": "POST",
-        "path": "/documents",
+        "path": "/document/v2/documents",
         "summary": "Creates a document print template.",
         "operation_id": "createDocumentUsingPOST_1",
         "tags": [
@@ -904,7 +904,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/documents",
+        "path": "/document/v2/documents",
         "summary": "Updates a document print template.",
         "operation_id": "updateDocumentUsingPATCH_1",
         "tags": [
@@ -913,7 +913,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/documents",
+        "path": "/document/v2/documents",
         "summary": "Deletes a document print template",
         "operation_id": "deleteDocumentUsingDELETE_1",
         "tags": [
@@ -922,7 +922,7 @@
       },
       {
         "method": "GET",
-        "path": "/download",
+        "path": "/document/v2/download",
         "summary": "Downloads a document print template file.",
         "operation_id": "downloadDocumentUsingGET_1",
         "tags": [
@@ -942,12 +942,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/document/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/documents",
+        "path": "/document/v1/documents",
         "summary": "Retrieves document list.",
         "operation_id": "getDocumentsUsingGET_1",
         "tags": [
@@ -956,7 +956,7 @@
       },
       {
         "method": "POST",
-        "path": "/print",
+        "path": "/document/v1/print",
         "summary": "Prints a document. This is now deprecated, please use the endpoint /print of the 'Print Document' API",
         "operation_id": "printDocumentUsingPOST_1",
         "tags": [
@@ -976,12 +976,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/oee",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/v1/speedLoss",
+        "path": "/oee/v1/speedLoss",
         "summary": "Creates speed loss",
         "operation_id": "",
         "tags": [
@@ -990,7 +990,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/downtime",
+        "path": "/oee/v1/downtime",
         "summary": "Creates downtime",
         "operation_id": "",
         "tags": [
@@ -1010,12 +1010,12 @@
     "status": "",
     "spec_version": "3.0.3",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/ebr/v1",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/ebrs",
+        "path": "/ebr/v1/ebrs",
         "summary": "Create Electronic Batch Record",
         "operation_id": "",
         "tags": [
@@ -1035,12 +1035,12 @@
     "status": "",
     "spec_version": "3.0.2",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/electronicsignature/v1",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/signatureLogs",
+        "path": "/electronicsignature/v1/signatureLogs",
         "summary": "Retrieve a list of electronic signatures.",
         "operation_id": "",
         "tags": [
@@ -1060,12 +1060,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/inventory/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/ewmSingleOrderStaging",
+        "path": "/inventory/v1/ewmSingleOrderStaging",
         "summary": "Initiates a single-order staging request to Extended Warehouse Management",
         "operation_id": "triggerEwmSingleOrderStagingByValidatedRequestUsingPOST_1",
         "tags": [
@@ -1085,12 +1085,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v2",
-    "base_path": "/",
+    "base_path": "/staging/v2",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/staging/stagingRequests/query",
+        "path": "/staging/v2/staging/stagingRequests/query",
         "summary": "Retrieves all staging requests for a given plant.",
         "operation_id": "findStagingRequestsUsingGET",
         "tags": [
@@ -1099,7 +1099,7 @@
       },
       {
         "method": "POST",
-        "path": "/staging/stagingRequests/discard",
+        "path": "/staging/v2/staging/stagingRequests/discard",
         "summary": "Discards multiple staging requests.",
         "operation_id": "discardStaging",
         "tags": [
@@ -1119,12 +1119,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/staging/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/staging/stagingRequest",
+        "path": "/staging/v1/staging/stagingRequest",
         "summary": "Initiates a staging request to Extended Warehouse Management (EWM)",
         "operation_id": "sendStaingRequestUsingPOST",
         "tags": [
@@ -1133,7 +1133,7 @@
       },
       {
         "method": "GET",
-        "path": "/staging/stagingRequests",
+        "path": "/staging/v1/staging/stagingRequests",
         "summary": "Retrieves all staging requests for a given plant.",
         "operation_id": "findStagingRequestsUsingGET",
         "tags": [
@@ -1142,7 +1142,7 @@
       },
       {
         "method": "POST",
-        "path": "/staging/stagingRequests/discard",
+        "path": "/staging/v1/staging/stagingRequests/discard",
         "summary": "Discards multiple staging requests.",
         "operation_id": "discardStaging",
         "tags": [
@@ -1151,7 +1151,7 @@
       },
       {
         "method": "GET",
-        "path": "/staging/componentMethods",
+        "path": "/staging/v1/staging/componentMethods",
         "summary": "Retrieves staging methods of components for a given plant and order.",
         "operation_id": "findComponentStagingMethodRequest",
         "tags": [
@@ -1171,12 +1171,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/numbering/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/identifiers",
+        "path": "/numbering/v1/identifiers",
         "summary": "Create identifiers.",
         "operation_id": "",
         "tags": [
@@ -1196,12 +1196,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/integration",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/integrationMessages",
+        "path": "/integration/v1/integrationMessages",
         "summary": "Finds integration messages.",
         "operation_id": "list",
         "tags": [
@@ -1210,7 +1210,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/integrationMessages/setToInactive",
+        "path": "/integration/v1/integrationMessages/setToInactive",
         "summary": "Set the indicated integration messages to inactive.",
         "operation_id": "setToInactive",
         "tags": [
@@ -1230,12 +1230,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/inventory/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/inventory/goodsReceipts",
+        "path": "/inventory/v1/inventory/goodsReceipts",
         "summary": "Gets posted goods receipts.",
         "operation_id": "getPostedGoodsReceiptsUsingGET_1",
         "tags": [
@@ -1244,7 +1244,7 @@
       },
       {
         "method": "GET",
-        "path": "/inventory/goodsIssues",
+        "path": "/inventory/v1/inventory/goodsIssues",
         "summary": "Retrieves posted goods issues.",
         "operation_id": "getInventoryPostingsForGoodIssue",
         "tags": [
@@ -1253,7 +1253,7 @@
       },
       {
         "method": "GET",
-        "path": "/inventories",
+        "path": "/inventory/v1/inventories",
         "summary": "Gets stock information for a given plant.",
         "operation_id": "getInventoriesUsingGET_2",
         "tags": [
@@ -1262,7 +1262,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories",
+        "path": "/inventory/v1/inventories",
         "summary": "Creates a stock for a given plant and material.",
         "operation_id": "createInventoryPOST_2",
         "tags": [
@@ -1271,7 +1271,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/advancedQuery",
+        "path": "/inventory/v1/inventories/advancedQuery",
         "summary": "Retrieves stock information for a given plant.",
         "operation_id": "queryInventoriesUsingPost",
         "tags": [
@@ -1280,7 +1280,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/bulkCreate",
+        "path": "/inventory/v1/inventories/bulkCreate",
         "summary": "Creates multiple stocks for a given plant.",
         "operation_id": "createInventoryPOST_3",
         "tags": [
@@ -1289,7 +1289,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventory/erpGoodsReceipts",
+        "path": "/inventory/v1/inventory/erpGoodsReceipts",
         "summary": "Posts goods receipts for products in the plant that has enabled Inventory Management.",
         "operation_id": "postErpGoodsReceiptsUsingPOST_2",
         "tags": [
@@ -1298,7 +1298,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventory/ewmGoodsReceipts",
+        "path": "/inventory/v1/inventory/ewmGoodsReceipts",
         "summary": "Posts goods receipts for products that have enabled Extended Warehouse Management.",
         "operation_id": "postEwmGoodsReceiptsUsingPOST_2",
         "tags": [
@@ -1307,7 +1307,7 @@
       },
       {
         "method": "GET",
-        "path": "/inventory/goodsReceipts/summarize",
+        "path": "/inventory/v1/inventory/goodsReceipts/summarize",
         "summary": "Gets goods receipt summary.",
         "operation_id": "getGoodsReceiptSummaryUsingGET_2",
         "tags": [
@@ -1316,7 +1316,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventory/goodsReceipts/cancel",
+        "path": "/inventory/v1/inventory/goodsReceipts/cancel",
         "summary": "Cancels goods receipts.",
         "operation_id": "cancelPostedGoodsReceiptUsingPOST_2",
         "tags": [
@@ -1325,7 +1325,7 @@
       },
       {
         "method": "GET",
-        "path": "/storageLocations",
+        "path": "/inventory/v1/storageLocations",
         "summary": "Gets storage locations for a given plant.",
         "operation_id": "getStorageLocationsUsingGET_2",
         "tags": [
@@ -1334,7 +1334,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/inventories/{inventoryId}",
+        "path": "/inventory/v1/inventories/{inventoryId}",
         "summary": "Updates a single stock for a given plant.",
         "operation_id": "UpdateInventoriesUsingPATCH_1",
         "tags": [
@@ -1343,7 +1343,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/transfer",
+        "path": "/inventory/v1/inventories/transfer",
         "summary": "Transfers the full or the partial quantity of a DMC stock to a different storage location.",
         "operation_id": "transferInventoryUsingPOST",
         "tags": [
@@ -1352,7 +1352,7 @@
       },
       {
         "method": "POST",
-        "path": "/productionSupplyAreas",
+        "path": "/inventory/v1/productionSupplyAreas",
         "summary": "Creates production supply areas.",
         "operation_id": "createProductionSupplyAreaPOST",
         "tags": [
@@ -1361,7 +1361,7 @@
       },
       {
         "method": "GET",
-        "path": "/productionSupplyAreas",
+        "path": "/inventory/v1/productionSupplyAreas",
         "summary": "Retrieves production supply areas.",
         "operation_id": "getProductionSupplyAreaGET",
         "tags": [
@@ -1370,7 +1370,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/ewmSynchronization",
+        "path": "/inventory/v1/inventories/ewmSynchronization",
         "summary": "Synchronizes Extended Warehouse Management (EWM) stock information.",
         "operation_id": "ewmStockSyncUsingPOST",
         "tags": [
@@ -1379,7 +1379,7 @@
       },
       {
         "method": "GET",
-        "path": "/inventory/transactions/{id}",
+        "path": "/inventory/v1/inventory/transactions/{id}",
         "summary": "Retrieves the status of a given transaction.",
         "operation_id": "getTransactionStatusUsingGET",
         "tags": [
@@ -1388,7 +1388,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/{inventoryId}/return",
+        "path": "/inventory/v1/inventories/{inventoryId}/return",
         "summary": "Returns an ERP origin stock to the central storage location.",
         "operation_id": "ReturnInventoryUsingPOST_1",
         "tags": [
@@ -1397,7 +1397,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/{inventoryId}/scrap",
+        "path": "/inventory/v1/inventories/{inventoryId}/scrap",
         "summary": "Scraps an ERP origin stock.",
         "operation_id": "ScrapInventoryUsingPOST_1",
         "tags": [
@@ -1406,7 +1406,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/clear",
+        "path": "/inventory/v1/inventories/clear",
         "summary": "Clear inventories by specific plant and inventory IDs.",
         "operation_id": "ClearInventoryPOST_1",
         "tags": [
@@ -1426,12 +1426,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v2",
-    "base_path": "/",
+    "base_path": "/inventory/v2",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/inventories/query",
+        "path": "/inventory/v2/inventories/query",
         "summary": "Retrieves stock information for a given plant.",
         "operation_id": "queryInventoriesUsingPost_V2",
         "tags": [
@@ -1440,7 +1440,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/bulkCreate",
+        "path": "/inventory/v2/inventories/bulkCreate",
         "summary": "Creates multiple stocks for a given plant.",
         "operation_id": "createInventoryPOST_V2",
         "tags": [
@@ -1449,7 +1449,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/inventories/{inventoryId}",
+        "path": "/inventory/v2/inventories/{inventoryId}",
         "summary": "Updates a single stock for a given plant.",
         "operation_id": "UpdateInventoriesUsingPATCH_V2",
         "tags": [
@@ -1458,7 +1458,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/transfer",
+        "path": "/inventory/v2/inventories/transfer",
         "summary": "Transfers the full or the partial quantity of a DMC stock to a different storage location.",
         "operation_id": "transferInventoryUsingPOST_V2",
         "tags": [
@@ -1467,7 +1467,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/ewmSynchronization",
+        "path": "/inventory/v2/inventories/ewmSynchronization",
         "summary": "Synchronizes Extended Warehouse Management (EWM) stock information.",
         "operation_id": "ewmStockSyncUsingPOST_V2",
         "tags": [
@@ -1476,7 +1476,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/{inventoryId}/return",
+        "path": "/inventory/v2/inventories/{inventoryId}/return",
         "summary": "Returns an ERP origin stock to the central storage location.",
         "operation_id": "ReturnInventoryUsingPOST_V2",
         "tags": [
@@ -1485,7 +1485,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventories/{inventoryId}/scrap",
+        "path": "/inventory/v2/inventories/{inventoryId}/scrap",
         "summary": "Scraps an ERP origin stock.",
         "operation_id": "ScrapInventoryUsingPOST_V2",
         "tags": [
@@ -1494,7 +1494,7 @@
       },
       {
         "method": "POST",
-        "path": "/inventory/ewmGoodsReceipts",
+        "path": "/inventory/v2/inventory/ewmGoodsReceipts",
         "summary": "Posts goods receipts for products that have enabled Extended Warehouse Management.",
         "operation_id": "postEwmGoodsReceiptsUsingPOST_V2",
         "tags": [
@@ -1503,7 +1503,7 @@
       },
       {
         "method": "GET",
-        "path": "/inventory/goodsReceipts",
+        "path": "/inventory/v2/inventory/goodsReceipts",
         "summary": "Retrieves posted goods receipts.",
         "operation_id": "getPostedGoodsReceiptsUsingGET_V2",
         "tags": [
@@ -1512,7 +1512,7 @@
       },
       {
         "method": "GET",
-        "path": "/inventory/goodsIssues",
+        "path": "/inventory/v2/inventory/goodsIssues",
         "summary": "Retrieves posted goods issues.",
         "operation_id": "getInventoryPostingsForGoodIssue",
         "tags": [
@@ -1532,12 +1532,12 @@
     "status": "",
     "spec_version": "3.0.2",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/odata/v4/IssueService",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/Issues",
+        "path": "/odata/v4/IssueService/Issues",
         "summary": "Retrieves a list of issues.",
         "operation_id": "",
         "tags": [
@@ -1546,7 +1546,7 @@
       },
       {
         "method": "POST",
-        "path": "/Issues",
+        "path": "/odata/v4/IssueService/Issues",
         "summary": "Creates an issue.",
         "operation_id": "",
         "tags": [
@@ -1555,7 +1555,7 @@
       },
       {
         "method": "GET",
-        "path": "/Issues('{issueId}')",
+        "path": "/odata/v4/IssueService/Issues('{issueId}')",
         "summary": "Retrieves all values of an issue.",
         "operation_id": "",
         "tags": [
@@ -1575,12 +1575,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/labor/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/laborshiftplans",
+        "path": "/labor/v1/laborshiftplans",
         "summary": "Retrieves labor shift assignments for a plant within a specified date range, with optional filters for shift and supervisor.",
         "operation_id": "getLaborShiftPlansUsingPOST",
         "tags": [
@@ -1589,7 +1589,7 @@
       },
       {
         "method": "POST",
-        "path": "/labors/shift-assignment",
+        "path": "/labor/v1/labors/shift-assignment",
         "summary": "Assigns shifts and work centers to selected workforce.",
         "operation_id": "postLaborShiftAssignments",
         "tags": [
@@ -1609,12 +1609,12 @@
     "status": "",
     "spec_version": "3.0.2",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/labor/v1",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/LaborSkills",
+        "path": "/labor/v1/LaborSkills",
         "summary": "Retrieves the list of labor skills.",
         "operation_id": "getLaborSkillsUsingGET",
         "tags": [
@@ -1634,12 +1634,12 @@
     "status": "",
     "spec_version": "3.0.3",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/linemonitor/v1/lastindicator",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/value",
+        "path": "/linemonitor/v1/lastindicator/value",
         "summary": "Saves the indicator's last value.",
         "operation_id": "",
         "tags": [
@@ -1659,12 +1659,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/logistics/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/execution/acceptLogisticsOrder",
+        "path": "/logistics/v1/execution/acceptLogisticsOrder",
         "summary": "Updates logistics order status to Accepted status or or Ready for Pick status",
         "operation_id": "acceptLogisticsOrderUsingPOST_1",
         "tags": [
@@ -1673,7 +1673,7 @@
       },
       {
         "method": "POST",
-        "path": "/execution/confirmLogisticsOrder",
+        "path": "/logistics/v1/execution/confirmLogisticsOrder",
         "summary": "Updates logistics order status to Confirmed.",
         "operation_id": "confirmLogisticsOrderUsingPOST_1",
         "tags": [
@@ -1682,7 +1682,7 @@
       },
       {
         "method": "POST",
-        "path": "/execution/pickLogisticsOrder",
+        "path": "/logistics/v1/execution/pickLogisticsOrder",
         "summary": "Updates logistics order status to Picked.",
         "operation_id": "pickLogisticsOrderUsingPOST_1",
         "tags": [
@@ -1691,7 +1691,7 @@
       },
       {
         "method": "POST",
-        "path": "/createLogisticsOrder",
+        "path": "/logistics/v1/createLogisticsOrder",
         "summary": "Creates a logistics order.",
         "operation_id": "createLogisticsOrderUsingPOST_1",
         "tags": [
@@ -1700,7 +1700,7 @@
       },
       {
         "method": "GET",
-        "path": "/readLogisticsOrder",
+        "path": "/logistics/v1/readLogisticsOrder",
         "summary": "Retrieves logistics orders.",
         "operation_id": "readLogisticsOrderUsingPOST_1",
         "tags": [
@@ -1709,7 +1709,7 @@
       },
       {
         "method": "POST",
-        "path": "/holdLogisticsOrder",
+        "path": "/logistics/v1/holdLogisticsOrder",
         "summary": "Updates logistics order status to Hold.",
         "operation_id": "holdLogisticsOrderUsingPOST_1",
         "tags": [
@@ -1718,7 +1718,7 @@
       },
       {
         "method": "POST",
-        "path": "/cancelLogisticsOrder",
+        "path": "/logistics/v1/cancelLogisticsOrder",
         "summary": "Updates logistics order status to Canceled.",
         "operation_id": "cancelLogisticsOrderUsingPOST_1",
         "tags": [
@@ -1727,7 +1727,7 @@
       },
       {
         "method": "POST",
-        "path": "/execution/rejectLogisticsOrder",
+        "path": "/logistics/v1/execution/rejectLogisticsOrder",
         "summary": "Updates logistics order status to Rejected.",
         "operation_id": "rejectLogisticsOrderUsingPOST_1",
         "tags": [
@@ -1736,7 +1736,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcComplete/sendLogisticsOrderEvent",
+        "path": "/logistics/v1/sfcComplete/sendLogisticsOrderEvent",
         "summary": "Updates logistics order status when an operation is completed",
         "operation_id": "SfcCompletePOST_1",
         "tags": [
@@ -1745,7 +1745,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/execution/updateLogisticsOrder",
+        "path": "/logistics/v1/execution/updateLogisticsOrder",
         "summary": "Updates a logistics order.",
         "operation_id": "updateLogisticsOrderUsingPATCH_1",
         "tags": [
@@ -1765,12 +1765,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/numbering/v1/identifier",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/config",
+        "path": "/numbering/v1/identifier/config",
         "summary": "Create identifiers configuration.",
         "operation_id": "",
         "tags": [
@@ -1779,7 +1779,7 @@
       },
       {
         "method": "PUT",
-        "path": "/config",
+        "path": "/numbering/v1/identifier/config",
         "summary": "Update identifiers configuration.",
         "operation_id": "",
         "tags": [
@@ -1788,7 +1788,7 @@
       },
       {
         "method": "GET",
-        "path": "/config",
+        "path": "/numbering/v1/identifier/config",
         "summary": "Read identifiers configuration.",
         "operation_id": "",
         "tags": [
@@ -1797,7 +1797,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/config",
+        "path": "/numbering/v1/identifier/config",
         "summary": "Delete identifiers configuration.",
         "operation_id": "",
         "tags": [
@@ -1806,7 +1806,7 @@
       },
       {
         "method": "GET",
-        "path": "/materialIdentifierConfigurations",
+        "path": "/numbering/v1/identifier/materialIdentifierConfigurations",
         "summary": "Read all identifiers configurations.",
         "operation_id": "",
         "tags": [
@@ -1826,12 +1826,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/masterOperation/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/masterOperation",
+        "path": "/masterOperation/v1/masterOperation",
         "summary": "Finds a master operation activity by activityId, plant and order name or SFC name",
         "operation_id": "findMasterOperationUsingGET_1",
         "tags": [
@@ -1851,12 +1851,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/material",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/materials",
+        "path": "/material/v1/materials",
         "summary": "Find material.",
         "operation_id": "findMaterialByPlantAndNameUsingGET_1",
         "tags": [
@@ -1865,7 +1865,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/materials",
+        "path": "/material/v1/materials",
         "summary": "Create material.",
         "operation_id": "createUsingPOST_4",
         "tags": [
@@ -1874,7 +1874,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v1/materials",
+        "path": "/material/v1/materials",
         "summary": "Delete material.",
         "operation_id": "deleteUsingDELETE_4",
         "tags": [
@@ -1883,7 +1883,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/materials",
+        "path": "/material/v1/materials",
         "summary": "Update material.",
         "operation_id": "updateUsingPATCH_4",
         "tags": [
@@ -1892,7 +1892,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/materials/fileAttachments",
+        "path": "/material/v1/materials/fileAttachments",
         "summary": "Finds material file attachments.",
         "operation_id": "findMaterialFileAttachmentByPlantAndNameUsingGET_1",
         "tags": [
@@ -1901,7 +1901,7 @@
       },
       {
         "method": "GET",
-        "path": "/v2/materials",
+        "path": "/material/v2/materials",
         "summary": "Finds materials by plant; or by plant and material; or by plant, material, and version.",
         "operation_id": "findMaterialsByPlantUsingGET_2",
         "tags": [
@@ -1910,7 +1910,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/materials/headerDetails",
+        "path": "/material/v1/materials/headerDetails",
         "summary": "Finds material header details by plant, name, and version.",
         "operation_id": "findMaterialHeaderDetailsUsingGET_1",
         "tags": [
@@ -1919,7 +1919,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/file/upload",
+        "path": "/material/v1/file/upload",
         "summary": "Upload a file.",
         "operation_id": "uploadFileUsingPOST_1",
         "tags": [
@@ -1928,7 +1928,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/file/download",
+        "path": "/material/v1/file/download",
         "summary": "Download a file.",
         "operation_id": "downloadFileGET_1",
         "tags": [
@@ -1937,7 +1937,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/file/preview",
+        "path": "/material/v1/file/preview",
         "summary": "View contents of a file.",
         "operation_id": "previewFileGET_1",
         "tags": [
@@ -1957,12 +1957,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/materialGroup/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/materialGroups",
+        "path": "/materialGroup/v1/materialGroups",
         "summary": "Find material group.",
         "operation_id": "findMaterialGroupsByPlantAndNameUsingGET_1",
         "tags": [
@@ -1971,7 +1971,7 @@
       },
       {
         "method": "POST",
-        "path": "/materialGroups",
+        "path": "/materialGroup/v1/materialGroups",
         "summary": "Create material group.",
         "operation_id": "createMaterialGroupUsingPOST_1",
         "tags": [
@@ -1980,7 +1980,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/materialGroups",
+        "path": "/materialGroup/v1/materialGroups",
         "summary": "Update material group.",
         "operation_id": "updateMaterialGroupUsingPATCH_1",
         "tags": [
@@ -1989,7 +1989,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/materialGroups",
+        "path": "/materialGroup/v1/materialGroups",
         "summary": "Delete material group",
         "operation_id": "deleteMaterialGroupUsingDELETE_1",
         "tags": [
@@ -2009,12 +2009,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/nonconformance/v1",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/log",
+        "path": "/nonconformance/v1/log",
         "summary": "Logs a nonconformance.",
         "operation_id": "logNonConformanceUsingPOST_1",
         "tags": [
@@ -2023,7 +2023,7 @@
       },
       {
         "method": "POST",
-        "path": "/checkForOpen",
+        "path": "/nonconformance/v1/checkForOpen",
         "summary": "Check for open nonconformances",
         "operation_id": "checkForOpenNonConformancesUsingPOST",
         "tags": [
@@ -2032,7 +2032,7 @@
       },
       {
         "method": "POST",
-        "path": "/close",
+        "path": "/nonconformance/v1/close",
         "summary": "Closes a nonconformance.",
         "operation_id": "closeNonConformanceUsingPOST",
         "tags": [
@@ -2041,7 +2041,7 @@
       },
       {
         "method": "POST",
-        "path": "/open",
+        "path": "/nonconformance/v1/open",
         "summary": "Opens a nonconformance.",
         "operation_id": "openNonconformanceUsingPOST",
         "tags": [
@@ -2050,7 +2050,7 @@
       },
       {
         "method": "GET",
-        "path": "/nonconformances",
+        "path": "/nonconformance/v1/nonconformances",
         "summary": "Retrieves a non-conformance list.",
         "operation_id": "getNonConformancesUsingGET_1",
         "tags": [
@@ -2059,7 +2059,7 @@
       },
       {
         "method": "GET",
-        "path": "/hierarchies",
+        "path": "/nonconformance/v1/hierarchies",
         "summary": "Retrieves a list of nonconformance hierarchies.",
         "operation_id": "getNonConformanceHierarchies",
         "tags": [
@@ -2068,7 +2068,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/disposition",
+        "path": "/nonconformance/v1/sfcs/disposition",
         "summary": "Route nonconformant SFCs based on disposition settings.",
         "operation_id": "dispositionUsingPOST",
         "tags": [
@@ -2077,7 +2077,7 @@
       },
       {
         "method": "GET",
-        "path": "/file/download",
+        "path": "/nonconformance/v1/file/download",
         "summary": "Downloads a nonconformance file.",
         "operation_id": "downloadFileUsingGET_1",
         "tags": [
@@ -2097,12 +2097,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v2",
-    "base_path": "",
+    "base_path": "/nonconformance/v2",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/nonconformances",
+        "path": "/nonconformance/v2/nonconformances",
         "summary": "Retrieves a list of nonconformances.",
         "operation_id": "getNonConformancesUsingGET_2",
         "tags": [
@@ -2111,7 +2111,7 @@
       },
       {
         "method": "POST",
-        "path": "/checkForOpen",
+        "path": "/nonconformance/v2/checkForOpen",
         "summary": "Check for open nonconformances V2",
         "operation_id": "checkForOpenNonConformancesV2UsingPOST",
         "tags": [
@@ -2131,12 +2131,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/nonconformancecode/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/nonconformancecodes",
+        "path": "/nonconformancecode/v1/nonconformancecodes",
         "summary": "Read nonconformance code",
         "operation_id": "readNonConformanceCodesUsingGET",
         "tags": [
@@ -2145,7 +2145,7 @@
       },
       {
         "method": "POST",
-        "path": "/nonconformancecodes",
+        "path": "/nonconformancecode/v1/nonconformancecodes",
         "summary": "Create nonconformance code.",
         "operation_id": "createUsingPOST",
         "tags": [
@@ -2154,7 +2154,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/nonconformancecodes",
+        "path": "/nonconformancecode/v1/nonconformancecodes",
         "summary": "Delete nonconformance code.",
         "operation_id": "deleteUsingDELETE",
         "tags": [
@@ -2163,7 +2163,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/nonconformancecodes",
+        "path": "/nonconformancecode/v1/nonconformancecodes",
         "summary": "Update nonconformance code.",
         "operation_id": "updateUsingPATCH",
         "tags": [
@@ -2172,7 +2172,7 @@
       },
       {
         "method": "GET",
-        "path": "/customFieldDefinitions",
+        "path": "/nonconformancecode/v1/customFieldDefinitions",
         "summary": "Retrieves a list of custom data definitions for nonconformance codes.",
         "operation_id": "getCustomFieldDefinition",
         "tags": [
@@ -2181,7 +2181,7 @@
       },
       {
         "method": "POST",
-        "path": "/customFieldDefinitions",
+        "path": "/nonconformancecode/v1/customFieldDefinitions",
         "summary": "Creates a custom data definition for the nonconformance code.",
         "operation_id": "createCustomFieldDefinition",
         "tags": [
@@ -2190,7 +2190,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/customFieldDefinitions",
+        "path": "/nonconformancecode/v1/customFieldDefinitions",
         "summary": "Updates a custom data definition for the nonconformance code.",
         "operation_id": "updateCustomFieldDefinition",
         "tags": [
@@ -2199,7 +2199,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/customFieldDefinitions",
+        "path": "/nonconformancecode/v1/customFieldDefinitions",
         "summary": "Deletes a custom data definition for the nonconformance code.",
         "operation_id": "deleteCustomFieldDefinition",
         "tags": [
@@ -2219,12 +2219,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/nonconformancegroup/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/nonconformancegroups",
+        "path": "/nonconformancegroup/v1/nonconformancegroups",
         "summary": "Read nonconformance group",
         "operation_id": "readUsingGET",
         "tags": [
@@ -2233,7 +2233,7 @@
       },
       {
         "method": "POST",
-        "path": "/nonconformancegroups",
+        "path": "/nonconformancegroup/v1/nonconformancegroups",
         "summary": "Create nonconformance group.",
         "operation_id": "createUsingPOST_1",
         "tags": [
@@ -2242,7 +2242,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/nonconformancegroups",
+        "path": "/nonconformancegroup/v1/nonconformancegroups",
         "summary": "Delete nonconformance group.",
         "operation_id": "deleteUsingDELETE_1",
         "tags": [
@@ -2251,7 +2251,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/nonconformancegroups",
+        "path": "/nonconformancegroup/v1/nonconformancegroups",
         "summary": "Update nonconformance group.",
         "operation_id": "updateUsingPATCH_1",
         "tags": [
@@ -2271,12 +2271,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/operationActivity/v1",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/operationActivities",
+        "path": "/operationActivity/v1/operationActivities",
         "summary": "Finds list of operation activities.",
         "operation_id": "read",
         "tags": [
@@ -2285,7 +2285,7 @@
       },
       {
         "method": "POST",
-        "path": "/operationActivities",
+        "path": "/operationActivity/v1/operationActivities",
         "summary": "Creates a list of operation activities.",
         "operation_id": "create",
         "tags": [
@@ -2294,7 +2294,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/operationActivities",
+        "path": "/operationActivity/v1/operationActivities",
         "summary": "Updates a list of operation activities.",
         "operation_id": "updateProperties",
         "tags": [
@@ -2303,7 +2303,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/operationActivities",
+        "path": "/operationActivity/v1/operationActivities",
         "summary": "Deletes an operation activity.",
         "operation_id": "delete",
         "tags": [
@@ -2323,12 +2323,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v2",
-    "base_path": "",
+    "base_path": "/order",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v2/plants/{plant}/orders",
+        "path": "/order/v2/plants/{plant}/orders",
         "summary": "Finds a list of orders.",
         "operation_id": "",
         "tags": [
@@ -2337,7 +2337,7 @@
       },
       {
         "method": "POST",
-        "path": "/v2/orders/release",
+        "path": "/order/v2/orders/release",
         "summary": "Releases the order.",
         "operation_id": "",
         "tags": [
@@ -2357,12 +2357,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/order/v1",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/orders",
+        "path": "/order/v1/v1/orders",
         "summary": "Finds order data by plant and order.",
         "operation_id": "",
         "tags": [
@@ -2371,7 +2371,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/orders",
+        "path": "/order/v1/v1/orders",
         "summary": "Creates an order with provided data",
         "operation_id": "createOrder",
         "tags": [
@@ -2380,7 +2380,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/orders/list",
+        "path": "/order/v1/v1/orders/list",
         "summary": "Finds list of orders.",
         "operation_id": "",
         "tags": [
@@ -2389,7 +2389,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/orders/release",
+        "path": "/order/v1/v1/orders/release",
         "summary": "Releases the given order.",
         "operation_id": "",
         "tags": [
@@ -2398,7 +2398,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/orders/releaseInBackground",
+        "path": "/order/v1/v1/orders/releaseInBackground",
         "summary": "Releases order in background for the given order.",
         "operation_id": "",
         "tags": [
@@ -2407,7 +2407,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/orders/complete",
+        "path": "/order/v1/v1/orders/complete",
         "summary": "Complete order",
         "operation_id": "completeUsingPOST_2",
         "tags": [
@@ -2416,7 +2416,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/orders/discard",
+        "path": "/order/v1/v1/orders/discard",
         "summary": "Discard order",
         "operation_id": "discardUsingPOST_2",
         "tags": [
@@ -2425,7 +2425,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/orders/customValues",
+        "path": "/order/v1/v1/orders/customValues",
         "summary": "Updates custom values",
         "operation_id": "",
         "tags": [
@@ -2434,7 +2434,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/orders/customFieldDefinitions",
+        "path": "/order/v1/v1/orders/customFieldDefinitions",
         "summary": "Retrieves a list of custom data definitions for the order.",
         "operation_id": "getCustomFieldDefinitions",
         "tags": [
@@ -2443,7 +2443,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/orders/customFieldDefinitions",
+        "path": "/order/v1/v1/orders/customFieldDefinitions",
         "summary": "Creates custom data definitions for the order.",
         "operation_id": "createCustomFieldDefinition",
         "tags": [
@@ -2452,7 +2452,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v1/orders/customFieldDefinitions",
+        "path": "/order/v1/v1/orders/customFieldDefinitions",
         "summary": "Deletes custom data definitions for the order.",
         "operation_id": "deleteCustomFieldDefinition",
         "tags": [
@@ -2461,7 +2461,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/orders/customFieldDefinitions",
+        "path": "/order/v1/v1/orders/customFieldDefinitions",
         "summary": "Updates custom data definitions for the order.",
         "operation_id": "updateCustomFieldDefinition",
         "tags": [
@@ -2481,12 +2481,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/reo/v1",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/shoporderschedules",
+        "path": "/reo/v1/shoporderschedules",
         "summary": "Provides the shop order schedules of a plant for a given date range.",
         "operation_id": "getShopOrderScheduleUsingPOST",
         "tags": [
@@ -2495,7 +2495,7 @@
       },
       {
         "method": "POST",
-        "path": "/scheduleOrders",
+        "path": "/reo/v1/scheduleOrders",
         "summary": "Schedule an order to a specific resource and work center within a given range.",
         "operation_id": "saveOrderSchedulesUsingPOST",
         "tags": [
@@ -2504,7 +2504,7 @@
       },
       {
         "method": "POST",
-        "path": "/rescheduleOrder",
+        "path": "/reo/v1/rescheduleOrder",
         "summary": "Reschedule an order to a specific resource for a given date.",
         "operation_id": "updateOrderSchedulesUsingPOST",
         "tags": [
@@ -2524,12 +2524,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/oee/",
+    "base_path": "/oee",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/availabilityLosses",
+        "path": "/oee/v1/availabilityLosses",
         "summary": "Provides all the Availability downtime losses for the associated filter condition",
         "operation_id": "getDowntimeLosses",
         "tags": [
@@ -2538,7 +2538,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/productionSummary",
+        "path": "/oee/v1/productionSummary",
         "summary": "Provides the production summary for the associated filter condition",
         "operation_id": "getProductionSummary",
         "tags": [
@@ -2547,7 +2547,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/timeElementsByTimeElementType",
+        "path": "/oee/v1/timeElementsByTimeElementType",
         "summary": "Provides the time element duration by time element type for the associated filter condition",
         "operation_id": "getTimeBuckets",
         "tags": [
@@ -2556,7 +2556,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/performanceLosses",
+        "path": "/oee/v1/performanceLosses",
         "summary": "Provides the performance losses for the associated filter condition",
         "operation_id": "getPerformanceLosses",
         "tags": [
@@ -2565,7 +2565,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/speedLosses",
+        "path": "/oee/v1/speedLosses",
         "summary": "Provides all the Speed losses for the associated filter condition",
         "operation_id": "getSpeedLosses",
         "tags": [
@@ -2574,7 +2574,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/qualityLosses",
+        "path": "/oee/v1/qualityLosses",
         "summary": "Provides the quality losses for the associated filter condition",
         "operation_id": "getQualityLosses",
         "tags": [
@@ -2594,12 +2594,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/packingUnits/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/packingUnits",
+        "path": "/packingUnits/v1/packingUnits",
         "summary": "Finds a packing unit by plant and number.",
         "operation_id": "findPackingUnitByPlantAndNumberUsingGET",
         "tags": [
@@ -2608,7 +2608,7 @@
       },
       {
         "method": "POST",
-        "path": "/packingUnits",
+        "path": "/packingUnits/v1/packingUnits",
         "summary": "Creates a packing unit.",
         "operation_id": "createPackingUnitUsingPOST",
         "tags": [
@@ -2617,7 +2617,7 @@
       },
       {
         "method": "PUT",
-        "path": "/packingUnits",
+        "path": "/packingUnits/v1/packingUnits",
         "summary": "Updates a packing unit.",
         "operation_id": "updatePackingUnitUsingPUT",
         "tags": [
@@ -2626,7 +2626,7 @@
       },
       {
         "method": "POST",
-        "path": "/packingUnits/pack",
+        "path": "/packingUnits/v1/packingUnits/pack",
         "summary": "Closes an Open Packing Unit.",
         "operation_id": "packPackingUnitUsingPOST",
         "tags": [
@@ -2635,7 +2635,7 @@
       },
       {
         "method": "POST",
-        "path": "/packingUnits/unpack",
+        "path": "/packingUnits/v1/packingUnits/unpack",
         "summary": "Re-opens a Closed Packing Unit.",
         "operation_id": "unpackPackingUnitUsingPOST",
         "tags": [
@@ -2644,7 +2644,7 @@
       },
       {
         "method": "POST",
-        "path": "/packingUnits/content",
+        "path": "/packingUnits/v1/packingUnits/content",
         "summary": "Adds content to a Packing Unit.",
         "operation_id": "addContentUsingPOST",
         "tags": [
@@ -2653,7 +2653,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/packingUnits/content",
+        "path": "/packingUnits/v1/packingUnits/content",
         "summary": "Removes content from a Packing Unit.",
         "operation_id": "removeContentUsingDELETE",
         "tags": [
@@ -2662,7 +2662,7 @@
       },
       {
         "method": "POST",
-        "path": "/changeCarrier",
+        "path": "/packingUnits/v1/changeCarrier",
         "summary": "Updates the carrier of a packing unit.",
         "operation_id": "updateCarrierUsingPOST",
         "tags": [
@@ -2671,7 +2671,7 @@
       },
       {
         "method": "PUT",
-        "path": "/unloadPackingUnit",
+        "path": "/packingUnits/v1/unloadPackingUnit",
         "summary": "Unloads a packing unit.",
         "operation_id": "unloadPackingUnitUsingPUT",
         "tags": [
@@ -2680,7 +2680,7 @@
       },
       {
         "method": "GET",
-        "path": "/carrier/packingUnit",
+        "path": "/packingUnits/v1/carrier/packingUnit",
         "summary": "Gets packing units for a given plant and carrier number.",
         "operation_id": "carrierPackingUnitUsingGET",
         "tags": [
@@ -2700,12 +2700,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/plant/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/plants",
+        "path": "/plant/v1/plants",
         "summary": "Searches for plants.",
         "operation_id": "getPlantUsingGET",
         "tags": [
@@ -2725,12 +2725,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/print",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/v1/print",
+        "path": "/print/v1/print",
         "summary": "Prints a document print template on a given printer.",
         "operation_id": "printDocumentUsingPOST_2",
         "tags": [
@@ -2739,7 +2739,7 @@
       },
       {
         "method": "POST",
-        "path": "/v2/print",
+        "path": "/print/v2/print",
         "summary": "Prints a document print template on a given printer. Simplified version.",
         "operation_id": "printDocumentUsingPOST_3",
         "tags": [
@@ -2748,7 +2748,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/cpscallback",
+        "path": "/print/v1/cpscallback",
         "summary": "The service for CPS printing feedbacks.",
         "operation_id": "cpsCallback",
         "tags": [
@@ -2768,12 +2768,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/printer/v1",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/printers",
+        "path": "/printer/v1/printers",
         "summary": "Retrieves a page of printers.",
         "operation_id": "findPrintersUsingGET_1",
         "tags": [
@@ -2782,7 +2782,7 @@
       },
       {
         "method": "POST",
-        "path": "/printers",
+        "path": "/printer/v1/printers",
         "summary": "Creates a printer.",
         "operation_id": "createPrintersUsingPOST_1",
         "tags": [
@@ -2791,7 +2791,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/printers",
+        "path": "/printer/v1/printers",
         "summary": "Updates a printer.",
         "operation_id": "updatePrintersUsingPATCH_1",
         "tags": [
@@ -2800,7 +2800,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/printers",
+        "path": "/printer/v1/printers",
         "summary": "Deletes a printer",
         "operation_id": "deletePrintersUsingDELETE_1",
         "tags": [
@@ -2820,12 +2820,12 @@
     "status": "",
     "spec_version": "3.0.2",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/odata/v4/ProblemSolvingProcessService",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/ProblemSolvingProcess",
+        "path": "/odata/v4/ProblemSolvingProcessService/ProblemSolvingProcess",
         "summary": "Retrieves a list of problem-solving processes.",
         "operation_id": "",
         "tags": [
@@ -2834,7 +2834,7 @@
       },
       {
         "method": "POST",
-        "path": "/ProblemSolvingProcess",
+        "path": "/odata/v4/ProblemSolvingProcessService/ProblemSolvingProcess",
         "summary": "Creates a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2843,7 +2843,7 @@
       },
       {
         "method": "GET",
-        "path": "/ProblemSolvingProcess('{processId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/ProblemSolvingProcess('{processId}')",
         "summary": "Retrieves all values of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2852,7 +2852,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/ProblemSolvingProcess('{processId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/ProblemSolvingProcess('{processId}')",
         "summary": "Updates a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2861,7 +2861,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/ProblemSolvingProcess('{processId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/ProblemSolvingProcess('{processId}')",
         "summary": "Deletes a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2870,7 +2870,7 @@
       },
       {
         "method": "GET",
-        "path": "/RootCause",
+        "path": "/odata/v4/ProblemSolvingProcessService/RootCause",
         "summary": "Retrieves all values of each root cause from all the problem-solving processes.",
         "operation_id": "",
         "tags": [
@@ -2879,7 +2879,7 @@
       },
       {
         "method": "POST",
-        "path": "/RootCause",
+        "path": "/odata/v4/ProblemSolvingProcessService/RootCause",
         "summary": "Creates a root cause for a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2888,7 +2888,7 @@
       },
       {
         "method": "GET",
-        "path": "/RootCause(rootCauseUUID={rootCauseUUID},stepUUID={stepUUID})",
+        "path": "/odata/v4/ProblemSolvingProcessService/RootCause(rootCauseUUID={rootCauseUUID},stepUUID={stepUUID})",
         "summary": "Retrieves all values of a root cause of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2897,7 +2897,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/RootCause(rootCauseUUID={rootCauseUUID},stepUUID={stepUUID})",
+        "path": "/odata/v4/ProblemSolvingProcessService/RootCause(rootCauseUUID={rootCauseUUID},stepUUID={stepUUID})",
         "summary": "Updates a root cause of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2906,7 +2906,7 @@
       },
       {
         "method": "GET",
-        "path": "/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
         "summary": "Retrieves all values of a problem-solving process step.",
         "operation_id": "",
         "tags": [
@@ -2915,7 +2915,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
         "summary": "Updates a step of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2924,7 +2924,7 @@
       },
       {
         "method": "POST",
-        "path": "/StepComments",
+        "path": "/odata/v4/ProblemSolvingProcessService/StepComments",
         "summary": "Creates a comment for a problem-solving process step.",
         "operation_id": "",
         "tags": [
@@ -2933,7 +2933,7 @@
       },
       {
         "method": "GET",
-        "path": "/Tasks",
+        "path": "/odata/v4/ProblemSolvingProcessService/Tasks",
         "summary": "Retrieves all tasks from each step in all problem-solving processes.",
         "operation_id": "",
         "tags": [
@@ -2942,7 +2942,7 @@
       },
       {
         "method": "POST",
-        "path": "/Tasks",
+        "path": "/odata/v4/ProblemSolvingProcessService/Tasks",
         "summary": "Creates a task in a problem-solving process step.",
         "operation_id": "",
         "tags": [
@@ -2951,7 +2951,7 @@
       },
       {
         "method": "GET",
-        "path": "/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
         "summary": "Retrieves all values of a task within a step of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2960,7 +2960,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
         "summary": "Updates a task within a step of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2969,7 +2969,7 @@
       },
       {
         "method": "GET",
-        "path": "/TeamMembers",
+        "path": "/odata/v4/ProblemSolvingProcessService/TeamMembers",
         "summary": "Retrieves all the team members from all the problem-solving processes.",
         "operation_id": "",
         "tags": [
@@ -2978,7 +2978,7 @@
       },
       {
         "method": "POST",
-        "path": "/TeamMembers",
+        "path": "/odata/v4/ProblemSolvingProcessService/TeamMembers",
         "summary": "Adds team members to the D1 step of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2987,7 +2987,7 @@
       },
       {
         "method": "GET",
-        "path": "/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
         "summary": "Retrieves all values of a team member of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -2996,7 +2996,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
         "summary": "Updates team members of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3016,12 +3016,12 @@
     "status": "",
     "spec_version": "3.0.2",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/odata/v4/ProblemSolvingProcessService",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/ProblemSolvingProcess",
+        "path": "/odata/v4/ProblemSolvingProcessService/ProblemSolvingProcess",
         "summary": "Retrieves a list of problem-solving processes.",
         "operation_id": "",
         "tags": [
@@ -3030,7 +3030,7 @@
       },
       {
         "method": "POST",
-        "path": "/ProblemSolvingProcess",
+        "path": "/odata/v4/ProblemSolvingProcessService/ProblemSolvingProcess",
         "summary": "Creates a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3039,7 +3039,7 @@
       },
       {
         "method": "GET",
-        "path": "/ProblemSolvingProcess('{processId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/ProblemSolvingProcess('{processId}')",
         "summary": "Retrieves all values of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3048,7 +3048,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/ProblemSolvingProcess('{processId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/ProblemSolvingProcess('{processId}')",
         "summary": "Updates a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3057,7 +3057,7 @@
       },
       {
         "method": "GET",
-        "path": "/RootCause",
+        "path": "/odata/v4/ProblemSolvingProcessService/RootCause",
         "summary": "Retrieves all values of each root cause from all the problem-solving processes.",
         "operation_id": "",
         "tags": [
@@ -3066,7 +3066,7 @@
       },
       {
         "method": "POST",
-        "path": "/RootCause",
+        "path": "/odata/v4/ProblemSolvingProcessService/RootCause",
         "summary": "Creates a root cause for a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3075,7 +3075,7 @@
       },
       {
         "method": "GET",
-        "path": "/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')",
         "summary": "Retrieves all values of a root cause of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3084,7 +3084,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/RootCause(rootCauseUUID='{rootCauseUUID}',stepUUID='{stepUUID}')",
         "summary": "Updates a root cause of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3093,7 +3093,7 @@
       },
       {
         "method": "GET",
-        "path": "/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
         "summary": "Retrieves all values of a problem-solving process step.",
         "operation_id": "",
         "tags": [
@@ -3102,7 +3102,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/Step(stepTypeId='{stepTypeId}',processId='{processId}')",
         "summary": "Updates a step of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3111,7 +3111,7 @@
       },
       {
         "method": "POST",
-        "path": "/StepComments",
+        "path": "/odata/v4/ProblemSolvingProcessService/StepComments",
         "summary": "Creates a comment for a problem-solving process step.",
         "operation_id": "",
         "tags": [
@@ -3120,7 +3120,7 @@
       },
       {
         "method": "GET",
-        "path": "/Tasks",
+        "path": "/odata/v4/ProblemSolvingProcessService/Tasks",
         "summary": "Retrieves all tasks from each step in all problem-solving processes.",
         "operation_id": "",
         "tags": [
@@ -3129,7 +3129,7 @@
       },
       {
         "method": "POST",
-        "path": "/Tasks",
+        "path": "/odata/v4/ProblemSolvingProcessService/Tasks",
         "summary": "Creates a task in a problem-solving process step.",
         "operation_id": "",
         "tags": [
@@ -3138,7 +3138,7 @@
       },
       {
         "method": "GET",
-        "path": "/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
         "summary": "Retrieves all values of a task within a step of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3147,7 +3147,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/Tasks(processId='{processId}',stepTypeId='{stepTypeId}',taskNumber='{taskNumber}')",
         "summary": "Updates a task within a step of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3156,7 +3156,7 @@
       },
       {
         "method": "GET",
-        "path": "/TeamMembers",
+        "path": "/odata/v4/ProblemSolvingProcessService/TeamMembers",
         "summary": "Retrieves all the team members from all the problem-solving processes.",
         "operation_id": "",
         "tags": [
@@ -3165,7 +3165,7 @@
       },
       {
         "method": "POST",
-        "path": "/TeamMembers",
+        "path": "/odata/v4/ProblemSolvingProcessService/TeamMembers",
         "summary": "Adds team members to the D1 step of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3174,7 +3174,7 @@
       },
       {
         "method": "GET",
-        "path": "/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
         "summary": "Retrieves all values of a team member of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3183,7 +3183,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
+        "path": "/odata/v4/ProblemSolvingProcessService/TeamMembers(stepTypeId='{stepTypeId}',processId='{processId}',teamMemberId='{teamMemberId}')",
         "summary": "Updates team members of a problem-solving process.",
         "operation_id": "",
         "tags": [
@@ -3203,12 +3203,12 @@
     "status": "",
     "spec_version": "3.0.3",
     "api_version": "v2",
-    "base_path": "",
+    "base_path": "/processLot/v2",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/processLot/members",
+        "path": "/processLot/v2/processLot/members",
         "summary": "Updates a Process Lot by adding members.",
         "operation_id": "addMembersToProcessLotUsingPOST",
         "tags": [
@@ -3217,7 +3217,7 @@
       },
       {
         "method": "POST",
-        "path": "/processLot/start",
+        "path": "/processLot/v2/processLot/start",
         "summary": "Start a Process Lot.",
         "operation_id": "startProcessLotUsingPOST",
         "tags": [
@@ -3237,12 +3237,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/processLot/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/processLot",
+        "path": "/processLot/v1/processLot",
         "summary": "Creates a Process Lot.",
         "operation_id": "createProcessLotUsingPOST",
         "tags": [
@@ -3251,7 +3251,7 @@
       },
       {
         "method": "GET",
-        "path": "/processLot",
+        "path": "/processLot/v1/processLot",
         "summary": "Finds a Process Lot by Plant and Process Lot Number.",
         "operation_id": "findProcessLotByPlantAndNumberUsingGET",
         "tags": [
@@ -3260,7 +3260,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/processLot",
+        "path": "/processLot/v1/processLot",
         "summary": "Deletes a Process Lot by Plant and Process Lot Number.",
         "operation_id": "deleteProcessLotUsingDELETE",
         "tags": [
@@ -3269,7 +3269,7 @@
       },
       {
         "method": "POST",
-        "path": "/processLot/members",
+        "path": "/processLot/v1/processLot/members",
         "summary": "Updates a Process Lot by adding Members.",
         "operation_id": "addMembersUsingPOST",
         "tags": [
@@ -3278,7 +3278,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/processLot/members",
+        "path": "/processLot/v1/processLot/members",
         "summary": "Removes all Members.",
         "operation_id": "deleteAllMembersByPlantAndNumberUsingDELETE",
         "tags": [
@@ -3287,7 +3287,7 @@
       },
       {
         "method": "POST",
-        "path": "/processLot/removeMembers",
+        "path": "/processLot/v1/processLot/removeMembers",
         "summary": "Removes Members by Plant and Process Lot Number.",
         "operation_id": "deleteMembersByPlantAndNumberUsingPOST",
         "tags": [
@@ -3296,7 +3296,7 @@
       },
       {
         "method": "POST",
-        "path": "/processLot/start",
+        "path": "/processLot/v1/processLot/start",
         "summary": "Start a Process Lot.",
         "operation_id": "startProcessLotUsingPOST",
         "tags": [
@@ -3305,7 +3305,7 @@
       },
       {
         "method": "POST",
-        "path": "/processLot/complete",
+        "path": "/processLot/v1/processLot/complete",
         "summary": "Complete a Process Lot.",
         "operation_id": "completeProcessLotUsingPOST",
         "tags": [
@@ -3325,12 +3325,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/order/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/operationActivity/start",
+        "path": "/order/v1/operationActivity/start",
         "summary": "Starts an Operation activity.",
         "operation_id": "",
         "tags": [
@@ -3339,7 +3339,7 @@
       },
       {
         "method": "POST",
-        "path": "/operationActivity/complete",
+        "path": "/order/v1/operationActivity/complete",
         "summary": "Completes an Operation activity.",
         "operation_id": "",
         "tags": [
@@ -3359,12 +3359,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/processorder",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/v1/phase/start",
+        "path": "/processorder/v1/phase/start",
         "summary": "Starts a phase.",
         "operation_id": "",
         "tags": [
@@ -3373,7 +3373,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/phase/complete",
+        "path": "/processorder/v1/phase/complete",
         "summary": "Completes a phase.",
         "operation_id": "",
         "tags": [
@@ -3382,7 +3382,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/goodsissue",
+        "path": "/processorder/v1/goodsissue",
         "summary": "Performs goods issue.",
         "operation_id": "",
         "tags": [
@@ -3391,7 +3391,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/goodsissue/cancellations",
+        "path": "/processorder/v1/goodsissue/cancellations",
         "summary": "Cancels a goods issue.",
         "operation_id": "cancelGoodsIssue",
         "tags": [
@@ -3400,7 +3400,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/goodsIssue/summary",
+        "path": "/processorder/v1/goodsIssue/summary",
         "summary": "Goods Issue Summary",
         "operation_id": "goodsSummary",
         "tags": [
@@ -3409,7 +3409,7 @@
       },
       {
         "method": "GET",
-        "path": "/v2/goodsIssue/summary",
+        "path": "/processorder/v2/goodsIssue/summary",
         "summary": "Goods Issue Summary",
         "operation_id": "goodsSummaryV2",
         "tags": [
@@ -3418,7 +3418,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/activity/confirm",
+        "path": "/processorder/v1/activity/confirm",
         "summary": "Confirms activities.",
         "operation_id": "",
         "tags": [
@@ -3427,7 +3427,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/phase/updateStartTime",
+        "path": "/processorder/v1/phase/updateStartTime",
         "summary": "Update start time of a phase.",
         "operation_id": "",
         "tags": [
@@ -3436,7 +3436,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/phase/updateCompleteTime",
+        "path": "/processorder/v1/phase/updateCompleteTime",
         "summary": "Update complete time of a phase.",
         "operation_id": "",
         "tags": [
@@ -3456,12 +3456,12 @@
     "status": "",
     "spec_version": "3.0.3",
     "api_version": "v2",
-    "base_path": "",
+    "base_path": "/processorder",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/v2/phase/updateStartTime",
+        "path": "/processorder/v2/phase/updateStartTime",
         "summary": "Update start time of a phase.",
         "operation_id": "UpdatePhaseStartTimeV2",
         "tags": [
@@ -3481,12 +3481,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/asbuiltReport/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/components",
+        "path": "/asbuiltReport/v1/components",
         "summary": "Obtains assembly components by SFC and plant. It's deprecated. Please use https://api.sap.com/api/sapdme_assembly",
         "operation_id": "getComponentsUsingGET",
         "tags": [
@@ -3506,12 +3506,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v2",
-    "base_path": "",
+    "base_path": "/production/v2",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/changeProduction",
+        "path": "/production/v2/changeProduction",
         "summary": "Assigns a new routing or BOM to SFCs",
         "operation_id": "",
         "tags": [
@@ -3531,12 +3531,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/production/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/changeProduction",
+        "path": "/production/v1/changeProduction",
         "summary": "Assigns a new routing or a new Bill of Materials (BOM) to given Shop Floor Controls (SFCs)",
         "operation_id": "",
         "tags": [
@@ -3556,12 +3556,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/pod/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/configurations",
+        "path": "/pod/v1/configurations",
         "summary": "API to create a new POD given a POD configuration.",
         "operation_id": "createPodConfigurationUsingPOST",
         "tags": [
@@ -3570,7 +3570,7 @@
       },
       {
         "method": "GET",
-        "path": "/export",
+        "path": "/pod/v1/export",
         "summary": "API to export a POD configuration.",
         "operation_id": "exportPodUsingGET",
         "tags": [
@@ -3579,7 +3579,7 @@
       },
       {
         "method": "POST",
-        "path": "/import",
+        "path": "/pod/v1/import",
         "summary": "API to import a POD configuration from a local file system and creating a new POD.",
         "operation_id": "importPodUsingPOST",
         "tags": [
@@ -3599,12 +3599,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/notification/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/send",
+        "path": "/notification/v1/send",
         "summary": "Send a custom notification for consumption by subscribing custom POD plugins.",
         "operation_id": "",
         "tags": [
@@ -3624,12 +3624,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v2",
-    "base_path": "/",
+    "base_path": "/qualityInspection/v2",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/mandatoryCharacteristics/checkResultsRecorded",
+        "path": "/qualityInspection/v2/mandatoryCharacteristics/checkResultsRecorded",
         "summary": "Check if the mandatory inspection characteristics are recorded for the given SFCs at the given steps.",
         "operation_id": "checkMandatoryCharacteristicsResultsRecordedV2",
         "tags": [
@@ -3649,12 +3649,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/qualityInspection/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
+        "path": "/qualityInspection/v1/lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
         "summary": "Record single results for an inspection characteristics.",
         "operation_id": "updateSingleResultsUsingPOST_1",
         "tags": [
@@ -3663,7 +3663,7 @@
       },
       {
         "method": "GET",
-        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
+        "path": "/qualityInspection/v1/lots/{inspectionLot}/operations/{inspectionOperation}/characteristics/{inspectionCharacteristic}/results",
         "summary": "Retrieves single results for an inspection characteristic",
         "operation_id": "getSingleResultsUsingGET_1",
         "tags": [
@@ -3672,7 +3672,7 @@
       },
       {
         "method": "GET",
-        "path": "/lots/{inspectionLot}",
+        "path": "/qualityInspection/v1/lots/{inspectionLot}",
         "summary": "Get inspection lot details.",
         "operation_id": "getInspectionLotUsingGET_1",
         "tags": [
@@ -3681,7 +3681,7 @@
       },
       {
         "method": "GET",
-        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}",
+        "path": "/qualityInspection/v1/lots/{inspectionLot}/operations/{inspectionOperation}",
         "summary": "Get inspection operation information.",
         "operation_id": "getInspectionOperationUsingGET_1",
         "tags": [
@@ -3690,7 +3690,7 @@
       },
       {
         "method": "GET",
-        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/characteristics",
+        "path": "/qualityInspection/v1/lots/{inspectionLot}/operations/{inspectionOperation}/characteristics",
         "summary": "Get all the inspection characteristics",
         "operation_id": "getInspectionCharacteristicsUsingGET_1",
         "tags": [
@@ -3699,7 +3699,7 @@
       },
       {
         "method": "GET",
-        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/results",
+        "path": "/qualityInspection/v1/lots/{inspectionLot}/operations/{inspectionOperation}/results",
         "summary": "Get inspection operation single results for inspection lot (multiple SFCs).",
         "operation_id": "getSingleResultsHistoryGET_1",
         "tags": [
@@ -3708,7 +3708,7 @@
       },
       {
         "method": "GET",
-        "path": "/inspectionPointCombinations/{combinationId}/userFields",
+        "path": "/qualityInspection/v1/inspectionPointCombinations/{combinationId}/userFields",
         "summary": "Get inspection point field combination information.",
         "operation_id": "getInspectionFieldCombinationByCombinationIdUsingGET_1",
         "tags": [
@@ -3717,7 +3717,7 @@
       },
       {
         "method": "POST",
-        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/points",
+        "path": "/qualityInspection/v1/lots/{inspectionLot}/operations/{inspectionOperation}/points",
         "summary": "Create an inspection point.",
         "operation_id": "createInspectionPointUsingPOST_1",
         "tags": [
@@ -3726,7 +3726,7 @@
       },
       {
         "method": "POST",
-        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/points/createInERP",
+        "path": "/qualityInspection/v1/lots/{inspectionLot}/operations/{inspectionOperation}/points/createInERP",
         "summary": "Synchronizes the inspection point created in SAP Digital Manufacturing to the integrated ERP system. If the sync call succeeds, the inspection point is created in ERP.",
         "operation_id": "syncInspectionPoint2ERPUsingPOST_1",
         "tags": [
@@ -3735,7 +3735,7 @@
       },
       {
         "method": "POST",
-        "path": "/lots/{inspectionLot}/operations/{inspectionOperation}/results/recordInERP",
+        "path": "/qualityInspection/v1/lots/{inspectionLot}/operations/{inspectionOperation}/results/recordInERP",
         "summary": "Synchronizes inspection single results to ERP",
         "operation_id": "syncSingleResults2ERPUsingPOST_1",
         "tags": [
@@ -3744,7 +3744,7 @@
       },
       {
         "method": "POST",
-        "path": "/mandatoryCharacteristics/checkResultsRecorded",
+        "path": "/qualityInspection/v1/mandatoryCharacteristics/checkResultsRecorded",
         "summary": "Check if the mandatory inspection characteristics are recorded for the given SFCs at the given steps",
         "operation_id": "",
         "tags": [
@@ -3764,7 +3764,7 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "",
     "host": "hostname",
     "endpoints": [
       {
@@ -3816,12 +3816,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/recipe/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/recipes",
+        "path": "/recipe/v1/recipes",
         "summary": "Finds a recipe by plant, recipe name, recipe type, and recipe version",
         "operation_id": "findRecipeByPlantAndNameUsingGET_1",
         "tags": [
@@ -3830,7 +3830,7 @@
       },
       {
         "method": "POST",
-        "path": "/recipes",
+        "path": "/recipe/v1/recipes",
         "summary": "Creates a list of recipes.",
         "operation_id": "createRecipePOST_1",
         "tags": [
@@ -3839,7 +3839,7 @@
       },
       {
         "method": "PUT",
-        "path": "/recipes",
+        "path": "/recipe/v1/recipes",
         "summary": "Updates a list of recipes.",
         "operation_id": "updateRecipesPUT_1",
         "tags": [
@@ -3848,7 +3848,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/recipes",
+        "path": "/recipe/v1/recipes",
         "summary": "Deletes a recipe by plant, recipe name, recipe version, and recipe type.",
         "operation_id": "deleteRecipeDELETE_1",
         "tags": [
@@ -3857,7 +3857,7 @@
       },
       {
         "method": "GET",
-        "path": "/recipes/headerDetails",
+        "path": "/recipe/v1/recipes/headerDetails",
         "summary": "Finds recipe header details by plant, recipe name, recipe type, and recipe version",
         "operation_id": "findRecipeHeaderDetialsByPlantAndNameUsingGET_1",
         "tags": [
@@ -3866,7 +3866,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/recipes/headerDetails",
+        "path": "/recipe/v1/recipes/headerDetails",
         "summary": "Updates the recipe header details.Every unspecified field will remain unchanged.",
         "operation_id": "updateRecipeHeaderDetailsPATCH_1",
         "tags": [
@@ -3875,7 +3875,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/recipes/{recipe}/{version}/{recipeType}/recipeDetailsAndPhases",
+        "path": "/recipe/v1/recipes/{recipe}/{version}/{recipeType}/recipeDetailsAndPhases",
         "summary": "Update the recipe header details and phases details.",
         "operation_id": "updateRecipeDetailsAndPhasesPATCH_1",
         "tags": [
@@ -3895,12 +3895,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v2",
-    "base_path": "/",
+    "base_path": "/resource",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v2/resources",
+        "path": "/resource/v2/resources",
         "summary": "Retrieves a list of resources.",
         "operation_id": "getResourcesUsingGET_1",
         "tags": [
@@ -3909,7 +3909,7 @@
       },
       {
         "method": "POST",
-        "path": "/v2/resources",
+        "path": "/resource/v2/resources",
         "summary": "Creates a resource.",
         "operation_id": "createResourceUsingPOST_1",
         "tags": [
@@ -3918,7 +3918,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v2/resources",
+        "path": "/resource/v2/resources",
         "summary": "Updates the resource.",
         "operation_id": "updateResourceUsingPATCH_1",
         "tags": [
@@ -3927,7 +3927,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v2/resources",
+        "path": "/resource/v2/resources",
         "summary": "Deletes the resource.",
         "operation_id": "deleteResourceUsingDELETE_1",
         "tags": [
@@ -3936,7 +3936,7 @@
       },
       {
         "method": "GET",
-        "path": "/v3/resource",
+        "path": "/resource/v3/resource",
         "summary": "Retrieves a single resource.",
         "operation_id": "getResourceUsingGET_1",
         "tags": [
@@ -3945,7 +3945,7 @@
       },
       {
         "method": "GET",
-        "path": "/v3/resources",
+        "path": "/resource/v3/resources",
         "summary": "Retrieves a page of resources.",
         "operation_id": "getResourcesUsingGET_2",
         "tags": [
@@ -3954,7 +3954,7 @@
       },
       {
         "method": "POST",
-        "path": "/v3/resources",
+        "path": "/resource/v3/resources",
         "summary": "Creates a resource.",
         "operation_id": "createResourceUsingPOST_2",
         "tags": [
@@ -3963,7 +3963,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v3/resources",
+        "path": "/resource/v3/resources",
         "summary": "Updates the resource.",
         "operation_id": "updateResourceUsingPATCH_1",
         "tags": [
@@ -3972,7 +3972,7 @@
       },
       {
         "method": "POST",
-        "path": "/v2/changestatus",
+        "path": "/resource/v2/changestatus",
         "summary": "Changes the resource status.",
         "operation_id": "changeResourceStatusUsingPOST_1",
         "tags": [
@@ -3981,7 +3981,7 @@
       },
       {
         "method": "POST",
-        "path": "/v2/loadbin",
+        "path": "/resource/v2/loadbin",
         "summary": "Loads a resource bin.",
         "operation_id": "loadResourceBinUsingPOST_1",
         "tags": [
@@ -3990,7 +3990,7 @@
       },
       {
         "method": "POST",
-        "path": "/v2/unloadbin",
+        "path": "/resource/v2/unloadbin",
         "summary": "Unloads a resource bin.",
         "operation_id": "unloadResourceBinUsingPOST_1",
         "tags": [
@@ -3999,7 +3999,7 @@
       },
       {
         "method": "GET",
-        "path": "/v2/customFieldDefinitions",
+        "path": "/resource/v2/customFieldDefinitions",
         "summary": "Retrieves a list of custom field definitions for the resource.",
         "operation_id": "getCustomFieldDefinition",
         "tags": [
@@ -4008,7 +4008,7 @@
       },
       {
         "method": "POST",
-        "path": "/v2/customFieldDefinitions",
+        "path": "/resource/v2/customFieldDefinitions",
         "summary": "Creates a custom field definition for the resource.",
         "operation_id": "createCustomFieldDefinition",
         "tags": [
@@ -4017,7 +4017,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v2/customFieldDefinitions",
+        "path": "/resource/v2/customFieldDefinitions",
         "summary": "Updates a custom field definition for the resource.",
         "operation_id": "updateCustomFieldDefinition",
         "tags": [
@@ -4026,7 +4026,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v2/customFieldDefinitions",
+        "path": "/resource/v2/customFieldDefinitions",
         "summary": "Deletes a custom field definition for the resource.",
         "operation_id": "deleteCustomFieldDefinition",
         "tags": [
@@ -4046,12 +4046,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/resource/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/changestatus",
+        "path": "/resource/v1/changestatus",
         "summary": "Changes the resource status.",
         "operation_id": "changeResourceStatusUsingPOST_1",
         "tags": [
@@ -4060,7 +4060,7 @@
       },
       {
         "method": "POST",
-        "path": "/loadbin",
+        "path": "/resource/v1/loadbin",
         "summary": "Loads a resource bin.",
         "operation_id": "loadResourceBinUsingPOST_2",
         "tags": [
@@ -4069,7 +4069,7 @@
       },
       {
         "method": "GET",
-        "path": "/resources",
+        "path": "/resource/v1/resources",
         "summary": "Retrieves a list of resources.",
         "operation_id": "getResourcesUsingGET_1",
         "tags": [
@@ -4078,7 +4078,7 @@
       },
       {
         "method": "POST",
-        "path": "/resources",
+        "path": "/resource/v1/resources",
         "summary": "Creates a resource.",
         "operation_id": "createResourceUsingPOST_1",
         "tags": [
@@ -4087,7 +4087,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/resources",
+        "path": "/resource/v1/resources",
         "summary": "Updates the resource.",
         "operation_id": "updateResourceUsingPATCH_1",
         "tags": [
@@ -4096,7 +4096,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/resources",
+        "path": "/resource/v1/resources",
         "summary": "Deletes the resource.",
         "operation_id": "deleteResourceUsingDELETE_1",
         "tags": [
@@ -4105,7 +4105,7 @@
       },
       {
         "method": "POST",
-        "path": "/unloadbin",
+        "path": "/resource/v1/unloadbin",
         "summary": "Unloads a resource bin.",
         "operation_id": "unloadResourceBinUsingPOST_2",
         "tags": [
@@ -4125,12 +4125,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/resourceReasonCode",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/resourceReasonCodes",
+        "path": "/resourceReasonCode/v1/resourceReasonCodes",
         "summary": "Retrieve resource reason code",
         "operation_id": "",
         "tags": [
@@ -4150,12 +4150,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/resourcetype/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/resourcetypes",
+        "path": "/resourcetype/v1/resourcetypes",
         "summary": "Searches for resource types by name.",
         "operation_id": "readUsingGET",
         "tags": [
@@ -4164,7 +4164,7 @@
       },
       {
         "method": "POST",
-        "path": "/resourcetypes",
+        "path": "/resourcetype/v1/resourcetypes",
         "summary": "Creates a resource type.",
         "operation_id": "createUsingPOST",
         "tags": [
@@ -4173,7 +4173,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/resourcetypes",
+        "path": "/resourcetype/v1/resourcetypes",
         "summary": "Removes the given resource type.",
         "operation_id": "deleteUsingDELETE",
         "tags": [
@@ -4182,7 +4182,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/resourcetypes",
+        "path": "/resourcetype/v1/resourcetypes",
         "summary": "Updates a resource type.",
         "operation_id": "updateUsingPATCH",
         "tags": [
@@ -4202,12 +4202,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/routing/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/routings",
+        "path": "/routing/v1/routings",
         "summary": "Finds a routing by plant, routing name, routing type, and routing version",
         "operation_id": "findRoutingByPlantAndNameAndTypeUsingGET_1",
         "tags": [
@@ -4216,7 +4216,7 @@
       },
       {
         "method": "POST",
-        "path": "/routings",
+        "path": "/routing/v1/routings",
         "summary": "Creates a list of routings.",
         "operation_id": "createRoutingsPOST_1",
         "tags": [
@@ -4225,7 +4225,7 @@
       },
       {
         "method": "PUT",
-        "path": "/routings",
+        "path": "/routing/v1/routings",
         "summary": "Updates a list of routings.",
         "operation_id": "updateRoutingsPUT_1",
         "tags": [
@@ -4234,7 +4234,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/routings",
+        "path": "/routing/v1/routings",
         "summary": "Deletes a routing by plant, routing name, routing version, and routing type.",
         "operation_id": "deleteRoutingDELETE_1",
         "tags": [
@@ -4243,7 +4243,7 @@
       },
       {
         "method": "GET",
-        "path": "/routings/routingOperations",
+        "path": "/routing/v1/routings/routingOperations",
         "summary": "Finds a routing operation by plant, routing name, routing type, and routing version",
         "operation_id": "findRoutingOperationsByPlantAndNameAndTypeUsingGET_1",
         "tags": [
@@ -4252,7 +4252,7 @@
       },
       {
         "method": "GET",
-        "path": "/routings/routingSteps",
+        "path": "/routing/v1/routings/routingSteps",
         "summary": "Finds a routing's steps by plant, routing name, routing type, and routing version",
         "operation_id": "findRoutingBasicStepsByPlantAndNameAndTypeUsingGET_1",
         "tags": [
@@ -4261,7 +4261,7 @@
       },
       {
         "method": "GET",
-        "path": "/routings/headerDetails",
+        "path": "/routing/v1/routings/headerDetails",
         "summary": "Finds routing header details by plant, routing name, routing type, and routing version",
         "operation_id": "findHeaderDetailsByPlantAndNameAndTypeUsingGET_1",
         "tags": [
@@ -4270,7 +4270,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/routings/headerDetails",
+        "path": "/routing/v1/routings/headerDetails",
         "summary": "Update routing header details. Every unspecified field will remain unchanged",
         "operation_id": "updateHeaderDetailsByPlantAndNameAndTypeUsingPATCH_1",
         "tags": [
@@ -4290,12 +4290,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v3",
-    "base_path": "/",
+    "base_path": "/setpoint/v3",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/find",
+        "path": "/setpoint/v3/find",
         "summary": "Retrieves setpoint parameters or indicators based on a set of context criteria.",
         "operation_id": "findSetPointsUsingGET",
         "tags": [
@@ -4304,7 +4304,7 @@
       },
       {
         "method": "POST",
-        "path": "/write",
+        "path": "/setpoint/v3/write",
         "summary": "Writes the values of Setpoint parameters/indicators that are found based on a set of context criteria to machine indicators.",
         "operation_id": "",
         "tags": [
@@ -4313,7 +4313,7 @@
       },
       {
         "method": "GET",
-        "path": "/groups",
+        "path": "/setpoint/v3/groups",
         "summary": "Retrieves the definitions of one or multiple Setpoint Groups.",
         "operation_id": "geSetPointGroupsUsingGET",
         "tags": [
@@ -4322,7 +4322,7 @@
       },
       {
         "method": "POST",
-        "path": "/groups",
+        "path": "/setpoint/v3/groups",
         "summary": "Creates a Setpoint Group.",
         "operation_id": "createSetPointGroupUsingPOST",
         "tags": [
@@ -4331,7 +4331,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/groups",
+        "path": "/setpoint/v3/groups",
         "summary": "Deletes a Setpoint Group and all its children objects.",
         "operation_id": "deleteSetPointGroupUsingDELETE",
         "tags": [
@@ -4340,7 +4340,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/groups",
+        "path": "/setpoint/v3/groups",
         "summary": "Edits a Setpoint Group and its children collections, such as parameters/indicators.",
         "operation_id": "modifySetPointGroupUsingPATCH",
         "tags": [
@@ -4360,12 +4360,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v2",
-    "base_path": "/",
+    "base_path": "/setpoint/v2",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/find",
+        "path": "/setpoint/v2/find",
         "summary": "Retrieves applicable Setpoint parameters/indicators based on a set of context criteria.",
         "operation_id": "findSetPointsUsingGET",
         "tags": [
@@ -4374,7 +4374,7 @@
       },
       {
         "method": "POST",
-        "path": "/write",
+        "path": "/setpoint/v2/write",
         "summary": "Writes the values of Setpoint parameters/indicators that are found based on a set of context criteria to machine indicators.",
         "operation_id": "",
         "tags": [
@@ -4383,7 +4383,7 @@
       },
       {
         "method": "GET",
-        "path": "/groups",
+        "path": "/setpoint/v2/groups",
         "summary": "Retrieves the definitions of one or multiple Setpoint Groups.",
         "operation_id": "geSetPointGroupsUsingGET",
         "tags": [
@@ -4392,7 +4392,7 @@
       },
       {
         "method": "POST",
-        "path": "/groups",
+        "path": "/setpoint/v2/groups",
         "summary": "Creates a Setpoint Group.",
         "operation_id": "createSetPointGroupUsingPOST",
         "tags": [
@@ -4401,7 +4401,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/groups",
+        "path": "/setpoint/v2/groups",
         "summary": "Deletes a Setpoint Group and all its children objects.",
         "operation_id": "deleteSetPointGroupUsingDELETE",
         "tags": [
@@ -4410,7 +4410,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/groups",
+        "path": "/setpoint/v2/groups",
         "summary": "Edits a Setpoint Group and its children collections, such as parameters/indicators.",
         "operation_id": "modifySetPointGroupUsingPATCH",
         "tags": [
@@ -4430,12 +4430,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/setpoint/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/find",
+        "path": "/setpoint/v1/find",
         "summary": "Obtains applicable Setpoint parameters/indicators given a set of context criteria.",
         "operation_id": "findSetPointsUsingGET",
         "tags": [
@@ -4444,7 +4444,7 @@
       },
       {
         "method": "POST",
-        "path": "/write",
+        "path": "/setpoint/v1/write",
         "summary": "Writes Setpoint parameters/indicators found by attached set of context criteria to machine indicators",
         "operation_id": "",
         "tags": [
@@ -4453,7 +4453,7 @@
       },
       {
         "method": "GET",
-        "path": "/groups",
+        "path": "/setpoint/v1/groups",
         "summary": "Retrieves defintions for one or multiple Setpoint Groups. ",
         "operation_id": "geSetPointGroupsUsingGET",
         "tags": [
@@ -4462,7 +4462,7 @@
       },
       {
         "method": "POST",
-        "path": "/groups",
+        "path": "/setpoint/v1/groups",
         "summary": "Creates a Setpoint Group.",
         "operation_id": "createSetPointGroupUsingPOST",
         "tags": [
@@ -4471,7 +4471,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/groups",
+        "path": "/setpoint/v1/groups",
         "summary": "Deletes a Setpoint Group and all its children objects",
         "operation_id": "deleteSetPointGroupUsingDELETE",
         "tags": [
@@ -4480,7 +4480,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/groups",
+        "path": "/setpoint/v1/groups",
         "summary": "Edits a Setpoint Group and children collections (e.g. parameters/indicators).",
         "operation_id": "modifySetPointGroupUsingPATCH",
         "tags": [
@@ -4500,12 +4500,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/shift/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/shifts",
+        "path": "/shift/v1/shifts",
         "summary": "Searches for shifts by plant and shift values.",
         "operation_id": "readUsingGET",
         "tags": [
@@ -4514,7 +4514,7 @@
       },
       {
         "method": "POST",
-        "path": "/shifts",
+        "path": "/shift/v1/shifts",
         "summary": "Creates a shift.",
         "operation_id": "createUsingPOST",
         "tags": [
@@ -4523,7 +4523,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/shifts",
+        "path": "/shift/v1/shifts",
         "summary": "Removes the given shift.",
         "operation_id": "deleteUsingDELETE",
         "tags": [
@@ -4532,7 +4532,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/shifts",
+        "path": "/shift/v1/shifts",
         "summary": "Updates the given shift.",
         "operation_id": "updateUsingPATCH",
         "tags": [
@@ -4541,7 +4541,7 @@
       },
       {
         "method": "GET",
-        "path": "/customFieldDefinitions",
+        "path": "/shift/v1/customFieldDefinitions",
         "summary": "Retrieves a list of custom field definitions for the shift.",
         "operation_id": "getCustomFieldDefinition",
         "tags": [
@@ -4550,7 +4550,7 @@
       },
       {
         "method": "POST",
-        "path": "/customFieldDefinitions",
+        "path": "/shift/v1/customFieldDefinitions",
         "summary": "Creates a custom field definition for the shift.",
         "operation_id": "createCustomFieldDefinition",
         "tags": [
@@ -4559,7 +4559,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/customFieldDefinitions",
+        "path": "/shift/v1/customFieldDefinitions",
         "summary": "Updates a custom field definition for the shift.",
         "operation_id": "updateCustomFieldDefinition",
         "tags": [
@@ -4568,7 +4568,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/customFieldDefinitions",
+        "path": "/shift/v1/customFieldDefinitions",
         "summary": "Deletes a custom field definition for the shift.",
         "operation_id": "deleteCustomFieldDefinition",
         "tags": [
@@ -4588,12 +4588,12 @@
     "status": "",
     "spec_version": "3.0.3",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/sfc/v1",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/sfcLocations",
+        "path": "/sfc/v1/sfcLocations",
         "summary": "All locations for SFCs in a plant.",
         "operation_id": "getAllLocationsBySfc",
         "tags": [
@@ -4602,7 +4602,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/sfcLocations",
+        "path": "/sfc/v1/sfcLocations",
         "summary": "Update location.",
         "operation_id": "updateLocations",
         "tags": [
@@ -4622,12 +4622,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/sfc/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/sfcs/start",
+        "path": "/sfc/v1/sfcs/start",
         "summary": "Starts one or more SFCs at an operation activity and resource.",
         "operation_id": "",
         "tags": [
@@ -4636,7 +4636,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/serialize",
+        "path": "/sfc/v1/sfcs/serialize",
         "summary": "Serialize an SFC.",
         "operation_id": "",
         "tags": [
@@ -4645,7 +4645,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/merge",
+        "path": "/sfc/v1/sfcs/merge",
         "summary": "Merge SFCs.",
         "operation_id": "",
         "tags": [
@@ -4654,7 +4654,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/split",
+        "path": "/sfc/v1/sfcs/split",
         "summary": "Split an SFC.",
         "operation_id": "",
         "tags": [
@@ -4663,7 +4663,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/scrap",
+        "path": "/sfc/v1/sfcs/scrap",
         "summary": "Scraps one or more SFCs at an operation activity and resource.",
         "operation_id": "",
         "tags": [
@@ -4672,7 +4672,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/relabel",
+        "path": "/sfc/v1/sfcs/relabel",
         "summary": "Relabel an SFC.",
         "operation_id": "",
         "tags": [
@@ -4681,7 +4681,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/setQuantity",
+        "path": "/sfc/v1/sfcs/setQuantity",
         "summary": "Sets SFC quantities.",
         "operation_id": "",
         "tags": [
@@ -4690,7 +4690,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/complete",
+        "path": "/sfc/v1/sfcs/complete",
         "summary": "Completes one or more SFCs at an operation activity and resource.",
         "operation_id": "",
         "tags": [
@@ -4699,7 +4699,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcselect",
+        "path": "/sfc/v1/sfcselect",
         "summary": "Trigger an SFC Selection event.",
         "operation_id": "",
         "tags": [
@@ -4708,7 +4708,7 @@
       },
       {
         "method": "GET",
-        "path": "/sfcdetail",
+        "path": "/sfc/v1/sfcdetail",
         "summary": "Retrieves SFC details for an SFC.",
         "operation_id": "",
         "tags": [
@@ -4717,7 +4717,7 @@
       },
       {
         "method": "GET",
-        "path": "/sfcData",
+        "path": "/sfc/v1/sfcData",
         "summary": "Retrieves SFC data based on either the SFC ID or the serial number.",
         "operation_id": "",
         "tags": [
@@ -4726,7 +4726,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/sfcs/invalidate",
+        "path": "/sfc/v1/sfcs/invalidate",
         "summary": "Invalidate an SFC in a specific plant.",
         "operation_id": "",
         "tags": [
@@ -4735,7 +4735,7 @@
       },
       {
         "method": "GET",
-        "path": "/sfcsInWork",
+        "path": "/sfc/v1/sfcsInWork",
         "summary": "Get SFCs at Resource.",
         "operation_id": "",
         "tags": [
@@ -4744,7 +4744,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/signoff",
+        "path": "/sfc/v1/sfcs/signoff",
         "summary": "Signoff one or more SFCs at an operation activity and resource.",
         "operation_id": "",
         "tags": [
@@ -4753,7 +4753,7 @@
       },
       {
         "method": "PUT",
-        "path": "/batch",
+        "path": "/sfc/v1/batch",
         "summary": "Update SFC default batch ID.",
         "operation_id": "createPodConfigurationUsingPOST",
         "tags": [
@@ -4762,7 +4762,7 @@
       },
       {
         "method": "GET",
-        "path": "/worklist/sfcs/$count",
+        "path": "/sfc/v1/worklist/sfcs/$count",
         "summary": "Retrieves the number of SFCs in the work list.",
         "operation_id": "getSfcWorkListCountUsingGET",
         "tags": [
@@ -4771,7 +4771,7 @@
       },
       {
         "method": "GET",
-        "path": "/worklist/sfcs",
+        "path": "/sfc/v1/worklist/sfcs",
         "summary": "Retrieves an SFC-centric work list including the routing steps.",
         "operation_id": "getSfcWorkListUsingGET",
         "tags": [
@@ -4780,7 +4780,7 @@
       },
       {
         "method": "GET",
-        "path": "/worklist/orders/$count",
+        "path": "/sfc/v1/worklist/orders/$count",
         "summary": "Retrieves an Order-centric work list count.",
         "operation_id": "getOrderWorkListCountUsingGET",
         "tags": [
@@ -4789,7 +4789,7 @@
       },
       {
         "method": "GET",
-        "path": "/worklist/orders",
+        "path": "/sfc/v1/worklist/orders",
         "summary": "Retrieves an Order-centric work list including SFCs.",
         "operation_id": "getOrderWorkListUsingGET",
         "tags": [
@@ -4798,7 +4798,7 @@
       },
       {
         "method": "PUT",
-        "path": "/alternateResource",
+        "path": "/sfc/v1/alternateResource",
         "summary": "Update Alternate Resource Mapping for an SFC/Charge and Operation Activity.",
         "operation_id": "updateAlternateResourceUsingPUT",
         "tags": [
@@ -4807,7 +4807,7 @@
       },
       {
         "method": "GET",
-        "path": "/stepActivity",
+        "path": "/sfc/v1/stepActivity",
         "summary": "Get SFC step activity details.",
         "operation_id": "getSfcStepActivities",
         "tags": [
@@ -4816,7 +4816,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/hold",
+        "path": "/sfc/v1/sfcs/hold",
         "summary": "Place a hold on one or more SFCs.",
         "operation_id": "",
         "tags": [
@@ -4825,7 +4825,7 @@
       },
       {
         "method": "POST",
-        "path": "/sfcs/release",
+        "path": "/sfc/v1/sfcs/release",
         "summary": "Release the hold from one or more SFCs .",
         "operation_id": "",
         "tags": [
@@ -4845,12 +4845,12 @@
     "status": "",
     "spec_version": "3.0.3",
     "api_version": "v2",
-    "base_path": "",
+    "base_path": "/sfc/v2",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/sfcdetail",
+        "path": "/sfc/v2/sfcdetail",
         "summary": "Retrieves SFC details for an SFC.",
         "operation_id": "getSfcDetailUsingGET",
         "tags": [
@@ -4859,7 +4859,7 @@
       },
       {
         "method": "GET",
-        "path": "/worklist/sfcs",
+        "path": "/sfc/v2/worklist/sfcs",
         "summary": "Retrieves an SFC-centric work list.",
         "operation_id": "getSfcWorkListV2UsingGET",
         "tags": [
@@ -4868,7 +4868,7 @@
       },
       {
         "method": "GET",
-        "path": "/worklist/orders",
+        "path": "/sfc/v2/worklist/orders",
         "summary": "Retrieves an Order-centric work list including SFCs.",
         "operation_id": "getOrderWorkListV2UsingGET",
         "tags": [
@@ -4888,12 +4888,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/standardRates",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/standardRatesByResourceOrWorkCenter",
+        "path": "/standardRates/v1/standardRatesByResourceOrWorkCenter",
         "summary": "Standard Rates by Resource or Workcenter.",
         "operation_id": "",
         "tags": [
@@ -4902,7 +4902,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/standardRates",
+        "path": "/standardRates/v1/standardRates",
         "summary": "Creates standard rates.",
         "operation_id": "",
         "tags": [
@@ -4911,7 +4911,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/standardRates",
+        "path": "/standardRates/v1/standardRates",
         "summary": "Updates standard rate.",
         "operation_id": "",
         "tags": [
@@ -4920,7 +4920,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v1/standardRates",
+        "path": "/standardRates/v1/standardRates",
         "summary": "Deletes standard rates.",
         "operation_id": "",
         "tags": [
@@ -4940,12 +4940,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/standardValue/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/details",
+        "path": "/standardValue/v1/details",
         "summary": "Retrieves Standard Values",
         "operation_id": "",
         "tags": [
@@ -4965,12 +4965,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/timetracking",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/v1/attendance",
+        "path": "/timetracking/v1/attendance",
         "summary": "Create a time record for attendance.",
         "operation_id": "attendanceCreate",
         "tags": [
@@ -4979,7 +4979,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/attendance/start",
+        "path": "/timetracking/v1/attendance/start",
         "summary": "Create a start event for attendance.",
         "operation_id": "attendanceStart",
         "tags": [
@@ -4988,7 +4988,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/attendance/stop",
+        "path": "/timetracking/v1/attendance/stop",
         "summary": "Create a stop event for attendance.",
         "operation_id": "attendanceStop",
         "tags": [
@@ -4997,7 +4997,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/attendance/{id}",
+        "path": "/timetracking/v1/attendance/{id}",
         "summary": "Update a time record for attendance.",
         "operation_id": "attendanceEdit",
         "tags": [
@@ -5006,7 +5006,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/direct-labor",
+        "path": "/timetracking/v1/direct-labor",
         "summary": "Create a time record for direct labor.",
         "operation_id": "directLaborCreate",
         "tags": [
@@ -5015,7 +5015,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/direct-labor/processlot/start",
+        "path": "/timetracking/v1/direct-labor/processlot/start",
         "summary": "Create a start event for direct labor for a process lot.",
         "operation_id": "directLaborStartProcessLot",
         "tags": [
@@ -5024,7 +5024,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/direct-labor/processlot/stop",
+        "path": "/timetracking/v1/direct-labor/processlot/stop",
         "summary": "Create a stop event for direct labor for a process lot.",
         "operation_id": "directLaborStopProcessLot",
         "tags": [
@@ -5033,7 +5033,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/direct-labor/start",
+        "path": "/timetracking/v1/direct-labor/start",
         "summary": "Create a start event for direct labor for an SFC.",
         "operation_id": "directLaborStart",
         "tags": [
@@ -5042,7 +5042,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/direct-labor/stop",
+        "path": "/timetracking/v1/direct-labor/stop",
         "summary": "Create a stop event for direct labor for an SFC.",
         "operation_id": "directLaborStop",
         "tags": [
@@ -5051,7 +5051,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/direct-labor/{id}",
+        "path": "/timetracking/v1/direct-labor/{id}",
         "summary": "Update a time record for direct labor.",
         "operation_id": "directLaborEdit",
         "tags": [
@@ -5060,7 +5060,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/indirect-labor",
+        "path": "/timetracking/v1/indirect-labor",
         "summary": "Create a time record for indirect labor.",
         "operation_id": "indirectLaborCreate",
         "tags": [
@@ -5069,7 +5069,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/indirect-labor/start",
+        "path": "/timetracking/v1/indirect-labor/start",
         "summary": "Create a start event for indirect labor.",
         "operation_id": "indirectLaborStart",
         "tags": [
@@ -5078,7 +5078,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/indirect-labor/stop",
+        "path": "/timetracking/v1/indirect-labor/stop",
         "summary": "Create a stop event for indirect labor.",
         "operation_id": "indirectLaborStop",
         "tags": [
@@ -5087,7 +5087,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/indirect-labor/{id}",
+        "path": "/timetracking/v1/indirect-labor/{id}",
         "summary": "Update a time record for indirect labor.",
         "operation_id": "indirectLaborEdit",
         "tags": [
@@ -5096,7 +5096,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/production-time",
+        "path": "/timetracking/v1/production-time",
         "summary": "Create a time record for production time.",
         "operation_id": "productionTimeCreate",
         "tags": [
@@ -5105,7 +5105,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/production-time/processlot/start",
+        "path": "/timetracking/v1/production-time/processlot/start",
         "summary": "Create a start event for the production time of a process lot.",
         "operation_id": "productionTimeStartProcessLot",
         "tags": [
@@ -5114,7 +5114,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/production-time/processlot/stop",
+        "path": "/timetracking/v1/production-time/processlot/stop",
         "summary": "Create a stop event for the production time of a process lot.",
         "operation_id": "productionTimeStopProcessLot",
         "tags": [
@@ -5123,7 +5123,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/production-time/start",
+        "path": "/timetracking/v1/production-time/start",
         "summary": "Create a start event for production time.",
         "operation_id": "productionTimeStart",
         "tags": [
@@ -5132,7 +5132,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/production-time/stop",
+        "path": "/timetracking/v1/production-time/stop",
         "summary": "Create a stop event for production time.",
         "operation_id": "productionTimeStop",
         "tags": [
@@ -5141,7 +5141,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/production-time/{id}",
+        "path": "/timetracking/v1/production-time/{id}",
         "summary": "Edit a time record for production time.",
         "operation_id": "productionTimeEdit",
         "tags": [
@@ -5150,7 +5150,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/resource-usage",
+        "path": "/timetracking/v1/resource-usage",
         "summary": "Create a time record for resource usage.",
         "operation_id": "resourceUsageCreate",
         "tags": [
@@ -5159,7 +5159,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/resource-usage/start",
+        "path": "/timetracking/v1/resource-usage/start",
         "summary": "Create a start event for resource usage.",
         "operation_id": "resourceUsageStart",
         "tags": [
@@ -5168,7 +5168,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/resource-usage/stop",
+        "path": "/timetracking/v1/resource-usage/stop",
         "summary": "Create a stop event for resource usage.",
         "operation_id": "resourceUsageStop",
         "tags": [
@@ -5177,7 +5177,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v1/resource-usage/{id}",
+        "path": "/timetracking/v1/resource-usage/{id}",
         "summary": "Update a time record for resource usage.",
         "operation_id": "resourceUsageEdit",
         "tags": [
@@ -5186,7 +5186,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/time-records",
+        "path": "/timetracking/v1/time-records",
         "summary": "Find all time records",
         "operation_id": "findAllTimeRecords",
         "tags": [
@@ -5195,7 +5195,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/time-records/approve",
+        "path": "/timetracking/v1/time-records/approve",
         "summary": "Approve time records.",
         "operation_id": "approve",
         "tags": [
@@ -5204,7 +5204,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/time-records/approve/{id}",
+        "path": "/timetracking/v1/time-records/approve/{id}",
         "summary": "Approve a time record.",
         "operation_id": "approveById",
         "tags": [
@@ -5213,7 +5213,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v1/time-records/{id}",
+        "path": "/timetracking/v1/time-records/{id}",
         "summary": "Delete a time record.",
         "operation_id": "timeRecordDelete",
         "tags": [
@@ -5222,7 +5222,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/time-records/{id}",
+        "path": "/timetracking/v1/time-records/{id}",
         "summary": "Find a time record",
         "operation_id": "findById",
         "tags": [
@@ -5242,12 +5242,12 @@
     "status": "",
     "spec_version": "3.0.2",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/timetracking",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/Activities",
+        "path": "/timetracking/v1/Activities",
         "summary": "Fetch activities of a specific plant.",
         "operation_id": "Activities",
         "tags": [
@@ -5267,12 +5267,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/tool/v1",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/toolUsageLogs",
+        "path": "/tool/v1/toolUsageLogs",
         "summary": "Sets automatic logging of tool usage for SFCs",
         "operation_id": "saveToolUsageLogsUsingPOST_2",
         "tags": [
@@ -5281,7 +5281,7 @@
       },
       {
         "method": "POST",
-        "path": "/prtLoadValidation",
+        "path": "/tool/v1/prtLoadValidation",
         "summary": "Get tool validation result for loaded tools",
         "operation_id": "prtLoadValidationPOST",
         "tags": [
@@ -5290,7 +5290,7 @@
       },
       {
         "method": "GET",
-        "path": "/loadedTools",
+        "path": "/tool/v1/loadedTools",
         "summary": "Gets loaded tools.",
         "operation_id": "loadedToolsGET",
         "tags": [
@@ -5299,7 +5299,7 @@
       },
       {
         "method": "POST",
-        "path": "/loadTool",
+        "path": "/tool/v1/loadTool",
         "summary": "Loads a tool.",
         "operation_id": "loadToolPost",
         "tags": [
@@ -5308,7 +5308,7 @@
       },
       {
         "method": "POST",
-        "path": "/unloadTool",
+        "path": "/tool/v1/unloadTool",
         "summary": "Unloads a tool.",
         "operation_id": "unloadToolPost",
         "tags": [
@@ -5317,7 +5317,7 @@
       },
       {
         "method": "GET",
-        "path": "/tools",
+        "path": "/tool/v1/tools",
         "summary": "Retrieves tool information.",
         "operation_id": "getToolQuery_1",
         "tags": [
@@ -5326,7 +5326,7 @@
       },
       {
         "method": "PUT",
-        "path": "/tools",
+        "path": "/tool/v1/tools",
         "summary": "Updates a tool.",
         "operation_id": "updateToolUsingPUT",
         "tags": [
@@ -5335,7 +5335,7 @@
       },
       {
         "method": "POST",
-        "path": "/tools",
+        "path": "/tool/v1/tools",
         "summary": "Creates a tool.",
         "operation_id": "createToolUsingPOST",
         "tags": [
@@ -5344,7 +5344,7 @@
       },
       {
         "method": "POST",
-        "path": "/tools/status",
+        "path": "/tool/v1/tools/status",
         "summary": "Updates tool status.",
         "operation_id": "updateToolsPort",
         "tags": [
@@ -5353,7 +5353,7 @@
       },
       {
         "method": "POST",
-        "path": "/tools/calibration",
+        "path": "/tool/v1/tools/calibration",
         "summary": "Resets a tool.",
         "operation_id": "resetTool",
         "tags": [
@@ -5362,7 +5362,7 @@
       },
       {
         "method": "POST",
-        "path": "/tools/manualToolUsageLog",
+        "path": "/tool/v1/tools/manualToolUsageLog",
         "summary": "Creates a tool usage logging record.",
         "operation_id": "createToolUsageLog",
         "tags": [
@@ -5371,7 +5371,7 @@
       },
       {
         "method": "GET",
-        "path": "/tools/prtAssignment",
+        "path": "/tool/v1/tools/prtAssignment",
         "summary": "Retrieves production resources/tools (PRT) assignments for an order.",
         "operation_id": "findPrtAssignment",
         "tags": [
@@ -5380,7 +5380,7 @@
       },
       {
         "method": "GET",
-        "path": "/tools/{prt}/routings",
+        "path": "/tool/v1/tools/{prt}/routings",
         "summary": "Retrieves routings and routing steps.",
         "operation_id": "findPrtRouting",
         "tags": [
@@ -5400,12 +5400,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v2",
-    "base_path": "",
+    "base_path": "/tool/v2",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/tools",
+        "path": "/tool/v2/tools",
         "summary": "Retrieves tool information.",
         "operation_id": "getToolQuery_2",
         "tags": [
@@ -5414,7 +5414,7 @@
       },
       {
         "method": "GET",
-        "path": "/toolUsageLogs",
+        "path": "/tool/v2/toolUsageLogs",
         "summary": "Retrieves records of usage logs",
         "operation_id": "",
         "tags": [
@@ -5423,7 +5423,7 @@
       },
       {
         "method": "POST",
-        "path": "/prtLoadValidation",
+        "path": "/tool/v2/prtLoadValidation",
         "summary": "Get tool validation result for loaded tools",
         "operation_id": "prtLoadValidationPOST",
         "tags": [
@@ -5432,7 +5432,7 @@
       },
       {
         "method": "GET",
-        "path": "/tools/{prt}/routings",
+        "path": "/tool/v2/tools/{prt}/routings",
         "summary": "Retrieves routings and routing steps.",
         "operation_id": "findPrtRouting",
         "tags": [
@@ -5441,7 +5441,7 @@
       },
       {
         "method": "POST",
-        "path": "/tools/status",
+        "path": "/tool/v2/tools/status",
         "summary": "Updates tool status.",
         "operation_id": "updateToolsPort",
         "tags": [
@@ -5461,12 +5461,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/uom",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/v1/dimensions",
+        "path": "/uom/v1/dimensions",
         "summary": "Get all dimensions.",
         "operation_id": "getAllDimensionsUsingGET_1",
         "tags": [
@@ -5475,7 +5475,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/dimensions/{id}",
+        "path": "/uom/v1/dimensions/{id}",
         "summary": "Get dimension by name.",
         "operation_id": "getDimensionUsingGET_1",
         "tags": [
@@ -5484,7 +5484,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/uoms",
+        "path": "/uom/v1/uoms",
         "summary": "Get all units of measure.",
         "operation_id": "getAllUomsUsingGET_1",
         "tags": [
@@ -5493,7 +5493,7 @@
       },
       {
         "method": "POST",
-        "path": "/v1/uoms",
+        "path": "/uom/v1/uoms",
         "summary": "Create custom units of measure.",
         "operation_id": "createUomsUsingPOST_1",
         "tags": [
@@ -5502,7 +5502,7 @@
       },
       {
         "method": "GET",
-        "path": "/v1/uoms/{id}",
+        "path": "/uom/v1/uoms/{id}",
         "summary": "Get unit of measure by id.",
         "operation_id": "getUomUsingGET_1",
         "tags": [
@@ -5511,7 +5511,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v1/uoms/{id}",
+        "path": "/uom/v1/uoms/{id}",
         "summary": "Delete a unit of measure by unit code.",
         "operation_id": "deleteUomUsingDELETE_1",
         "tags": [
@@ -5520,7 +5520,7 @@
       },
       {
         "method": "GET",
-        "path": "/v2/uoms",
+        "path": "/uom/v2/uoms",
         "summary": "Get a unit of measure using unitCode.",
         "operation_id": "getUomUsingGET_2",
         "tags": [
@@ -5529,7 +5529,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/v2/uoms",
+        "path": "/uom/v2/uoms",
         "summary": "Delete a unit of measure using unitCode.",
         "operation_id": "deleteUomUsingDELETE_2",
         "tags": [
@@ -5538,7 +5538,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/v2/uoms/commercialCodes",
+        "path": "/uom/v2/uoms/commercialCodes",
         "summary": "Update the commercial codes of a unit of measure.",
         "operation_id": "updateUnitOfMeasureCommercialCodesUsingPATCH_2",
         "tags": [
@@ -5558,12 +5558,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/user/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/users",
+        "path": "/user/v1/users",
         "summary": "Retrieves a user information.",
         "operation_id": "getUserUsingGET_1",
         "tags": [
@@ -5572,7 +5572,7 @@
       },
       {
         "method": "POST",
-        "path": "/users",
+        "path": "/user/v1/users",
         "summary": "Creates a user.",
         "operation_id": "createUserUsingPOST_1",
         "tags": [
@@ -5581,7 +5581,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/users",
+        "path": "/user/v1/users",
         "summary": "Updates the user.",
         "operation_id": "updateUserUsingPATCH_1",
         "tags": [
@@ -5590,7 +5590,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/users",
+        "path": "/user/v1/users",
         "summary": "Removes the given user.",
         "operation_id": "deleteUserUsingDELETE",
         "tags": [
@@ -5599,7 +5599,7 @@
       },
       {
         "method": "GET",
-        "path": "/supervisors",
+        "path": "/user/v1/supervisors",
         "summary": "Retrieves a user supervisors.",
         "operation_id": "getSupervisorsUsingGET_1",
         "tags": [
@@ -5608,7 +5608,7 @@
       },
       {
         "method": "GET",
-        "path": "/customFieldDefinitions",
+        "path": "/user/v1/customFieldDefinitions",
         "summary": "Retrieves a list of custom field definitions for the user.",
         "operation_id": "getCustomFieldDefinition",
         "tags": [
@@ -5617,7 +5617,7 @@
       },
       {
         "method": "POST",
-        "path": "/customFieldDefinitions",
+        "path": "/user/v1/customFieldDefinitions",
         "summary": "Creates a custom field definition for the user.",
         "operation_id": "createCustomFieldDefinition",
         "tags": [
@@ -5626,7 +5626,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/customFieldDefinitions",
+        "path": "/user/v1/customFieldDefinitions",
         "summary": "Updates a custom field definition for the user.",
         "operation_id": "updateCustomFieldDefinition",
         "tags": [
@@ -5635,7 +5635,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/customFieldDefinitions",
+        "path": "/user/v1/customFieldDefinitions",
         "summary": "Deletes a custom field definition for the user.",
         "operation_id": "deleteCustomFieldDefinition",
         "tags": [
@@ -5655,12 +5655,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/workcenter/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/workcenters",
+        "path": "/workcenter/v1/workcenters",
         "summary": "Retrieves work centers.",
         "operation_id": "getWorkCentersUsingGET_1",
         "tags": [
@@ -5680,12 +5680,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v3",
-    "base_path": "",
+    "base_path": "/workcenter/v3",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/workcenter",
+        "path": "/workcenter/v3/workcenter",
         "summary": "Searches for a single work center by plant and work center values.",
         "operation_id": "readWorkCenterUsingGETV3",
         "tags": [
@@ -5694,7 +5694,7 @@
       },
       {
         "method": "GET",
-        "path": "/workcenters",
+        "path": "/workcenter/v3/workcenters",
         "summary": "Searches for work centers by plant and work center values.",
         "operation_id": "readWorkCentersUsingGETV3",
         "tags": [
@@ -5714,12 +5714,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v2",
-    "base_path": "/",
+    "base_path": "/workcenter/v2",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/workcenters",
+        "path": "/workcenter/v2/workcenters",
         "summary": "Searches for work centers by plant and work center values.",
         "operation_id": "readUsingGET",
         "tags": [
@@ -5728,7 +5728,7 @@
       },
       {
         "method": "POST",
-        "path": "/workcenters",
+        "path": "/workcenter/v2/workcenters",
         "summary": "Creates a work center.",
         "operation_id": "createUsingPOST",
         "tags": [
@@ -5737,7 +5737,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/workcenters",
+        "path": "/workcenter/v2/workcenters",
         "summary": "Removes the given work center.",
         "operation_id": "deleteUsingDELETE",
         "tags": [
@@ -5746,7 +5746,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/workcenters",
+        "path": "/workcenter/v2/workcenters",
         "summary": "Updates the given work center.",
         "operation_id": "updateUsingPATCH",
         "tags": [
@@ -5755,7 +5755,7 @@
       },
       {
         "method": "GET",
-        "path": "/customFieldDefinitions",
+        "path": "/workcenter/v2/customFieldDefinitions",
         "summary": "Retrieves a list of custom field definitions for the work center.",
         "operation_id": "getCustomFieldDefinition",
         "tags": [
@@ -5764,7 +5764,7 @@
       },
       {
         "method": "POST",
-        "path": "/customFieldDefinitions",
+        "path": "/workcenter/v2/customFieldDefinitions",
         "summary": "Creates a custom field definition for the work center.",
         "operation_id": "createCustomFieldDefinition",
         "tags": [
@@ -5773,7 +5773,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/customFieldDefinitions",
+        "path": "/workcenter/v2/customFieldDefinitions",
         "summary": "Updates a custom field definition for the work center.",
         "operation_id": "updateCustomFieldDefinition",
         "tags": [
@@ -5782,7 +5782,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/customFieldDefinitions",
+        "path": "/workcenter/v2/customFieldDefinitions",
         "summary": "Deletes a custom field definition for the work center.",
         "operation_id": "deleteCustomFieldDefinition",
         "tags": [
@@ -5802,12 +5802,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v2",
-    "base_path": "",
+    "base_path": "/workinstruction/v2",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/workinstructions",
+        "path": "/workinstruction/v2/workinstructions",
         "summary": "Creates a list of work instructions for the given plant.",
         "operation_id": "",
         "tags": [
@@ -5816,7 +5816,7 @@
       },
       {
         "method": "POST",
-        "path": "/findAttachedWorkInstructions",
+        "path": "/workinstruction/v2/findAttachedWorkInstructions",
         "summary": "Find attached work instructions by provided context.",
         "operation_id": "",
         "tags": [
@@ -5836,12 +5836,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/workinstruction/v1",
     "host": "hostname",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/attachedworkinstructions",
+        "path": "/workinstruction/v1/attachedworkinstructions",
         "summary": "Get list of work instructions according to the parameters.",
         "operation_id": "",
         "tags": [
@@ -5850,7 +5850,7 @@
       },
       {
         "method": "GET",
-        "path": "/workinstructions",
+        "path": "/workinstruction/v1/workinstructions",
         "summary": "Finds a work instruction by plant, name, and work instruction version",
         "operation_id": "",
         "tags": [
@@ -5859,7 +5859,7 @@
       },
       {
         "method": "POST",
-        "path": "/workinstructions",
+        "path": "/workinstruction/v1/workinstructions",
         "summary": "Creates a work instruction by plant and name",
         "operation_id": "",
         "tags": [
@@ -5868,7 +5868,7 @@
       },
       {
         "method": "PUT",
-        "path": "/workinstructions",
+        "path": "/workinstruction/v1/workinstructions",
         "summary": "Updates a list of work instructions for the given plant.",
         "operation_id": "",
         "tags": [
@@ -5877,7 +5877,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/workinstructions",
+        "path": "/workinstruction/v1/workinstructions",
         "summary": "Deletes a work instruction by reference",
         "operation_id": "",
         "tags": [
@@ -5886,7 +5886,7 @@
       },
       {
         "method": "POST",
-        "path": "/workinstructions/attachedPoints",
+        "path": "/workinstruction/v1/workinstructions/attachedPoints",
         "summary": "Adds work instruction attached points.",
         "operation_id": "",
         "tags": [
@@ -5906,12 +5906,12 @@
     "status": "",
     "spec_version": "2.0",
     "api_version": "v1",
-    "base_path": "/",
+    "base_path": "/workinstruction/v1/workinstructions",
     "host": "hostname",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/file",
+        "path": "/workinstruction/v1/workinstructions/file",
         "summary": "Uploads a file for further use during the creation of the Work Instruction Attachment.",
         "operation_id": "uploadFileUsingPOST_1",
         "tags": [
@@ -5920,7 +5920,7 @@
       },
       {
         "method": "GET",
-        "path": "/file",
+        "path": "/workinstruction/v1/workinstructions/file",
         "summary": "Download a file content by provided external file URL.",
         "operation_id": "downloadFileGET_1",
         "tags": [
@@ -5940,12 +5940,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "",
+    "base_path": "/wip/v1",
     "host": "",
     "endpoints": [
       {
         "method": "POST",
-        "path": "/storageRequest",
+        "path": "/wip/v1/storageRequest",
         "summary": "Posts a work-in-process (WIP) storage request to EWM.",
         "operation_id": "storageRequestPOST",
         "tags": [
@@ -5954,7 +5954,7 @@
       },
       {
         "method": "POST",
-        "path": "/stagingRequest",
+        "path": "/wip/v1/stagingRequest",
         "summary": "Posts a work-in-process (WIP) staging request to EWM.",
         "operation_id": "stagingRequestPOST",
         "tags": [
@@ -5963,7 +5963,7 @@
       },
       {
         "method": "POST",
-        "path": "/goodsIssueRequest",
+        "path": "/wip/v1/goodsIssueRequest",
         "summary": "Posts a WIP goods issue request to EWM.",
         "operation_id": "goodsIssueRequestPOST",
         "tags": [
@@ -5972,7 +5972,7 @@
       },
       {
         "method": "POST",
-        "path": "/storageRequest/discard",
+        "path": "/wip/v1/storageRequest/discard",
         "summary": "Discards a work-in-process (WIP) storage request.",
         "operation_id": "discardWipStorage",
         "tags": [

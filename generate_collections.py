@@ -7,6 +7,8 @@ import uuid
 import sys
 from pathlib import Path
 
+from spec_paths import join_path, service_prefix
+
 ROOT = Path(__file__).resolve().parent
 
 
@@ -167,6 +169,7 @@ def build_postman(specs: list[tuple[dict, dict]]) -> dict:
     for api_info, spec in specs:
         # $refs resolve from the spec root ('#/definitions/...' etc.)
         definitions = spec
+        prefix = service_prefix(spec)
 
         folder: dict = {
             "name": api_info["display_name"],
@@ -182,10 +185,11 @@ def build_postman(specs: list[tuple[dict, dict]]) -> dict:
                 op = path_obj[method]
                 summary = op.get("summary", "") or op.get("description", "") or f"{method.upper()} {path}"
 
-                # Build URL
-                url_raw = "{{base_url}}" + path
+                # Build URL — the service prefix is not part of the path keys
+                full_path = join_path(prefix, path)
+                url_raw = "{{base_url}}" + full_path
                 # Split into host/path parts for Postman format
-                path_parts = [p for p in path.split("/") if p]
+                path_parts = [p for p in full_path.split("/") if p]
 
                 request: dict = {
                     "method": method.upper(),
@@ -270,6 +274,7 @@ def build_insomnia(specs: list[tuple[dict, dict]]) -> dict:
 
     for api_info, spec in specs:
         definitions = spec
+        prefix = service_prefix(spec)
 
         # Folder per API
         folder_id = _insomnia_id()
@@ -289,7 +294,7 @@ def build_insomnia(specs: list[tuple[dict, dict]]) -> dict:
                 op = path_obj[method]
                 summary = op.get("summary", "") or op.get("description", "") or f"{method.upper()} {path}"
 
-                url = "{{ _.base_url }}" + path
+                url = "{{ _.base_url }}" + join_path(prefix, path)
 
                 req: dict = {
                     "_id": _insomnia_id(),
@@ -367,7 +372,7 @@ def generate(output_root: Path) -> None:
     print("Generating Postman collection...")
     postman = build_postman(specs)
     postman_path = collections_dir / "postman_collection.json"
-    postman_path.write_text(json.dumps(postman, indent=2))
+    postman_path.write_text(json.dumps(postman, indent=2), encoding="utf-8", newline="\n")
     req_count = sum(len(f["item"]) for f in postman["item"])
     print(f"  {postman_path}  ({len(postman['item'])} folders, {req_count} requests)")
 
@@ -375,7 +380,7 @@ def generate(output_root: Path) -> None:
     print("Generating Insomnia collection...")
     insomnia = build_insomnia(specs)
     insomnia_path = collections_dir / "insomnia_collection.json"
-    insomnia_path.write_text(json.dumps(insomnia, indent=2))
+    insomnia_path.write_text(json.dumps(insomnia, indent=2), encoding="utf-8", newline="\n")
     req_count_i = sum(1 for r in insomnia["resources"] if r["_type"] == "request")
     folder_count_i = sum(1 for r in insomnia["resources"] if r["_type"] == "request_group")
     print(f"  {insomnia_path}  ({folder_count_i} folders, {req_count_i} requests)")

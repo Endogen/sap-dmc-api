@@ -17,6 +17,7 @@ from mirror import (
     fetch_authenticated_json,
     is_api_url,
     looks_like_auth_html,
+    generate_summary,
     open_protected_resource,
     plan_mirror,
     save_specs,
@@ -446,3 +447,78 @@ def test_check_mode_signals_when_browser_run_is_needed(tmp_path, monkeypatch):
     )
 
     assert mirror.main() == CHECK_CHANGES_EXIT_CODE
+
+
+# ---------------------------------------------------------------------------
+# Summary — endpoint paths must carry the service prefix SAP hides in x-servers
+# ---------------------------------------------------------------------------
+
+
+@pytest.fixture
+def summarize(tmp_path, monkeypatch):
+    """Run generate_summary over a single spec and return its summary entry.
+
+    generate_summary also refreshes the stats line in the repository's own
+    README; stub that out so the tests stay inside tmp_path.
+    """
+    monkeypatch.setattr(mirror, "_update_repo_readme_stats", lambda *a, **k: None)
+
+    def run(spec, name="example"):
+        generate_summary([artifact(name)], {name: spec}, {}, tmp_path)
+        summary = json.loads((tmp_path / "summary.json").read_text(encoding="utf-8"))
+        return summary[0]
+
+    return run
+
+
+def test_generate_summary_prefixes_endpoint_paths(summarize):
+    entry = summarize(
+        {
+            "swagger": "2.0",
+            "host": "hostname",
+            "basePath": "/",
+            "x-servers": [{"url": "https://api.{regionHost}/assembly/v1"}],
+            "paths": {"/autoAssemble": {"post": {"summary": "Auto assemble"}}},
+        },
+    )
+
+    assert entry["base_path"] == "/assembly/v1"
+    assert [e["path"] for e in entry["endpoints"]] == ["/assembly/v1/autoAssemble"]
+
+
+def test_generate_summary_base_path_not_placeholder_slash(summarize):
+    entry = summarize(
+        {
+            "openapi": "3.0.0",
+            "servers": [{"url": "https://api.{regionHost}/alerts"}],
+            "paths": {"/v1/Alerts": {"get": {"summary": "List"}}},
+        },
+    )
+
+    assert entry["base_path"] == "/alerts"
+    assert [e["path"] for e in entry["endpoints"]] == ["/alerts/v1/Alerts"]
+
+
+def test_generate_summary_keeps_already_prefixed_paths(summarize):
+    entry = summarize(
+        {
+            "basePath": "/",
+            "x-servers": [{"url": "https://api.{regionHost}"}],
+            "paths": {"/quantityConfirmation/v1/confirm": {"post": {"summary": "C"}}},
+        },
+    )
+
+    assert entry["base_path"] == ""
+    assert [e["path"] for e in entry["endpoints"]] == [
+        "/quantityConfirmation/v1/confirm"
+    ]
+
+
+def test_generate_summary_writes_lf_newlines(tmp_path, monkeypatch):
+    monkeypatch.setattr(mirror, "_update_repo_readme_stats", lambda *a, **k: None)
+    spec = {"basePath": "/v1", "paths": {"/x": {"get": {"summary": "X"}}}}
+    generate_summary([artifact()], {"example": spec}, {}, tmp_path)
+
+    for name in ("summary.json", "README.md"):
+        raw = (tmp_path / name).read_bytes()
+        assert b"\r\n" not in raw

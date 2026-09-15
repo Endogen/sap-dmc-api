@@ -25,6 +25,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
+from spec_paths import join_path, service_prefix
+
 try:
     from dotenv import load_dotenv
 
@@ -473,7 +475,7 @@ def save_specs(
         path = specs_dir / f"{name}.json"
         spec = specs.get(name)
         if spec:
-            path.write_text(json.dumps(spec, indent=2), encoding="utf-8")
+            path.write_text(json.dumps(spec, indent=2), encoding="utf-8", newline="\n")
         elif name in specs and path.is_file():
             path.unlink()
             log.info("Removed unavailable specification %s", path)
@@ -482,7 +484,7 @@ def save_specs(
         meta = metadata.get(name)
         if meta:
             path = meta_dir / f"{name}.json"
-            path.write_text(json.dumps(meta, indent=2), encoding="utf-8")
+            path.write_text(json.dumps(meta, indent=2), encoding="utf-8", newline="\n")
 
     # Delete files for APIs no longer in SAP's artifact list — otherwise
     # removed APIs linger on disk and never show up in the diff tracker.
@@ -495,7 +497,7 @@ def save_specs(
 
     # Save artifact index
     index_path = output_dir / "artifacts.json"
-    index_path.write_text(json.dumps(artifacts, indent=2), encoding="utf-8")
+    index_path.write_text(json.dumps(artifacts, indent=2), encoding="utf-8", newline="\n")
 
     log.info("Mirrored %d specs to %s", sum(1 for s in specs.values() if s), specs_dir)
 
@@ -531,7 +533,10 @@ def generate_summary(
 
             entry["spec_version"] = spec.get("openapi", spec.get("swagger", ""))
             entry["api_version"] = info.get("version", "")
-            entry["base_path"] = spec.get("basePath", "")
+            # The real base path lives in x-servers/servers, not in the
+            # placeholder `basePath: "/"` these specs ship with.
+            prefix = service_prefix(spec)
+            entry["base_path"] = prefix
             entry["host"] = spec.get("host", "")
 
             # Enumerate endpoints (method-level operations)
@@ -543,7 +548,7 @@ def generate_summary(
                     endpoints.append(
                         {
                             "method": method.upper(),
-                            "path": path,
+                            "path": join_path(prefix, path),
                             "summary": details.get("summary", ""),
                             "operation_id": details.get("operationId", ""),
                             "tags": details.get("tags", []),
@@ -564,7 +569,7 @@ def generate_summary(
 
     # Save summary JSON
     summary_path = output_dir / "summary.json"
-    summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8", newline="\n")
 
     total_endpoints = sum(e["endpoint_count"] for e in summary)
     total_schemas = sum(e["schema_count"] for e in summary)
@@ -621,7 +626,7 @@ def generate_summary(
         md_lines.append("")
 
     readme_path = output_dir / "README.md"
-    readme_path.write_text("\n".join(md_lines), encoding="utf-8")
+    readme_path.write_text("\n".join(md_lines), encoding="utf-8", newline="\n")
     log.info("Generated summary: %s", readme_path)
 
     _update_repo_readme_stats(len(summary), total_endpoints, total_schemas)
@@ -641,7 +646,7 @@ def _update_repo_readme_stats(
                 f"**Current stats:** {api_count} APIs · "
                 f"{endpoint_count} endpoints · {schema_count:,} schemas"
             )
-            readme.write_text("\n".join(lines) + "\n", encoding="utf-8")
+            readme.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
             log.info("Updated stats line in %s", readme)
             return
 

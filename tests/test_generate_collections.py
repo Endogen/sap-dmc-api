@@ -104,3 +104,44 @@ def test_build_insomnia_structure():
     # requests hang off the folder, folder off the workspace
     assert post["parentId"] == by_type["request_group"][0]["_id"]
     assert by_type["request_group"][0]["parentId"] == by_type["workspace"][0]["_id"]
+
+
+# ---------------------------------------------------------------------------
+# Request URLs — SAP keeps the real base path out of the path keys
+# ---------------------------------------------------------------------------
+
+X_SERVERS_SPEC = {
+    "swagger": "2.0",
+    "host": "hostname",
+    "basePath": "/",
+    "x-servers": [{"url": "https://api.{regionHost}/assembly/v1"}],
+    "paths": {"/autoAssemble": {"post": {"summary": "Auto assemble"}}},
+}
+
+
+def test_urls_include_service_prefix():
+    postman = build_postman([(API_INFO, X_SERVERS_SPEC)])
+    url = postman["item"][0]["item"][0]["request"]["url"]
+    assert url["raw"] == "{{base_url}}/assembly/v1/autoAssemble"
+    assert url["path"] == ["assembly", "v1", "autoAssemble"]
+
+    export = build_insomnia([(API_INFO, X_SERVERS_SPEC)])
+    request = next(r for r in export["resources"] if r["_type"] == "request")
+    assert request["url"] == "{{ _.base_url }}/assembly/v1/autoAssemble"
+
+
+def test_prefix_not_doubled_when_path_already_carries_it():
+    # sappqm_aiml_scenarios mixes relative and already-prefixed path keys
+    spec = {
+        "x-servers": [{"url": "https://api.host/aiml/v1"}],
+        "paths": {
+            "/inspectionLog": {"get": {"summary": "Log"}},
+            "/aiml/v1/inspectionLogsForContext": {"get": {"summary": "Context"}},
+        },
+    }
+    export = build_insomnia([(API_INFO, spec)])
+    urls = {r["url"] for r in export["resources"] if r["_type"] == "request"}
+    assert urls == {
+        "{{ _.base_url }}/aiml/v1/inspectionLog",
+        "{{ _.base_url }}/aiml/v1/inspectionLogsForContext",
+    }
