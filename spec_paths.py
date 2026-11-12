@@ -19,10 +19,15 @@ def service_prefix(spec: dict) -> str:
     duplicate of the prefix the server URL already carries; `basePath` is only
     the fallback for a plain Swagger 2.0 spec.
 
+    The standard `servers` field wins over the `x-servers` extension. Only
+    sapdme_order carries both, and they disagree: `servers` says `/order` with
+    path keys like `/v1/orders`, while `x-servers` still says `/order/v1`.
+    Trusting the extension produced `/order/v1/v1/orders`, which does not exist.
+
     Returns "" when neither yields a path — those specs spell the full prefix
     out in their path keys already.
     """
-    servers = spec.get("x-servers") or spec.get("servers") or []
+    servers = spec.get("servers") or spec.get("x-servers") or []
     prefix = urlsplit(servers[0].get("url", "")).path.rstrip("/") if servers else ""
     # No path on the server URL — fall back to the standard Swagger 2.0 field.
     if not prefix:

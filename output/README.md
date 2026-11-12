@@ -1,6 +1,6 @@
 # SAP Digital Manufacturing Cloud — REST API Reference
 
-*Mirrored: 2026-09-15 16:02 UTC*
+*Mirrored: 2026-11-12 11:30 UTC*
 
 **Package:** [SAPDigitalManufacturingCloud](https://api.sap.com/package/SAPDigitalManufacturingCloud/rest)
 
@@ -662,23 +662,23 @@
 ### Order
 
 **Slug:** `sapdme_order`
-**Base Path:** `/order/v1`
+**Base Path:** `/order`
 **Description:** Perform order related activities, such as getting order details and releasing the order for manufacturing
 
 | Method | Path | Summary |
 |--------|------|---------|
-| `GET` | `/order/v1/v1/orders` | Finds order data by plant and order. |
-| `POST` | `/order/v1/v1/orders` | Creates an order with provided data |
-| `GET` | `/order/v1/v1/orders/list` | Finds list of orders. |
-| `POST` | `/order/v1/v1/orders/release` | Releases the given order. |
-| `POST` | `/order/v1/v1/orders/releaseInBackground` | Releases order in background for the given order. |
-| `POST` | `/order/v1/v1/orders/complete` | Complete order |
-| `POST` | `/order/v1/v1/orders/discard` | Discard order |
-| `PATCH` | `/order/v1/v1/orders/customValues` | Updates custom values |
-| `GET` | `/order/v1/v1/orders/customFieldDefinitions` | Retrieves a list of custom data definitions for the order. |
-| `POST` | `/order/v1/v1/orders/customFieldDefinitions` | Creates custom data definitions for the order. |
-| `DELETE` | `/order/v1/v1/orders/customFieldDefinitions` | Deletes custom data definitions for the order. |
-| `PATCH` | `/order/v1/v1/orders/customFieldDefinitions` | Updates custom data definitions for the order. |
+| `GET` | `/order/v1/orders` | Finds order data by plant and order. |
+| `POST` | `/order/v1/orders` | Creates an order with provided data |
+| `GET` | `/order/v1/orders/list` | Finds list of orders. |
+| `POST` | `/order/v1/orders/release` | Releases the given order. |
+| `POST` | `/order/v1/orders/releaseInBackground` | Releases order in background for the given order. |
+| `POST` | `/order/v1/orders/complete` | Complete order |
+| `POST` | `/order/v1/orders/discard` | Discard order |
+| `PATCH` | `/order/v1/orders/customValues` | Updates custom values |
+| `GET` | `/order/v1/orders/customFieldDefinitions` | Retrieves a list of custom data definitions for the order. |
+| `POST` | `/order/v1/orders/customFieldDefinitions` | Creates custom data definitions for the order. |
+| `DELETE` | `/order/v1/orders/customFieldDefinitions` | Deletes custom data definitions for the order. |
+| `PATCH` | `/order/v1/orders/customFieldDefinitions` | Updates custom data definitions for the order. |
 
 ### Order Schedules
 

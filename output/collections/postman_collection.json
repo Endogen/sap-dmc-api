@@ -9403,13 +9403,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders",
+              "raw": "{{base_url}}/order/v1/orders",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders"
               ],
@@ -9464,13 +9463,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders",
+              "raw": "{{base_url}}/order/v1/orders",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders"
               ]
@@ -9502,13 +9500,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/list",
+              "raw": "{{base_url}}/order/v1/orders/list",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "list"
@@ -9624,13 +9621,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/release",
+              "raw": "{{base_url}}/order/v1/orders/release",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "release"
@@ -9663,13 +9659,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/releaseInBackground",
+              "raw": "{{base_url}}/order/v1/orders/releaseInBackground",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "releaseInBackground"
@@ -9702,13 +9697,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/complete",
+              "raw": "{{base_url}}/order/v1/orders/complete",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "complete"
@@ -9746,13 +9740,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/discard",
+              "raw": "{{base_url}}/order/v1/orders/discard",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "discard"
@@ -9790,13 +9783,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/customValues",
+              "raw": "{{base_url}}/order/v1/orders/customValues",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "customValues"
@@ -9829,13 +9821,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/customFieldDefinitions",
+              "raw": "{{base_url}}/order/v1/orders/customFieldDefinitions",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "customFieldDefinitions"
@@ -9885,13 +9876,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/customFieldDefinitions",
+              "raw": "{{base_url}}/order/v1/orders/customFieldDefinitions",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "customFieldDefinitions"
@@ -9924,13 +9914,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/customFieldDefinitions",
+              "raw": "{{base_url}}/order/v1/orders/customFieldDefinitions",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "customFieldDefinitions"
@@ -9963,13 +9952,12 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/order/v1/v1/orders/customFieldDefinitions",
+              "raw": "{{base_url}}/order/v1/orders/customFieldDefinitions",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "order",
-                "v1",
                 "v1",
                 "orders",
                 "customFieldDefinitions"

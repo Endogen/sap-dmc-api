@@ -2357,12 +2357,12 @@
     "status": "",
     "spec_version": "3.0.1",
     "api_version": "v1",
-    "base_path": "/order/v1",
+    "base_path": "/order",
     "host": "",
     "endpoints": [
       {
         "method": "GET",
-        "path": "/order/v1/v1/orders",
+        "path": "/order/v1/orders",
         "summary": "Finds order data by plant and order.",
         "operation_id": "",
         "tags": [
@@ -2371,7 +2371,7 @@
       },
       {
         "method": "POST",
-        "path": "/order/v1/v1/orders",
+        "path": "/order/v1/orders",
         "summary": "Creates an order with provided data",
         "operation_id": "createOrder",
         "tags": [
@@ -2380,7 +2380,7 @@
       },
       {
         "method": "GET",
-        "path": "/order/v1/v1/orders/list",
+        "path": "/order/v1/orders/list",
         "summary": "Finds list of orders.",
         "operation_id": "",
         "tags": [
@@ -2389,7 +2389,7 @@
       },
       {
         "method": "POST",
-        "path": "/order/v1/v1/orders/release",
+        "path": "/order/v1/orders/release",
         "summary": "Releases the given order.",
         "operation_id": "",
         "tags": [
@@ -2398,7 +2398,7 @@
       },
       {
         "method": "POST",
-        "path": "/order/v1/v1/orders/releaseInBackground",
+        "path": "/order/v1/orders/releaseInBackground",
         "summary": "Releases order in background for the given order.",
         "operation_id": "",
         "tags": [
@@ -2407,7 +2407,7 @@
       },
       {
         "method": "POST",
-        "path": "/order/v1/v1/orders/complete",
+        "path": "/order/v1/orders/complete",
         "summary": "Complete order",
         "operation_id": "completeUsingPOST_2",
         "tags": [
@@ -2416,7 +2416,7 @@
       },
       {
         "method": "POST",
-        "path": "/order/v1/v1/orders/discard",
+        "path": "/order/v1/orders/discard",
         "summary": "Discard order",
         "operation_id": "discardUsingPOST_2",
         "tags": [
@@ -2425,7 +2425,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/order/v1/v1/orders/customValues",
+        "path": "/order/v1/orders/customValues",
         "summary": "Updates custom values",
         "operation_id": "",
         "tags": [
@@ -2434,7 +2434,7 @@
       },
       {
         "method": "GET",
-        "path": "/order/v1/v1/orders/customFieldDefinitions",
+        "path": "/order/v1/orders/customFieldDefinitions",
         "summary": "Retrieves a list of custom data definitions for the order.",
         "operation_id": "getCustomFieldDefinitions",
         "tags": [
@@ -2443,7 +2443,7 @@
       },
       {
         "method": "POST",
-        "path": "/order/v1/v1/orders/customFieldDefinitions",
+        "path": "/order/v1/orders/customFieldDefinitions",
         "summary": "Creates custom data definitions for the order.",
         "operation_id": "createCustomFieldDefinition",
         "tags": [
@@ -2452,7 +2452,7 @@
       },
       {
         "method": "DELETE",
-        "path": "/order/v1/v1/orders/customFieldDefinitions",
+        "path": "/order/v1/orders/customFieldDefinitions",
         "summary": "Deletes custom data definitions for the order.",
         "operation_id": "deleteCustomFieldDefinition",
         "tags": [
@@ -2461,7 +2461,7 @@
       },
       {
         "method": "PATCH",
-        "path": "/order/v1/v1/orders/customFieldDefinitions",
+        "path": "/order/v1/orders/customFieldDefinitions",
         "summary": "Updates custom data definitions for the order.",
         "operation_id": "updateCustomFieldDefinition",
         "tags": [

@@ -30,6 +30,25 @@ def test_service_prefix_server_url_wins_over_duplicate_base_path():
     assert service_prefix(spec) == "/oee"
 
 
+def test_service_prefix_standard_servers_win_over_a_stale_x_servers():
+    # sapdme_order: servers '/order' + path keys '/v1/orders'; its x-servers
+    # still says '/order/v1', which would double the version segment.
+    spec = {
+        "openapi": "3.0.0",
+        "servers": [{"url": "https://api.{regionHost}/order"}],
+        "x-servers": [{"url": "https://api.{regionHost}/order/v1"}],
+        "paths": {"/v1/orders": {"get": {}}},
+    }
+    assert service_prefix(spec) == "/order"
+    assert full_path(spec, "/v1/orders") == "/order/v1/orders"
+
+
+def test_service_prefix_uses_x_servers_when_servers_is_absent_or_empty():
+    x_servers = [{"url": "https://api.{regionHost}/plant/v1"}]
+    assert service_prefix({"x-servers": x_servers}) == "/plant/v1"
+    assert service_prefix({"servers": [], "x-servers": x_servers}) == "/plant/v1"
+
+
 def test_service_prefix_falls_back_to_base_path():
     assert service_prefix({"swagger": "2.0", "basePath": "/v1"}) == "/v1"
 

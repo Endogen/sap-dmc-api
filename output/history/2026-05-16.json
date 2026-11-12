@@ -183,7 +183,7 @@
       "changes": [
         {
           "kind": "response_field_added",
-          "endpoint": "GET /order/v1/v1/orders",
+          "endpoint": "GET /order/v1/orders",
           "field": "customerName",
           "type": "string",
           "breaking": false
