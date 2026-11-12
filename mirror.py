@@ -18,9 +18,10 @@ import json
 import logging
 import os
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Mapping
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
@@ -76,6 +77,22 @@ ARTIFACT_CHANGE_FIELDS = (
     "Description",
     "reg_id",
 )
+# The artifact list is stamped once per package republish: every API carried the
+# same ModifiedAt to the second, and SAP edited each API's metadata (Scope) with
+# no stamp moving at all. So the list alone cannot show that an API changed.
+# SAP's own per-API changelog and lifecycle fields are public and move with the
+# API, so they are compared too. Scope and the rest are left out on purpose: they
+# change without the API changing and would trigger a full re-mirror for nothing.
+METADATA_CHANGE_FIELDS = (
+    "ChangeLog",
+    "State",
+    "Version",
+    "Deprecated",
+    "DeprecationDate",
+    "DecommissionedDate",
+    "MinSystemVersion",
+)
+PUBLIC_METADATA_WORKERS = 6
 CHECK_CHANGES_EXIT_CODE = 3
 HTTP_TIMEOUT_SECONDS = 30
 PUBLIC_FETCH_ATTEMPTS = 3
@@ -444,6 +461,33 @@ def fetch_artifact_list() -> list[dict]:
     return apis
 
 
+def fetch_public_metadata(names: list[str]) -> dict[str, dict | None]:
+    """Fetch every API's metadata from the public catalog, without a session.
+
+    An API whose metadata could not be fetched maps to None rather than being
+    dropped, so it cannot be mistaken for "nothing changed". A login page where
+    JSON should be is different: every remaining request would fail the same
+    way, so that propagates.
+    """
+
+    def fetch(name: str) -> tuple[str, dict | None]:
+        try:
+            data = fetch_public_json(API_META_URL.format(name=name))
+        except SessionAuthError:
+            raise
+        except Exception as exc:
+            log.warning("Could not read public metadata for %s: %s", name, exc)
+            return name, None
+        if not isinstance(data, dict):
+            return name, None
+        metadata = data.get("d", data)
+        return name, metadata if isinstance(metadata, dict) else None
+
+    log.info("Fetching public metadata for %d API(s)...", len(names))
+    with ThreadPoolExecutor(max_workers=PUBLIC_METADATA_WORKERS) as pool:
+        return dict(pool.map(fetch, names))
+
+
 def fetch_api_metadata(
     request: APIRequestContext,
     page: Page,
@@ -552,14 +596,36 @@ def load_existing_mirror(
     return artifacts, specs, metadata
 
 
+def published_metadata_changed(stored_path: Path, published: dict | None) -> bool:
+    """Whether SAP's public metadata differs from the mirrored copy.
+
+    Anything that cannot be compared counts as a change: refreshing one API we
+    could not verify costs a login, whereas skipping it would hide a change.
+    """
+    if not published:
+        return True
+    try:
+        stored = json.loads(stored_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return True
+    if not isinstance(stored, dict):
+        return True
+    return any(stored.get(field) != published.get(field) for field in METADATA_CHANGE_FIELDS)
+
+
 def plan_mirror(
     artifacts: list[dict],
     previous_artifacts: list[dict],
     output_dir: Path,
     *,
     force: bool = False,
+    public_metadata: Mapping[str, dict | None] | None = None,
 ) -> tuple[list[str], list[str]]:
-    """Return API names that need downloading and names that were removed."""
+    """Return API names that need downloading and names that were removed.
+
+    `public_metadata` is SAP's current per-API metadata (see
+    fetch_public_metadata). Leave it out to judge by the artifact list alone.
+    """
     current = {artifact["Name"]: artifact for artifact in artifacts}
     previous = {artifact["Name"]: artifact for artifact in previous_artifacts}
     updates: set[str] = set()
@@ -573,7 +639,16 @@ def plan_mirror(
             not (output_dir / "specs" / f"{name}.json").is_file()
             or not (output_dir / "metadata" / f"{name}.json").is_file()
         )
-        if force or changed or missing_files:
+        metadata_changed = (
+            public_metadata is not None
+            and not (force or changed or missing_files)
+            and published_metadata_changed(
+                output_dir / "metadata" / f"{name}.json", public_metadata.get(name)
+            )
+        )
+        if metadata_changed:
+            log.info("%s: SAP's published metadata differs from the mirror", name)
+        if force or changed or missing_files or metadata_changed:
             updates.add(name)
 
     removals = set(previous) - set(current)
@@ -895,11 +970,17 @@ def main() -> int:
 
     artifacts = fetch_artifact_list()
     previous_artifacts, specs, metadata = load_existing_mirror(output_dir)
+    public_metadata = (
+        None
+        if args.force
+        else fetch_public_metadata([artifact["Name"] for artifact in artifacts])
+    )
     update_names, removed_names = plan_mirror(
         artifacts,
         previous_artifacts,
         output_dir,
         force=args.force,
+        public_metadata=public_metadata,
     )
     log.info(
         "Mirror plan: %d API(s) to update, %d API(s) to remove",

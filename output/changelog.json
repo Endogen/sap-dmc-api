@@ -4,10 +4,10 @@
     "summary": {
       "apis_added": 2,
       "apis_removed": 0,
-      "apis_changed": 6,
+      "apis_changed": 7,
       "endpoints_added": 4,
       "endpoints_removed": 0,
-      "breaking_changes": 2
+      "breaking_changes": 3
     },
     "changes": [
       {
@@ -191,6 +191,19 @@
             "type": "object",
             "required": false,
             "breaking": false
+          }
+        ]
+      },
+      {
+        "api": "sapdme_lastindicator",
+        "display_name": "Last Indicator Value",
+        "type": "changed",
+        "changes": [
+          {
+            "kind": "base_url_changed",
+            "old_path": "/api/v1/indicator",
+            "new_path": "/linemonitor/v1/lastindicator",
+            "breaking": true
           }
         ]
       },

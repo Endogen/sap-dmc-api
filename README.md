@@ -148,7 +148,9 @@ Both collections include:
 
 ## Refreshing the Mirror
 
-The daily GitHub Actions run takes care of this. A manual run checks the public catalog and only downloads specifications that changed; `--force` performs a complete refresh. Successful updates regenerate the summary and collections and record spec changes in `output/changelog.json`.
+The daily GitHub Actions run takes care of this. A manual run checks the public catalog and only downloads specifications that changed; `--force` performs a complete refresh.
+
+"Changed" is judged from two public sources: the catalog's artifact list and each API's own metadata, including SAP's per-API changelog and its lifecycle fields (state, version, deprecation and decommission dates). The artifact list alone is not enough, because SAP stamps it once per package republish rather than per API. An API whose metadata cannot be read is refreshed rather than skipped. Successful updates regenerate the summary and collections and record spec changes in `output/changelog.json`.
 
 ```bash
 python3 mirror.py

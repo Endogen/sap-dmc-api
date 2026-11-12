@@ -20,6 +20,7 @@ from mirror import (
     generate_summary,
     emit_github_output,
     fetch_public_json,
+    fetch_public_metadata,
     record_changes,
     fetch_updates,
     open_protected_resource,
@@ -41,12 +42,23 @@ def artifact(name="example", **overrides):
     return value
 
 
-def write_mirror_files(output_dir, names):
+def write_mirror_files(output_dir, names, metadata=None):
     for child in ("specs", "metadata"):
         directory = output_dir / child
         directory.mkdir(parents=True, exist_ok=True)
         for name in names:
-            (directory / f"{name}.json").write_text("{}", encoding="utf-8")
+            body = metadata if child == "metadata" and metadata is not None else {}
+            (directory / f"{name}.json").write_text(json.dumps(body), encoding="utf-8")
+
+
+@pytest.fixture(autouse=True)
+def no_public_metadata_requests(monkeypatch):
+    """main() would otherwise ask SAP for every API's metadata; None skips it.
+
+    Tests of the real function use the reference imported above, which this
+    patch does not reach.
+    """
+    monkeypatch.setattr(mirror, "fetch_public_metadata", lambda _names: None)
 
 
 def test_count_operations_skips_extensions_and_parameters():
@@ -208,6 +220,141 @@ def test_plan_mirror_force_updates_every_api(tmp_path):
     write_mirror_files(tmp_path, ["a", "b"])
 
     assert plan_mirror(current, current, tmp_path, force=True) == (["a", "b"], [])
+
+
+CHANGELOG_BEFORE = '[{"date":"1 August 2026","notes":"Added an endpoint."}]'
+CHANGELOG_AFTER = (
+    '[{"date":"1 November 2026","notes":"Added a field."},'
+    '{"date":"1 August 2026","notes":"Added an endpoint."}]'
+)
+
+
+def test_plan_mirror_detects_a_new_changelog_entry_the_artifact_list_missed(tmp_path):
+    current = [artifact()]
+    write_mirror_files(tmp_path, ["example"], {"ChangeLog": CHANGELOG_BEFORE})
+
+    plan = plan_mirror(
+        current,
+        current,
+        tmp_path,
+        public_metadata={"example": {"ChangeLog": CHANGELOG_AFTER}},
+    )
+
+    assert plan == (["example"], [])
+
+
+def test_plan_mirror_detects_a_lifecycle_change_in_published_metadata(tmp_path):
+    current = [artifact()]
+    write_mirror_files(tmp_path, ["example"], {"Deprecated": False})
+
+    plan = plan_mirror(
+        current, current, tmp_path, public_metadata={"example": {"Deprecated": True}}
+    )
+
+    assert plan == (["example"], [])
+
+
+def test_plan_mirror_ignores_published_fields_that_are_not_api_changes(tmp_path):
+    # SAP filled in Scope on every API without touching the API itself.
+    current = [artifact()]
+    stored = {"ChangeLog": CHANGELOG_BEFORE, "Scope": None}
+    write_mirror_files(tmp_path, ["example"], stored)
+
+    plan = plan_mirror(
+        current,
+        current,
+        tmp_path,
+        public_metadata={
+            "example": {"ChangeLog": CHANGELOG_BEFORE, "Scope": "EXTERNAL"}
+        },
+    )
+
+    assert plan == ([], [])
+
+
+def test_plan_mirror_refreshes_an_api_whose_published_metadata_is_unavailable(
+    tmp_path,
+):
+    current = [artifact("readable"), artifact("unreadable")]
+    write_mirror_files(
+        tmp_path, ["readable", "unreadable"], {"ChangeLog": CHANGELOG_BEFORE}
+    )
+
+    plan = plan_mirror(
+        current,
+        current,
+        tmp_path,
+        public_metadata={
+            "readable": {"ChangeLog": CHANGELOG_BEFORE},
+            "unreadable": None,
+        },
+    )
+
+    assert plan == (["unreadable"], [])
+
+
+def test_plan_mirror_refreshes_when_the_stored_metadata_cannot_be_read(tmp_path):
+    current = [artifact()]
+    write_mirror_files(tmp_path, ["example"])
+    (tmp_path / "metadata" / "example.json").write_text("not json", encoding="utf-8")
+
+    plan = plan_mirror(
+        current,
+        current,
+        tmp_path,
+        public_metadata={"example": {"ChangeLog": CHANGELOG_BEFORE}},
+    )
+
+    assert plan == (["example"], [])
+
+
+def test_plan_mirror_without_published_metadata_judges_by_the_artifact_list(tmp_path):
+    current = [artifact()]
+    write_mirror_files(tmp_path, ["example"], {"ChangeLog": CHANGELOG_BEFORE})
+
+    assert plan_mirror(current, current, tmp_path) == ([], [])
+
+
+def test_fetch_public_metadata_unwraps_the_odata_envelope(monkeypatch):
+    urls = []
+
+    def public_json(url):
+        urls.append(url)
+        return {"d": {"Name": "example", "ChangeLog": CHANGELOG_BEFORE}}
+
+    monkeypatch.setattr(mirror, "fetch_public_json", public_json)
+
+    assert fetch_public_metadata(["example"]) == {
+        "example": {"Name": "example", "ChangeLog": CHANGELOG_BEFORE}
+    }
+    assert urls == [
+        "https://api.sap.com/odata/1.0/catalog.svc/"
+        "APIContent.APIs('example')?$select=*&$format=json"
+    ]
+
+
+def test_fetch_public_metadata_marks_a_failed_api_instead_of_dropping_it(monkeypatch):
+    def public_json(url):
+        if "'broken'" in url:
+            raise RuntimeError("HTTP 500")
+        return {"d": {"Name": "fine"}}
+
+    monkeypatch.setattr(mirror, "fetch_public_json", public_json)
+
+    assert fetch_public_metadata(["fine", "broken"]) == {
+        "fine": {"Name": "fine"},
+        "broken": None,
+    }
+
+
+def test_fetch_public_metadata_propagates_a_login_wall(monkeypatch):
+    def public_json(_url):
+        raise mirror.SessionAuthError("SAP unexpectedly required login")
+
+    monkeypatch.setattr(mirror, "fetch_public_json", public_json)
+
+    with pytest.raises(mirror.SessionAuthError):
+        fetch_public_metadata(["example"])
 
 
 def test_authenticated_fetch_uses_request_context_not_page_evaluate():
@@ -439,6 +586,59 @@ def test_main_logs_in_before_fetching_metadata(tmp_path, monkeypatch):
 
     assert mirror.main() == 0
     assert events[:3] == ["login", "metadata", "spec"]
+
+
+def test_check_mode_signals_a_changelog_entry_the_artifact_list_missed(
+    tmp_path, monkeypatch
+):
+    current = [artifact()]
+    (tmp_path / "artifacts.json").write_text(json.dumps(current), encoding="utf-8")
+    write_mirror_files(tmp_path, ["example"], {"ChangeLog": CHANGELOG_BEFORE})
+    monkeypatch.setattr(mirror, "fetch_artifact_list", lambda: current)
+    monkeypatch.setattr(
+        mirror,
+        "fetch_public_metadata",
+        lambda _names: {"example": {"ChangeLog": CHANGELOG_AFTER}},
+    )
+    monkeypatch.setattr(
+        sys, "argv", ["mirror.py", "--check", "--output-dir", str(tmp_path)]
+    )
+
+    assert mirror.main() == CHECK_CHANGES_EXIT_CODE
+
+
+def test_check_mode_is_quiet_when_published_metadata_matches(tmp_path, monkeypatch):
+    current = [artifact()]
+    (tmp_path / "artifacts.json").write_text(json.dumps(current), encoding="utf-8")
+    write_mirror_files(tmp_path, ["example"], {"ChangeLog": CHANGELOG_BEFORE})
+    monkeypatch.setattr(mirror, "fetch_artifact_list", lambda: current)
+    monkeypatch.setattr(
+        mirror,
+        "fetch_public_metadata",
+        lambda _names: {"example": {"ChangeLog": CHANGELOG_BEFORE}},
+    )
+    monkeypatch.setattr(
+        sys, "argv", ["mirror.py", "--check", "--output-dir", str(tmp_path)]
+    )
+
+    assert mirror.main() == 0
+
+
+def test_force_skips_the_published_metadata_requests(tmp_path, monkeypatch):
+    current = [artifact()]
+    monkeypatch.setattr(mirror, "fetch_artifact_list", lambda: current)
+    monkeypatch.setattr(
+        mirror,
+        "fetch_public_metadata",
+        lambda _names: pytest.fail("--force downloads everything anyway"),
+    )
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["mirror.py", "--check", "--force", "--output-dir", str(tmp_path)],
+    )
+
+    assert mirror.main() == CHECK_CHANGES_EXIT_CODE
 
 
 def test_check_mode_signals_when_browser_run_is_needed(tmp_path, monkeypatch):
