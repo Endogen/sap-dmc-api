@@ -234,9 +234,21 @@
     font-size: 16px;
     font-weight: 600;
   }
+  .swagger-header .api-note {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--text2);
+  }
+  .swagger-header .api-note a { color: var(--accent); }
   #swagger-container {
     background: #fff;
     min-height: calc(100vh - 52px);
+  }
+  /* Calls cannot be executed from this page (see showSwagger), so the OAuth
+     dialog and its lock icons would only lead to an error. */
+  #swagger-container .swagger-ui .auth-wrapper,
+  #swagger-container .swagger-ui .authorization__btn {
+    display: none;
   }
 
   .no-results {
@@ -470,6 +482,9 @@
   <div class="swagger-header">
     <button class="back-btn" onclick="showLanding()">&#8592; Back to APIs</button>
     <span class="api-title" id="swagger-title"></span>
+    <span class="api-note">Read-only &mdash; SAP's API gateway rejects browser requests (CORS). To make calls, use the
+      <a href="collections/postman_collection.json" target="_blank">Postman</a> or
+      <a href="collections/insomnia_collection.json" target="_blank">Insomnia</a> collection.</span>
   </div>
   <div id="swagger-container"></div>
 </div>
@@ -735,6 +750,10 @@ function showSwagger(name, displayName) {
     dom_id: '#swagger-container',
     presets: [SwaggerUIBundle.presets.apis, SwaggerUIBundle.SwaggerUIStandalonePreset],
     layout: 'BaseLayout',
+    // Browsing only. SAP's gateway answers the CORS preflight with 401 and no
+    // CORS headers, and the specs' OAuth tokenUrl is an unresolved template, so
+    // "Try it out" and "Authorize" can never succeed from a browser.
+    supportedSubmitMethods: [],
     deepLinking: false,
     defaultModelsExpandDepth: 1,
     defaultModelExpandDepth: 1
